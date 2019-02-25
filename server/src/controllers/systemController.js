@@ -1,40 +1,36 @@
-import mongoose from 'mongoose';
-
 import { SystemSchema } from '../models/systemModel';
 
 const system = mongoose.model('system', SystemSchema);
-
 
 // system constructor 
 // system = () => { 
 // };
 
-
-
-Campaign addCampaign = () => { 
-};
-
-User addUser = () => {
+export const addCampaign = (req, res) => { 
 
 };
 
-User editUser(username) => {
+export const addUser = (req, res) => {
 
 };
 
-Campaign editCampaign(campaignId) => {
+export const editUser = (req, res) => {
 
 };
 
-bool removeUser(username) => {
+export const editCampaign = (req, res) => {
 
 };
 
-bool removeCampaign(campaignId) => {
+export const removeUser = (req, res) => {
+
+};
+
+export const removeCampaign = (req, res) => {
 
 }; 
 
-void selectLanguage(language) => {
+export const selectLanguage = (req, res) => {
 
 };
 
