@@ -1,3 +1,3 @@
-export const validateConstituency = (req, res) => {
+export const findAuditors = (req, res) => {
 
 };

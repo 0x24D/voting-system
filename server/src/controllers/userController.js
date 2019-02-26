@@ -1,3 +1,15 @@
+export const addUser = (req, res) => {
+
+};
+
+export const editUser = (req, res) => {
+
+};
+
+export const removeUser = (req, res) => {
+
+};
+
 export const validateEmail = (req, res) => {
 
 };
