@@ -27,7 +27,7 @@
 /api/v1/campaigns PUT - error
 /api/v1/campaigns DELETE - delete all campaigns (out of scope?)
 
-/api/v1/campaigns/{id} GET - return specific campaign
+/api/v1/campaigns/{id} GET - return specific campaign (use ?constituency={constituency} query param to filter)
 /api/v1/campaigns/{id} POST - error
 /api/v1/campaigns/{id} PUT - update campaign
 /api/v1/campaigns/{id} DELETE - delete specific campaign (out of scope?)
@@ -82,7 +82,7 @@
 /api/v1/systems/{id} PUT - update system
 /api/v1/systems/{id} DELETE - delete specific system (out of scope?)
 
-/api/v1/users GET - return list of all users
+/api/v1/users GET - return list of all users (out of scope?)
 /api/v1/users POST - create new user
 /api/v1/users PUT - error
 /api/v1/users DELETE - delete all users (out of scope?)
