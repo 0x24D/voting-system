@@ -1,15 +1,19 @@
 {
-  "presets": [
-    "env",
-    "stage-0"
-  ],
-  {
-    "env": {
-      "test": {
-        "plugins": [
-          "istanbul"
-        ]
-      }
+  "env": {
+    "dev": {
+      "presets": [
+        "env",
+        "stage-0"
+      ]
+    },
+    "test": {
+      "presets": [
+        "env",
+        "stage-0"
+      ],
+      "plugins": [
+        "istanbul"
+      ]
     }
   }
 }

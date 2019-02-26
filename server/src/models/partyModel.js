@@ -3,14 +3,14 @@ import mongoose from 'mongoose';
 // eslint-disable-next-line
 const Schema = mongoose.Schema;
 
-const Candidate = mongoose.model('candidate', new Schema({
+const Party = mongoose.model('party', new Schema({
   name: {
     type: String,
     required: true,
   },
-  party: {
-    type: Schema.Types.ObjectId, ref: 'party',
+  description: {
+    type: String,
   },
 }));
 
-export default Candidate;
+export default Party;
