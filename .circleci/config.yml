@@ -20,7 +20,7 @@ jobs:
             - ./server/node_modules
       - run:
           name: test-and-code-coverage
-          command: cd server && './node_modules/.bin/nyc report --reporter=text-lcov npm test'
+          command: cd server && ./node_modules/.bin/nyc report --reporter=text-lcov npm test
       - store_artifacts:
           path: server/test-results.xml
           prefix: tests
