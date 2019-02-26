@@ -19,16 +19,13 @@ jobs:
           paths:
             - ./node_modules
      # - run:
-     #     name: test
-     #     command: cd server && npm test
-      - run:
-          name: code-coverage
-          command: cd server && './node_modules/.bin/nyc report --reporter=text-lcov'
+     #     name: test-and-code-coverage
+     #     command: cd server && './node_modules/.bin/nyc report --reporter=text-lcov npm test'
      # - store_artifacts:
      #     path: server/test-results.xml
      #     prefix: tests
-      - store_artifacts:
-          path: server/coverage
-          prefix: coverage
+     # - store_artifacts:
+     #     path: server/coverage
+     #     prefix: coverage
      # - store_test_results:
      #     path: server/test-results.xml
