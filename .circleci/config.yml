@@ -10,22 +10,30 @@ jobs:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
-          key: dependency-cache-{{ checksum "server/package.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
+          working_directory: ./server
       - run:
           name: install-npm
-          command: cd server && npm ci
+          command: npm ci
+          working_directory: ./server
       - save_cache:
-          key: dependency-cache-{{ checksum "server/package.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
           paths:
-            - ./server/node_modules
+            - ./node_modules
+          working_directory: ./server
       - run:
-          name: test-and-code-coverage
-          command: cd server && ./node_modules/.bin/nyc report --reporter=text-lcov npm test
+          name: test
+          command: npm test
+          working_directory: ./server
+      - run:
+          name: code-coverage
+          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+          working_directory: ./server
       - store_artifacts:
-          path: server/test-results.xml
+          path: server
           prefix: tests
       - store_artifacts:
           path: server/coverage
           prefix: coverage
       - store_test_results:
-          path: server/test-results.xml
+          path: server
