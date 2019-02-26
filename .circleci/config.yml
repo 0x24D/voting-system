@@ -10,17 +10,15 @@ jobs:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          working_directory: ./server
+          key: dependency-cache-{{ checksum "server/package.json" }}
       - run:
           name: install-npm
           command: npm ci
           working_directory: ./server
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "server/package.json" }}
           paths:
-            - ./node_modules
-          working_directory: ./server
+            - ./server/node_modules
       - run:
           name: test
           command: npm test
