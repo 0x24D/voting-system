@@ -31,10 +31,5 @@
     "mocha-junit-reporter": "^1.18.0",
     "nodemon": "^1.18.9",
     "nyc": "^13.3.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "./node_modules/.bin/eslint --fix ."
-    }
   }
 }
