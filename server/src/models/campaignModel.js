@@ -8,11 +8,11 @@ export const CampaignSchema = new mongoose.Schema({
   totalVotes: {
     type: Number,
     required: true,
+    default: 0,
   },
-  candidates: {
-    type: String,
-    required: true,
-  },
+  candidates: [{
+    type: mongoose.Schema.Types.ObjectId, ref: 'Candidate',
+  }],
   votes: {
     type: Map,
     required: true,
@@ -22,19 +22,19 @@ export const CampaignSchema = new mongoose.Schema({
     required: true,
   },
   active: {
-    type: String,
+    type: String, // enum or bool, tbd
     required: true,
   },
-  constituences: {
-    type: String,
-    required: true,
-  },
+  constituences: [{
+    type: mongoose.Schema.Types.ObjectId, ref: 'Constituency',
+  }],
   startDate: {
-    type: String,
+    type: Date,
     required: true,
+    default: Date.now,
   },
   endDate: {
-    type: String,
+    type: Date,
     required: true,
   },
 });

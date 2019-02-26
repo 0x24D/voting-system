@@ -26,7 +26,6 @@ export const AddressSchema = new mongoose.Schema({
     required: true,
   },
   constituency: {
-    type: String,
-    required: true,
+    type: mongoose.Schema.Types.ObjectId, ref: 'Constituency',
   },
 });

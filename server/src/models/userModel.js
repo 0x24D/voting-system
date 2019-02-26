@@ -21,11 +21,12 @@ export const UserSchema = new mongoose.Schema({
   },
   roles: {
     type: String,
-    required: true,
+    // required: true,
   },
   authenticationAttempts: {
     type: Number,
     required: true,
+    default: 0,
   },
 
 });

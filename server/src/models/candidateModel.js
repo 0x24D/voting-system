@@ -6,9 +6,6 @@ export const CandidateSchema = new mongoose.Schema({
     required: true,
   },
   party: {
-    name: {
-      type: String,
-      required: true,
-    },
+    type: mongoose.Schema.Types.ObjectId, ref: 'Party',
   },
 });
