@@ -19,7 +19,7 @@ export const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  roles: {
+  roles: { // shouldn't this be role?
     type: String,
     // required: true,
   },

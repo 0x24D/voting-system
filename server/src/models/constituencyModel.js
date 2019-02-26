@@ -8,9 +8,11 @@ export const ConstituencySchema = new mongoose.Schema({
   minimumAge: {
     type: String,
     required: true,
+    // should this not have default of 18?
   },
   votingSystem: {
     type: String,
     required: true,
+    // enum or reference code table?
   },
 });

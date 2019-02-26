@@ -22,7 +22,7 @@ export const AddressSchema = new mongoose.Schema({
     required: true,
   },
   postcode: {
-    tyoe: String,
+    type: String,
     required: true,
   },
   constituency: {
