@@ -1,5 +1,4 @@
 # voting-system
-
 ## Technologies used
 * Frontend (Vue)
 * Middleware (Express)
