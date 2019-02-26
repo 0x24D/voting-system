@@ -7,12 +7,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: update-npm
+          name: Update NPM
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
           key: dependency-cache-{{ checksum "server/package.json" }}
       - run:
-          name: install-npm
+          name: Install NPM packages
           command: npm ci
           working_directory: ./server
       - save_cache:
@@ -20,18 +20,18 @@ jobs:
           paths:
             - ./server/node_modules
       - run:
-          name: test
-          command: npm test
+          name: Run integration tests
+          command: NODE_ENV=test ./node_modules/.bin/mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./test/test-results.xml --recursive ./test/integration --require babel-register --exit
           working_directory: ./server
       - run:
-          name: code-coverage
-          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+          name: Run code coverage
+          command: NODE_ENV=test ./node_modules/.bin/nyc --reporter=clover --report-dir=./test/coverage ./node_modules/.bin/mocha --recursive ./test/integration --require babel-register --exit
           working_directory: ./server
       - store_artifacts:
-          path: server
-          prefix: tests
-      - store_artifacts:
-          path: server/coverage
+          path: server/test/coverage
           prefix: coverage
       - store_test_results:
-          path: server
+          path: server/test/
+      - store_artifacts:
+          path: ./server/test/coverage/clover.xml
+          prefix: tests
