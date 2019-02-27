@@ -16,11 +16,11 @@ describe('campaign', () => {
 });
 
 describe('campaign', ()=> {
-    it('should be invalid if totalVotes is empty', function(done) {
+    it('should be invalid if total_votes is empty', function(done) {
         var c = new Campaign();
- 
+
         c.validate(function(err) {
-            expect(err.errors.totalVotes).to.not.exist;
+            expect(err.errors.total_votes).to.not.exist;
             done();
         });
     });
@@ -29,7 +29,7 @@ describe('campaign', ()=> {
 describe('campaign', ()=> {
     it('should be invalid if candidates is empty', function(done) {
         var c = new Campaign();
- 
+
         c.validate(function(err) {
             expect(err.errors.candidates).to.not.exist;
             done();
@@ -42,7 +42,7 @@ describe('campaign', () => {
         var c = new Campaign();
 
         c.validate(function(err) {
-            expect(err.errors.votes).to.exist;
+            expect(err.errors.votes).to.not.exist;
             done();
         });
     });
@@ -73,7 +73,7 @@ describe('campaign', () => {
 describe('campaign', ()=> {
     it('should be invalid if constituences is empty', function(done) {
         var c = new Campaign();
- 
+
         c.validate(function(err) {
             expect(err.errors.constituency).to.not.exist;
             done();
@@ -82,24 +82,23 @@ describe('campaign', ()=> {
 });
 
 describe('campaign', ()=> {
-    it('should be invalid if startDate is empty', function(done) {
+    it('should be invalid if start_date is empty', function(done) {
         var c = new Campaign();
- 
+
         c.validate(function(err) {
-            expect(err.errors.startDate).to.not.exist;
+            expect(err.errors.start_date).to.not.exist;
             done();
         });
     });
 });
 
 describe('campaign', () => {
-    it('should be invalid if endDate is empty', function(done) {
+    it('should be invalid if end_date is empty', function(done) {
         var c = new Campaign();
 
         c.validate(function(err) {
-            expect(err.errors.endDate).to.exist;
+            expect(err.errors.end_date).to.exist;
             done();
         });
     });
 });
-
