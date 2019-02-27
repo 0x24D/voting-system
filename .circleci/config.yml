@@ -20,18 +20,15 @@ jobs:
           paths:
             - ./server/node_modules
       - run:
-          name: Run integration tests
-          command: NODE_ENV=test ./node_modules/.bin/mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./test/test-results.xml --recursive ./test/integration --require babel-register --exit
+          name: Run tests
+          command: NODE_ENV=test ./node_modules/.bin/mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./test/test-results.xml --recursive ./test --require babel-register --exit
           working_directory: ./server
       - run:
           name: Run code coverage
-          command: NODE_ENV=test ./node_modules/.bin/nyc --reporter=clover --report-dir=./test/coverage ./node_modules/.bin/mocha --recursive ./test/integration --require babel-register --exit
+          command: NODE_ENV=test ./node_modules/.bin/nyc --reporter=html --report-dir=./test/coverage ./node_modules/.bin/mocha --recursive ./test --require babel-register --exit
           working_directory: ./server
-      - store_artifacts:
-          path: server/test/coverage
-          prefix: coverage
       - store_test_results:
           path: server/test/
       - store_artifacts:
-          path: ./server/test/coverage/clover.xml
-          prefix: tests
+          path: server/test/coverage/
+          prefix: coverage
