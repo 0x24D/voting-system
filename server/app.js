@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import candidateRoutes from './src/routes/candidateRoutes';
+import partyRoutes from './src/routes/partyRoutes';
 
 const app = express();
 
@@ -27,5 +28,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 candidateRoutes(app);
+partyRoutes(app);
 
 export default app;
