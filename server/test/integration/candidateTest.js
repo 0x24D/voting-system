@@ -15,11 +15,14 @@ chai.use(chaiHttp);
 describe('Candidate tests', () => {
   let candidate1Id;
   let candidate2Id;
+  let party1Id;
+  let party2Id;
   beforeEach((done) => {
     const party1 = new Party({
       name: 'Party 1',
       description: 'Description for party 1',
     });
+    party1Id = String(party1._id);
     const candidate1 = new Candidate({
       name: 'Candidate 1',
       party: party1
@@ -29,6 +32,7 @@ describe('Candidate tests', () => {
       name: 'Party 2',
       description: 'Description for party 2',
     });
+    party2Id = String(party2._id);
     const candidate2 = new Candidate({
       name: 'Candidate 2',
       party: party2
@@ -61,23 +65,13 @@ describe('Candidate tests', () => {
         res.body[0].should.have.property('name');
         res.body[0].should.have.property('party');
         res.body[0].name.should.equal('Candidate 1');
-        res.body[0].party.should.be.a('object');
-        res.body[0].party.should.have.property('_id');
-        res.body[0].party.should.have.property('name');
-        res.body[0].party.should.have.property('description');
-        res.body[0].party.name.should.equal('Party 1');
-        res.body[0].party.description.should.equal('Description for party 1');
+        res.body[0].party.should.equal(party1Id);
 
         res.body[1].should.have.property('_id');
         res.body[1].should.have.property('name');
         res.body[1].should.have.property('party');
         res.body[1].name.should.equal('Candidate 2');
-        res.body[1].party.should.be.a('object');
-        res.body[1].party.should.have.property('_id');
-        res.body[1].party.should.have.property('name');
-        res.body[1].party.should.have.property('description');
-        res.body[1].party.name.should.equal('Party 2');
-        res.body[1].party.description.should.equal('Description for party 2');
+        res.body[1].party.should.equal(party2Id);
         done();
       });
     });
@@ -94,12 +88,7 @@ describe('Candidate tests', () => {
           res.body.should.have.property('party');
           res.body._id.should.equal(candidate1Id);
           res.body.name.should.equal('Candidate 1');
-          res.body.party.should.be.a('object');
-          res.body.party.should.have.property('_id');
-          res.body.party.should.have.property('name');
-          res.body.party.should.have.property('description');
-          res.body.party.name.should.equal('Party 1');
-          res.body.party.description.should.equal('Description for party 1');
+          res.body.party.should.equal(party1Id);
           done();
         });
     });
