@@ -17,7 +17,7 @@
 /api/v1/addresses PUT - error
 /api/v1/addresses DELETE - delete all addresses (out of scope for group work)
 
-/api/v1/addresses/{id} GET - return specific address (out of scope for group work)
+/api/v1/addresses/{id} GET - return specific address (to implement)
 /api/v1/addresses/{id} POST - error
 /api/v1/addresses/{id} PUT - update address (out of scope for group work)
 /api/v1/addresses/{id} DELETE - delete specific address (out of scope for group work)
@@ -47,7 +47,7 @@
 /api/v1/constituencies PUT - error
 /api/v1/constituencies DELETE - delete all constituencies (out of scope for group work)
 
-/api/v1/constituencies/{id} GET - return specific constituency (out of scope for group work)
+/api/v1/constituencies/{id} GET - return specific constituency (to implement)
 /api/v1/constituencies/{id} POST - error
 /api/v1/constituencies/{id} PUT - update constituency (out of scope for group work)
 /api/v1/constituencies/{id} DELETE - delete specific constituency (out of scope for group work)
@@ -57,7 +57,7 @@
 /api/v1/parties PUT - error
 /api/v1/parties DELETE - delete all parties (out of scope for group work)
 
-/api/v1/parties/{id} GET - return specific party (to implement)
+/api/v1/parties/{id} GET - return specific party (implemented)
 /api/v1/parties/{id} POST - error
 /api/v1/parties/{id} PUT - update party (out of scope for group work)
 /api/v1/parties/{id} DELETE - delete specific party (out of scope for group work)

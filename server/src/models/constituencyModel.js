@@ -1,18 +1,22 @@
 import mongoose from 'mongoose';
 
-export const ConstituencySchema = new mongoose.Schema({
+// eslint-disable-next-line
+const Schema = mongoose.Schema;
+
+const Constituency = mongoose.model('constituency', new Schema({
   name: {
     type: String,
     required: true,
   },
-  minimumAge: {
-    type: String,
+  minimum_age: {
+    type: Number,
     required: true,
-    // should this not have default of 18?
   },
-  votingSystem: {
+  voting_system: {
     type: String,
     required: true,
     // enum or reference code table?
   },
-});
+}));
+
+export default Constituency;

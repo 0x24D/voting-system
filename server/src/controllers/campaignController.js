@@ -1,3 +1,17 @@
+import {
+  findById,
+} from '../db/campaignAccess';
+
+export const getCampaignById = (req, res) => {
+  findById(req.params.id, (err, campaign) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json(campaign);
+    }
+  });
+};
+
 export const addCampaign = (req, res) => {
 
 };
