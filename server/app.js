@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import campaignRoutes from './src/routes/campaignRoutes';
 import candidateRoutes from './src/routes/candidateRoutes';
+import partyRoutes from './src/routes/partyRoutes';
 
 const app = express();
 
@@ -29,5 +30,6 @@ app.use(cors());
 
 campaignRoutes(app);
 candidateRoutes(app);
+partyRoutes(app);
 
 export default app;
