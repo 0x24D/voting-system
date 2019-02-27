@@ -27,7 +27,7 @@
 /api/v1/campaigns PUT - error
 /api/v1/campaigns DELETE - delete all campaigns (out of scope for group work)
 
-/api/v1/campaigns/{id} GET - return specific campaign (to implement)
+/api/v1/campaigns/{id} GET - return specific campaign (implemented)
 /api/v1/campaigns/{id} POST - error
 /api/v1/campaigns/{id} PUT - update campaign (increment total votes, etc.)
 /api/v1/campaigns/{id} DELETE - delete specific campaign (out of scope for group work)
