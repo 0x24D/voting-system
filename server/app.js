@@ -2,11 +2,15 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import addressRoutes from './src/routes/addressRoutes';
 import campaignRoutes from './src/routes/campaignRoutes';
 import candidateRoutes from './src/routes/candidateRoutes';
+import constituencyRoutes from './src/routes/constituencyRoutes';
 import partyRoutes from './src/routes/partyRoutes';
+import pollingStationRoutes from './src/routes/pollingStationRoutes';
 import userRoutes from './src/routes/userRoutes';
 import systemRoutes from './src/routes/systemRoutes';
+
 
 const app = express();
 
@@ -30,10 +34,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+addressRoutes(app);
 campaignRoutes(app);
 candidateRoutes(app);
+constituencyRoutes(app);
 partyRoutes(app);
+pollingStationRoutes(app);
 userRoutes(app);
 systemRoutes(app);
+
 
 export default app;
