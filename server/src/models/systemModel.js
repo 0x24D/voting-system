@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 
-export const SystemSchema = new mongoose.Schema({
+// eslint-disable-next-line
+const Schema = mongoose.Schema;
+
+const System = mongoose.model('pollingStation', new Schema({
   station: {
     type: mongoose.Schema.Types.ObjectId, ref: 'PollingStation',
   },
@@ -16,4 +19,6 @@ export const SystemSchema = new mongoose.Schema({
     required: true,
     default: 'en-gb',
   },
-});
+}));
+
+export default System;

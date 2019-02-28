@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 
-export const AddressSchema = new mongoose.Schema({
+// eslint-disable-next-line
+const Schema = mongoose.Schema;
+
+const Address = mongoose.model('address', new Schema({
   lineOne: {
     type: String,
     required: true,
@@ -26,6 +29,8 @@ export const AddressSchema = new mongoose.Schema({
     required: true,
   },
   constituency: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'Constituency',
+    type: Schema.Types.ObjectId, ref: 'Constituency',
   },
-});
+}));
+
+export default Address;

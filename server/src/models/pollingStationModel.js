@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 
-export const PollingStationSchema = new mongoose.Schema({
+// eslint-disable-next-line
+const Schema = mongoose.Schema;
+
+const PollingStation = mongoose.model('pollingStation', new Schema({
   address: {
     type: mongoose.Schema.Types.ObjectId, ref: 'Address',
   },
@@ -13,4 +16,6 @@ export const PollingStationSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-});
+}));
+
+export default PollingStation;

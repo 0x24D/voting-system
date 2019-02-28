@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 
-export const UserSchema = new mongoose.Schema({
+// eslint-disable-next-line
+const Schema = mongoose.Schema;
+
+const User = mongoose.model('user', new Schema({
   username: {
     type: String,
     required: true,
@@ -28,5 +31,6 @@ export const UserSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
+}));
 
-});
+export default User;
