@@ -27,7 +27,7 @@
 
 /api/v1/parties/{id} GET - return specific party (implemented)
 
-/api/v1/pollingStations/{id} GET - return specific polling station (to implement)
+/api/v1/pollingStations/{id} GET - return specific polling station (implemented)
 
 /api/v1/systems GET - return list of all systems (implementing)
 
