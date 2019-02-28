@@ -29,9 +29,9 @@
 
 /api/v1/pollingStations/{id} GET - return specific polling station (implemented)
 
-/api/v1/systems GET - return list of all systems (implementing)
+/api/v1/systems GET - return list of all systems (implemented)
 
-/api/v1/systems/{id} GET - return specific system (to implement)
+/api/v1/systems/{id} GET - return specific system (implemented)
 /api/v1/systems/{id} PUT - update system (to implement)
 
 /api/v1/users/{id} GET - return specific user (implemented)
