@@ -34,6 +34,6 @@
 /api/v1/systems/{id} GET - return specific system (to implement)
 /api/v1/systems/{id} PUT - update system (to implement)
 
-/api/v1/users/{id} GET - return specific user (to implement)
+/api/v1/users/{id} GET - return specific user (implemented)
 /api/v1/users/{id} PUT - update user (login attempts, etc.) (to implement)
 ```
