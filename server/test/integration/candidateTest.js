@@ -18,16 +18,19 @@ describe('Candidate tests', () => {
   let party1Id;
   let party2Id;
   beforeEach((done) => {
+
     const party1 = new Party({
       name: 'Party 1',
       description: 'Description for party 1',
     });
     party1Id = String(party1._id);
+    
     const candidate1 = new Candidate({
       name: 'Candidate 1',
       party: party1
     });
     candidate1Id = String(candidate1._id);
+
     const party2 = new Party({
       name: 'Party 2',
       description: 'Description for party 2',

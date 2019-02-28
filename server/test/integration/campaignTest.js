@@ -206,7 +206,9 @@ describe('Campaign tests', () => {
           res.body.should.have.property('constituencies');
           res.body.should.have.property('start_date');
           res.body.should.have.property('end_date');
+          
           res.body._id.should.equal(campaign1Id);
+
           res.body.name.should.equal('Campaign 1');
           res.body.total_votes.should.equal(0);
           res.body.candidates.should.be.a('array');

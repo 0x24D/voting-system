@@ -12,7 +12,7 @@
 * Update - PUT
 * Delete - DELETE
 ```
-/api/v1/addresses/{id} GET - return specific address (implementing)
+/api/v1/addresses/{id} GET - return specific address (implemented)
 
 /api/v1/campaigns GET - return list of all campaigns (use ?constituency={constituency} query param to filter) (implemented)
 
