@@ -19,6 +19,7 @@ describe('Campaign tests', () => {
   let campaign2Id;
   let candidate1Id;
   let constituency1Id;
+  let constituency2Id;
   beforeEach((done) => {
     const party1 = new Party({
       name: 'Party 1',
@@ -45,18 +46,25 @@ describe('Campaign tests', () => {
       end_date: Date.now() + 1,
     });
     campaign1Id = String(campaign1._id);
+    const constituency2 = new Constituency({
+      name: 'Constituency 2',
+      minimum_age: 16,
+      voting_system: 'FPTP'
+    });
+    constituency2Id = String(constituency2._id);
     const campaign2 = new Campaign({
       name: 'Campaign 2',
       candidates: [candidate1],
       votes: [{[candidate1Id]: 0}],
       type: 'Campaign Type',
       active: 'Inactive',
-      constituencies: [constituency1],
+      constituencies: [constituency2],
       end_date: Date.now(),
     });
     campaign2Id = String(campaign2._id);
 
-    constituency1.save(() => {
+
+    Constituency.insertMany([constituency1, constituency2],() => {
       party1.save(() => {
         candidate1.save(() => {
           Campaign.insertMany([campaign1, campaign2], () => {
@@ -138,7 +146,7 @@ describe('Campaign tests', () => {
         res.body[1].active.should.equal('Inactive');
         res.body[1].constituencies.should.be.a('array');
         expect(res.body[1].constituencies).to.have.lengthOf(1);
-        res.body[1].constituencies[0].should.equal(constituency1Id);
+        res.body[1].constituencies[0].should.equal(constituency2Id);
         done();
       });
     });
