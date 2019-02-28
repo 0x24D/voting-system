@@ -1,8 +1,7 @@
 import mongoose from 'mongoose'
 import { expect } from 'chai'
 
-const { ConstituencySchema } = require('../../src/models/constituencyModel');
-const Constituency = mongoose.model('constituency', ConstituencySchema);
+import Constituency from '../../src/models/constituencyModel';
 
 describe('constituency', () => {
     it('should be invalid if name is empty', function(done) {

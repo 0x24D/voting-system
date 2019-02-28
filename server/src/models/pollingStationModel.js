@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const PollingStation = mongoose.model('pollingStation', new Schema({
   address: {
-    type: mongoose.Schema.Types.ObjectId, ref: 'Address',
+    type: mongoose.Schema.Types.ObjectId, ref: 'address',
   },
   openTime: {
     type: Date,

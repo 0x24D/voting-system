@@ -1,8 +1,7 @@
 import mongoose from 'mongoose'
 import { expect } from 'chai'
 
-const { PartySchema } = require('../../src/models/partyModel');
-const Party = mongoose.model('party', PartySchema);
+import Party from '../../src/models/partyModel';
 
 describe('party', () => {
     it('should be invalid if name is empty', function(done) {
@@ -25,4 +24,3 @@ describe('party', () => {
         });
     });
 });
-

@@ -1,8 +1,7 @@
 import mongoose from 'mongoose'
 import { expect } from 'chai'
 
-const { SystemSchema } = require('../../src/models/systemModel');
-const System = mongoose.model('system', SystemSchema);
+import System from '../../src/models/systemModel';
 
 describe('system', () => {
     it('should be invalid if station is empty', function(done) {

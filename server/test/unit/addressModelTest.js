@@ -1,8 +1,7 @@
 import mongoose from 'mongoose'
 import { expect } from 'chai'
 
-const { AddressSchema } = require('../../src/models/addressModel');
-const Address = mongoose.model('address', AddressSchema);
+import Address from '../../src/models/addressModel';
 
 describe('address', () => {
     it('should be invalid if lineOne is empty', function(done) {
@@ -51,7 +50,7 @@ describe('address', () => {
 describe('address', ()=> {
     it('should be invalid if country is empty', function(done) {
         var a = new Address();
- 
+
         a.validate(function(err) {
             expect(err.errors.country).to.exist;
             done();
@@ -62,7 +61,7 @@ describe('address', ()=> {
 describe('address', ()=> {
     it('should be invalid if postcode is empty', function(done) {
         var a = new Address();
- 
+
         a.validate(function(err) {
             expect(err.errors.postcode).to.exist;
             done();
@@ -80,4 +79,3 @@ describe('address', () => {
         });
     });
 });
-

@@ -29,7 +29,7 @@ const Address = mongoose.model('address', new Schema({
     required: true,
   },
   constituency: {
-    type: Schema.Types.ObjectId, ref: 'Constituency',
+    type: Schema.Types.ObjectId, ref: 'constituency',
   },
 }));
 

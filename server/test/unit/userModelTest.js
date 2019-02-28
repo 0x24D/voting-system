@@ -1,8 +1,7 @@
 import mongoose from 'mongoose'
 import { expect } from 'chai'
 
-const { UserSchema } = require('../../src/models/userModel');
-const User = mongoose.model('user', UserSchema);
+import User from '../../src/models/userModel';
 
 describe('user', () => {
     it('should be invalid if username is empty', function(done) {
