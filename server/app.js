@@ -6,6 +6,7 @@ import campaignRoutes from './src/routes/campaignRoutes';
 import candidateRoutes from './src/routes/candidateRoutes';
 import partyRoutes from './src/routes/partyRoutes';
 import userRoutes from './src/routes/userRoutes';
+import systemRoutes from './src/routes/systemRoutes';
 
 const app = express();
 
@@ -33,5 +34,6 @@ campaignRoutes(app);
 candidateRoutes(app);
 partyRoutes(app);
 userRoutes(app);
+systemRoutes(app);
 
 export default app;
