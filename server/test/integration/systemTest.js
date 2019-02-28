@@ -12,7 +12,6 @@ const chaiHttp = require('chai-http');
 const should = chai.should();
 
 chai.use(chaiHttp);
-
 describe('System tests', () => {
   let system1Id;
   let system2Id;
@@ -72,56 +71,58 @@ describe('System tests', () => {
         });
       });
     });
+  });
+  it('should list all system and their campaigns and stations on /api/v1/systems GET', (done) => {
+    chai.request(app)
+      .get('/api/v1/systems')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('array');
+        expect(res.body).to.have.lengthOf(2);
+        res.body[0].should.have.property('_id');
+        res.body[0].should.have.property('station');
+        res.body[0].should.have.property('voters');
+        res.body[0].should.have.property('campaigns');
+        res.body[0].should.have.property('language');
+        res.body[0].station.should.equal(station1Id);
+        res.body[0].voters.should.equal('all');
+        expect(res.body[0].campaigns).to.have.lengthOf(1);
+        res.body[0].campaigns[0].should.equal(campaign1Id);
+        res.body[0].language.should.equal('en-gb');
 
-    it('should list all system and their campaigns and stations on /api/v1/systems GET', (done) => {
-      chai.request(app)
-        .get('/api/v1/systems')
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.should.be.json;
-          res.body.should.be.a('array');
-          expect(res.body).to.have.lengthOf(2);
-          res.body[0].should.have.property('_id');
-          res.body[0].should.have.property('station');
-          res.body[0].should.have.property('voters');
-          res.body[0].should.have.property('campaigns');
-          res.body[0].should.have.property('language');
-          res.body[0].station.should.equal(station1Id);
-          res.body[0].voters.should.equal('all');
-          res.body[0].campaigns.should.equal(campaign1Id);
-          res.body[0].language.should.equal('en-gb');
+        res.body[1].should.have.property('_id');
+        res.body[1].should.have.property('station');
+        res.body[1].should.have.property('voters');
+        res.body[1].should.have.property('campaigns');
+        res.body[1].should.have.property('language');
+        res.body[1].station.should.equal(station2Id);
+        res.body[1].voters.should.equal('all');
+        expect(res.body[1].campaigns).to.have.lengthOf(1);
+        res.body[1].campaigns[0].should.equal(campaign2Id);
+        res.body[1].language.should.equal('en-gb');
+        done();
+      });
+  });
 
-          res.body[1].should.have.property('_id');
-          res.body[1].should.have.property('station');
-          res.body[1].should.have.property('voters');
-          res.body[1].should.have.property('campaigns');
-          res.body[1].should.have.property('language');
-          res.body[1].station.should.equal(station2Id);
-          res.body[1].voters.should.equal('all');
-          res.body[1].campaigns.should.equal(campaign2Id);
-          res.body[1].language.should.equal('en-gb');
-          done();
-        });
-    });
-
-    it('should list 1 system on /api/v1/systems/<id> GET', (done) => {
-      chai.request(app)
-        .get(`/api/v1/systems/${system1Id}`)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.should.be.json;
-          res.body.should.be.a('object');
-          res.body[0].should.have.property('_id');
-          res.body[0].should.have.property('station');
-          res.body[0].should.have.property('voters');
-          res.body[0].should.have.property('campaigns');
-          res.body[0].should.have.property('language');
-          res.body[0].station.should.equal(station1Id);
-          res.body[0].voters.should.equal('all');
-          res.body[0].campaigns.should.equal(campaign1Id);
-          res.body[0].language.should.equal('en-gb');
-          done();
-        });
-    });
+  it('should list 1 system on /api/v1/systems/<id> GET', (done) => {
+    chai.request(app)
+      .get(`/api/v1/systems/${system1Id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('station');
+        res.body.should.have.property('voters');
+        res.body.should.have.property('campaigns');
+        res.body.should.have.property('language');
+        res.body.station.should.equal(station1Id);
+        res.body.voters.should.equal('all');
+        expect(res.body.campaigns).to.have.lengthOf(1);
+        res.body.campaigns[0].should.equal(campaign1Id);
+        res.body.language.should.equal('en-gb');
+        done();
+      });
   });
 });

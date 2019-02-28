@@ -8,8 +8,8 @@ import candidateRoutes from './src/routes/candidateRoutes';
 import constituencyRoutes from './src/routes/constituencyRoutes';
 import partyRoutes from './src/routes/partyRoutes';
 import pollingStationRoutes from './src/routes/pollingStationRoutes';
-import userRoutes from './src/routes/userRoutes';
 import systemRoutes from './src/routes/systemRoutes';
+import userRoutes from './src/routes/userRoutes';
 
 
 const app = express();
@@ -40,8 +40,8 @@ candidateRoutes(app);
 constituencyRoutes(app);
 partyRoutes(app);
 pollingStationRoutes(app);
-userRoutes(app);
 systemRoutes(app);
+userRoutes(app);
 
 
 export default app;
