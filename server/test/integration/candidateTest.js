@@ -18,16 +18,15 @@ describe('Candidate tests', () => {
   let party1Id;
   let party2Id;
   beforeEach((done) => {
-
     const party1 = new Party({
       name: 'Party 1',
       description: 'Description for party 1',
     });
     party1Id = String(party1._id);
-    
+
     const candidate1 = new Candidate({
       name: 'Candidate 1',
-      party: party1
+      party: party1,
     });
     candidate1Id = String(candidate1._id);
 
@@ -38,7 +37,7 @@ describe('Candidate tests', () => {
     party2Id = String(party2._id);
     const candidate2 = new Candidate({
       name: 'Candidate 2',
-      party: party2
+      party: party2,
     });
     candidate2Id = String(candidate2._id);
     Party.insertMany([party1, party2], () => {
@@ -77,22 +76,22 @@ describe('Candidate tests', () => {
         res.body[1].party.should.equal(party2Id);
         done();
       });
-    });
-
-    it('should list 1 candidate on /api/v1/candidates/<id> GET', (done) => {
-      chai.request(app)
-        .get(`/api/v1/candidates/${candidate1Id}`)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.should.be.json;
-          res.body.should.be.a('object');
-          res.body.should.have.property('_id');
-          res.body.should.have.property('name');
-          res.body.should.have.property('party');
-          res.body._id.should.equal(candidate1Id);
-          res.body.name.should.equal('Candidate 1');
-          res.body.party.should.equal(party1Id);
-          done();
-        });
-    });
   });
+
+  it('should list 1 candidate on /api/v1/candidates/<id> GET', (done) => {
+    chai.request(app)
+      .get(`/api/v1/candidates/${candidate1Id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('name');
+        res.body.should.have.property('party');
+        res.body._id.should.equal(candidate1Id);
+        res.body.name.should.equal('Candidate 1');
+        res.body.party.should.equal(party1Id);
+        done();
+      });
+  });
+});

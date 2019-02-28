@@ -1,5 +1,5 @@
 import {
-  findById
+  findById,
 } from '../db/constituencyAccess';
 
 export const validateConstituency = (req, res) => {

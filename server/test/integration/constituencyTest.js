@@ -12,8 +12,8 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('Constituency tests', () => {
-    let constituency1id;
-    let constituency2id;
+  let constituency1id;
+  let constituency2id;
 
   beforeEach((done) => {
     const constituency1 = new Constituency({
@@ -23,23 +23,23 @@ describe('Constituency tests', () => {
     });
 
     constituency1id = String(constituency1._id);
-    
+
     const constituency2 = new Constituency({
-        name: 'Party 2',
-        minimum_age: 18,
-        voting_system: 'FPTP',
-      });
+      name: 'Party 2',
+      minimum_age: 18,
+      voting_system: 'FPTP',
+    });
 
     constituency2id = String(constituency2._id);
 
-      Constituency.insertMany([constituency1, constituency2], () => {
-          done();
-      });
+    Constituency.insertMany([constituency1, constituency2], () => {
+      done();
     });
+  });
 
   afterEach((done) => {
     Constituency.collection.drop(() => {
-        done();
+      done();
     });
   });
 
@@ -61,5 +61,5 @@ describe('Constituency tests', () => {
 
         done();
       });
-    });
   });
+});
