@@ -4,7 +4,9 @@ import {
 } from '../db/campaignAccess';
 
 export const getCampaigns = (req, res) => {
-  findAll((err, campaigns) => {
+  // eslint-disable-next-line
+  const constituency = req.query.constituency;
+  findAll(constituency, (err, campaigns) => {
     if (err) {
       res.status(500).send(err);
     } else {

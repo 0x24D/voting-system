@@ -151,6 +151,44 @@ describe('Campaign tests', () => {
       });
     });
 
+    it('should list 1 campaign on /api/v1/campaigns?constituency=<constituency> GET', (done) => {
+      chai.request(app)
+        .get(`/api/v1/campaigns?constituency=${constituency1Id}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('array');
+          expect(res.body).to.have.lengthOf(1);
+          res.body[0].should.have.property('_id');
+          res.body[0].should.have.property('name');
+          res.body[0].should.have.property('total_votes');
+          res.body[0].should.have.property('candidates');
+          res.body[0].should.have.property('votes');
+          res.body[0].should.have.property('type');
+          res.body[0].should.have.property('active');
+          res.body[0].should.have.property('constituencies');
+          res.body[0].should.have.property('start_date');
+          res.body[0].should.have.property('end_date');
+          res.body[0]._id.should.equal(campaign1Id);
+          res.body[0].name.should.equal('Campaign 1');
+          res.body[0].total_votes.should.equal(0);
+          res.body[0].candidates.should.be.a('array');
+          expect(res.body[0].candidates).to.have.lengthOf(1);
+          res.body[0].candidates[0].should.equal(candidate1Id);
+          res.body[0].votes.should.be.a('array');
+          expect(res.body[0].votes).to.have.lengthOf(1);
+          res.body[0].votes[0].should.be.a('object');
+          res.body[0].votes[0].should.have.property(candidate1Id);
+          res.body[0].votes[0][candidate1Id].should.have.equal(0);
+          res.body[0].type.should.equal('Campaign Type');
+          res.body[0].active.should.equal('Active');
+          res.body[0].constituencies.should.be.a('array');
+          expect(res.body[0].constituencies).to.have.lengthOf(1);
+          res.body[0].constituencies[0].should.equal(constituency1Id);
+          done();
+        });
+      });
+
     it('should list 1 campaign on /api/v1/campaigns/<id> GET', (done) => {
       chai.request(app)
         .get(`/api/v1/campaigns/${campaign1Id}`)
