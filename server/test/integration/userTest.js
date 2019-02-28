@@ -32,15 +32,15 @@ describe('User tests', () => {
       roles: 'admin',
  
     });
-    userId2 = String(user2._id)
+    userId2 = String(user2._id);
     User.insertMany([user1, user2], () => {
       done();
-      });
     });
+  });
 
   afterEach((done) => {
-      User.collection.drop(() => {
-        done();
+    User.collection.drop(() => {
+      done();
     });
   });
 
@@ -57,7 +57,7 @@ describe('User tests', () => {
         res.body.should.have.property('email');
         res.body.should.have.property('password');
         res.body.should.have.property('roles');
-        res.body.should.have.property('authenticationAttempts');        
+        res.body.should.have.property('authenticationAttempts');
         res.body._id.should.equal(userId1);
         res.body.username.should.equal('username1');
         res.body.name.should.equal('User 1');

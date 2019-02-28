@@ -8,6 +8,7 @@ import candidateRoutes from './src/routes/candidateRoutes';
 import constituencyRoutes from './src/routes/constituencyRoutes';
 import partyRoutes from './src/routes/partyRoutes';
 import pollingStationRoutes from './src/routes/pollingStationRoutes';
+import systemRoutes from './src/routes/systemRoutes';
 import userRoutes from './src/routes/userRoutes';
 
 
@@ -39,6 +40,7 @@ candidateRoutes(app);
 constituencyRoutes(app);
 partyRoutes(app);
 pollingStationRoutes(app);
+systemRoutes(app);
 userRoutes(app);
 
 
