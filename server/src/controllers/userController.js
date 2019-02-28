@@ -29,7 +29,7 @@ export const addAuthenticationAttempt = (req, res) => {
       res.status(500).send(err);
     } else {
       const updateUser = {
-        authenticationAttempts: user.authenticationAttempts + 1,
+        authentication_attempts: user.authentication_attempts + 1,
       };
       updateExistingById(userId, user, updateUser, (err2, updatedUser) => {
         if (err2) {
@@ -42,7 +42,7 @@ export const addAuthenticationAttempt = (req, res) => {
   });
 
 };
-export const resetAuthenticationAttempts = (req, res) => {
+export const resetauthentication_attempts = (req, res) => {
 
 };
 export const validatePassword = (req, res) => {

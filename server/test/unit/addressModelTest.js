@@ -4,22 +4,22 @@ import { expect } from 'chai';
 import Address from '../../src/models/addressModel';
 
 describe('address', () => {
-  it('should be invalid if lineOne is empty', (done) => {
+  it('should be invalid if line_one is empty', (done) => {
     const a = new Address();
 
     a.validate((err) => {
-      expect(err.errors.lineOne).to.exist;
+      expect(err.errors.line_one).to.exist;
       done();
     });
   });
 });
 
 describe('address', () => {
-  it('should be invalid if lineTwo is empty', (done) => {
+  it('should be invalid if line_two is empty', (done) => {
     const a = new Address();
 
     a.validate((err) => {
-      expect(err.errors.lineTwo).to.exist;
+      expect(err.errors.line_two).to.exist;
       done();
     });
   });

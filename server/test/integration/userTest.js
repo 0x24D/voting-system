@@ -57,14 +57,14 @@ describe('User tests', () => {
         res.body.should.have.property('email');
         res.body.should.have.property('password');
         res.body.should.have.property('roles');
-        res.body.should.have.property('authenticationAttempts');
+        res.body.should.have.property('authentication_attempts');
         res.body._id.should.equal(userId1);
         res.body.username.should.equal('username1');
         res.body.name.should.equal('User 1');
         res.body.email.should.equal('user1@hotmail.com');
         res.body.password.should.equal('user1');
         res.body.roles.should.equal('voter');
-        res.body.authenticationAttempts.should.equal(0);
+        res.body.authentication_attempts.should.equal(0);
         
         done();
       });
@@ -83,14 +83,14 @@ describe('User tests', () => {
         res.body.should.have.property('email');
         res.body.should.have.property('password');
         res.body.should.have.property('roles');
-        res.body.should.have.property('authenticationAttempts');        
+        res.body.should.have.property('authentication_attempts');        
         res.body._id.should.equal(userId1);
         res.body.username.should.equal('username1');
         res.body.name.should.equal('User 1');
         res.body.email.should.equal('user1@hotmail.com');
         res.body.password.should.equal('user1');
         res.body.roles.should.equal('voter');
-        res.body.authenticationAttempts.should.equal(1);
+        res.body.authentication_attempts.should.equal(1);
         
         done();
       });

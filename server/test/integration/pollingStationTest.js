@@ -21,8 +21,8 @@ describe('PollingStation tests', () => {
 
   beforeEach((done) => {
     const address1 = new Address({
-      lineOne: 'address line 1',
-      lineTwo: 'address line 2',
+      line_one: 'address line 1',
+      line_two: 'address line 2',
       town: 'town',
       county: 'county',
       country: 'country',
@@ -32,13 +32,13 @@ describe('PollingStation tests', () => {
 
     const pollingStation1 = new PollingStation({
       address: address1,
-      closeTime: Date.now() + 1,
+      close_time: Date.now() + 1,
     });
     pollingStation1Id = String(pollingStation1._id);
 
     const address2 = new Address({
-      lineOne: 'address line 1',
-      lineTwo: 'address line 2',
+      line_one: 'address line 1',
+      line_two: 'address line 2',
       town: 'town',
       county: 'county',
       country: 'country',
@@ -48,7 +48,7 @@ describe('PollingStation tests', () => {
 
     const pollingStation2 = new PollingStation({
       address: address2,
-      closeTime: Date.now() + 1,
+      close_time: Date.now() + 1,
     });
     pollingStation2Id = String(pollingStation2._id);
 
@@ -73,8 +73,8 @@ describe('PollingStation tests', () => {
         res.body.should.be.a('array');
         res.body[0].should.have.property('_id');
         res.body[0].should.have.property('address');
-        res.body[0].should.have.property('openTime');
-        res.body[0].should.have.property('closeTime');
+        res.body[0].should.have.property('open_time');
+        res.body[0].should.have.property('close_time');
         res.body[0]._id.should.equal(pollingStation1Id);
         res.body[0].address.should.equal(address1Id);
         done();

@@ -15,22 +15,22 @@ describe('pollingStation', () => {
 });
 
 describe('pollingStation', () => {
-  it('should be invalid if openTime is empty', (done) => {
+  it('should be invalid if open_time is empty', (done) => {
     const p = new PollingStation();
 
     p.validate((err) => {
-      expect(err.errors.openTime).to.not.exist;
+      expect(err.errors.open_time).to.not.exist;
       done();
     });
   });
 });
 
 describe('pollingStation', () => {
-  it('should be invalid if closeTime is empty', (done) => {
+  it('should be invalid if close_time is empty', (done) => {
     const p = new PollingStation();
 
     p.validate((err) => {
-      expect(err.errors.closeTime).to.exist;
+      expect(err.errors.close_time).to.exist;
       done();
     });
   });

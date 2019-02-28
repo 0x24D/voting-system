@@ -4,11 +4,11 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const Address = mongoose.model('address', new Schema({
-  lineOne: {
+  line_one: {
     type: String,
     required: true,
   },
-  lineTwo: {
+  line_two: {
     type: String,
     required: true,
   },

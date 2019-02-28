@@ -7,12 +7,12 @@ const PollingStation = mongoose.model('pollingStation', new Schema({
   address: {
     type: mongoose.Schema.Types.ObjectId, ref: 'address',
   },
-  openTime: {
+  open_time: {
     type: Date,
     required: true,
     default: Date.now,
   },
-  closeTime: {
+  close_time: {
     type: Date,
     required: true,
   },

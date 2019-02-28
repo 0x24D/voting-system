@@ -26,8 +26,8 @@ describe('Address tests', () => {
     constituency1Id = String(constituency1._id);
 
     const address1 = new Address({
-      lineOne: 'address line 1',
-      lineTwo: 'address line 2',
+      line_one: 'address line 1',
+      line_two: 'address line 2',
       town: 'town',
       county: 'county',
       country: 'country',
@@ -44,8 +44,8 @@ describe('Address tests', () => {
     constituency2Id = String(constituency2._id);
 
     const address2 = new Address({
-      lineOne: 'address line 2',
-      lineTwo: 'address line 2',
+      line_one: 'address line 2',
+      line_two: 'address line 2',
       town: 'town 2',
       county: 'county 2',
       country: 'country 2',
@@ -74,16 +74,16 @@ describe('Address tests', () => {
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.have.property('_id');
-        res.body.should.have.property('lineOne');
-        res.body.should.have.property('lineTwo');
+        res.body.should.have.property('line_one');
+        res.body.should.have.property('line_two');
         res.body.should.have.property('town');
         res.body.should.have.property('county');
         res.body.should.have.property('country');
         res.body.should.have.property('postcode');
         res.body.should.have.property('constituency');
         res.body._id.should.equal(address1Id);
-        res.body.lineOne.should.equal('address line 1');
-        res.body.lineTwo.should.equal('address line 2');
+        res.body.line_one.should.equal('address line 1');
+        res.body.line_two.should.equal('address line 2');
         res.body.town.should.equal('town');
         res.body.county.should.equal('county');
         res.body.country.should.equal('country');

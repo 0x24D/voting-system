@@ -26,7 +26,7 @@ const User = mongoose.model('user', new Schema({
     type: String,
     // required: true,
   },
-  authenticationAttempts: {
+  authentication_attempts: {
     type: Number,
     required: true,
     default: 0,

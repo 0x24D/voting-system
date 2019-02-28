@@ -21,7 +21,7 @@ describe('System tests', () => {
   let campaign2Id;
   beforeEach((done) => {
     const station1 = new PollingStation({
-      closeTime: Date.now() + 1,
+      close_time: Date.now() + 1,
     });
     station1Id = String(station1._id);
     const campaign1 = new Campaign({
@@ -38,7 +38,7 @@ describe('System tests', () => {
     });
     system1Id = String(system1._id);
     const station2 = new PollingStation({
-      closeTime: Date.now() + 1,
+      close_time: Date.now() + 1,
     });
     station2Id = String(station2._id);
     const campaign2 = new Campaign({

@@ -48,11 +48,11 @@ describe('user', () => {
 });
 
 describe('user', () => {
-  it('should be invalid if authenticationAttempts is empty', (done) => {
+  it('should be invalid if authentication_attempts is empty', (done) => {
     const u = new User();
 
     u.validate((err) => {
-      expect(err.errors.authenticationAttempts).to.not.exist;
+      expect(err.errors.authentication_attempts).to.not.exist;
       done();
     });
   });
