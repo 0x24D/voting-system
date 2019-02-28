@@ -5,6 +5,7 @@ import cors from 'cors';
 import campaignRoutes from './src/routes/campaignRoutes';
 import candidateRoutes from './src/routes/candidateRoutes';
 import partyRoutes from './src/routes/partyRoutes';
+import userRoutes from './src/routes/userRoutes';
 
 const app = express();
 
@@ -31,5 +32,6 @@ app.use(cors());
 campaignRoutes(app);
 candidateRoutes(app);
 partyRoutes(app);
+userRoutes(app);
 
 export default app;
