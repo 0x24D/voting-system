@@ -4,7 +4,7 @@ import {
 
 const userRoutes = (app) => {
 // route for actions on a specific user
-app.route('/api/v1/users/:userId')
+app.route('/api/v1/users/:id')
 // http get using the getUserWithId method
 .get(getUserWithId)
 };
