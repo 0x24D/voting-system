@@ -4,12 +4,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import campaignRoutes from './src/routes/campaignRoutes';
 import candidateRoutes from './src/routes/candidateRoutes';
+import constituencyRoutes from './src/routes/constituencyRoutes';
 import partyRoutes from './src/routes/partyRoutes';
-<<<<<<< Updated upstream
 import userRoutes from './src/routes/userRoutes';
-=======
-import constituencyRoutes from './src/routes/constituencyRoutes'
->>>>>>> Stashed changes
 
 const app = express();
 
@@ -35,11 +32,8 @@ app.use(cors());
 
 campaignRoutes(app);
 candidateRoutes(app);
-partyRoutes(app);
-<<<<<<< Updated upstream
-userRoutes(app);
-=======
 constituencyRoutes(app);
->>>>>>> Stashed changes
+partyRoutes(app);
+userRoutes(app);
 
 export default app;
