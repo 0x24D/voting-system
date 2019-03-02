@@ -30,7 +30,7 @@ describe('User tests', () => {
       email: 'user2@hotmail.com',
       password: 'user2',
       roles: 'admin',
- 
+
     });
     userId2 = String(user2._id);
     User.insertMany([user1, user2], () => {
@@ -65,14 +65,18 @@ describe('User tests', () => {
         res.body.password.should.equal('user1');
         res.body.roles.should.equal('voter');
         res.body.authentication_attempts.should.equal(0);
-        
+
         done();
       });
   });
 
-  it('should add 1 attempt to authentication /api/v1/users/<id> PUT', (done) => {
+  it('should add 1 authentication attempt on /api/v1/users/<id> PUT', (done) => {
     chai.request(app)
       .put(`/api/v1/users/${userId1}`)
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        authentication_attempts: '++'
+      })
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
@@ -83,7 +87,7 @@ describe('User tests', () => {
         res.body.should.have.property('email');
         res.body.should.have.property('password');
         res.body.should.have.property('roles');
-        res.body.should.have.property('authentication_attempts');        
+        res.body.should.have.property('authentication_attempts');
         res.body._id.should.equal(userId1);
         res.body.username.should.equal('username1');
         res.body.name.should.equal('User 1');
@@ -91,7 +95,35 @@ describe('User tests', () => {
         res.body.password.should.equal('user1');
         res.body.roles.should.equal('voter');
         res.body.authentication_attempts.should.equal(1);
-        
+        done();
+      });
+  });
+
+  it('should reset authentication attempts to 0 on /api/v1/users/<id> PUT', (done) => {
+    chai.request(app)
+      .put(`/api/v1/users/${userId1}`)
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        authentication_attempts: 0
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('username');
+        res.body.should.have.property('name');
+        res.body.should.have.property('email');
+        res.body.should.have.property('password');
+        res.body.should.have.property('roles');
+        res.body.should.have.property('authentication_attempts');
+        res.body._id.should.equal(userId1);
+        res.body.username.should.equal('username1');
+        res.body.name.should.equal('User 1');
+        res.body.email.should.equal('user1@hotmail.com');
+        res.body.password.should.equal('user1');
+        res.body.roles.should.equal('voter');
+        res.body.authentication_attempts.should.equal(0);
         done();
       });
   });

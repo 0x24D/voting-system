@@ -1,6 +1,6 @@
 import {
   getUserWithId,
-  addAuthenticationAttempt,
+  editUserWithId,
 } from '../controllers/userController';
 
 const userRoutes = (app) => {
@@ -8,7 +8,7 @@ const userRoutes = (app) => {
   app.route('/api/v1/users/:id')
   // http get using the getUserWithId method
     .get(getUserWithId)
-    .put(addAuthenticationAttempt)
+    .put(editUserWithId);
 };
 
 export default userRoutes;
