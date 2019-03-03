@@ -121,4 +121,29 @@ describe('System tests', () => {
         done();
       });
   });
+
+  it('should update system on /api/v1/systems/<id>  PUT', (done) => {
+    chai.request(app)
+    .put(`/api/v1/systems/${system1Id}`)
+    .set('content-type', 'application/x-www-form-urlencoded')
+    .send({
+      campaigns: campaign2Id,
+    })
+    .end((err, res) => {
+      res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('station');
+        res.body.should.have.property('voters');
+        res.body.should.have.property('campaigns');
+        res.body.should.have.property('language');
+        res.body.station.should.equal(station1Id);
+        res.body.voters.should.equal('all');
+        expect(res.body.campaigns).to.have.lengthOf(1);
+        res.body.campaigns[0].should.equal(campaign2Id);
+        res.body.language.should.equal('en-gb');
+        done();
+    })
+  })
 });

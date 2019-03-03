@@ -11,3 +11,10 @@ export const findById = (systemId, callback) => {
     callback(err, system);
   });
 };
+
+export const updateExistingById = (systemId, dataToSave, callback) => {
+  System.findOneAndUpdate({ _id: systemId }, new System(dataToSave),
+    { new: true }, (err, system) => {
+      callback(err, system);
+    });
+};

@@ -32,7 +32,7 @@
 /api/v1/systems GET - return list of all systems (implemented)
 
 /api/v1/systems/{id} GET - return specific system (implemented)
-/api/v1/systems/{id} PUT - update system (to implement)
+/api/v1/systems/{id} PUT - update system (implemented)
 
 /api/v1/users/{id} GET - return specific user (implemented)
 /api/v1/users/{id} PUT - update user (login attempts, etc.) (implemented)
