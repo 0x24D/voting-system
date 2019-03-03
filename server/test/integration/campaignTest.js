@@ -227,4 +227,46 @@ describe('Campaign tests', () => {
         done();
       });
   });
+
+  it('should update 1 campaign on /api/v1/campaigns/<id> PUT', (done) => {
+    chai.request(app)
+      .put(`/api/v1/campaigns/${campaign1Id}`)
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        total_votes: '++',
+        votes:  {[candidate1Id] : '++'}
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('name');
+        res.body.should.have.property('total_votes');
+        res.body.should.have.property('candidates');
+        res.body.should.have.property('votes');
+        res.body.should.have.property('type');
+        res.body.should.have.property('active');
+        res.body.should.have.property('constituencies');
+        res.body.should.have.property('start_date');
+        res.body.should.have.property('end_date');
+        res.body._id.should.equal(campaign1Id);
+        res.body.name.should.equal('Campaign 1');
+        res.body.total_votes.should.equal(1);
+        res.body.candidates.should.be.a('array');
+        expect(res.body.candidates).to.have.lengthOf(1);
+        res.body.candidates[0].should.equal(candidate1Id);
+        res.body.votes.should.be.a('array');
+        expect(res.body.votes).to.have.lengthOf(1);
+        res.body.votes[0].should.be.a('object');
+        res.body.votes[0].should.have.property(candidate1Id);
+        res.body.votes[0][candidate1Id].should.have.equal(1);
+        res.body.type.should.equal('Campaign Type');
+        res.body.active.should.equal('Active');
+        res.body.constituencies.should.be.a('array');
+        expect(res.body.constituencies).to.have.lengthOf(1);
+        res.body.constituencies[0].should.equal(constituency1Id);
+        done();
+      });
+  });
 });

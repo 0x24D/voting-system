@@ -17,7 +17,7 @@
 /api/v1/campaigns GET - return list of all campaigns (use ?constituency={constituency} query param to filter) (implemented)
 
 /api/v1/campaigns/{id} GET - return specific campaign (implemented)
-/api/v1/campaigns/{id} PUT - update campaign (increment total votes, etc.)
+/api/v1/campaigns/{id} PUT - update campaign (increment total votes, etc.) (implemented)
 
 /api/v1/candidates GET - return list of all candidates (implemented)
 

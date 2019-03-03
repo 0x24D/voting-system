@@ -15,3 +15,10 @@ export const findById = (campaignId, callback) => {
     callback(err, campaign);
   });
 };
+
+export const updateExistingById = (campaignId, dataToSave, callback) => {
+  Campaign.findOneAndUpdate({ _id: campaignId }, new Campaign(dataToSave),
+    { new: true }, (err, campaign) => {
+      callback(err, campaign);
+    });
+};
