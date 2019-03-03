@@ -6,10 +6,8 @@ export const findById = (userId, callback) => {
   });
 };
 
-export const updateExistingById = (userId, currentUser, dataToSave, callback) => {
-  const updatedUser = currentUser;
-  updatedUser.authentication_attempts = dataToSave.authentication_attempts;
-  User.findOneAndUpdate({ _id: userId }, new User(updatedUser),
+export const updateExistingById = (userId, dataToSave, callback) => {
+  User.findOneAndUpdate({ _id: userId }, new User(dataToSave),
     { new: true }, (err, user) => {
       callback(err, user);
     });

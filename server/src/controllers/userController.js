@@ -51,9 +51,11 @@ export const editUserWithId = (req, res) => {
           } else {
             updateData[prop] = req.body[prop];
           }
+        } else {
+          updateData[prop] = user[prop];
         }
       });
-      updateExistingById(userId, user, updateData, (err2, updatedUser) => {
+      updateExistingById(userId, updateData, (err2, updatedUser) => {
         if (err2) {
           res.status(500).send(err2);
         } else {
