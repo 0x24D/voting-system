@@ -35,13 +35,7 @@ export const editCampaignById = (req, res) => {
       const updateData = {};
       Object.keys(campaign).forEach((prop) => {
         if (Object.prototype.hasOwnProperty.call(req.body, prop)) {
-          if (prop === 'total_votes' && typeof req.body[prop] === 'string') {
-            if (req.body[prop] === '++') {
-              updateData[prop] = campaign[prop] + 1;
-            } else if (req.body[prop] === '--' && campaign[prop] > 0) {
-              updateData[prop] = campaign[prop] - 1;
-            }
-          } else if (prop === 'votes') {
+          if (prop === 'votes') {
             updateData[prop] = campaign[prop];
             // updateData[prop] === [{ candidateId: intVotes }]
             // candidateObj === { candidateId: intVotes }
@@ -53,18 +47,8 @@ export const editCampaignById = (req, res) => {
                 if (candidateIndex === -1) {
                   updateData[prop].push({ [candidateId]: 1 });
                 } else {
-                  const candidateData = req.body[prop][candidateId];
-                  if (typeof candidateData === 'string') {
-                    if (candidateData === '++') {
-                      // eslint-disable-next-line
-                      ++updateData[prop][candidateIndex][candidateId];
-                    } else if (candidateData === '--') {
-                      // eslint-disable-next-line
-                      --updateData[prop][candidateIndex][candidateId];
-                    }
-                  } else {
-                    updateData[prop][candidateIndex] = candidateData;
-                  }
+                  // eslint-disable-next-line
+                  ++updateData[prop][candidateIndex][candidateId];
                 }
               });
             });

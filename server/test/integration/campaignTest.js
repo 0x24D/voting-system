@@ -231,8 +231,8 @@ describe('Campaign tests', () => {
       .put(`/api/v1/campaigns/${campaign1Id}`)
       .set('content-type', 'application/x-www-form-urlencoded')
       .send({
-        total_votes: '++',
-        votes: { [candidate1Id]: '++' },
+        total_votes: 1, // could also do campaign1.total_votes + 1
+        votes: candidate1Id,
       })
       .end((err, res) => {
         res.should.have.status(200);

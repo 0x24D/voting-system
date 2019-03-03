@@ -24,15 +24,7 @@ export const editUserWithId = (req, res) => {
       const updateData = {};
       Object.keys(user).forEach((prop) => {
         if (Object.prototype.hasOwnProperty.call(req.body, prop)) {
-          if (prop === 'authentication_attempts' && typeof req.body[prop] === 'string') {
-            if (req.body[prop] === '++') {
-              updateData[prop] = user[prop] + 1;
-            } else if (req.body[prop] === '--' && user[prop] > 0) {
-              updateData[prop] = user[prop] - 1;
-            }
-          } else {
-            updateData[prop] = req.body[prop];
-          }
+          updateData[prop] = req.body[prop];
         } else {
           updateData[prop] = user[prop];
         }
