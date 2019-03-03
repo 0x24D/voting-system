@@ -1,6 +1,4 @@
-import chai from 'chai';
-import { expect } from 'chai';
-import { assert } from 'chai';
+import chai, { expect, assert } from 'chai';
 import app from '../../app';
 
 import Constituency from '../../src/models/constituencyModel';
@@ -13,7 +11,6 @@ chai.use(chaiHttp);
 
 describe('Constituency tests', () => {
   let constituency1id;
-  let constituency2id;
 
   beforeEach((done) => {
     const constituency1 = new Constituency({
@@ -29,8 +26,6 @@ describe('Constituency tests', () => {
       minimum_age: 18,
       voting_system: 'FPTP',
     });
-
-    constituency2id = String(constituency2._id);
 
     Constituency.insertMany([constituency1, constituency2], () => {
       done();

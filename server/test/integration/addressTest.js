@@ -1,6 +1,4 @@
-import chai from 'chai';
-import { expect } from 'chai';
-import { assert } from 'chai';
+import chai, { expect, assert } from 'chai';
 import app from '../../app';
 
 import Constituency from '../../src/models/constituencyModel';
@@ -15,8 +13,6 @@ chai.use(chaiHttp);
 describe('Address tests', () => {
   let address1Id;
   let constituency1Id;
-  let constituency2Id;
-  let address2Id;
   beforeEach((done) => {
     const constituency1 = new Constituency({
       name: 'constituency 1',
@@ -41,7 +37,6 @@ describe('Address tests', () => {
       minimum_age: 18,
       voting_system: 'fptp',
     });
-    constituency2Id = String(constituency2._id);
 
     const address2 = new Address({
       line_one: 'address line 2',
@@ -52,17 +47,16 @@ describe('Address tests', () => {
       postcode: 'postcode 2',
       constituency: constituency2,
     });
-    address2Id = String(address2._id);
 
 
     Address.insertMany([address1, address2], () => {
       done();
     });
+  });
 
-    afterEach((done) => {
-      Address.collection.drop(() => {
-        done();
-      });
+  afterEach((done) => {
+    Address.collection.drop(() => {
+      done();
     });
   });
 

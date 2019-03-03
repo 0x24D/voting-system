@@ -1,6 +1,4 @@
-import chai from 'chai';
-import { expect } from 'chai';
-import { assert } from 'chai';
+import chai, { expect, assert } from 'chai';
 import app from '../../app';
 
 import Candidate from '../../src/models/candidateModel';
@@ -14,7 +12,6 @@ chai.use(chaiHttp);
 
 describe('Candidate tests', () => {
   let candidate1Id;
-  let candidate2Id;
   let party1Id;
   let party2Id;
   beforeEach((done) => {
@@ -39,7 +36,6 @@ describe('Candidate tests', () => {
       name: 'Candidate 2',
       party: party2,
     });
-    candidate2Id = String(candidate2._id);
     Party.insertMany([party1, party2], () => {
       Candidate.insertMany([candidate1, candidate2], () => {
         done();

@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import { expect } from 'chai';
 
 import Constituency from '../../src/models/constituencyModel';

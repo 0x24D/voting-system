@@ -1,6 +1,4 @@
-import chai from 'chai';
-import { expect } from 'chai';
-import { assert } from 'chai';
+import chai, { expect, assert } from 'chai';
 import app from '../../app';
 
 import Campaign from '../../src/models/campaignModel';
@@ -234,7 +232,7 @@ describe('Campaign tests', () => {
       .set('content-type', 'application/x-www-form-urlencoded')
       .send({
         total_votes: '++',
-        votes:  {[candidate1Id] : '++'}
+        votes: { [candidate1Id]: '++' },
       })
       .end((err, res) => {
         res.should.have.status(200);

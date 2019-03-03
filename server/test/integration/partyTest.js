@@ -1,6 +1,4 @@
-import chai from 'chai';
-import { expect } from 'chai';
-import { assert } from 'chai';
+import chai, { expect, assert } from 'chai';
 import app from '../../app';
 
 import Party from '../../src/models/partyModel';
@@ -13,7 +11,6 @@ chai.use(chaiHttp);
 
 describe('Party tests', () => {
   let party1Id;
-  let party2Id;
 
   beforeEach((done) => {
     const party1 = new Party({
@@ -26,16 +23,15 @@ describe('Party tests', () => {
       name: 'Party 2',
       description: 'description for party 2',
     });
-    party2Id = String(party2._id);
 
     Party.insertMany([party1, party2], () => {
       done();
     });
+  });
 
-    afterEach((done) => {
-      Party.collection.drop(() => {
-        done();
-      });
+  afterEach((done) => {
+    Party.collection.drop(() => {
+      done();
     });
   });
 

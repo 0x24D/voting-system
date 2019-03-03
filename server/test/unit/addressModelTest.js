@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import { expect } from 'chai';
 
 import Address from '../../src/models/addressModel';

@@ -1,6 +1,4 @@
-import chai from 'chai';
-import { expect } from 'chai';
-import { assert } from 'chai';
+import chai, { expect, assert } from 'chai';
 import app from '../../app';
 
 import User from '../../src/models/userModel';
@@ -13,7 +11,6 @@ chai.use(chaiHttp);
 
 describe('User tests', () => {
   let userId1;
-  let userId2;
   beforeEach((done) => {
     const user1 = new User({
       username: 'username1',
@@ -32,7 +29,6 @@ describe('User tests', () => {
       roles: 'admin',
 
     });
-    userId2 = String(user2._id);
     User.insertMany([user1, user2], () => {
       done();
     });
@@ -75,7 +71,7 @@ describe('User tests', () => {
       .put(`/api/v1/users/${userId1}`)
       .set('content-type', 'application/x-www-form-urlencoded')
       .send({
-        authentication_attempts: '++'
+        authentication_attempts: '++',
       })
       .end((err, res) => {
         res.should.have.status(200);
@@ -104,7 +100,7 @@ describe('User tests', () => {
       .put(`/api/v1/users/${userId1}`)
       .set('content-type', 'application/x-www-form-urlencoded')
       .send({
-        authentication_attempts: 0
+        authentication_attempts: 0,
       })
       .end((err, res) => {
         res.should.have.status(200);
@@ -127,6 +123,4 @@ describe('User tests', () => {
         done();
       });
   });
-
-
 });

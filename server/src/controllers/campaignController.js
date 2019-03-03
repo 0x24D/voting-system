@@ -85,11 +85,3 @@ export const editCampaignById = (req, res) => {
     }
   });
 };
-
-export const addCampaign = (req, res) => {
-
-};
-
-export const removeCampaign = (req, res) => {
-
-};

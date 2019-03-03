@@ -1,6 +1,4 @@
-import chai from 'chai';
-import { expect } from 'chai';
-import { assert } from 'chai';
+import chai, { expect, assert } from 'chai';
 import app from '../../app';
 
 import System from '../../src/models/systemModel';
@@ -14,7 +12,6 @@ const should = chai.should();
 chai.use(chaiHttp);
 describe('System tests', () => {
   let system1Id;
-  let system2Id;
   let station1Id;
   let station2Id;
   let campaign1Id;
@@ -53,7 +50,6 @@ describe('System tests', () => {
       voters: 'all',
       campaigns: campaign2,
     });
-    system2Id = String(system2._id);
     PollingStation.insertMany([station1, station2], () => {
       Campaign.insertMany([campaign1, campaign2], () => {
         System.insertMany([system1, system2], () => {

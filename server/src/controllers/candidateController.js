@@ -22,14 +22,3 @@ export const getCandidateById = (req, res) => {
     }
   });
 };
-
-export const addCandidate = (req, res) => {
-  // POST
-
-};
-export const removeCandidate = (req, res) => {
-  // DELETE
-};
-export const assignCandidateToConstituency = (req, res) => {
-  // PUT
-};

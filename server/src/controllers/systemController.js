@@ -23,6 +23,7 @@ export const getSystemWithId = (req, res) => {
   });
 };
 
-export const selectLanguage = (req, res) => {
-
+// eslint-disable-next-line
+export const editSystemWithId = (req, res) => {
+  // TODO: implement (PUT endpoint)
 };
