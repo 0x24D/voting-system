@@ -11,6 +11,7 @@ const Candidate = mongoose.model('candidate', new Schema({
   party: {
     type: Schema.Types.ObjectId, ref: 'party',
   },
+  // TODO: add candidate description
 }));
 
 export default Candidate;
