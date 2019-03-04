@@ -47,6 +47,10 @@ export const editCampaignById = (req, res) => {
               // eslint-disable-next-line
               ++updateData[prop][candidateIndex][candidateId];
             }
+          } else if (prop === 'total_votes' && typeof req.body[prop] === 'string') {
+            if (req.body[prop] === '++') {
+              updateData[prop] = campaign[prop] + 1;
+            }
           } else {
             updateData[prop] = req.body[prop];
           }
