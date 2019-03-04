@@ -10,7 +10,7 @@ const VoterSchema = new Schema({
     required: true,
     default: false,
   },
-  dateOfBirth: {
+  date_of_birth: {
     type: Date,
     required: true,
   },
