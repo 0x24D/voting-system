@@ -6,6 +6,7 @@ module.exports = {
         { from: /\/login/, to: '/login.html' },
         { from: /\/vote/, to: '/vote.html' },
         { from: /\/success/, to: '/success.html' },
+        { from: /\/results/, to: '/results.html' },
       ],
     },
   },
@@ -28,7 +29,12 @@ module.exports = {
     success: {
       entry: './src/views/success/main.js',
       template: 'public/index.html',
-      title: 'success',
+      title: 'Success',
+    },
+    results: {
+      entry: './src/views/results/main.js',
+      template: 'public/results.html',
+      title: 'Results',
     },
   },
 };
