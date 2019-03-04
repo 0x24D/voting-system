@@ -6,6 +6,7 @@
       </md-table-toolbar>
       <md-table-row>
         <md-table-head>Candidate</md-table-head>
+        <md-table-head>Party</md-table-head>
         <md-table-head>Number of Votes</md-table-head>
       </md-table-row>
 
@@ -13,6 +14,7 @@
         v-for="candidate in candidates"
         :key="candidate.id">
         <md-table-cell>{{ candidate.name }}</md-table-cell>
+        <md-table-cell>{{ candidate.party  }}</md-table-cell>
         <md-table-cell>{{ candidate.votes  }}</md-table-cell>
       </md-table-row>
     </md-table>
@@ -28,11 +30,13 @@ export default {
         {
           id: 1,
           name: 'Shawna Dubbin',
+          party: 'greens',
           votes: 97
         },
         {
           id: 2,
           name: 'Odette Demageard',
+          party: 'labour',
           votes: 3
         },
         
