@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import Voter from '../../src/models/voterModel';
 
-describe('user', () => {
+describe('voter', () => {
   it('should be invalid if username is empty', (done) => {
     const v = new Voter();
 
@@ -13,7 +13,7 @@ describe('user', () => {
   });
 });
 
-describe('user', () => {
+describe('voter', () => {
   it('should be invalid if name is empty', (done) => {
     const v = new Voter();
 
@@ -24,7 +24,7 @@ describe('user', () => {
   });
 });
 
-describe('user', () => {
+describe('voter', () => {
   it('should be invalid if email is empty', (done) => {
     const v = new Voter();
 
@@ -35,7 +35,7 @@ describe('user', () => {
   });
 });
 
-describe('user', () => {
+describe('voter', () => {
   it('should be invalid if password is empty', (done) => {
     const v = new Voter();
 
@@ -46,7 +46,7 @@ describe('user', () => {
   });
 });
 
-describe('user', () => {
+describe('voter', () => {
   it('should be invalid if authentication_attempts is empty', (done) => {
     const v = new Voter();
 
