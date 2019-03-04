@@ -10,6 +10,7 @@ import partyRoutes from './src/routes/partyRoutes';
 import pollingStationRoutes from './src/routes/pollingStationRoutes';
 import systemRoutes from './src/routes/systemRoutes';
 import userRoutes from './src/routes/userRoutes';
+import voterRoutes from './src/routes/voterRoutes';
 
 
 const app = express();
@@ -42,6 +43,6 @@ partyRoutes(app);
 pollingStationRoutes(app);
 systemRoutes(app);
 userRoutes(app);
-
+voterRoutes(app);
 
 export default app;

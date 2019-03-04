@@ -14,6 +14,10 @@
 ```
 /api/v1/addresses/{id} GET - return specific address (implemented)
 
+/api/v1/admins/{id} GET - return specific auditor (to implement for part 2)
+
+/api/v1/auditors/{id} GET - return specific auditor (to implement for part 2)
+
 /api/v1/campaigns GET - return list of all campaigns (use ?constituency={constituency} query param to filter) (implemented)
 
 /api/v1/campaigns/{id} GET - return specific campaign (implemented)
@@ -36,4 +40,7 @@
 
 /api/v1/users/{id} GET - return specific user (implemented)
 /api/v1/users/{id} PUT - update user (login attempts, etc.) (implemented)
+
+/api/v1/voters/{id} GET - return specific voter (implemented)
+/api/v1/voters/{id} PUT - update voter (voted status) (implemented)
 ```
