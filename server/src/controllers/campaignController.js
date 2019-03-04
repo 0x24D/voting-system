@@ -42,7 +42,7 @@ export const editCampaignById = (req, res) => {
               candidate => Object.prototype.hasOwnProperty.call(candidate, candidateId),
             );
             if (candidateIndex === -1) {
-              updateData[prop].push({ [candidateId]: 0 });
+              updateData[prop].push({ [candidateId]: 1 });
             } else {
               // eslint-disable-next-line
               ++updateData[prop][candidateIndex][candidateId];
