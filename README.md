@@ -41,6 +41,6 @@
 /api/v1/users/{id} GET - return specific user (implemented)
 /api/v1/users/{id} PUT - update user (login attempts, etc.) (implemented)
 
-/api/v1/voters/{id} GET - return specific voter (to implement)
-/api/v1/voters/{id} PUT - update voter (voted status) (to implement)
+/api/v1/voters/{id} GET - return specific voter (implemented)
+/api/v1/voters/{id} PUT - update voter (voted status) (implemented)
 ```
