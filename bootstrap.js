@@ -6,7 +6,8 @@ const constituency1 = {
   minimum_age: 18,
   voting_system: 'FPTP',
 };
-db.constituencies.insert(constituency1);
+const constRet = db.constituencies.insertOne(constituency1);
+const constituency1Id = ObjectId(constRet.insertedId.str);
 
 // add parties
 const labourParty = {
@@ -21,30 +22,36 @@ const yorkshireParty = {
   name: 'Yorkshire Party',
   description: 'The Yorkshire Party description'
 };
-db.parties.insertMany([labourParty, conservativeParty, yorkshireParty]);
+const partyRet = db.parties.insertMany([labourParty, conservativeParty, yorkshireParty]);
+const labourPartyId = ObjectId(partyRet.insertedIds[0].str);
+const conservativePartyId = ObjectId(partyRet.insertedIds[1].str);
+const yorkshirePartyId = ObjectId(partyRet.insertedIds[2].str);
 
 // add candidates
 const labourCandidate = {
   name: 'Edward Milliband',
-  party: labourParty
+  party: labourPartyId
 };
 const conservativeCandidate = {
   name: 'Shade Adoh',
-  party: conservativeParty
+  party: conservativePartyId
 };
 const yorkshireCandidate = {
   name: 'Charlie Bridges',
-  party: yorkshireParty
+  party: yorkshirePartyId
 };
-db.candidates.insertMany([labourCandidate, conservativeCandidate, yorkshireCandidate]);
+const candidateRet = db.candidates.insertMany([labourCandidate, conservativeCandidate, yorkshireCandidate]);
+const labourCandidateId = ObjectId(candidateRet.insertedIds[0].str);
+const conservativeCandidateId = ObjectId(candidateRet.insertedIds[1].str);
+const yorkshireCandidateId = ObjectId(candidateRet.insertedIds[2].str);
 
 // add campaign
 db.campaigns.insert({
   name: 'Local Election for Doncaster North',
-  candidates: [labourCandidate, conservativeCandidate, yorkshireCandidate],
+  candidates: [labourCandidateId, conservativeCandidateId, yorkshireCandidateId],
   type: 'Local Election',
   active: 'Active',
-  constituencies: [constituency1],
+  constituencies: [constituency1Id],
   start_date: Date.now(),
   end_date: Date.now() + 86400000
 });

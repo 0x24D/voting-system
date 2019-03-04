@@ -1,5 +1,5 @@
 <template>
-  <div class="Login">
+  <div class="login">
     <md-card>
       <md-toolbar>
         <h1 class="md-title">Login</h1>
@@ -61,7 +61,7 @@ export default {
         },
         validateLogin(form) {
             this.$v.$touch();
-            
+
         // make sure none of the fields are invalid
             if (!this.$v.$invalid) {
                 // if none of them are invalid proceed with login
