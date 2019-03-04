@@ -16,6 +16,7 @@ describe('Campaign tests', () => {
   let campaign1Id;
   let campaign2Id;
   let candidate1Id;
+  let candidate2Id;
   let constituency1Id;
   let constituency2Id;
   beforeEach((done) => {
@@ -23,11 +24,20 @@ describe('Campaign tests', () => {
       name: 'Party 1',
       description: 'Description for party 1',
     });
+    const party2 = new Party({
+      name: 'Party 2',
+      description: 'Description for party 2',
+    });
     const candidate1 = new Candidate({
       name: 'Candidate 1',
       party: party1,
     });
     candidate1Id = String(candidate1._id);
+    const candidate2 = new Candidate({
+      name: 'Candidate 2',
+      party: party2,
+    });
+    candidate2Id = String(candidate2._id);
     const constituency1 = new Constituency({
       name: 'Constituency',
       minimum_age: 18,
@@ -36,8 +46,8 @@ describe('Campaign tests', () => {
     constituency1Id = String(constituency1._id);
     const campaign1 = new Campaign({
       name: 'Campaign 1',
-      candidates: [candidate1],
-      votes: [{ [candidate1Id]: 0 }],
+      candidates: [candidate1, candidate2],
+      votes: [{ [candidate1Id]: 0 }, { [candidate2Id]: 0 }],
       type: 'Campaign Type',
       active: 'Active',
       constituencies: [constituency1],
@@ -63,8 +73,8 @@ describe('Campaign tests', () => {
 
 
     Constituency.insertMany([constituency1, constituency2], () => {
-      party1.save(() => {
-        candidate1.save(() => {
+      Party.insertMany([party1, party2], () => {
+        Candidate.insertMany([candidate1, candidate2], () => {
           Campaign.insertMany([campaign1, campaign2], () => {
             done();
           });
@@ -107,13 +117,17 @@ describe('Campaign tests', () => {
         res.body[0].name.should.equal('Campaign 1');
         res.body[0].total_votes.should.equal(0);
         res.body[0].candidates.should.be.a('array');
-        expect(res.body[0].candidates).to.have.lengthOf(1);
+        expect(res.body[0].candidates).to.have.lengthOf(2);
         res.body[0].candidates[0].should.equal(candidate1Id);
+        res.body[0].candidates[1].should.equal(candidate2Id);
         res.body[0].votes.should.be.a('array');
-        expect(res.body[0].votes).to.have.lengthOf(1);
+        expect(res.body[0].votes).to.have.lengthOf(2);
         res.body[0].votes[0].should.be.a('object');
         res.body[0].votes[0].should.have.property(candidate1Id);
         res.body[0].votes[0][candidate1Id].should.have.equal(0);
+        res.body[0].votes[1].should.be.a('object');
+        res.body[0].votes[1].should.have.property(candidate2Id);
+        res.body[0].votes[1][candidate2Id].should.have.equal(0);
         res.body[0].type.should.equal('Campaign Type');
         res.body[0].active.should.equal('Active');
         res.body[0].constituencies.should.be.a('array');
@@ -136,7 +150,7 @@ describe('Campaign tests', () => {
         expect(res.body[1].candidates).to.have.lengthOf(1);
         res.body[1].candidates[0].should.equal(candidate1Id);
         res.body[1].votes.should.be.a('array');
-        expect(res.body[0].votes).to.have.lengthOf(1);
+        expect(res.body[1].votes).to.have.lengthOf(1);
         res.body[1].votes[0].should.be.a('object');
         res.body[1].votes[0].should.have.property(candidate1Id);
         res.body[1].votes[0][candidate1Id].should.have.equal(0);
@@ -171,13 +185,17 @@ describe('Campaign tests', () => {
         res.body[0].name.should.equal('Campaign 1');
         res.body[0].total_votes.should.equal(0);
         res.body[0].candidates.should.be.a('array');
-        expect(res.body[0].candidates).to.have.lengthOf(1);
+        expect(res.body[0].candidates).to.have.lengthOf(2);
         res.body[0].candidates[0].should.equal(candidate1Id);
+        res.body[0].candidates[1].should.equal(candidate2Id);
         res.body[0].votes.should.be.a('array');
-        expect(res.body[0].votes).to.have.lengthOf(1);
+        expect(res.body[0].votes).to.have.lengthOf(2);
         res.body[0].votes[0].should.be.a('object');
         res.body[0].votes[0].should.have.property(candidate1Id);
         res.body[0].votes[0][candidate1Id].should.have.equal(0);
+        res.body[0].votes[1].should.be.a('object');
+        res.body[0].votes[1].should.have.property(candidate2Id);
+        res.body[0].votes[1][candidate2Id].should.have.equal(0);
         res.body[0].type.should.equal('Campaign Type');
         res.body[0].active.should.equal('Active');
         res.body[0].constituencies.should.be.a('array');
@@ -210,13 +228,17 @@ describe('Campaign tests', () => {
         res.body.name.should.equal('Campaign 1');
         res.body.total_votes.should.equal(0);
         res.body.candidates.should.be.a('array');
-        expect(res.body.candidates).to.have.lengthOf(1);
+        expect(res.body.candidates).to.have.lengthOf(2);
         res.body.candidates[0].should.equal(candidate1Id);
+        res.body.candidates[1].should.equal(candidate2Id);
         res.body.votes.should.be.a('array');
-        expect(res.body.votes).to.have.lengthOf(1);
+        expect(res.body.votes).to.have.lengthOf(2);
         res.body.votes[0].should.be.a('object');
         res.body.votes[0].should.have.property(candidate1Id);
         res.body.votes[0][candidate1Id].should.have.equal(0);
+        res.body.votes[1].should.be.a('object');
+        res.body.votes[1].should.have.property(candidate2Id);
+        res.body.votes[1][candidate2Id].should.have.equal(0);
         res.body.type.should.equal('Campaign Type');
         res.body.active.should.equal('Active');
         res.body.constituencies.should.be.a('array');
@@ -252,13 +274,63 @@ describe('Campaign tests', () => {
         res.body.name.should.equal('Campaign 1');
         res.body.total_votes.should.equal(1);
         res.body.candidates.should.be.a('array');
-        expect(res.body.candidates).to.have.lengthOf(1);
+        expect(res.body.candidates).to.have.lengthOf(2);
         res.body.candidates[0].should.equal(candidate1Id);
+        res.body.candidates[1].should.equal(candidate2Id);
         res.body.votes.should.be.a('array');
-        expect(res.body.votes).to.have.lengthOf(1);
+        expect(res.body.votes).to.have.lengthOf(2);
         res.body.votes[0].should.be.a('object');
         res.body.votes[0].should.have.property(candidate1Id);
         res.body.votes[0][candidate1Id].should.have.equal(1);
+        res.body.votes[1].should.be.a('object');
+        res.body.votes[1].should.have.property(candidate2Id);
+        res.body.votes[1][candidate2Id].should.have.equal(0);
+        res.body.type.should.equal('Campaign Type');
+        res.body.active.should.equal('Active');
+        res.body.constituencies.should.be.a('array');
+        expect(res.body.constituencies).to.have.lengthOf(1);
+        res.body.constituencies[0].should.equal(constituency1Id);
+        done();
+      });
+  });
+
+  it('should update only 1 campaign on /api/v1/campaigns/<id> PUT', (done) => {
+    chai.request(app)
+      .put(`/api/v1/campaigns/${campaign1Id}`)
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        total_votes: 1, // could also do campaign1.total_votes + 1
+        votes: candidate1Id,
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('name');
+        res.body.should.have.property('total_votes');
+        res.body.should.have.property('candidates');
+        res.body.should.have.property('votes');
+        res.body.should.have.property('type');
+        res.body.should.have.property('active');
+        res.body.should.have.property('constituencies');
+        res.body.should.have.property('start_date');
+        res.body.should.have.property('end_date');
+        res.body._id.should.equal(campaign1Id);
+        res.body.name.should.equal('Campaign 1');
+        res.body.total_votes.should.equal(1);
+        res.body.candidates.should.be.a('array');
+        expect(res.body.candidates).to.have.lengthOf(2);
+        res.body.candidates[0].should.equal(candidate1Id);
+        res.body.candidates[1].should.equal(candidate2Id);
+        res.body.votes.should.be.a('array');
+        expect(res.body.votes).to.have.lengthOf(2);
+        res.body.votes[0].should.be.a('object');
+        res.body.votes[0].should.have.property(candidate1Id);
+        res.body.votes[0][candidate1Id].should.have.equal(1);
+        res.body.votes[1].should.be.a('object');
+        res.body.votes[1].should.have.property(candidate2Id);
+        res.body.votes[1][candidate2Id].should.have.equal(0);
         res.body.type.should.equal('Campaign Type');
         res.body.active.should.equal('Active');
         res.body.constituencies.should.be.a('array');

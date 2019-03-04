@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     goToCampaign(campaignId) {
-      location.href = `/vote/${campaignId}`;
+      window.location.href = `/vote/${campaignId}`;
     }
   }
 };

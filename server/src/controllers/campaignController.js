@@ -37,21 +37,16 @@ export const editCampaignById = (req, res) => {
         if (Object.prototype.hasOwnProperty.call(req.body, prop)) {
           if (prop === 'votes') {
             updateData[prop] = campaign[prop];
-            // updateData[prop] === [{ candidateId: intVotes }]
-            // candidateObj === { candidateId: intVotes }
-            updateData[prop].forEach((candidateObj) => {
-              Object.keys(candidateObj).forEach((candidateId) => {
-                const candidateIndex = updateData[prop].findIndex(
-                  candidate => Object.prototype.hasOwnProperty.call(candidate, candidateId),
-                );
-                if (candidateIndex === -1) {
-                  updateData[prop].push({ [candidateId]: 1 });
-                } else {
-                  // eslint-disable-next-line
-                  ++updateData[prop][candidateIndex][candidateId];
-                }
-              });
-            });
+            const candidateId = req.body[prop];
+            const candidateIndex = updateData[prop].findIndex(
+              candidate => Object.prototype.hasOwnProperty.call(candidate, candidateId),
+            );
+            if (candidateIndex === -1) {
+              updateData[prop].push({ [candidateId]: 0 });
+            } else {
+              // eslint-disable-next-line
+              ++updateData[prop][candidateIndex][candidateId];
+            }
           } else {
             updateData[prop] = req.body[prop];
           }

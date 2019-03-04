@@ -18,8 +18,7 @@
         <md-table-cell>{{ candidate.party }}</md-table-cell>
       </md-table-row>
     </md-table>
-    <p>Selected:</p>
-    {{ selected }}
+    <md-button class="md-raised" @click="onSubmit()" :disabled="!this.selected">Submit vote</md-button>
   </div>
 </template>
 
@@ -28,7 +27,8 @@ export default {
   name: "Vote",
   data() {
     return {
-      selected: {},
+      selected: null,
+      campaignId: '',
       candidates: [],
     }
   },
@@ -38,6 +38,7 @@ export default {
     this.$axios
       .get(`http://localhost:8081/api/v1/campaigns/${campaignId}`)
       .then((campaignRes) => {
+        this.campaignId = campaignRes.data._id;
         campaignRes.data.candidates.forEach((candidateId) => {
           this.$axios
             .get(`http://localhost:8081/api/v1/candidates/${candidateId}`)
@@ -59,6 +60,16 @@ export default {
     onSelect(candidate) {
       this.selected = candidate;
     },
+    onSubmit() {
+      this.$axios
+        .put(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`, {
+          total_votes: 1, // could also do campaign1.total_votes + 1
+          votes: this.selected,
+        })
+        .then(() => {
+          window.location.href = '/success';
+        });
+    }
   },
 };
 </script>
