@@ -14,23 +14,7 @@
 <script>
 
 export default {
-    name: 'Success',
-    methods: {
-    submitLogout() {
-      this.$axios
-        // post to the api so logout can be processed 
-        .post("http://localhost:3030/logout")
-        .then(() => {
-          // delete the token from browser storage
-          delete localStorage.token;
-          // navigate to the login screen
-          window.location.href = "/login/";
-        })
-        .catch(error => {
-          alert("Logout Failed");
-        });
-    }
-    },
+  name: 'Success',
 };
 </script>
 
