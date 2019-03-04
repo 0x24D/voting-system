@@ -26,24 +26,42 @@ export default {
   name: "Results",
   data() {
     return {
-      candidates: [
-        {
-          id: 1,
-          name: 'Shawna Dubbin',
-          party: 'greens',
-          votes: 97
-        },
-        {
-          id: 2,
-          name: 'Odette Demageard',
-          party: 'labour',
-          votes: 3
-        },
-        
-      ],
+      candidates: [],
     }
   },
-  
+  created() {
+    this.$axios
+      .get('http://localhost:8081/api/v1/campaigns/')
+      .then((campaignRes) => {
+        // TODO: iterate through all arrays rather than just the first
+        campaignRes.data[0].votes.forEach((candidateArr) => {
+          Object.keys(candidateArr).forEach((candidateId) => {
+            this.$axios
+              .get(`http://localhost:8081/api/v1/candidates/${candidateId}`)
+              .then((candidateRes) => {
+                this.$axios
+                  .get(`http://localhost:8081/api/v1/parties/${candidateRes.data.party}`)
+                  .then((partyRes) => {
+                    const candidateIndex = campaignRes.data[0].votes.findIndex(
+                      candidate => Object.prototype.hasOwnProperty.call(candidate, candidateId),
+                    );
+                    let votes = '';
+                    if (candidateIndex !== -1) {
+                      votes = campaignRes.data[0].votes[candidateIndex][candidateId];
+                    }
+                    console.log(partyRes);
+                    this.candidates.push({
+                      name: candidateRes.data.name,
+                      party: partyRes.data.name,
+                      votes,
+                    });
+                  });
+              });
+          });
+        });
+
+      });
+  },
 };
 </script>
 
