@@ -1,6 +1,6 @@
 {
   "env": {
-    "dev": {
+    "development": {
       "presets": [
         "env",
         "stage-0"
