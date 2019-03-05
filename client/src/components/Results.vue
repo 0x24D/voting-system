@@ -20,19 +20,20 @@
       </md-table-row>
     </md-table>
 
+    <md-table md-card>
     <div class="container">
       <div class="Chart__list">
         <div class="Chart">
-          <h2>Linechart</h2>
-          <line-example></line-example>
+          <candidateChart></candidateChart>
         </div>
       </div>
     </div>
+    </md-table>
   </div>
 </template>
 
 <script>
-import LineExample from './LineChart.js'
+import candidateChart from './Chart.js'
 export default {
   name: 'Results',
   data() {
@@ -41,7 +42,7 @@ export default {
     }
   },
   components: {
-    LineExample
+    candidateChart
   },
   created() {
     this.$axios
