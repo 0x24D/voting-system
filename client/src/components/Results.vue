@@ -1,5 +1,6 @@
 <template>
-  <div id="results">
+
+<div id="results">
     <md-table md-card>
       <md-table-toolbar>
         <h1 class="md-title">Results</h1>
@@ -18,16 +19,29 @@
         <md-table-cell>{{ candidate.votes  }}</md-table-cell>
       </md-table-row>
     </md-table>
+
+    <div class="container">
+      <div class="Chart__list">
+        <div class="Chart">
+          <h2>Linechart</h2>
+          <line-example></line-example>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import LineExample from './LineChart.js'
 export default {
-  name: "Results",
+  name: 'Results',
   data() {
     return {
       candidates: [],
     }
+  },
+  components: {
+    LineExample
   },
   created() {
     this.$axios
@@ -65,6 +79,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.container {
+  max-width: 800px;
+  margin:  0 auto;
+}
 .md-table + .md-table {
   margin-top: 16px;
 }
