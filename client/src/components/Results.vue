@@ -49,7 +49,6 @@ export default {
                     if (candidateIndex !== -1) {
                       votes = campaignRes.data[0].votes[candidateIndex][candidateId];
                     }
-                    console.log(partyRes);
                     this.candidates.push({
                       name: candidateRes.data.name,
                       party: partyRes.data.name,

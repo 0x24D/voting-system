@@ -72,6 +72,7 @@ export default {
               .get(`http://localhost:8081/api/v1/users/${username}`)
               .then((userRes) => {
                 localStorage.user = userRes.data._id;
+                localStorage.type = userRes.data.__t;
                 window.location.reload();
               });
           });

@@ -2,16 +2,18 @@
   <div id="app">
     <div v-if="userAuthenticated()">
       <Logout/>
-      <div v-if="this.$store.state.showCampaigns">
-        <ListOfCampaigns/>
+      <div v-if="userType('voter')">
+        <div v-if="this.$store.state.showCampaigns">
+          <ListOfCampaigns/>
+        </div>
+        <div v-if="this.$store.state.showVote">
+          <Vote :campaign-id="this.$store.state.campaignId"/>
+        </div>
+        <div v-if="this.$store.state.showSuccess">
+          <Success/>
+        </div>
       </div>
-      <div v-if="this.$store.state.showVote">
-        <Vote :campaign-id="this.$store.state.campaignId"/>
-      </div>
-      <div v-if="this.$store.state.showSuccess">
-        <Success/>
-      </div>
-      <div v-if="this.$store.state.showResults">
+      <div v-else>
         <Results/>
       </div>
     </div>
@@ -22,7 +24,7 @@
 </template>
 
 <script>
-import isUserAuthenticated from './utils/auth';
+import { getUserType, isUserAuthenticated } from './utils/auth';
 import ListOfCampaigns from './components/ListOfCampaigns.vue';
 import Login from './components/Login.vue';
 import Logout from './components/Logout.vue';
@@ -41,6 +43,9 @@ export default {
     Vote,
   },
   methods: {
+    userType(userType) {
+      return getUserType(userType);
+    },
     userAuthenticated() {
       return isUserAuthenticated();
     },

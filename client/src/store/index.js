@@ -7,7 +7,6 @@ export default new Vuex.Store({
   state: {
     campaignId: '',
     showCampaigns: true,
-    showResults: false,
     showSuccess: false,
     showVote: false,
   },
@@ -22,9 +21,6 @@ export default new Vuex.Store({
     },
     setCampaignsDisplayMode(s, boolean) {
       Vue.set(s, 'showCampaigns', boolean);
-    },
-    setResultsDisplayMode(s, boolean) {
-      Vue.set(s, 'showResults', boolean);
     },
     setSuccessDisplayMode(s, boolean) {
       Vue.set(s, 'showSuccess', boolean);
