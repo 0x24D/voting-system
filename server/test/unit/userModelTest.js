@@ -11,9 +11,6 @@ describe('user', () => {
       done();
     });
   });
-});
-
-describe('user', () => {
   it('should be invalid if name is empty', (done) => {
     const u = new User();
 
@@ -22,9 +19,6 @@ describe('user', () => {
       done();
     });
   });
-});
-
-describe('user', () => {
   it('should be invalid if email is empty', (done) => {
     const u = new User();
 
@@ -33,9 +27,7 @@ describe('user', () => {
       done();
     });
   });
-});
 
-describe('user', () => {
   it('should be invalid if password is empty', (done) => {
     const u = new User();
 
@@ -44,14 +36,30 @@ describe('user', () => {
       done();
     });
   });
-});
 
-describe('user', () => {
-  it('should be invalid if authentication_attempts is empty', (done) => {
+  it("shouldn't be invalid if authentication_attempts is empty", (done) => {
     const u = new User();
 
     u.validate((err) => {
       expect(err.errors.authentication_attempts).to.not.exist;
+      done();
+    });
+  });
+
+  it("shouldn't be invalid if salt is empty", (done) => {
+    const u = new User();
+
+    u.validate((err) => {
+      expect(err.errors.salt).to.not.exist;
+      done();
+    });
+  });
+
+  it("shouldn't be invalid if token is empty", (done) => {
+    const u = new User();
+
+    u.validate((err) => {
+      expect(err.errors.token).to.not.exist;
       done();
     });
   });

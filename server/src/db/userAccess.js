@@ -1,13 +1,19 @@
 import User from '../models/userModel';
 
-export const findById = (userId, callback) => {
-  User.findById(userId).lean().exec((err, user) => {
+export const findByProperty = (property, value, callback) => {
+  User.findOne({ [property]: value }).lean().exec((err, user) => {
     callback(err, user);
   });
 };
 
-export const updateExistingById = (userId, dataToSave, callback) => {
-  User.findOneAndUpdate({ _id: userId }, new User(dataToSave),
+export const unsetPropertyByUsername = (username, propertyToUnset, callback) => {
+  User.findOneAndUpdate({ username }, { $unset: propertyToUnset }, { new: true }, (err, user) => {
+    callback(err, user);
+  });
+};
+
+export const updateExistingByProperty = (property, value, dataToSave, callback) => {
+  User.findOneAndUpdate({ [property]: value }, new User(dataToSave),
     { new: true }, (err, user) => {
       callback(err, user);
     });

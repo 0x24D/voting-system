@@ -1,12 +1,12 @@
 import {
-  findById,
-  updateExistingById,
+  findByProperty,
+  updateExistingByProperty,
 } from '../db/userAccess';
 
 export const getUserWithId = (req, res) => {
 // get the user with the request userId and if no errors
 // return the user details in the response
-  findById(req.params.id, (err, user) => {
+  findByProperty('_id', req.params.id, (err, user) => {
     if (err) {
       res.send(err);
     } else {
@@ -17,7 +17,7 @@ export const getUserWithId = (req, res) => {
 
 export const editUserWithId = (req, res) => {
   const userId = req.params.id;
-  findById(userId, (err, user) => {
+  findByProperty('_id', userId, (err, user) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -29,7 +29,7 @@ export const editUserWithId = (req, res) => {
           updateData[prop] = user[prop];
         }
       });
-      updateExistingById(userId, updateData, (err2, updatedUser) => {
+      updateExistingByProperty('_id', userId, updateData, (err2, updatedUser) => {
         if (err2) {
           res.status(500).send(err2);
         } else {

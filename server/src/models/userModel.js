@@ -31,6 +31,12 @@ const User = mongoose.model('user', new Schema({
     required: true,
     default: 0,
   },
+  salt: {
+    type: String,
+  },
+  token: {
+    type: String,
+  },
 }));
 
 export default User;
