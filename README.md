@@ -16,8 +16,6 @@
 
 /api/v1/admins/{id} GET - return specific auditor (to implement for part 2)
 
-/api/v1/auditors/{id} GET - return specific auditor (to implement for part 2)
-
 /api/v1/campaigns GET - return list of all campaigns (use ?constituency={constituency} query param to filter) (implemented)
 
 /api/v1/campaigns/{id} GET - return specific campaign (implemented)
