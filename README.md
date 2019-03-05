@@ -54,4 +54,5 @@
 * Adding/displaying candidate/party profiles - JS
 * Setting up a campaign (with candidates) - D
 * List of voters for auditor - L
-* Graphical results interface (for each campaign) - JW
+
+* Graphical results interface (for each campaign) - JW (in progress)
