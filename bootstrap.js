@@ -61,3 +61,49 @@ db.campaigns.insert({
   start_date: Date.now(),
   end_date: Date.now() + 86400000
 });
+
+// add address
+
+const address1 = {
+  line_one: '',
+  line_two: '',
+  town: '',
+  county: '',
+  country: '',
+  postcode: '',
+  address: constituency1Id
+};
+
+const addressRet = db.addresses.insertOne(address1);
+const address1Id = ObjectId(addressRet.insertedId.str);
+
+// add voter
+// voter:voterPass
+const voter = {
+  username: 'voter',
+  name: 'John Smith',
+  email: 'j.smith@email.com',
+  password: '$2a$10$F6m9.osfkImT6JWlRheyre08he0RodU6ZPQcJwJgINmQhlWF3K2au',
+  authentication_attempts: 0,
+  salt: '$2a$10$F6m9.osfkImT6JWlRheyre',
+  voted: false,
+  date_of_birth: new Date('01/01/01'),
+  address: address1Id,
+  __t: 'voter'
+};
+
+db.users.insert(voter);
+
+// add admin
+// admin:adminPass
+const admin = {
+  username: 'admin',
+  name: 'Jane Doe',
+  email: 'j.doe@email.com',
+  password: '$2a$10$Zqxnz0Zg37fZLixoFfBYgeSsHUe61tVpa7wCDg2LE8hLFzsAi2guK',
+  authentication_attempts: 0,
+  salt: '$2a$10$Zqxnz0Zg37fZLixoFfBYge',
+  __t: 'admin'
+};
+
+db.users.insert(admin);
