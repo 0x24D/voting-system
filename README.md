@@ -16,10 +16,10 @@
 /api/v1/addresses/{id} GET - return specific address (implemented)
 
 /api/v1/admins POST - add new admin (to implement for user registration)
-/api/v1/admins/{id} GET - return specific admin (to implement?)
+/api/v1/admins/{username} GET - return specific admin (to implement?)
 
 /api/v1/auditors POST - add new auditor (to implement for user registration)
-/api/v1/auditors/{id} GET - return specific auditor (to implement?)
+/api/v1/auditors/{username} GET - return specific auditor (to implement?)
 
 /api/v1/campaigns GET - return list of all campaigns (use ?constituency={constituency} query param to filter) (implemented)
 /api/v1/campaigns POST - add new campaign (to implement for setting up a campaign)
@@ -41,12 +41,12 @@
 /api/v1/systems/{id} GET - return specific system (implemented)
 /api/v1/systems/{id} PUT - update system (implemented)
 
-/api/v1/users/{id} GET - return specific user (implemented)
+/api/v1/users/{username} GET - return specific user (implemented)
 /api/v1/users/{id} PUT - update user (login attempts, etc.) (implemented)
 
 /api/v1/voters POST - add new voter (to implement for user registration)
 /api/v1/voters/{id} GET - return specific voter (implemented)
-/api/v1/voters/{id} PUT - update voter (voted status) (implemented)
+/api/v1/voters/{id} PUT - update voter (implemented)
 ```
 
 ## Extensions:

@@ -1,105 +1,104 @@
 <template>
-  <div class="login">
-    <md-card>
-      <md-toolbar>
-        <h1 class="md-title">Login</h1>
-      </md-toolbar>
-      <form id="form" novalidate @submit.prevent="validateLogin(form)">
-        <md-field :class="getValidationClass('email')">
-          <label>Email</label>
-          <md-input name="email" type="email" v-model="form.email"/>
-          <span class="md-error" v-if="!$v.form.email.required">The email is required</span>
-          <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
-        </md-field>
-        <md-field :class="getValidationClass('password')">
-          <label>Password</label>
-          <md-input name="password" type="password" v-model="form.password"/>
-          <span class="md-error" v-if="!$v.form.password.required">The password is required</span>
-        </md-field>
-
-        <md-button type="submit" class="md-raised md-primary">Login</md-button>
-      </form>
-    </md-card>
+  <div id="login">
+    <form novalidate class="md-layout" @submit.prevent>
+      <md-card class="md-layout-item md-size-50 md-small-size-100">
+        <md-card-header>
+          <div class="md-title">Login</div>
+        </md-card-header>
+        <md-card-content>
+          <div class="md-layout md-gutter">
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('username')">
+                <label for="username">Username</label>
+                <md-input name="username" id="username"
+                  v-model="username" required/>
+                <span class="md-error" v-if="!$v.username.required">
+                    Please enter your username</span>
+              </md-field>
+            </div>
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('password')">
+                <label for="password">Password</label>
+                <md-input type="password" name="password" id="password"
+                  v-model="password" required/>
+                <span class="md-error" v-if="!$v.password.required">
+                    Please enter your password</span>
+              </md-field>
+            </div>
+          </div>
+        </md-card-content>
+        <md-card-actions>
+          <md-button type="submit" class="md-primary"
+            @click="loginSubmit(username, password)">Login</md-button>
+        </md-card-actions>
+      </md-card>
+    </form>
   </div>
 </template>
+
 <script>
 import { validationMixin } from 'vuelidate';
-import { required, email } from 'vuelidate/lib/validators';
+import { required } from 'vuelidate/lib/validators';
 
 export default {
-    name: 'Login',
-    mixins: [validationMixin],
-    data() {
+  name: 'Login',
+  mixins: [validationMixin],
+  data() {
+    return {
+      username: '',
+      password: '',
+    };
+  },
+  methods: {
+    // eslint-disable-next-line
+    getValidationClass(fieldName) {
+      const field = this.$v[fieldName];
+      if (field) {
         return {
-            form: {
-                email: '',
-                password: '',
-            },
+          'md-invalid': field.$invalid && field.$dirty,
         };
+      }
     },
-    validations: {
-        form: {
-            email: {
-                required,
-                email,
-            },
-            password: {
-                required,
-            },
-        },
-    },
-    methods: {
-        // set the field to have the invalid styling if invalid or dirty
-        getValidationClass(fieldName) {
-            const field = this.$v.form[fieldName];
-
-            if (field) {
-                return {
-                    'md-invalid': field.$invalid && field.$dirty,
-                };
-            }
-        },
-        validateLogin(form) {
-            this.$v.$touch();
-
-        // make sure none of the fields are invalid
-            if (!this.$v.$invalid) {
-                // if none of them are invalid proceed with login
-                this.submitLogin(form.email, form.password);
-            }
-        },
-        submitLogin(email, password) {
+    loginSubmit(username, password) {
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        this.$axios
+          .post('http://localhost:8081/api/v1/authentication/login', {
+            username, password,
+          })
+          .then((authRes) => {
+            localStorage.token = authRes.data.token;
             this.$axios
-                // post to the api with the email and password so login can be processed
-                .post('http://localhost:3030/login', {
-                    email,
-                    password,
-                })
-                .then((response) => {
-                    // if a token is returned
-                    if (response.data.token) {
-                        // store token in browser storage
-                        localStorage.token = response.data.token;
-                        // navigate to the all files screen
-                        window.location.href = '/files/';
-                    } else {
-                        alert('Incorrect Login Details');
-                    }
-                })
-                .catch((error) => {
-                    console.log(error);
-                    alert('Login Failed');
-                });
-        },
+              .get(`http://localhost:8081/api/v1/users/${username}`)
+              .then((userRes) => {
+                localStorage.user = userRes.data._id;
+                window.location.reload();
+              });
+          });
+      }
     },
+  },
+  validations: {
+    username: {
+      required,
+    },
+    password: {
+      required,
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-#form {
-  padding: 10px 100px;
-}
-.Login {
-  padding: 50px 500px;
+<style scoped>
+form {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 </style>

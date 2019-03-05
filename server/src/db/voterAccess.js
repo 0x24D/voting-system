@@ -1,6 +1,7 @@
 import Voter from '../models/voterModel';
 
 export const findById = (voterId, callback) => {
+  console.log(Voter);
   Voter.findById(voterId).lean().exec((err, voter) => {
     callback(err, voter);
   });

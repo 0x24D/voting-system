@@ -37,11 +37,21 @@ export default {
       .get('http://localhost:8081/api/v1/campaigns/')
       .then((response) => {
         this.campaigns = response.data;
-      });
+    });
   },
   methods: {
     goToCampaign(campaignId) {
-      window.location.href = `/vote/${campaignId}`;
+      console.log(localStorage.user);
+      this.$axios
+        .get(`http://localhost:8081/api/v1/voters/${localStorage.user}`)
+        .then((response) => {
+          console.log(response.data);
+          if (!response.data.voted) {
+            this.$store.commit('setCampaignIdToDisplay', campaignId);
+            this.$store.commit('setVoteDisplayMode', true);
+            this.$store.commit('setCampaignsDisplayMode', false);
+          }
+        });
     }
   }
 };

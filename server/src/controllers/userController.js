@@ -3,10 +3,8 @@ import {
   updateExistingByProperty,
 } from '../db/userAccess';
 
-export const getUserWithId = (req, res) => {
-// get the user with the request userId and if no errors
-// return the user details in the response
-  findByProperty('_id', req.params.id, (err, user) => {
+export const getUserWithUsername = (req, res) => {
+  findByProperty('username', req.params.username, (err, user) => {
     if (err) {
       res.send(err);
     } else {

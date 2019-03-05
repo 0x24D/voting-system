@@ -1,28 +1,49 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div v-if="userAuthenticated()">
+      <Logout/>
+      <div v-if="this.$store.state.showCampaigns">
+        <ListOfCampaigns/>
+      </div>
+      <div v-if="this.$store.state.showVote">
+        <Vote :campaign-id="this.$store.state.campaignId"/>
+      </div>
+      <div v-if="this.$store.state.showSuccess">
+        <Success/>
+      </div>
+      <div v-if="this.$store.state.showResults">
+        <Results/>
+      </div>
+    </div>
+    <div v-else>
+      <Login/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import isUserAuthenticated from './utils/auth';
+import ListOfCampaigns from './components/ListOfCampaigns.vue';
+import Login from './components/Login.vue';
+import Logout from './components/Logout.vue';
+import Results from './components/Results.vue';
+import Success from './components/Success.vue';
+import Vote from './components/Vote.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    ListOfCampaigns,
+    Login,
+    Logout,
+    Results,
+    Success,
+    Vote,
+  },
+  methods: {
+    userAuthenticated() {
+      return isUserAuthenticated();
+    },
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

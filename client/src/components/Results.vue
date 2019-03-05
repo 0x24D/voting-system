@@ -1,5 +1,5 @@
 <template>
-  <div class="results">
+  <div id="results">
     <md-table md-card>
       <md-table-toolbar>
         <h1 class="md-title">Results</h1>
@@ -69,7 +69,7 @@ export default {
 .md-table + .md-table {
   margin-top: 16px;
 }
-.results {
+#results {
   padding: 50px 100px;
 }
 </style>

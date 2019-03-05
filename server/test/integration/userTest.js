@@ -40,9 +40,9 @@ describe('User tests', () => {
     });
   });
 
-  it('should list 1 user on /api/v1/users/<id> GET', (done) => {
+  it('should list 1 user on /api/v1/users/<username> GET', (done) => {
     chai.request(app)
-      .get(`/api/v1/users/${userId1}`)
+      .get('/api/v1/users/username1')
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
@@ -54,7 +54,6 @@ describe('User tests', () => {
         res.body.should.have.property('password');
         res.body.should.have.property('roles');
         res.body.should.have.property('authentication_attempts');
-        res.body._id.should.equal(userId1);
         res.body.username.should.equal('username1');
         res.body.name.should.equal('User 1');
         res.body.email.should.equal('user1@hotmail.com');

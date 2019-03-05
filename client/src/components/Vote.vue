@@ -1,5 +1,5 @@
 <template>
-  <div class="vote">
+  <div id="vote">
     <md-table md-card>
       <md-table-toolbar>
         <h1 class="md-title">Cast a Vote</h1>
@@ -24,19 +24,19 @@
 
 <script>
 export default {
-  name: "Vote",
+  name: 'Vote',
+  props: {
+    campaignId: String,
+  },
   data() {
     return {
       selected: null,
-      campaignId: '',
       candidates: [],
     }
   },
   created() {
-    const currentUrl = window.location.pathname.split("/");
-    const campaignId = currentUrl[2];
     this.$axios
-      .get(`http://localhost:8081/api/v1/campaigns/${campaignId}`)
+      .get(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`)
       .then((campaignRes) => {
         this.campaignId = campaignRes.data._id;
         campaignRes.data.candidates.forEach((candidateId) => {
@@ -67,7 +67,14 @@ export default {
           votes: this.selected,
         })
         .then(() => {
-          window.location.href = '/success';
+          this.$axios
+            .put(`http://localhost:8081/api/v1/voters/${localStorage.user}`, {
+              voted: true,
+            })
+            .then(() => {
+              this.$store.commit('setSuccessDisplayMode', true);
+              this.$store.commit('setVoteDisplayMode', false);
+            });
         });
     }
   },
@@ -78,7 +85,7 @@ export default {
 .md-table + .md-table {
   margin-top: 16px;
 }
-.vote {
+#vote {
   padding: 50px 100px;
 }
 </style>
