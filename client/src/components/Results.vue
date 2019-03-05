@@ -19,8 +19,8 @@
         <md-table-cell>{{ candidate.votes  }}</md-table-cell>
       </md-table-row>
     </md-table>
-
-    <md-table md-card>
+    
+    <md-table md-card>    
     <div class="container">
       <div class="Chart__list">
         <div class="Chart">
