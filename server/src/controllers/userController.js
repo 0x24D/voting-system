@@ -3,6 +3,28 @@ import {
   updateExistingByProperty,
 } from '../db/userAccess';
 
+export const addNewUser = (req, res) => {
+  const newUser = new User(req.body);
+  newUser.save((err, user) => {
+      if (err) {
+          res.send(err);
+      } else {
+          res.json(user);
+      }
+  });
+};
+
+export const getUser = (req, res) => {
+  User.find({}, (err, user) => {
+      if (err) {
+          res.send(err);
+      } else {
+          res.json(user);
+      }
+  });
+};
+
+
 export const getUserWithUsername = (req, res) => {
   findByProperty('username', req.params.username, (err, user) => {
     if (err) {

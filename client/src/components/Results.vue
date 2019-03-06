@@ -18,6 +18,7 @@
         <md-table-cell>{{ candidate.votes  }}</md-table-cell>
       </md-table-row>
     </md-table>
+    <md-button class="md-raised" @click="onUsers()">View Users</md-button>
   </div>
 </template>
 
@@ -61,6 +62,16 @@ export default {
 
       });
   },
+
+  methods: {
+    onUsers()  {
+      
+              this.$store.commit('setUsersDisplayMode', true);
+              this.$store.commit('setResultsDisplayMode', false);
+       
+    },
+  },
+
 };
 </script>
 

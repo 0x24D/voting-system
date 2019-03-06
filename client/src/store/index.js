@@ -7,7 +7,9 @@ export default new Vuex.Store({
   state: {
     campaignId: '',
     showCampaigns: true,
+    showResults: true,
     showSuccess: false,
+    showUsers: false,
     showVote: false,
   },
   getters: {
@@ -22,11 +24,17 @@ export default new Vuex.Store({
     setCampaignsDisplayMode(s, boolean) {
       Vue.set(s, 'showCampaigns', boolean);
     },
+    setResultsDisplayMode(s, boolean) {
+      Vue.set(s, 'showResults', boolean);
+    },
     setSuccessDisplayMode(s, boolean) {
       Vue.set(s, 'showSuccess', boolean);
     },
+    setUsersDisplayMode(s, boolean) {
+      Vue.set(s, 'showUsers', boolean);
+    },
     setVoteDisplayMode(s, boolean) {
       Vue.set(s, 'showVote', boolean);
-    },
+    },   
   },
 });
