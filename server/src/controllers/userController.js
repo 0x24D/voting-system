@@ -6,6 +6,7 @@ import {
 export const addNewUser = (req, res) => {
   const newUser = new User(req.body);
   newUser.save((err, user) => {
+      // add new user 
       if (err) {
           res.send(err);
       } else {

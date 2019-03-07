@@ -19,6 +19,7 @@
       </md-table-row>
     </md-table>
     <md-button class="md-raised" @click="onAddUser()">Add User</md-button>
+    <!-- maybe add new button -->
   </div>
 </template>
 

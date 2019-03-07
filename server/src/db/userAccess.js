@@ -1,5 +1,7 @@
 import User from '../models/userModel';
 
+// add new user
+
 export const findByProperty = (property, value, callback) => {
   User.findOne({ [property]: value }).lean().exec((err, user) => {
     callback(err, user);

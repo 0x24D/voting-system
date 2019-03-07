@@ -1,9 +1,9 @@
 <template>
   <div id="users">
     <md-card>
-      <md-table-toolbar>
+      <md-toolbar>
         <h1 class="md-title">Add New User</h1>
-      </md-table-toolbar>
+      </md-toolbar>
 
       <md-field>
         <label>Username</label>
@@ -65,8 +65,8 @@ export default {
               this.$store.commit('setResultsDisplayMode', true);
               this.$store.commit('setAddUserDisplayMode', false);      
     },
-
     onSubmit(newUser) {
+      console.log(newUser);
       this.$axios
         .post("http://localhost:8081/api/v1/users/", {
               username: newUser.username,
@@ -74,7 +74,7 @@ export default {
               email: newUser.email,
               password: newUser.password,
               roles: newUser.roles,
-            })
+            }) // maybe change here for different posts 
             .then(response => {
               this.$store.commit('setResultsDisplayMode', true);
               this.$store.commit('setAddUserDisplayMode', false);   
