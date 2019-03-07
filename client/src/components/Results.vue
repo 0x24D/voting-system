@@ -18,7 +18,7 @@
         <md-table-cell>{{ candidate.votes  }}</md-table-cell>
       </md-table-row>
     </md-table>
-    <md-button class="md-raised" @click="onUsers()">View Users</md-button>
+    <md-button class="md-raised" @click="onAddUser()">Add User</md-button>
   </div>
 </template>
 
@@ -64,14 +64,11 @@ export default {
   },
 
   methods: {
-    onUsers()  {
-      
-              this.$store.commit('setUsersDisplayMode', true);
-              this.$store.commit('setResultsDisplayMode', false);
-       
+    onAddUser()  {    
+              this.$store.commit('setAddUserDisplayMode', true);
+              this.$store.commit('setResultsDisplayMode', false);      
     },
   },
-
 };
 </script>
 

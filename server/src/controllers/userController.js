@@ -24,7 +24,6 @@ export const getUser = (req, res) => {
   });
 };
 
-
 export const getUserWithUsername = (req, res) => {
   findByProperty('username', req.params.username, (err, user) => {
     if (err) {
