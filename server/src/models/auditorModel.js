@@ -6,6 +6,10 @@ const Schema = mongoose.Schema;
 
 const AuditorSchema = new Schema({
 
+  polling_station: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'pollingStation',
+  },
+
 });
 
 const Auditor = User.discriminator('auditor', AuditorSchema);
