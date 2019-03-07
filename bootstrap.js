@@ -107,3 +107,18 @@ const admin = {
 };
 
 db.users.insert(admin);
+
+// add auditor
+// auditor:auditorPass
+const auditor = {
+  username: 'auditor',
+  name: 'Bob Jones',
+  email: 'b.jones@email.com',
+  password: '$2a$10$7A.zv9h/SGk7c8Q9jjSrT.m2PvJ6KiuPed/RdcVKCrHnhuan2pCTq',
+  authentication_attempts: 0,
+  salt: '$2a$10$7A.zv9h/SGk7c8Q9jjSrT.',
+  __t: 'auditor'
+};
+
+db.users.insert(auditor);
+

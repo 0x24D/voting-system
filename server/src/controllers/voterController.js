@@ -4,9 +4,7 @@ import {
 } from '../db/voterAccess';
 
 export const getVoterWithId = (req, res) => {
-  console.log(req.params.id);
   findById(req.params.id, (err, voter) => {
-    console.log(voter);
     if (err) {
       res.send(err);
     } else {
