@@ -1,5 +1,4 @@
-<template>
-
+<!--<template>
 <div id="results">
     <md-table md-card>
       <md-table-toolbar>
@@ -11,7 +10,7 @@
         <md-table-head>Number of Votes</md-table-head>
       </md-table-row>
 
-      <md-table-row
+    <md-table-row
         v-for="candidate in candidates"
         :key="candidate.id">
         <md-table-cell>{{ candidate.name }}</md-table-cell>
@@ -20,31 +19,44 @@
       </md-table-row>
     </md-table>
     
-    <md-table md-card>    
-    <div class="container">
-      <div class="Chart__list">
-        <div class="Chart">
-          <candidateChart></candidateChart>
-        </div>
-      </div>
-    </div>
+    <md-table md-card>
+      <bar-chart v-if="loaded" :chart-data="chartdata" :options="options"/>
     </md-table>
+
   </div>
-</template>
+</template>-->
 
 <script>
-import candidateChart from './Chart.js'
+
+import { Bar } from 'vue-chartjs';
+
 export default {
+
   name: 'Results',
+  extends: Bar,
+
   data() {
     return {
       candidates: [],
-    }
+      loaded: false,
+      chartdata: {
+        labels: [
+        ], 
+        datasets: [
+          {
+            label: 'candidate',
+            backgroundColor: '#f87979', // update to relevant colour
+            data,
+          }
+        ],
+      },
+      options: null,
+    };
   },
   components: {
-    candidateChart
+    'bar-chart': Bar
   },
-  created() {
+  mounted() {
     this.$axios
       .get('http://localhost:8081/api/v1/campaigns/')
       .then((campaignRes) => {
@@ -69,12 +81,23 @@ export default {
                       party: partyRes.data.name,
                       votes,
                     });
+                    this.chartdata.labels.push(
+                      candidateRes.data.name,
+                    );
+                    this.chartdata.datasets[0].data.push(
+                      campaignRes.data[0].votes[candidateIndex][candidateId]
+                    );
+                    // push candidate name and/or party name onto chartdata.labels array
+                    // push number of votes (obj value) onto chartdata.datasets[0].data array
                   });
               });
           });
         });
 
+        this.loaded = true;
+        this.renderChart(this.chartdata, this.options);
       });
+
   },
 };
 </script>
