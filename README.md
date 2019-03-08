@@ -27,7 +27,7 @@
 /api/v1/campaigns/{id} PUT - update campaign (increment total votes, etc.) (implemented)
 
 /api/v1/candidates GET - return list of all candidates (implemented)
-/api/v1/candidates POST - add new candidate (to implement for candidate profiles, setting up a campaign)
+/api/v1/candidates POST - add new candidate (implemented)
 /api/v1/candidates/{id} GET - return specific candidate (implemented)
 
 /api/v1/constituencies/{id} GET - return specific constituency (implemented)
