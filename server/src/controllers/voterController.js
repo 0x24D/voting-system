@@ -2,6 +2,27 @@ import {
   findById,
   updateExistingById,
 } from '../db/voterAccess';
+import Voter from '../models/voterModel';
+
+export const addNewVoter = (req, res) => { //needs testing
+  const newVoter = new Voter({
+      username: req.body.username,
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      roles: "voter",
+      date_of_birth:  Date.now(),
+      address: req.body.address,
+  });
+  newVoter.save((err, file) => {
+      if (err) {
+          res.send(err);
+      } else {
+          res.json(file);
+      }
+  });
+};
+
 
 export const getVoterWithId = (req, res) => {
   console.log(req.params.id);

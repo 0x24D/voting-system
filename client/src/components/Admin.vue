@@ -25,7 +25,7 @@ export default {
     },
     goToUsers() {
       this.$store.commit('setAdminDisplayMode', false);
-      // this.$store.commit('setUsersDisplayMode', true);
+      this.$store.commit('setAddUserDisplayMode', true);
     },
   },
 };
