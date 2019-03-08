@@ -109,11 +109,20 @@ describe('Voter tests', () => {
         done();
       });
   });
-//attempt at testing, should send voterId1?
-  it('should post voter to /api/v1/voters/ POST', (done) => {
+
+  it('should add new voter on /api/v1/voters POST', (done) => {
     chai.request(app)
-      .post(`/api/v1/voters/`)
+      .post('/api/v1/voters')
       .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        username: 'testuser',
+        name: 'testname',
+        email: 'test@mail',
+        password: 'testPass',
+        roles: 'voter',
+        date_of_birth: new Date('01/01/01'),
+        address: addressId1,       
+      })
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
@@ -128,14 +137,13 @@ describe('Voter tests', () => {
         res.body.should.have.property('voted');
         res.body.should.have.property('date_of_birth');
         res.body.should.have.property('address');
-        res.body._id.should.equal(voterId1);
-        res.body.username.should.equal('username1');
-        res.body.name.should.equal('User 1');
-        res.body.email.should.equal('user1@hotmail.com');
-        res.body.password.should.equal('user1');
+        res.body.username.should.equal('testuser');
+        res.body.name.should.equal('testname');
+        res.body.email.should.equal('test@mail');
+        res.body.password.should.equal('testPass');
         res.body.roles.should.equal('voter');
         res.body.authentication_attempts.should.equal(0);
-        res.body.voted.should.equal(true);
+        res.body.voted.should.equal(false);
         res.body.date_of_birth.should.equal(new Date('01/01/01').toISOString());
         res.body.address.should.equal(addressId1);
         done();

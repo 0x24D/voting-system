@@ -11,7 +11,7 @@ export const addNewVoter = (req, res) => { //needs testing
       email: req.body.email,
       password: req.body.password,
       roles: "voter",
-      date_of_birth:  Date.now(),
+      date_of_birth:  req.body.date_of_birth,
       address: req.body.address,
   });
   newVoter.save((err, file) => {

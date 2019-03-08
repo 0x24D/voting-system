@@ -1,7 +1,14 @@
 import Voter from '../models/voterModel';
 
-//to do
-//export const addNewVoter = ()
+export const addVoter = (dataToSave, callback) => {
+  const newVoter = new Voter({
+    name: dataToSave.name,
+    
+  });
+  newVoter.save((err, voter) => {
+    callback(err, voter);
+  });
+};
 
 export const findById = (voterId, callback) => {
   console.log(Voter);
