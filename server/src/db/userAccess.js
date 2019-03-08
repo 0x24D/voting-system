@@ -1,6 +1,8 @@
 import User from '../models/userModel';
 
 // add new user
+//to do
+//export const addNewUser = ()
 
 export const findByProperty = (property, value, callback) => {
   User.findOne({ [property]: value }).lean().exec((err, user) => {
