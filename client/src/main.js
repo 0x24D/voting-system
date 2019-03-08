@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Axios from 'axios';
+import Bars from 'vuebars'
 import VueMaterial from 'vue-material';
 import App from './App.vue';
 import store from './store/index';
@@ -14,6 +15,7 @@ if (token) {
 }
 Vue.prototype.$axios = Axios;
 
+Vue.use(Bars);
 Vue.use(VueMaterial);
 
 new Vue({

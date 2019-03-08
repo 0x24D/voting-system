@@ -1,5 +1,4 @@
 <template>
-
 <div id="results">
     <md-table md-card>
       <md-table-toolbar>
@@ -11,7 +10,7 @@
         <md-table-head>Number of Votes</md-table-head>
       </md-table-row>
 
-      <md-table-row
+    <md-table-row
         v-for="candidate in candidates"
         :key="candidate.id">
         <md-table-cell>{{ candidate.name }}</md-table-cell>
@@ -19,32 +18,29 @@
         <md-table-cell>{{ candidate.votes  }}</md-table-cell>
       </md-table-row>
     </md-table>
-    
-    <md-table md-card>    
-    <div class="container">
-      <div class="Chart__list">
-        <div class="Chart">
-          <candidateChart></candidateChart>
-        </div>
-      </div>
-    </div>
-    </md-table>
-  </div>
-</template>
 
+ 
+    <md-card id="chart"> 
+    <bars
+      :data="this.chartData"
+      :gradient="['#ffbe88', '#ff93df']"
+      :barWidth="30"
+      :padding="18">
+    </bars>
+    </md-card>
+     </div>
+ 
+</template>
 <script>
-import candidateChart from './Chart.js'
 export default {
   name: 'Results',
   data() {
     return {
       candidates: [],
-    }
-  },
-  components: {
-    candidateChart
-  },
-  created() {
+      chartData: [{value: 0, title: 'empty'}],
+  };
+},
+created() {
     this.$axios
       .get('http://localhost:8081/api/v1/campaigns/')
       .then((campaignRes) => {
@@ -69,11 +65,15 @@ export default {
                       party: partyRes.data.name,
                       votes,
                     });
+                    
+                    this.chartData.push({
+                      value: campaignRes.data[0].votes[candidateIndex][candidateId],
+                      title: `${candidateRes.data.name}: ${campaignRes.data[0].votes[candidateIndex][candidateId]}`, 
+                    });
                   });
               });
           });
         });
-
       });
   },
 };
@@ -98,4 +98,5 @@ export default {
 #results {
   padding: 50px 100px;
 }
+
 </style>
