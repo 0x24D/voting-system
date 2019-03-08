@@ -55,7 +55,7 @@ db.campaigns.insert({
   total_votes: 0,
   candidates: [labourCandidateId, conservativeCandidateId, yorkshireCandidateId],
   votes: [{[labourCandidateStr]: 0}, {[conservativeCandidateStr]: 0}, {[yorkshireCandidateStr]: 0}],
-  type: 'Local Election',
+  campaign_type: 'Local Election',
   active: 'Active',
   constituencies: [constituency1Id],
   start_date: Date.now(),

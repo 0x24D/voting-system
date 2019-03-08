@@ -7,7 +7,9 @@ export default new Vuex.Store({
   state: {
     campaignId: '',
     showAdmin: true,
+    showAdminCampaigns: false,
     showCampaigns: true,
+    showNewCampaign: false,
     showResults: false,
     showSuccess: false,
     showVote: false,
@@ -24,8 +26,14 @@ export default new Vuex.Store({
     setAdminDisplayMode(s, boolean) {
       Vue.set(s, 'showAdmin', boolean);
     },
+    setAdminCampaignsDisplayMode(s, boolean) {
+      Vue.set(s, 'showAdminCampaigns', boolean);
+    },
     setCampaignsDisplayMode(s, boolean) {
       Vue.set(s, 'showCampaigns', boolean);
+    },
+    setNewCampaignDisplayMode(s, boolean) {
+      Vue.set(s, 'showNewCampaign', boolean);
     },
     setResultsDisplayMode(s, boolean) {
       Vue.set(s, 'showResults', boolean);
