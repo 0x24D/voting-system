@@ -22,7 +22,7 @@
 /api/v1/auditors/{username} GET - return specific auditor (to implement?)
 
 /api/v1/campaigns GET - return list of all campaigns (use ?constituency={constituency} query param to filter) (implemented)
-/api/v1/campaigns POST - add new campaign (to implement for setting up a campaign)
+/api/v1/campaigns POST - add new campaign (implemented)
 /api/v1/campaigns/{id} GET - return specific campaign (implemented)
 /api/v1/campaigns/{id} PUT - update campaign (increment total votes, etc.) (implemented)
 

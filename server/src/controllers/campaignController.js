@@ -1,8 +1,36 @@
 import {
+  addNew,
   findAll,
   findById,
   updateExistingById,
 } from '../db/campaignAccess';
+
+export const addNewCampaign = (req, res) => {
+  const dataToSave = {};
+  Object.keys(req.body).forEach((prop) => {
+    if (prop === 'total_votes') {
+      dataToSave[prop] = Number(req.body[prop]);
+    } else if (prop === 'votes') {
+      const votesData = [];
+      // [{candidateId: intVotes}]
+      req.body[prop].forEach((obj) => {
+        Object.keys(obj).forEach((key) => {
+          votesData.push({ [key]: Number(obj[key]) });
+        });
+      });
+      dataToSave[prop] = votesData;
+    } else {
+      dataToSave[prop] = req.body[prop];
+    }
+  });
+  addNew(dataToSave, (err, campaign) => {
+    if (err) {
+      res.status(500).end();
+    } else {
+      res.status(201).json(campaign);
+    }
+  });
+};
 
 export const getCampaigns = (req, res) => {
   // eslint-disable-next-line

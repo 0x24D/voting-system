@@ -20,7 +20,7 @@ const Campaign = mongoose.model('campaign', new Schema({
     type: [Object],
     required: true,
   },
-  type: {
+  campaign_type: {
     type: String,
     required: true,
   },
