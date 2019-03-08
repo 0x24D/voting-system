@@ -1,4 +1,5 @@
 <template>
+
 <div id="results">
     <md-table md-card>
       <md-table-toolbar>
@@ -24,8 +25,11 @@
     <bars
       :data="this.chartData"
       :gradient="['#ffbe88', '#ff93df']"
-      :barWidth="30"
-      :padding="18">
+      :barWidth="25"
+      :growDuration="1"
+      :padding="1"
+      :width="1000"
+      :height="350">
     </bars>
     </md-card>
      </div>
@@ -65,17 +69,17 @@ created() {
                       party: partyRes.data.name,
                       votes,
                     });
-                    
                     this.chartData.push({
-                      value: campaignRes.data[0].votes[candidateIndex][candidateId],
                       title: `${candidateRes.data.name}: ${campaignRes.data[0].votes[candidateIndex][candidateId]}`, 
+                      value: campaignRes.data[0].votes[candidateIndex][candidateId],
                     });
                   });
               });
           });
-        });
-      });
+        })
+      })
   },
+  
 };
 </script>
 
@@ -90,13 +94,18 @@ created() {
 }
 .container {
   max-width: 800px;
-  margin:  0 auto;
+  margin: 0 auto;
 }
-.md-table + .md-table {
+.md-table + .md-table +  .md-table-row>{
   margin-top: 16px;
 }
+.md-field {
+    max-width: 300px;
+  }
 #results {
   padding: 50px 100px;
 }
-
+#chart {
+  height: auto;
+}
 </style>
