@@ -1,67 +1,64 @@
 <template>
   <div id="newCampaign">
-    <md-dialog id="dialog" :md-active="true">
-      <form novalidate class="md-layout" @submit.prevent>
-        <md-card class="md-layout-item md-size-100 md-small-size-100">
-          <md-card-header>
-            <div class="md-title">New Campaign</div>
-          </md-card-header>
-          <md-card-content>
-            <div class="md-layout md-gutter">
-              <div class="md-layout-item md-small-size-100">
-                <md-field :class="getValidationClass('name')">
-                  <label for="name">Campaign name</label>
-                  <md-input name="name" id="name" v-model="campaign.name" required/>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100">
-                <md-field :class="getValidationClass('type')">
-                  <label for="type">Campaign type</label>
-                  <md-input name="type" id="type" v-model="campaign.campaign_type" required/>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100">
-                <md-field :class="getValidationClass('start_date')">
-                  <label for="start_date">Start date</label>
-                  <md-datepicker name="start_date" id="start_date" v-model="startDate" required/>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100">
-                <md-field :class="getValidationClass('end_date')">
-                  <label for="end_date">End date</label>
-                  <md-datepicker name="end_date" id="end_date" v-model="endDate" required/>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100">
-                <md-field :class="getValidationClass('candidates')">
-                  <label for="candidates">Candidates</label>
-                  <md-select name="candidates" id="candidates" v-model="campaign.candidates" md-dense required multiple>
-                    <md-option v-for="candidate in candidates" :key="candidate._id" :value="candidate._id">
-                      {{ candidate.name }}
-                    </md-option>
-                  </md-select>
-                </md-field>
-              </div>
-              <div class="md-layout-item md-small-size-100">
-                <md-field :class="getValidationClass('constituencies')">
-                  <label for="constituencies">Constituencies</label>
-                  <md-select name="constituencies" id="constituencies" v-model="campaign.constituencies" md-dense required multiple>
-                    <md-option v-for="constituency in constituencies" :key="constituency._id" :value="constituency._id">
-                      {{ constituency.name }}
-                    </md-option>
-                  </md-select>
-                </md-field>
-              </div>
+    <form novalidate class="md-layout" @submit.prevent>
+      <md-card class="md-layout-item md-size-100 md-small-size-100">
+        <md-card-header>
+          <div class="md-title">New Campaign</div>
+        </md-card-header>
+        <md-card-content>
+          <div class="md-layout md-gutter">
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('name')">
+                <label for="name">Campaign name</label>
+                <md-input name="name" id="name" v-model="campaign.name" required/>
+              </md-field>
             </div>
-          </md-card-content>
-          <md-dialog-actions>
-            <md-button class="md-primary" id="submitButton"
-            @click="newCampaignSubmit(campaign._id, campaign)">Submit</md-button>
-            <md-button class="md-primary" id="closeButton" @click="newCampaignClose()">Close</md-button>
-          </md-dialog-actions>
-        </md-card>
-      </form>
-    </md-dialog>
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('type')">
+                <label for="type">Campaign type</label>
+                <md-input name="type" id="type" v-model="campaign.campaign_type" required/>
+              </md-field>
+            </div>
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('start_date')">
+                <label for="start_date">Start date</label>
+                <md-datepicker name="start_date" id="start_date" v-model="startDate" required/>
+              </md-field>
+            </div>
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('end_date')">
+                <label for="end_date">End date</label>
+                <md-datepicker name="end_date" id="end_date" v-model="endDate" required/>
+              </md-field>
+            </div>
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('candidates')">
+                <label for="candidates">Candidates</label>
+                <md-select name="candidates" id="candidates" v-model="campaign.candidates" md-dense required multiple>
+                  <md-option v-for="candidate in candidates" :key="candidate._id" :value="candidate._id">
+                    {{ candidate.name }}
+                  </md-option>
+                </md-select>
+              </md-field>
+            </div>
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('constituencies')">
+                <label for="constituencies">Constituencies</label>
+                <md-select name="constituencies" id="constituencies" v-model="campaign.constituencies" md-dense required multiple>
+                  <md-option v-for="constituency in constituencies" :key="constituency._id" :value="constituency._id">
+                    {{ constituency.name }}
+                  </md-option>
+                </md-select>
+              </md-field>
+            </div>
+          </div>
+        </md-card-content>
+        <md-card-actions>
+          <md-button class="md-primary" id="submitButton"
+          @click="newCampaignSubmit(campaign._id, campaign)">Submit</md-button>
+        </md-card-actions>
+      </md-card>
+    </form>
   </div>
 </template>
 
@@ -127,20 +124,9 @@ export default {
         };
       }
     },
-    newCampaignClose() {
-      this.$store.commit('setNewCampaignDisplayMode', false);
-    },
     newCampaignSubmit(campaignId, formData) {
       this.$v.$touch();
       if (!this.$v.$invalid) {
-        // const candidatesArr = [];
-        // formData.candidates.forEach((candidate) => {
-        //   candidatesArr.push(candidate);
-        // });
-        // const constituenciesArr = [];
-        // formData.constituencies.forEach((constituency) => {
-        //     constituenciesArr.push(constituency);
-        // });
         this.$axios
           .post('http://localhost:8081/api/v1/campaigns/', {
             name: formData.name,
@@ -149,9 +135,6 @@ export default {
             end_date: formData.end_date,
             candidates: formData.candidates,
             constituencies: formData.constituencies
-          })
-          .then(() => {
-            this.newCampaignClose();
           });
       }
     },

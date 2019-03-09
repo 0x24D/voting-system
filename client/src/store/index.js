@@ -9,8 +9,8 @@ export default new Vuex.Store({
     showAdmin: true,
     showAdminCampaigns: false,
     showCampaigns: true,
-    showNewCampaign: false,
     showResults: false,
+    showSetup: false,
     showSuccess: false,
     showVote: false,
   },
@@ -32,11 +32,11 @@ export default new Vuex.Store({
     setCampaignsDisplayMode(s, boolean) {
       Vue.set(s, 'showCampaigns', boolean);
     },
-    setNewCampaignDisplayMode(s, boolean) {
-      Vue.set(s, 'showNewCampaign', boolean);
-    },
     setResultsDisplayMode(s, boolean) {
       Vue.set(s, 'showResults', boolean);
+    },
+    setSetupDisplayMode(s, boolean) {
+      Vue.set(s, 'showSetup', boolean);
     },
     setSuccessDisplayMode(s, boolean) {
       Vue.set(s, 'showSuccess', boolean);

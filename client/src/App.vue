@@ -20,8 +20,8 @@
         <div v-if="this.$store.state.showAdminCampaigns">
           <AdminCampaigns/>
         </div>
-        <div v-if="this.$store.state.showNewCampaign">
-          <NewCampaign/>
+        <div v-if="this.$store.state.showSetup">
+          <Setup/>
         </div>
         <div v-if="this.$store.state.showResults">
           <Results/>
@@ -41,8 +41,8 @@ import AdminCampaigns from './components/admin/AdminCampaigns.vue';
 import ListOfCampaigns from './components/ListOfCampaigns.vue';
 import Login from './components/Login.vue';
 import Logout from './components/Logout.vue';
-import NewCampaign from './components/admin/NewCampaign.vue';
 import Results from './components/Results.vue';
+import Setup from './components/admin/Setup.vue';
 import Success from './components/Success.vue';
 import Vote from './components/Vote.vue';
 
@@ -54,8 +54,8 @@ export default {
     ListOfCampaigns,
     Login,
     Logout,
-    NewCampaign,
     Results,
+    Setup,
     Success,
     Vote,
   },

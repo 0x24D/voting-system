@@ -19,7 +19,7 @@
         {{ new Date(campaign.end_date).toLocaleTimeString() }}</md-table-cell>
       </md-table-row>
     </md-table>
-    <md-button class="md-fab md-fab-bottom-right" @click="newCampaign()">
+    <md-button class="md-fab md-fab-bottom-right" @click="setup()">
       <md-icon>+</md-icon>
     </md-button>
   </div>
@@ -41,8 +41,8 @@ export default {
       });
   },
   methods: {
-    newCampaign() {
-      this.$store.commit('setNewCampaignDisplayMode', true);
+    setup() {
+      this.$store.commit('setSetupDisplayMode', true);
     },
   },
 };
