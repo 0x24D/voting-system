@@ -19,8 +19,7 @@
         <md-table-cell>{{ candidate.votes  }}</md-table-cell>
       </md-table-row>
     </md-table>
-
- 
+    
     <md-card id="chart"> 
     <bars
       :data="this.chartData"

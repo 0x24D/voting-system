@@ -12,7 +12,7 @@ import pollingStationRoutes from './src/routes/pollingStationRoutes';
 import systemRoutes from './src/routes/systemRoutes';
 import userRoutes from './src/routes/userRoutes';
 import voterRoutes from './src/routes/voterRoutes';
-
+import nodeMailer from 'nodemailer';
 
 const app = express();
 

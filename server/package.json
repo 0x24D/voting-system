@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.4.8",
+    "nodemailer": "^5.1.1",
     "paseto.js": "^0.1.3"
   },
   "devDependencies": {
