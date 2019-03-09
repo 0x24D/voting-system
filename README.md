@@ -30,7 +30,7 @@
 /api/v1/candidates POST - add new candidate (implemented in feat/candidate-profiles)
 /api/v1/candidates/{id} GET - return specific candidate (implemented)
 
-/api/v1/constituencies GET - return list of all constituencies (implementing)
+/api/v1/constituencies GET - return list of all constituencies (implemented)
 /api/v1/constituencies/{id} GET - return specific constituency (implemented)
 
 /api/v1/parties POST - add new party (to implement for party profiles, setting up a campaign)
