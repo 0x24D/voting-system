@@ -3,7 +3,9 @@ import User from './userModel';
 
 // eslint-disable-next-line
 const Schema = mongoose.Schema;
-
+/**
+ * creates a new mongoose schema
+ */
 const AuditorSchema = new Schema({
 
   polling_station: {
@@ -11,7 +13,9 @@ const AuditorSchema = new Schema({
   },
 
 });
-
+/**
+ * creates an inheritence like model for the voter and adds on the user model
+ */
 const Auditor = User.discriminator('auditor', AuditorSchema);
 
 export default Auditor;

@@ -25,31 +25,28 @@ export default {
       voters: []
     };
   },
+  /**
+   * <p> The created method that returns the voters that are able to vote at the polling station that the auditor is based at 
+   * </p>
+   * @return the voters array that is used to populate the UI table
+   */
   created() {
     this.$axios
       .get(`http://localhost:8081/api/v1/auditors/${localStorage.user}`)
       .then((auditorsRes) => {
-        console.log(localStorage.user);
-        console.log(auditorsRes.data);
         const pollingStation = auditorsRes.data.polling_station;
-        console.log(pollingStation);
         this.$axios
           .get(`http://localhost:8081/api/v1/systems?station=${pollingStation}`)
           .then(systemRes => {
-            console.log(systemRes.data);
             systemRes.data.forEach((system) => {
-              console.log(system);
               // for each system object -> get the voters array
               const voterArray = system.voters;
-              console.log(voterArray);
               // for each voter in array
               voterArray.forEach((voterId) => {
                 // call get endpoint -> voter by id
-                console.log(voterId);
                 this.$axios
                   .get(`http://localhost:8081/api/v1/voters/${voterId}`)
                   .then((voterRes) => {
-                    console.log(voterRes.data);
                     this.voters.push({
                       id: voterId,
                       name: voterRes.data.name,
@@ -62,6 +59,11 @@ export default {
       });
   },
   methods: {
+    /**
+     * <p> Updates the voters record in the database by updating the voter's voted flag when the checkbox value is changed
+     * </p>
+     * @param voter the voter that the user wanst to update
+     */
     onChange(voter){
                   this.$axios
             .put(`http://localhost:8081/api/v1/voters/${voter.id}`, {

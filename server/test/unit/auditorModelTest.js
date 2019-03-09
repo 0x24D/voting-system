@@ -1,7 +1,10 @@
 import { expect } from 'chai';
 
 import Auditor from '../../src/models/auditorModel';
-
+/**
+ * Creates a blank order and ensures the correct errors
+ * exist or don't exist dependent on default and required properities
+ */
 describe('auditor', () => {
   it('should be invalid if username is empty', (done) => {
     const a = new Auditor();
@@ -11,9 +14,8 @@ describe('auditor', () => {
       done();
     });
   });
-});
 
-describe('auditor', () => {
+
   it('should be invalid if name is empty', (done) => {
     const a = new Auditor();
 
@@ -22,9 +24,7 @@ describe('auditor', () => {
       done();
     });
   });
-});
 
-describe('auditor', () => {
   it('should be invalid if email is empty', (done) => {
     const a = new Auditor();
 
@@ -33,9 +33,7 @@ describe('auditor', () => {
       done();
     });
   });
-});
 
-describe('auditor', () => {
   it('should be invalid if password is empty', (done) => {
     const a = new Auditor();
 
@@ -44,9 +42,7 @@ describe('auditor', () => {
       done();
     });
   });
-});
 
-describe('auditor', () => {
   it('should be invalid if authentication_attempts is empty', (done) => {
     const a = new Auditor();
 
@@ -55,9 +51,7 @@ describe('auditor', () => {
       done();
     });
   });
-});
 
-describe('auditor', () => {
   it('should be invalid if polling_station is empty', (done) => {
     const a = new Auditor();
 
