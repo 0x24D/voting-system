@@ -48,15 +48,6 @@ describe('campaign', () => {
     });
   });
 
-  it('should be invalid if active is empty', (done) => {
-    const c = new Campaign();
-
-    c.validate((err) => {
-      expect(err.errors.active).to.exist;
-      done();
-    });
-  });
-
   it('should be invalid if constituences is empty', (done) => {
     const c = new Campaign();
 

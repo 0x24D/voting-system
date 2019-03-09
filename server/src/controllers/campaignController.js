@@ -7,7 +7,7 @@ import {
 
 export const addNewCampaign = (req, res) => {
   const props = ['name', 'total_votes', 'candidates',
-    'votes', 'campaign_type', 'active',
+    'votes', 'campaign_type',
     'constituencies', 'start_date', 'end_date'];
   const dataToSave = {};
   props.forEach((prop) => {

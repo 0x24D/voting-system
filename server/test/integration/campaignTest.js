@@ -49,7 +49,6 @@ describe('Campaign tests', () => {
       candidates: [candidate1, candidate2],
       votes: [{ [candidate1Id]: 0 }, { [candidate2Id]: 0 }],
       campaign_type: 'Campaign Type',
-      active: 'Active',
       constituencies: [constituency1],
       end_date: Date.now() + 86400000,
     });
@@ -65,7 +64,6 @@ describe('Campaign tests', () => {
       candidates: [candidate1],
       votes: [{ [candidate1Id]: 0 }],
       campaign_type: 'Campaign Type',
-      active: 'Inactive',
       constituencies: [constituency2],
       end_date: Date.now(),
     });
@@ -109,7 +107,6 @@ describe('Campaign tests', () => {
         res.body[0].should.have.property('candidates');
         res.body[0].should.have.property('votes');
         res.body[0].should.have.property('campaign_type');
-        res.body[0].should.have.property('active');
         res.body[0].should.have.property('constituencies');
         res.body[0].should.have.property('start_date');
         res.body[0].should.have.property('end_date');
@@ -129,7 +126,6 @@ describe('Campaign tests', () => {
         res.body[0].votes[1].should.have.property(candidate2Id);
         res.body[0].votes[1][candidate2Id].should.have.equal(0);
         res.body[0].campaign_type.should.equal('Campaign Type');
-        res.body[0].active.should.equal('Active');
         res.body[0].constituencies.should.be.a('array');
         expect(res.body[0].constituencies).to.have.lengthOf(1);
         res.body[0].constituencies[0].should.equal(constituency1Id);
@@ -139,7 +135,6 @@ describe('Campaign tests', () => {
         res.body[1].should.have.property('candidates');
         res.body[1].should.have.property('votes');
         res.body[1].should.have.property('campaign_type');
-        res.body[1].should.have.property('active');
         res.body[1].should.have.property('constituencies');
         res.body[1].should.have.property('start_date');
         res.body[1].should.have.property('end_date');
@@ -155,7 +150,6 @@ describe('Campaign tests', () => {
         res.body[1].votes[0].should.have.property(candidate1Id);
         res.body[1].votes[0][candidate1Id].should.have.equal(0);
         res.body[1].campaign_type.should.equal('Campaign Type');
-        res.body[1].active.should.equal('Inactive');
         res.body[1].constituencies.should.be.a('array');
         expect(res.body[1].constituencies).to.have.lengthOf(1);
         res.body[1].constituencies[0].should.equal(constituency2Id);
@@ -177,7 +171,6 @@ describe('Campaign tests', () => {
         res.body[0].should.have.property('candidates');
         res.body[0].should.have.property('votes');
         res.body[0].should.have.property('campaign_type');
-        res.body[0].should.have.property('active');
         res.body[0].should.have.property('constituencies');
         res.body[0].should.have.property('start_date');
         res.body[0].should.have.property('end_date');
@@ -197,7 +190,6 @@ describe('Campaign tests', () => {
         res.body[0].votes[1].should.have.property(candidate2Id);
         res.body[0].votes[1][candidate2Id].should.have.equal(0);
         res.body[0].campaign_type.should.equal('Campaign Type');
-        res.body[0].active.should.equal('Active');
         res.body[0].constituencies.should.be.a('array');
         expect(res.body[0].constituencies).to.have.lengthOf(1);
         res.body[0].constituencies[0].should.equal(constituency1Id);
@@ -238,7 +230,6 @@ describe('Campaign tests', () => {
         candidates: [candidate3Id, candidate4Id],
         votes: [{ [candidate3Id]: 0 }, { [candidate4Id]: 0 }],
         campaign_type: 'Campaign Type',
-        active: 'Active',
         constituencies: [constituency3Id, constituency4Id],
         end_date: Date.now() + 86400000,
       })
@@ -252,7 +243,6 @@ describe('Campaign tests', () => {
         res.body.should.have.property('candidates');
         res.body.should.have.property('votes');
         res.body.should.have.property('campaign_type');
-        res.body.should.have.property('active');
         res.body.should.have.property('constituencies');
         res.body.should.have.property('start_date');
         res.body.should.have.property('end_date');
@@ -271,7 +261,6 @@ describe('Campaign tests', () => {
         res.body.votes[1].should.have.property(candidate4Id);
         res.body.votes[1][candidate4Id].should.have.equal(0);
         res.body.campaign_type.should.equal('Campaign Type');
-        res.body.active.should.equal('Active');
         res.body.constituencies.should.be.a('array');
         expect(res.body.constituencies).to.have.lengthOf(2);
         res.body.constituencies[0].should.equal(constituency3Id);
@@ -293,7 +282,6 @@ describe('Campaign tests', () => {
         res.body.should.have.property('candidates');
         res.body.should.have.property('votes');
         res.body.should.have.property('campaign_type');
-        res.body.should.have.property('active');
         res.body.should.have.property('constituencies');
         res.body.should.have.property('start_date');
         res.body.should.have.property('end_date');
@@ -315,7 +303,6 @@ describe('Campaign tests', () => {
         res.body.votes[1].should.have.property(candidate2Id);
         res.body.votes[1][candidate2Id].should.have.equal(0);
         res.body.campaign_type.should.equal('Campaign Type');
-        res.body.active.should.equal('Active');
         res.body.constituencies.should.be.a('array');
         expect(res.body.constituencies).to.have.lengthOf(1);
         res.body.constituencies[0].should.equal(constituency1Id);
@@ -341,7 +328,6 @@ describe('Campaign tests', () => {
         res.body.should.have.property('candidates');
         res.body.should.have.property('votes');
         res.body.should.have.property('campaign_type');
-        res.body.should.have.property('active');
         res.body.should.have.property('constituencies');
         res.body.should.have.property('start_date');
         res.body.should.have.property('end_date');
@@ -361,7 +347,6 @@ describe('Campaign tests', () => {
         res.body.votes[1].should.have.property(candidate2Id);
         res.body.votes[1][candidate2Id].should.have.equal(0);
         res.body.campaign_type.should.equal('Campaign Type');
-        res.body.active.should.equal('Active');
         res.body.constituencies.should.be.a('array');
         expect(res.body.constituencies).to.have.lengthOf(1);
         res.body.constituencies[0].should.equal(constituency1Id);
@@ -387,7 +372,6 @@ describe('Campaign tests', () => {
         res.body.should.have.property('candidates');
         res.body.should.have.property('votes');
         res.body.should.have.property('campaign_type');
-        res.body.should.have.property('active');
         res.body.should.have.property('constituencies');
         res.body.should.have.property('start_date');
         res.body.should.have.property('end_date');
@@ -407,7 +391,6 @@ describe('Campaign tests', () => {
         res.body.votes[1].should.have.property(candidate2Id);
         res.body.votes[1][candidate2Id].should.have.equal(0);
         res.body.campaign_type.should.equal('Campaign Type');
-        res.body.active.should.equal('Active');
         res.body.constituencies.should.be.a('array');
         expect(res.body.constituencies).to.have.lengthOf(1);
         res.body.constituencies[0].should.equal(constituency1Id);

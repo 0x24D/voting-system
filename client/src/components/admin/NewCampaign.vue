@@ -35,7 +35,7 @@
               <div class="md-layout-item md-small-size-100">
                 <md-field :class="getValidationClass('candidates')">
                   <label for="candidates">Candidates</label>
-                  <md-select name="candidates" id="candidates" v-model="campaign.candidates" md-dense required>
+                  <md-select name="candidates" id="candidates" v-model="campaign.candidates" md-dense required multiple>
                     <md-option v-for="candidate in candidates" :key="candidate._id" :value="candidate._id">
                       {{ candidate.name }}
                     </md-option>
@@ -45,7 +45,7 @@
               <div class="md-layout-item md-small-size-100">
                 <md-field :class="getValidationClass('constituencies')">
                   <label for="constituencies">Constituencies</label>
-                  <md-select name="constituencies" id="constituencies" v-model="campaign.constituencies" md-dense required>
+                  <md-select name="constituencies" id="constituencies" v-model="campaign.constituencies" md-dense required multiple>
                     <md-option v-for="constituency in constituencies" :key="constituency._id" :value="constituency._id">
                       {{ constituency.name }}
                     </md-option>
@@ -79,7 +79,7 @@ export default {
         candidates: [],
         campaign_type: '',
         active: '',
-        constituencies: '',
+        constituencies: [],
         start_date: new Date(Date.now()).toISOString(),
         end_date: null,
       },
@@ -133,9 +133,22 @@ export default {
     newCampaignSubmit(campaignId, formData) {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        // const candidatesArr = [];
+        // formData.candidates.forEach((candidate) => {
+        //   candidatesArr.push(candidate);
+        // });
+        // const constituenciesArr = [];
+        // formData.constituencies.forEach((constituency) => {
+        //     constituenciesArr.push(constituency);
+        // });
         this.$axios
           .post('http://localhost:8081/api/v1/campaigns/', {
-
+            name: formData.name,
+            campaign_type: formData.campaign_type,
+            start_date: formData.start_date,
+            end_date: formData.end_date,
+            candidates: formData.candidates,
+            constituencies: formData.constituencies
           })
           .then(() => {
             this.newCampaignClose();

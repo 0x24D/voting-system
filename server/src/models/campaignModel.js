@@ -24,10 +24,6 @@ const Campaign = mongoose.model('campaign', new Schema({
     type: String,
     required: true,
   },
-  active: {
-    type: String, // enum or bool, tbd
-    required: true,
-  },
   constituencies: [{
     type: Schema.Types.ObjectId, ref: 'constituency',
   }],
