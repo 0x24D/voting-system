@@ -13,8 +13,13 @@
           <Success/>
         </div>
       </div>
-      <div v-else>
-        <Results/>
+      <div v-else-if="userType('admin')">
+        <div v-if="this.$store.state.showAdmin">
+          <Admin/>
+        </div>
+        <div v-if="this.$store.state.showResults">
+          <Results/>
+        </div>
       </div>
     </div>
     <div v-else>
@@ -25,6 +30,7 @@
 
 <script>
 import { getUserType, isUserAuthenticated } from './utils/auth';
+import Admin from './components/Admin.vue';
 import ListOfCampaigns from './components/ListOfCampaigns.vue';
 import Login from './components/Login.vue';
 import Logout from './components/Logout.vue';
@@ -35,6 +41,7 @@ import Vote from './components/Vote.vue';
 export default {
   name: 'app',
   components: {
+    Admin,
     ListOfCampaigns,
     Login,
     Logout,
