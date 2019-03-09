@@ -1,25 +1,25 @@
 import {
+  addNew,
   findById,
   updateExistingById,
 } from '../db/voterAccess';
-import Voter from '../models/voterModel';
 
-export const addNewVoter = (req, res) => { //needs testing
-  const newVoter = new Voter({
-      username: req.body.username,
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      roles: "voter",
-      date_of_birth:  req.body.date_of_birth,
-      address: req.body.address,
-  });
-  newVoter.save((err, file) => {
-      if (err) {
-          res.send(err);
-      } else {
-          res.json(file);
-      }
+export const addNewVoter = (req, res) => {
+  const dataToSave = {
+    username: req.body.username,
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    roles: req.body.roles,
+    date_of_birth: req.body.date_of_birth,
+    address: req.body.address, 
+  };
+  addNew(dataToSave, (err, voter) => {
+    if (err) {
+      res.status(500).end();
+    } else {
+      res.status(201).json(voter);
+    }
   });
 };
 
