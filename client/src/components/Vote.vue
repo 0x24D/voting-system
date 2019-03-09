@@ -71,12 +71,22 @@ export default {
             .put(`http://localhost:8081/api/v1/voters/${localStorage.user}`, {
               voted: true,
             })
-            .then(() => {
-              this.$store.commit('setSuccessDisplayMode', true);
-              this.$store.commit('setVoteDisplayMode', false);
+            .then(() => { 
+              this.$axios
+              .get(`http://localhost:8081/api/v1/users/${localStorage.user}`)
+            .then(() => { 
+              this.$axios
+              .post(`/api/v1/email/${localStorage.user}`, {
+                  
+                });
+            })
+          })
+          .then(() => {
+            this.$store.commit('setSuccessDisplayMode', true);
+            this.$store.commit('setVoteDisplayMode', false);
             });
         });
-    }
+    },
   },
 };
 </script>

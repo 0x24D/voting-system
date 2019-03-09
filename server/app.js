@@ -12,6 +12,7 @@ import pollingStationRoutes from './src/routes/pollingStationRoutes';
 import systemRoutes from './src/routes/systemRoutes';
 import userRoutes from './src/routes/userRoutes';
 import voterRoutes from './src/routes/voterRoutes';
+import emailRoutes from './src/routes/emailRoutes';
 import nodeMailer from 'nodemailer';
 
 const app = express();
@@ -46,5 +47,7 @@ pollingStationRoutes(app);
 systemRoutes(app);
 userRoutes(app);
 voterRoutes(app);
+emailRoutes(app);
+
 
 export default app;
