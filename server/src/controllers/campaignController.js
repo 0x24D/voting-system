@@ -6,26 +6,31 @@ import {
 } from '../db/campaignAccess';
 
 export const addNewCampaign = (req, res) => {
+  const props = ['name', 'total_votes', 'candidates',
+    'votes', 'campaign_type', 'active',
+    'constituencies', 'start_date', 'end_date'];
   const dataToSave = {};
-  Object.keys(req.body).forEach((prop) => {
-    if (prop === 'total_votes') {
-      dataToSave[prop] = Number(req.body[prop]);
-    } else if (prop === 'votes') {
-      const votesData = [];
-      // [{candidateId: intVotes}]
-      req.body[prop].forEach((obj) => {
-        Object.keys(obj).forEach((key) => {
-          votesData.push({ [key]: Number(obj[key]) });
+  props.forEach((prop) => {
+    if (Object.prototype.hasOwnProperty.call(req.body, prop)) {
+      if (prop === 'total_votes') {
+        dataToSave[prop] = Number(req.body[prop]);
+      } else if (prop === 'votes') {
+        const votesData = [];
+        // [{candidateId: intVotes}]
+        req.body[prop].forEach((obj) => {
+          Object.keys(obj).forEach((key) => {
+            votesData.push({ [key]: Number(obj[key]) });
+          });
         });
-      });
-      dataToSave[prop] = votesData;
-    } else {
-      dataToSave[prop] = req.body[prop];
+        dataToSave[prop] = votesData;
+      } else {
+        dataToSave[prop] = req.body[prop];
+      }
     }
   });
   addNew(dataToSave, (err, campaign) => {
     if (err) {
-      res.status(500).end();
+      res.status(500).send(err);
     } else {
       res.status(201).json(campaign);
     }

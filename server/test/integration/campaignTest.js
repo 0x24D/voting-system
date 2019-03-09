@@ -266,7 +266,6 @@ describe('Campaign tests', () => {
         expect(res.body.votes).to.have.lengthOf(2);
         res.body.votes[0].should.be.a('object');
         res.body.votes[0].should.have.property(candidate3Id);
-        console.log(typeof res.body.votes[0][candidate3Id]);
         res.body.votes[0][candidate3Id].should.have.equal(0);
         res.body.votes[1].should.be.a('object');
         res.body.votes[1].should.have.property(candidate4Id);
