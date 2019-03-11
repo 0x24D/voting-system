@@ -19,7 +19,7 @@
 /api/v1/admins/{username} GET - return specific admin (implemented)
 
 /api/v1/auditors POST - add new auditor (to implement for user registration)
-/api/v1/auditors/{username} GET - return specific auditor (to implement?)
+/api/v1/auditors/{id} GET - return specific auditor (implemeted)
 
 /api/v1/campaigns GET - return list of all campaigns (use ?constituency={constituency} query param to filter) (implemented)
 /api/v1/campaigns POST - add new campaign (to implement for setting up a campaign)

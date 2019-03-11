@@ -5,10 +5,13 @@ import {
 } from '../db/systemAccess';
 
 export const getSystems = (req, res) => {
-  findAll((err, systems) => {
+  // eslint-disable-next-line
+  const station = req.query.station;
+  findAll(station, (err, systems) => {
     if (err) {
       res.status(500).send(err);
     } else {
+      console.log(systems);
       res.json(systems);
     }
   });

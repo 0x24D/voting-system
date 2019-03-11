@@ -50,7 +50,7 @@ const conservativeCandidateId = ObjectId(conservativeCandidateStr);
 const yorkshireCandidateId = ObjectId(yorkshireCandidateStr);
 
 // add campaign
-db.campaigns.insert({
+const campaignRet = db.campaigns.insertOne({
   name: 'Local Election for Doncaster North',
   total_votes: 0,
   candidates: [labourCandidateId, conservativeCandidateId, yorkshireCandidateId],
@@ -61,6 +61,8 @@ db.campaigns.insert({
   start_date: Date.now(),
   end_date: Date.now() + 86400000
 });
+
+const campaign1Id = ObjectId(campaignRet.insertedId.str);
 
 // add address
 
@@ -92,7 +94,8 @@ const voter = {
   __t: 'voter'
 };
 
-db.users.insert(voter);
+const voterRet = db.users.insertOne(voter);
+const voter1Id = ObjectId(voterRet.insertedId.str);
 
 // add admin
 // admin:adminPass
@@ -107,3 +110,37 @@ const admin = {
 };
 
 db.users.insert(admin);
+
+const pollingStation = {
+  address: address1Id,
+  open_date: Date.now(),
+  close_date: Date.now() + 86400000
+};
+
+const pollingStationRet = db.pollingStations.insertOne(pollingStation);
+const pollingStation1Id = ObjectId(pollingStationRet.insertedId.str);
+
+// add auditor
+// auditor:auditorPass
+const auditor = {
+  username: 'auditor',
+  name: 'Bob Jones',
+  email: 'b.jones@email.com',
+  password: '$2a$10$7A.zv9h/SGk7c8Q9jjSrT.m2PvJ6KiuPed/RdcVKCrHnhuan2pCTq',
+  authentication_attempts: 0,
+  salt: '$2a$10$7A.zv9h/SGk7c8Q9jjSrT.',
+  __t: 'auditor',
+  polling_station: pollingStation1Id
+};
+
+db.users.insert(auditor);
+
+const system = {
+  station: pollingStation1Id,
+  voters: [voter1Id],
+  campaigns: [campaign1Id],
+  language: 'en-gb',
+};
+
+db.systems.insert(system);
+

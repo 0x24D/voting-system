@@ -24,7 +24,10 @@
           <AddUser/>
         </div>
       </div>
-    </div>      
+      <div v-else-if="userType('auditor')">
+        <Auditor/>
+      </div>
+    </div>
     <div v-else>
       <Login/>
     </div>
@@ -40,6 +43,7 @@ import Logout from './components/Logout.vue';
 import Results from './components/Results.vue';
 import Success from './components/Success.vue';
 import Vote from './components/Vote.vue';
+import Auditor from './components/Auditor.vue';
 
 export default {
   name: 'app',
@@ -52,6 +56,7 @@ export default {
     Results,
     Success,
     Vote,
+    Auditor
   },
   methods: {
     userType(userType) {

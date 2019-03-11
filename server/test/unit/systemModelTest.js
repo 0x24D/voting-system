@@ -3,44 +3,38 @@ import { expect } from 'chai';
 import System from '../../src/models/systemModel';
 
 describe('system', () => {
-  it('should be invalid if station is empty', (done) => {
+  it('should be no error as station is defaulted', (done) => {
     const s = new System();
 
     s.validate((err) => {
-      expect(err.errors.station).to.not.exist;
+      expect(err).to.not.exist;
       done();
     });
   });
-});
 
-describe('system', () => {
-  it('should be invalid if voters is empty', (done) => {
+  it('should be no error as voters is defaulted', (done) => {
     const s = new System();
 
     s.validate((err) => {
-      expect(err.errors.voters).to.exist;
+      expect(err).to.not.exist;
       done();
     });
   });
-});
 
-describe('system', () => {
-  it('should be invalid if campaigns is empty', (done) => {
+  it('should be no error as campaigns is defaulted', (done) => {
     const s = new System();
 
     s.validate((err) => {
-      expect(err.errors.campaigns).to.not.exist;
+      expect(err).to.not.exist;
       done();
     });
   });
-});
 
-describe('system', () => {
-  it('should be invalid if language is empty', (done) => {
+  it('should be no error as language is defaulted', (done) => {
     const s = new System();
 
     s.validate((err) => {
-      expect(err.errors.county).to.not.exist;
+      expect(err).to.not.exist;
       done();
     });
   });
