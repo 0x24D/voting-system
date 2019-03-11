@@ -15,8 +15,8 @@
 /api/v1/addresses POST - add new address (to implement for setting up a campaign)
 /api/v1/addresses/{id} GET - return specific address (implemented)
 
-/api/v1/admins POST - add new admin (to implement for user registration)
-/api/v1/admins/{username} GET - return specific admin (to implement?)
+/api/v1/admins POST - add new admin (implemented)
+/api/v1/admins/{username} GET - return specific admin (implemented)
 
 /api/v1/auditors POST - add new auditor (to implement for user registration)
 /api/v1/auditors/{username} GET - return specific auditor (to implement?)
@@ -44,7 +44,7 @@
 /api/v1/users/{username} GET - return specific user (implemented)
 /api/v1/users/{id} PUT - update user (login attempts, etc.) (implemented)
 
-/api/v1/voters POST - add new voter (to implement for user registration)
+/api/v1/voters POST - add new voter (implemented)
 /api/v1/voters/{id} GET - return specific voter (implemented)
 /api/v1/voters/{id} PUT - update voter (implemented)
 ```

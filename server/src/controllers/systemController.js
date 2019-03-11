@@ -1,7 +1,7 @@
 import {
   findAll,
   findById,
-  updateExistingById
+  updateExistingById,
 } from '../db/systemAccess';
 
 export const getSystems = (req, res) => {

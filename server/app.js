@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import addressRoutes from './src/routes/addressRoutes';
+import adminRoutes from './src/routes/adminRoutes';
 import authenticationRoutes from './src/routes/authenticationRoutes';
 import campaignRoutes from './src/routes/campaignRoutes';
 import candidateRoutes from './src/routes/candidateRoutes';
@@ -37,6 +38,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 addressRoutes(app);
+adminRoutes(app);
 authenticationRoutes(app);
 campaignRoutes(app);
 candidateRoutes(app);

@@ -121,7 +121,7 @@ describe('Voter tests', () => {
         password: 'testPass',
         roles: 'voter',
         date_of_birth: new Date('01/01/01'),
-        address: addressId1,       
+        address: addressId1,
       })
       .end((err, res) => {
         res.should.have.status(201);
@@ -149,6 +149,4 @@ describe('Voter tests', () => {
         done();
       });
   });
-
-
 });

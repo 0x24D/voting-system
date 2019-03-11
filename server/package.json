@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon ./bin/www --exec babel-node -e js",
-    "integration-test": "cross-env NODE_ENV=test mocha --recursive ./test/integration --require babel-register --exit",
+    "integration-test": "cross-env NODE_ENV=test mocha --timeout 2250 --recursive ./test/integration --require babel-register --exit",
     "unit-test": "cross-env NODE_ENV=test mocha --recursive ./test/unit --require babel-register --exit",
     "coverage": "cross-env NODE_ENV=test nyc mocha --recursive ./test --require babel-register --exit"
   },

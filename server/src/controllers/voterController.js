@@ -10,9 +10,8 @@ export const addNewVoter = (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    roles: req.body.roles,
     date_of_birth: req.body.date_of_birth,
-    address: req.body.address, 
+    address: req.body.address,
   };
   addNew(dataToSave, (err, voter) => {
     if (err) {
@@ -25,9 +24,7 @@ export const addNewVoter = (req, res) => {
 
 
 export const getVoterWithId = (req, res) => {
-  console.log(req.params.id);
   findById(req.params.id, (err, voter) => {
-    console.log(voter);
     if (err) {
       res.send(err);
     } else {

@@ -8,9 +8,7 @@ export default new Vuex.Store({
     campaignId: '',
     showAddUser: false,
     showCampaigns: true,
-    showResults: true,
     showAdmin: true,
-    showCampaigns: true,
     showResults: false,
     showSuccess: false,
     showVote: false,
@@ -41,6 +39,6 @@ export default new Vuex.Store({
     },
     setVoteDisplayMode(s, boolean) {
       Vue.set(s, 'showVote', boolean);
-    },   
+    },
   },
 });

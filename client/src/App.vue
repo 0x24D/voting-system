@@ -21,7 +21,7 @@
           <Results/>
         </div>
         <div v-if="this.$store.state.showAddUser">
-          <AddVoter/>
+          <AddUser/>
         </div>
       </div>
     </div>      
@@ -32,7 +32,7 @@
 </template>
 <script>
 import { getUserType, isUserAuthenticated } from './utils/auth';
-import AddVoter from './components/AddUser.vue';
+import AddUser from './components/AddUser.vue';
 import Admin from './components/Admin.vue';
 import ListOfCampaigns from './components/ListOfCampaigns.vue';
 import Login from './components/Login.vue';
@@ -44,7 +44,7 @@ import Vote from './components/Vote.vue';
 export default {
   name: 'app',
   components: {
-    AddVoter,
+    AddUser,
     Admin,
     ListOfCampaigns,
     Login,
