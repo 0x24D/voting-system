@@ -1,0 +1,8 @@
+
+{
+    "service": "gmail",
+    "auth": {
+        "user" : "replace me",
+        "pass" : "replace me"
+    }
+}

@@ -72,7 +72,8 @@ export default {
           })
           .then(() => {
             this.$axios
-            .post(`http://localhost:8081/api/v1/email/${localStorage.user}`, {
+            .post('http://localhost:8081/api/v1/email', {
+              id: localStorage.user,
               subject: 'Vote successful',
               text: 'Thank you for your vote!'
               });
