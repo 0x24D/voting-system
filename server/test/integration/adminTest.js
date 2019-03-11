@@ -66,7 +66,6 @@ describe('Admin tests', () => {
         name: 'testname',
         email: 'test@mail',
         password: 'testPass',
-        roles: 'admin',
       })
       .end((err, res) => {
         res.should.have.status(201);
@@ -77,13 +76,11 @@ describe('Admin tests', () => {
         res.body.should.have.property('name');
         res.body.should.have.property('email');
         res.body.should.have.property('password');
-        res.body.should.have.property('roles');
         res.body.should.have.property('authentication_attempts');
         res.body.username.should.equal('testuser');
         res.body.name.should.equal('testname');
         res.body.email.should.equal('test@mail');
         res.body.password.should.equal('testPass');
-        res.body.roles.should.equal('admin');
         res.body.authentication_attempts.should.equal(0);
         done();
       });

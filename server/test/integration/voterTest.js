@@ -119,7 +119,6 @@ describe('Voter tests', () => {
         name: 'testname',
         email: 'test@mail',
         password: 'testPass',
-        roles: 'voter',
         date_of_birth: new Date('01/01/01'),
         address: addressId1,
       })
@@ -132,7 +131,6 @@ describe('Voter tests', () => {
         res.body.should.have.property('name');
         res.body.should.have.property('email');
         res.body.should.have.property('password');
-        res.body.should.have.property('roles');
         res.body.should.have.property('authentication_attempts');
         res.body.should.have.property('voted');
         res.body.should.have.property('date_of_birth');
@@ -141,7 +139,6 @@ describe('Voter tests', () => {
         res.body.name.should.equal('testname');
         res.body.email.should.equal('test@mail');
         res.body.password.should.equal('testPass');
-        res.body.roles.should.equal('voter');
         res.body.authentication_attempts.should.equal(0);
         res.body.voted.should.equal(false);
         res.body.date_of_birth.should.equal(new Date('01/01/01').toISOString());
