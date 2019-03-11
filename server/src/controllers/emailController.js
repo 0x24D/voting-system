@@ -4,7 +4,7 @@ import {
 
 import nodemailer from 'nodemailer';
 var fs = require('fs');
-const emailConfig = JSON.parse(fs.readFileSync("emailConfig.json"));
+const config = require('../../_config');
 
 export const sendEmail = (req, res) => {
   findByProperty('_id', req.body.id, (err, user) => {
@@ -12,7 +12,7 @@ export const sendEmail = (req, res) => {
       res.status(500).send(err);
     } else {
       if (user) {
-        const transporter = nodemailer.createTransport(emailConfig);
+        const transporter = nodemailer.createTransport(config.email);
         var mailOptions = {
           to: user.email,
           subject: req.body.subject,
