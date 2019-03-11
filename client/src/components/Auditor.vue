@@ -26,9 +26,8 @@ export default {
     };
   },
   /**
-   * <p> The created method that returns the voters that are able to vote at the polling station that the auditor is based at 
-   * </p>
-   * @return the voters array that is used to populate the UI table
+   * The created method that returns the voters that are able to vote at the
+   * polling station that the auditor is based at.
    */
   created() {
     this.$axios
@@ -60,9 +59,9 @@ export default {
   },
   methods: {
     /**
-     * <p> Updates the voters record in the database by updating the voter's voted flag when the checkbox value is changed
-     * </p>
-     * @param voter the voter that the user wanst to update
+     * Updates the voters record in the database by updating the voter's voted flag when the checkbox value is changed.
+     * 
+     * @param voter the voter that the user wants to update.
      */
     onChange(voter){
                   this.$axios

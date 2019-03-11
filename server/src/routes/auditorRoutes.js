@@ -3,7 +3,8 @@ import {
 } from '../controllers/auditorController';
 
 /**
- * creates the routes of the auditor
+ * Creates the routes of the auditor.
+ *
  * @param app the application
   */
 const auditorRoutes = (app) => {

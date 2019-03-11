@@ -9,9 +9,8 @@ const chaiHttp = require('chai-http');
 const should = chai.should();
 
 chai.use(chaiHttp);
-/**
- * Creates a dummy order and polling station and ensures the user routes works appropriately
- */
+
+// Creates a dummy auditor and polling station and ensures the auditor routes works appropriately
 describe('Auditor tests', () => {
   let auditorId1;
   let pollingStationId1;

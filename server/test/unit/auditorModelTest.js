@@ -1,10 +1,9 @@
 import { expect } from 'chai';
 
 import Auditor from '../../src/models/auditorModel';
-/**
- * Creates a blank order and ensures the correct errors
- * exist or don't exist dependent on default and required properities
- */
+
+// Creates a blank auditor and ensures the correct errors
+// exist dependent on default and required properties.
 describe('auditor', () => {
   it('should be invalid if username is empty', (done) => {
     const a = new Auditor();
