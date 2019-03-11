@@ -37,37 +37,3 @@ export const editUserWithId = (req, res) => {
     }
   });
 };
-
-// export const emailConfirmation = (req, res) => {
-//   findByProperty('email', req.params.email, (err, email) => {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.json(email);
-//     }
-
-//     var transporter = nodemailer.createTransport({
-//       service: 'gmail',
-//       auth: {
-//         user: 'youremail@gmail.com',
-//         pass: 'yourpassword'
-//       }
-//     });
-
-//     var mailOptions = {
-//       from: 'youremail@gmail.com',
-//       to: email,
-//       subject: 'Sending Email using Node.js',
-//       text: 'That was easy!'
-//     };
-
-//     transporter.sendMail(mailOptions, function(error, info){
-//       if (error) {
-//         console.log(error);
-//       } else {
-//         console.log('Email sent: ' + info.response);
-//       }
-//     });
-
-//   });
-// }

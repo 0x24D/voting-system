@@ -59,35 +59,30 @@ export default {
   methods: {
     onSelect(candidate) {
       this.selected = candidate;
-    },
-    onSubmit() {
-      this.$axios
+      },
+      onSubmit() {
+        this.$axios
         .put(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`, {
           total_votes: '++',
           votes: this.selected,
-        })
-        .then(() => {
+          })
           this.$axios
-            .put(`http://localhost:8081/api/v1/voters/${localStorage.user}`, {
-              voted: true,
-            })
-            .then(() => { 
-              this.$axios
-              .get(`http://localhost:8081/api/v1/users/${localStorage.user}`)
-            .then(() => { 
-              this.$axios
-              .post(`/api/v1/email/${localStorage.user}`, {
-                  
-                });
-            })
+          .put(`http://localhost:8081/api/v1/voters/${localStorage.user}`, {
+            voted: true,
+          })
+          .then(() => {
+            this.$axios
+            .post(`http://localhost:8081/api/v1/email/${localStorage.user}`, {
+              subject: 'Vote successful',
+              text: 'Thank you for your vote!'
+              });
           })
           .then(() => {
             this.$store.commit('setSuccessDisplayMode', true);
             this.$store.commit('setVoteDisplayMode', false);
-            });
-        });
+          });
+        }
     },
-  },
 };
 </script>
 
