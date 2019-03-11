@@ -123,7 +123,7 @@ describe('Voter tests', () => {
         address: addressId1,
       })
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.have.property('_id');
@@ -138,7 +138,7 @@ describe('Voter tests', () => {
         res.body.username.should.equal('testuser');
         res.body.name.should.equal('testname');
         res.body.email.should.equal('test@mail');
-        res.body.password.should.equal('testPass');
+        res.body.password.should.not.equal('testPass');
         res.body.authentication_attempts.should.equal(0);
         res.body.voted.should.equal(false);
         res.body.date_of_birth.should.equal(new Date('01/01/01').toISOString());

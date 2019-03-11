@@ -6,7 +6,7 @@ export const addNew = (dataToSave, callback) => {
     name: dataToSave.name,
     email: dataToSave.email,
     password: dataToSave.password,
-    roles: dataToSave.roles,
+    salt: dataToSave.salt,
     date_of_birth: dataToSave.date_of_birth,
     address: dataToSave.address,
   });

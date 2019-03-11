@@ -1,23 +1,39 @@
+import bcrypt from 'bcryptjs';
 import {
   addNew,
   findById,
   updateExistingById,
 } from '../db/voterAccess';
 
+const SALT_WORK_FACTOR = 10;
+
 export const addNewVoter = (req, res) => {
-  const dataToSave = {
-    username: req.body.username,
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    date_of_birth: req.body.date_of_birth,
-    address: req.body.address,
-  };
-  addNew(dataToSave, (err, voter) => {
+  bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
     if (err) {
-      res.status(500).end();
+      res.status(500).send(err);
     } else {
-      res.status(201).json(voter);
+      bcrypt.hash(req.body.password, salt, (err2, hash) => {
+        if (err2) {
+          res.status(500).send(err2);
+        } else {
+          const newVoter = {
+            username: req.body.username,
+            name: req.body.name,
+            email: req.body.email,
+            password: hash,
+            salt: salt,
+            date_of_birth: req.body.date_of_birth,
+            address: req.body.address,
+          };
+          addNew(newVoter, (err3, voter) => {
+            if (err3) {
+              res.status(500).send(err3);
+            } else {
+              res.json(voter);
+            }
+          });
+        }
+      });
     }
   });
 };
