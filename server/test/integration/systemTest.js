@@ -124,13 +124,13 @@ describe('System tests', () => {
 
   it('should update system on /api/v1/systems/<id>  PUT', (done) => {
     chai.request(app)
-    .put(`/api/v1/systems/${system1Id}`)
-    .set('content-type', 'application/x-www-form-urlencoded')
-    .send({
-      campaigns: campaign2Id,
-    })
-    .end((err, res) => {
-      res.should.have.status(200);
+      .put(`/api/v1/systems/${system1Id}`)
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        campaigns: campaign2Id,
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.have.property('_id');
@@ -144,6 +144,6 @@ describe('System tests', () => {
         res.body.campaigns[0].should.equal(campaign2Id);
         res.body.language.should.equal('en-gb');
         done();
-    })
-  })
+      });
+  });
 });

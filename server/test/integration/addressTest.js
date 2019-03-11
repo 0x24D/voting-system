@@ -86,4 +86,40 @@ describe('Address tests', () => {
         done();
       });
   });
+
+  it('should add 1 address on /api/v1/addresses POST', (done) => {
+    chai.request(app)
+      .post('/api/v1/addresses')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        line_one: 'Line 1',
+        line_two: 'Line 2',
+        town: 'Town',
+        county: 'County',
+        country: 'Country',
+        postcode: 'Postcode',
+        constituency: constituency1Id,
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('line_one');
+        res.body.should.have.property('line_two');
+        res.body.should.have.property('town');
+        res.body.should.have.property('county');
+        res.body.should.have.property('country');
+        res.body.should.have.property('postcode');
+        res.body.should.have.property('constituency');
+        res.body.line_one.should.equal('Line 1');
+        res.body.line_two.should.equal('Line 2');
+        res.body.town.should.equal('Town');
+        res.body.county.should.equal('County');
+        res.body.country.should.equal('Country');
+        res.body.postcode.should.equal('Postcode');
+        res.body.constituency.should.equal(constituency1Id);
+        done();
+      });
+  });
 });

@@ -12,8 +12,9 @@
 * Update - PUT
 * Delete - DELETE
 ```
-/api/v1/addresses POST - add new address (to implement for setting up a campaign)
+/api/v1/addresses GET - return all addresses (to implement)
 /api/v1/addresses/{id} GET - return specific address (implemented)
+/api/v1/addresses POST - add new address (implemented)
 
 /api/v1/admins POST - add new admin (to implement for user registration)
 /api/v1/admins/{username} GET - return specific admin (to implement?)
@@ -32,6 +33,7 @@
 
 /api/v1/constituencies GET - return list of all constituencies (implemented)
 /api/v1/constituencies/{id} GET - return specific constituency (implemented)
+/api/v1/constituencies POST - add new constituency (to implement)
 
 /api/v1/parties POST - add new party (to implement for party profiles, setting up a campaign)
 /api/v1/parties/{id} GET - return specific party (implemented)
