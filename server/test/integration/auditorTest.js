@@ -64,4 +64,36 @@ describe('Auditor tests', () => {
         done();
       });
   });
+
+  it('should add new auditor on /api/v1/auditors POST', (done) => {
+    chai.request(app)
+      .post('/api/v1/auditors')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        username: 'testuser',
+        name: 'testname',
+        email: 'test@mail',
+        password: 'testPass',
+        polling_station: pollingStationId1,
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('username');
+        res.body.should.have.property('name');
+        res.body.should.have.property('email');
+        res.body.should.have.property('password');
+        res.body.should.have.property('authentication_attempts');
+        res.body.should.have.property('polling_station');
+        res.body.username.should.equal('testuser');
+        res.body.name.should.equal('testname');
+        res.body.email.should.equal('test@mail');
+        res.body.password.should.not.equal('testPass');
+        res.body.authentication_attempts.should.equal(0);
+        res.body.polling_station.should.equal(pollingStationId1);
+        done();
+      });
+  });
 });

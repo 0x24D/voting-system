@@ -1,4 +1,5 @@
 import {
+  addNewAuditor,
   getAuditorWithId,
 } from '../controllers/auditorController';
 
@@ -8,6 +9,8 @@ import {
  * @param app the application
   */
 const auditorRoutes = (app) => {
+  app.route('/api/v1/auditors')
+      .post(addNewAuditor);
   app.route('/api/v1/auditors/:id')
     .get(getAuditorWithId);
 };

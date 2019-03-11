@@ -23,6 +23,12 @@
         <div v-if="this.$store.state.showAddAdmin">
           <AddAdmin/>
         </div>
+        <div v-if="this.$store.state.showAddAuditor">
+          <AddAuditor/>
+        </div>
+        <div v-if="this.$store.state.showAddVoter">
+          <AddVoter/>
+        </div>
       </div>
       <div v-else-if="userType('auditor')">
         <Auditor/>
@@ -36,6 +42,8 @@
 <script>
 import { getUserType, isUserAuthenticated } from './utils/auth';
 import AddAdmin from './components/AddAdmin.vue';
+import AddAuditor from './components/AddAuditor.vue';
+import AddVoter from './components/AddVoter.vue';
 import Admin from './components/Admin.vue';
 import ListOfCampaigns from './components/ListOfCampaigns.vue';
 import Login from './components/Login.vue';
@@ -49,6 +57,8 @@ export default {
   name: 'app',
   components: {
     AddAdmin,
+    AddAuditor,
+    AddVoter,
     Admin,
     ListOfCampaigns,
     Login,

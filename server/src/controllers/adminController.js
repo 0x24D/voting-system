@@ -16,31 +16,13 @@ export const getAdminById = (req, res) => {
   });
 };
 
-/*export const addNewAdmin = (req, res) => {
-  const dataToSave = {
-    username: req.body.username,
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-  };
-  addNew(dataToSave, (err, admin) => {
-    if (err) {
-      res.status(500).end();
-    } else {
-      res.status(201).json(admin);
-    }
-  });
-};*/
-
 export const addNewAdmin = (req, res) => {
   bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
     if (err) {
-      console.log("err");
       res.status(500).send(err);
     } else {
       bcrypt.hash(req.body.password, salt, (err2, hash) => {
         if (err2) {
-          console.log("err2");
           res.status(500).send(err2);
         } else {
           const newAdmin = {
@@ -52,7 +34,6 @@ export const addNewAdmin = (req, res) => {
           };
           addNew(newAdmin, (err3, admin) => {
             if (err3) {
-              console.log("err3");
               res.status(500).send(err3);
             } else {
               res.json(admin);
