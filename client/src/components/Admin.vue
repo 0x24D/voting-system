@@ -1,6 +1,6 @@
 <template>
   <div id="admin">
-    <md-button class="md-raised" @click="goToUsers()">View Users</md-button>
+    <md-button class="md-raised" @click="goToAddAdmin()">Add Admin</md-button>
     <md-button class="md-raised" @click="goToResults()">View Results</md-button>
     <md-button class="md-raised" @click="goToCandidates()">View Candidates</md-button>
     <md-button class="md-raised" @click="goToCampaigns()">View Campaigns</md-button>
@@ -23,9 +23,9 @@ export default {
       this.$store.commit('setAdminDisplayMode', false);
       this.$store.commit('setResultsDisplayMode', true);
     },
-    goToUsers() {
+    goToAddAdmin() {
       this.$store.commit('setAdminDisplayMode', false);
-      this.$store.commit('setAddUserDisplayMode', true);
+      this.$store.commit('setAddAdminDisplayMode', true);
     },
   },
 };

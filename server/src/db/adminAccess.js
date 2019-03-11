@@ -6,6 +6,7 @@ export const addNew = (dataToSave, callback) => {
     name: dataToSave.name,
     email: dataToSave.email,
     password: dataToSave.password,
+    salt: dataToSave.salt,
   });
   newAdmin.save((err, admin) => {
     callback(err, admin);

@@ -20,8 +20,8 @@
         <div v-if="this.$store.state.showResults">
           <Results/>
         </div>
-        <div v-if="this.$store.state.showAddUser">
-          <AddUser/>
+        <div v-if="this.$store.state.showAddAdmin">
+          <AddAdmin/>
         </div>
       </div>
       <div v-else-if="userType('auditor')">
@@ -35,7 +35,7 @@
 </template>
 <script>
 import { getUserType, isUserAuthenticated } from './utils/auth';
-import AddUser from './components/AddUser.vue';
+import AddAdmin from './components/AddAdmin.vue';
 import Admin from './components/Admin.vue';
 import ListOfCampaigns from './components/ListOfCampaigns.vue';
 import Login from './components/Login.vue';
@@ -48,7 +48,7 @@ import Auditor from './components/Auditor.vue';
 export default {
   name: 'app',
   components: {
-    AddUser,
+    AddAdmin,
     Admin,
     ListOfCampaigns,
     Login,

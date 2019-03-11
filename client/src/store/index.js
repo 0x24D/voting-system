@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     campaignId: '',
-    showAddUser: false,
+    showAddAdmin: false,
     showCampaigns: true,
     showAdmin: true,
     showResults: false,
@@ -34,8 +34,8 @@ export default new Vuex.Store({
     setSuccessDisplayMode(s, boolean) {
       Vue.set(s, 'showSuccess', boolean);
     },
-    setAddUserDisplayMode(s, boolean) {
-      Vue.set(s, 'showAddUser', boolean);
+    setAddAdminDisplayMode(s, boolean) {
+      Vue.set(s, 'showAddAdmin', boolean);
     },
     setVoteDisplayMode(s, boolean) {
       Vue.set(s, 'showVote', boolean);
