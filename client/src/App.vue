@@ -12,6 +12,9 @@
         <div v-if="this.$store.state.showSuccess">
           <Success/>
         </div>
+        <div v-if="this.$store.state.showCandidateProfile">
+          <CandidateProfile :candidate-id="this.$store.state.candidateId"/>
+        </div>
       </div>
       <div v-else-if="userType('admin')">
         <div v-if="this.$store.state.showAdmin">
@@ -19,6 +22,12 @@
         </div>
         <div v-if="this.$store.state.showResults">
           <Results/>
+        </div>
+        <div v-if="this.$store.state.showCandidates">
+          <ListOfCandidates/>
+        </div>
+        <div v-if="this.$store.state.showAddCandidateParty">
+          <AddCandidateParty/>
         </div>
       </div>
     </div>
@@ -37,6 +46,9 @@ import Logout from './components/Logout.vue';
 import Results from './components/Results.vue';
 import Success from './components/Success.vue';
 import Vote from './components/Vote.vue';
+import CandidateProfile from './components/CandidateProfile';
+import ListOfCandidates from './components/Admin/ListOfCandidates';
+import AddCandidateParty from './components/Admin/AddCandidateParty';
 
 export default {
   name: 'app',
@@ -48,6 +60,9 @@ export default {
     Results,
     Success,
     Vote,
+    CandidateProfile,
+    ListOfCandidates,
+    AddCandidateParty,
   },
   methods: {
     userType(userType) {

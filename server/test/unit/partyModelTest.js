@@ -14,7 +14,7 @@ describe('party', () => {
 });
 
 describe('party', () => {
-  it('should be invalid if description is empty', (done) => {
+  it('should not be invalid if description is empty', (done) => {
     const p = new Party();
 
     p.validate((err) => {

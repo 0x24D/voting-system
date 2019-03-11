@@ -17,7 +17,7 @@ export default {
     },
     goToCandidates() {
       this.$store.commit('setAdminDisplayMode', false);
-      // this.$store.commit('setCandidatessDisplayMode', true);
+      this.$store.commit('setListOfCandidatesDisplayMode', true);
     },
     goToResults() {
       this.$store.commit('setAdminDisplayMode', false);

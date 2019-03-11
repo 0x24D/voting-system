@@ -5,3 +5,13 @@ export const findById = (partyId, callback) => {
     callback(err, party);
   });
 };
+
+export const addNew = (dataToSave, callback) => {
+  const newParty = new Party({
+    name: dataToSave.name,
+    description: dataToSave.description,
+  });
+  newParty.save((err, party) => {
+    callback(err, party);
+  });
+};

@@ -19,6 +19,7 @@
       </md-table-row>
     </md-table>
     <md-button class="md-raised" @click="onSubmit()" :disabled="!this.selected">Submit vote</md-button>
+    <md-button class="md-raised" @click="onCandidateView(selected)" :disabled="!this.selected">View Candidate Profile</md-button>
   </div>
 </template>
 
@@ -59,6 +60,11 @@ export default {
   methods: {
     onSelect(candidate) {
       this.selected = candidate;
+    },
+    onCandidateView(candidateId) {
+      this.$store.commit('setCandidateIdToDisplay', candidateId);
+      this.$store.commit('setCandidateProfileDisplayMode', true);
+      this.$store.commit('setVoteDisplayMode', false);
     },
     onSubmit() {
       this.$axios
