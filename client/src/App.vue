@@ -17,8 +17,11 @@
         <div v-if="this.$store.state.showAdmin">
           <Admin/>
         </div>
+        <div v-if="this.$store.state.showResultsCampaigns">
+          <ResultsCampaigns/>
+        </div>
         <div v-if="this.$store.state.showResults">
-          <Results/>
+          <Results :campaign-id="this.$store.state.campaignId"/>
         </div>
       </div>
     </div>
@@ -35,6 +38,7 @@ import ListOfCampaigns from './components/ListOfCampaigns.vue';
 import Login from './components/Login.vue';
 import Logout from './components/Logout.vue';
 import Results from './components/Results.vue';
+import ResultsCampaigns from './components/admin/ResultsCampaigns.vue';
 import Success from './components/Success.vue';
 import Vote from './components/Vote.vue';
 
@@ -46,6 +50,7 @@ export default {
     Login,
     Logout,
     Results,
+    ResultsCampaigns,
     Success,
     Vote,
   },

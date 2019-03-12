@@ -9,6 +9,7 @@ export default new Vuex.Store({
     showAdmin: true,
     showCampaigns: true,
     showResults: false,
+    showResultsCampaigns: false,
     showSuccess: false,
     showVote: false,
   },
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     setResultsDisplayMode(s, boolean) {
       Vue.set(s, 'showResults', boolean);
+    },
+    setResultsCampaignsDisplayMode(s, boolean) {
+      Vue.set(s, 'showResultsCampaigns', boolean);
     },
     setSuccessDisplayMode(s, boolean) {
       Vue.set(s, 'showSuccess', boolean);

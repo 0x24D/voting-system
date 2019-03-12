@@ -1,21 +1,12 @@
 <template>
   <div id="vote">
-    <md-table md-card>
+    <md-table v-model="candidates" md-card @md-selected="onSelect">
       <md-table-toolbar>
-        <h1 class="md-title">Cast a Vote</h1>
+        <h1 class="md-title"></h1>
       </md-table-toolbar>
-      <md-table-row>
-        <md-table-head>Candidate</md-table-head>
-        <md-table-head>Party</md-table-head>
-      </md-table-row>
-
-      <md-table-row
-        md-selectable="single"
-        v-for="candidate in candidates"
-        :key="candidate.id"
-        @click="onSelect(candidate.id)">
-        <md-table-cell>{{ candidate.name }}</md-table-cell>
-        <md-table-cell>{{ candidate.party }}</md-table-cell>
+       <md-table-row slot="md-table-row" slot-scope="{ item }" :class="getClass(item)" md-selectable="single">
+         <md-table-cell md-label="Candidate" md-sort-by="name">{{ item.name }}</md-table-cell>
+         <md-table-cell md-label="Party" md-sort-by="party">{{ item.party }}</md-table-cell>
       </md-table-row>
     </md-table>
     <md-button class="md-raised" @click="onSubmit()" :disabled="!this.selected">Submit vote</md-button>
@@ -38,7 +29,9 @@ export default {
     this.$axios
       .get(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`)
       .then((campaignRes) => {
-        this.campaignId = campaignRes.data._id;
+        // Apparently you cannot use access a data property using moustaches in md-table-toolbar.
+        // So we have to set the innerText using JavaScript instead.
+        document.getElementsByClassName('md-title')[0].innerText = (campaignRes.data.name);
         campaignRes.data.candidates.forEach((candidateId) => {
           this.$axios
             .get(`http://localhost:8081/api/v1/candidates/${candidateId}`)
@@ -57,6 +50,9 @@ export default {
       });
   },
   methods: {
+    getClass(item){
+      return item && this.selected && item.id === this.selected.id ? 'md-primary' : '';
+    },
     onSelect(candidate) {
       this.selected = candidate;
     },

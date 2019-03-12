@@ -1,5 +1,5 @@
 <template>
-  <div class="campaigns">
+  <div id="campaigns">
     <div class="campaign" v-for="campaign in campaigns" :key="campaign._id" @click="goToCampaign(campaign._id)">
       <md-card md-with-hover class="md-size-75">
           <md-card-header>
@@ -14,8 +14,7 @@
               <md-list-item>
                 <span class="md-list-item-text">Date</span>
                 <span class="md-list-item-text">{{ new Date(campaign.start_date).toDateString() }}
-                {{ new Date(campaign.start_date).toLocaleTimeString() }} - {{ new Date(campaign.end_date).toDateString() }}
-                {{ new Date(campaign.end_date).toLocaleTimeString() }}</span>
+                - {{ new Date(campaign.end_date).toDateString() }}</span>
               </md-list-item>
             </md-list>
           </md-card-content>
@@ -54,3 +53,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+#campaigns {
+  padding: 50px 100px;
+}
+</style>

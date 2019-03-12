@@ -21,7 +21,7 @@ export default {
     },
     goToResults() {
       this.$store.commit('setAdminDisplayMode', false);
-      this.$store.commit('setResultsDisplayMode', true);
+      this.$store.commit('setResultsCampaignsDisplayMode', true);
     },
     goToUsers() {
       this.$store.commit('setAdminDisplayMode', false);
