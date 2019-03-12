@@ -42,7 +42,7 @@
       <div class="md-layout-item md-small-size-100">
         <md-field :class="getValidationClass('date_of_birth')">
           <label for="date_of_birth">Date of Birth</label>
-            <md-datepicker name="date_of_birth" id="date_of_birth" v-model="date_of_birth" required/>
+            <md-datepicker name="date_of_birth" id="date_of_birth" v-model="voter.date_of_birth" required/>
             <span class="md-error" v-if="!$v.voter.date_of_birth.required">Date of birth is required</span>
         </md-field>
       </div>
@@ -50,11 +50,13 @@
       <div class="md-layout-item md-small-size-100">
         <md-field :class="getValidationClass('address')">
           <label for="address">Address</label>
-            <md-select name="address" id="address" v-model="voter.address" md-dense required multiple>
+
+            <md-select v-model="voter.address" name="address" id="address"  md-dense required>
               <md-option v-for="ad in address" :key="ad._id" :value="ad._id">
                   {{ ad.postcode }}
               </md-option>
             </md-select>
+
           <span class="md-error" v-if="!$v.voter.address.required">Address is required</span>
         </md-field>
       </div>

@@ -8,17 +8,17 @@ export const getPollingStationById = (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.json([pollingStation]);
+      res.json(pollingStation);
     }
   });
 };
 
 export const getPollingStations = (req, res) => {
-  findAll((err, pollingStation) => {
+  findAll((err, pollingStations) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.json(pollingStation);
+      res.json(pollingStations);
     }
   });
 };

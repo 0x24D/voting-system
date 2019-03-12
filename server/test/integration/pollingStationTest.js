@@ -67,13 +67,13 @@ describe('PollingStation tests', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
-        res.body.should.be.a('array');
-        res.body[0].should.have.property('_id');
-        res.body[0].should.have.property('address');
-        res.body[0].should.have.property('open_time');
-        res.body[0].should.have.property('close_time');
-        res.body[0]._id.should.equal(pollingStation1Id);
-        res.body[0].address.should.equal(address1Id);
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('address');
+        res.body.should.have.property('open_time');
+        res.body.should.have.property('close_time');
+        res.body._id.should.equal(pollingStation1Id);
+        res.body.address.should.equal(address1Id);
         done();
       });
   });

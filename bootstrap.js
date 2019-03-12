@@ -113,11 +113,11 @@ db.users.insert(admin);
 
 const pollingStation = {
   address: address1Id,
-  open_date: Date.now(),
-  close_date: Date.now() + 86400000
+  open_time: new Date().toISOString(),
+  close_time: new Date(Date.now() + 86400000).toISOString()
 };
 
-const pollingStationRet = db.pollingStations.insertOne(pollingStation);
+const pollingStationRet = db.pollingstations.insertOne(pollingStation);
 const pollingStation1Id = ObjectId(pollingStationRet.insertedId.str);
 
 // add auditor
