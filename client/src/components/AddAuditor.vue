@@ -1,6 +1,6 @@
 <template>
   <div id="auditors">
-    <form @submit.prevent>
+    <form novalidate class="md-layout" @submit.prevent>
       <md-card class="md-layout-item md-size-100 md-small-size-100">
         <md-card-header>
           <div class="md-title">Add New Auditor</div>
@@ -26,15 +26,16 @@
         <div class="md-layout-item md-small-size-100">
           <md-field :class="getValidationClass('email')">
             <label for="email">Email</label>
-              <md-input name="email" id="email" v-model="auditor.email" required></md-input>
+              <md-input name="email" id="email" type="email" v-model="auditor.email" required></md-input>
             <span class="md-error" v-if="!$v.auditor.email.required">Email is required</span>
+            <span class="md-error" v-if="!$v.auditor.email.email">Email is invalid</span>
           </md-field>
         </div>
 
           <div class="md-layout-item md-small-size-100">
             <md-field :class="getValidationClass('password')">
               <label for="password">Password</label>
-                <md-input name="password" id="password" v-model="auditor.password" required></md-input>
+                <md-input name="password" id="password" type="password" v-model="auditor.password" required></md-input>
               <span class="md-error" v-if="!$v.auditor.password.required">Password is required</span>
             </md-field>
           </div>
@@ -63,7 +64,7 @@
 
 <script>
 import { validationMixin } from 'vuelidate';
-import { required } from 'vuelidate/lib/validators';
+import { required, email} from 'vuelidate/lib/validators';
 
 export default {
   name: "AddAuditor",
@@ -141,6 +142,7 @@ export default {
       },
       email: {
         required,
+        email,
       },
       password: {
         required,

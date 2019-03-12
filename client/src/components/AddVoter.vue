@@ -26,15 +26,16 @@
       <div class="md-layout-item md-small-size-100">
         <md-field :class="getValidationClass('email')">
           <label for="email">Email</label>
-            <md-input name="email" id="email" v-model="voter.email" required></md-input>
+            <md-input name="email" id="email" type="email" v-model="voter.email" required></md-input>
           <span class="md-error" v-if="!$v.voter.email.required">Email is required</span>
+          <span class="md-error" v-if="!$v.voter.email.email">Email is invalid</span>
         </md-field>
       </div>
 
       <div class="md-layout-item md-small-size-100">
         <md-field :class="getValidationClass('password')">
           <label for="password">Password</label>
-            <md-input name="password" id="password" v-model="voter.password" required></md-input>
+            <md-input name="password" id="password" type="password" v-model="voter.password" required></md-input>
           <span class="md-error" v-if="!$v.voter.password.required">Password is required</span>
         </md-field>
       </div>
@@ -73,7 +74,7 @@
 
 <script>
 import { validationMixin } from 'vuelidate';
-import { required } from 'vuelidate/lib/validators';
+import { required, email } from 'vuelidate/lib/validators';
 
 export default {
   name: "AddVoter",
@@ -146,6 +147,7 @@ export default {
       },
       email: {
         required,
+        email,
       },
       password: {
         required,
