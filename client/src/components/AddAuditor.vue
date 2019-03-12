@@ -83,6 +83,13 @@ export default {
     };
   },
 
+  /**
+   *
+   * The created method populates the addresses and stations array in order 
+   * to supply options for the polling station drop down in the form above.
+   * 
+   */
+
   created() {
     this.$axios
       .get('http://localhost:8081/api/v1/pollingStations')
@@ -108,19 +115,36 @@ export default {
       }
     },
 
+/**
+   *
+   * goToAdmin is a function used when the adminButton is clicked,
+   * it switches the screen from AddAuditor.vue to Admin.vue
+   * 
+   */
+
     goToAdmin() {      
               this.$store.commit('setAdminDisplayMode', true);
               this.$store.commit('setAddAuditorDisplayMode', false);      
     },
 
+    /**
+   *
+   * onSubmit is a function used when the submitButton is clicked,
+   * 
+   * @param newAuditor the auditor that the user wants to add.
+   * 
+   */
+
     onSubmit(newAuditor) {
       this.$v.$touch();    
       if (!this.$v.$invalid) {
+        //retrieve station Id from selected address
         this.stations.forEach((station) => {
             if(newAuditor.polling_station === station.address)
               newAuditor.polling_station = station._id;
         });
         this.$axios
+        //posts auditor if all fields are valid
           .post('http://localhost:8081/api/v1/auditors', {
             username: newAuditor.username,
             name: newAuditor.name,
@@ -129,6 +153,7 @@ export default {
             polling_station: newAuditor.polling_station,
           })
           .then(() => {
+           //switches the screen from AddAuditor.vue to Admin.vue
             this.$store.commit('setAdminDisplayMode', true);
             this.$store.commit('setAddAuditorDisplayMode', false);   
           });
@@ -136,6 +161,13 @@ export default {
     },
   },
 
+
+/**
+   *
+   * validations enforces the fields that are required and also the 
+   * email validation
+   * 
+   */
   validations: {
     auditor: {
       username: {

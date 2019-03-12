@@ -52,7 +52,7 @@
 ```
 
 ## Extensions:
-* User registration (voter, admin, and auditor) - A (Progress)
+* User registration (voter, admin, and auditor) - A
 * Adding/displaying candidate/party profiles - JS
 * Setting up a campaign (with candidates) - D
 * List of voters for auditor - L

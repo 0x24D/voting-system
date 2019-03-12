@@ -108,6 +108,16 @@ export default {
     };
   },
 
+/**
+   *
+   * The first address array is for the voters physical address, this is 
+   * stored in the voter object
+   * 
+   * The created method also populates the addresses and stations array in order 
+   * to supply options for the polling station drop down in the form above.
+   * 
+   */
+
     created() {
       this.$axios
         .get('http://localhost:8081/api/v1/addresses')
@@ -140,22 +150,36 @@ export default {
       }
     },
 
+/**
+   *
+   * goToAdmin is a function used when the adminButton is clicked,
+   * it switches the screen from AddVoter.vue to Admin.vue
+   * 
+   */
+
     goToAdmin() {      
               this.$store.commit('setAdminDisplayMode', true);
               this.$store.commit('setAddVoterDisplayMode', false);      
     },
 
+    /**
+   *
+   * onSubmit is a function used when the submitButton is clicked,
+   * 
+   * @param newVoter the voter that the user wants to add.
+   * 
+   */
+
     onSubmit(newVoter) {
       this.$v.$touch();    
       if (!this.$v.$invalid) {
-
       //retrieve station Id from selected address
         this.stations.forEach((station) => {
             if(this.polling_station == station.address)
               this.polling_station = station._id;
           });
-
         this.$axios
+        //posts voter if all fields are valid
           .post('http://localhost:8081/api/v1/voters', {
             username: newVoter.username,
             name: newVoter.name,
@@ -165,6 +189,7 @@ export default {
             address: newVoter.address,
           })
           .then(() => {
+            //switches the screen from AddVoter.vue to Admin.vue
             this.$store.commit('setAdminDisplayMode', true);
             this.$store.commit('setAddVoterDisplayMode', false);   
           });
@@ -172,6 +197,13 @@ export default {
     },
   },
 
+
+/**
+   *
+   * validations enforces the fields that are required and also the 
+   * email validation
+   * 
+   */
   validations: {
     voter: {
       username: {

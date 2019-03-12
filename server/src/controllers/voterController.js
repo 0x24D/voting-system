@@ -7,6 +7,15 @@ import {
 
 const SALT_WORK_FACTOR = 10;
 
+/**
+ * Adds a new voter using the information in req, 
+ * this also uses salt in order hash the password before
+ * saving
+ * 
+ * @param req the request from the client
+ * @param res the repsonse from the server
+ */
+
 export const addNewVoter = (req, res) => {
   bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
     if (err) {
@@ -38,6 +47,14 @@ export const addNewVoter = (req, res) => {
   });
 };
 
+/**
+ * Gets the voter using their id which sent in the request
+ * parameters from the database and returns
+ * it to the client.
+ * 
+ * @param req the request from the client
+ * @param res the repsonse from the server
+ */
 
 export const getVoterWithId = (req, res) => {
   findById(req.params.id, (err, voter) => {
@@ -48,6 +65,13 @@ export const getVoterWithId = (req, res) => {
     }
   });
 };
+
+/**
+ * Updates the voter using ID with the new information sent in req
+ * 
+ * @param req the request from the client
+ * @param res the repsonse from the server
+ */
 
 export const editVoterWithId = (req, res) => {
   const voterId = req.params.id;

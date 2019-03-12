@@ -6,7 +6,7 @@ import {
 
 const SALT_WORK_FACTOR = 10;
 /**
- * Gets the auditor using their id which sent in the request
+ * Gets the auditor using their id which is sent in the request
  * parameters from the database and returns
  * it to the client.
  * 
@@ -23,6 +23,15 @@ export const getAuditorWithId = (req, res) => {
     }
   });
 };
+
+/**
+ * Adds a new auditor using the information in req, 
+ * this also uses salt in order hash the password before
+ * saving
+ * 
+ * @param req the request from the client
+ * @param res the repsonse from the server
+ */
 
 export const addNewAuditor = (req, res) => {
   bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
