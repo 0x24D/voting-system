@@ -78,7 +78,7 @@ export default {
             password: "",
             polling_station: "",
       },
-      polling_station: [],
+      stations: [],
       addresses: [],
     };
   },
@@ -87,7 +87,7 @@ export default {
     this.$axios
       .get('http://localhost:8081/api/v1/pollingStations')
         .then((pollingRes) => {
-          console.log(pollingRes);
+          this.stations = pollingRes.data;
           pollingRes.data.forEach((addressArr) => {
               this.$axios
               .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
@@ -116,6 +116,10 @@ export default {
     onSubmit(newAuditor) {
       this.$v.$touch();    
       if (!this.$v.$invalid) {
+        this.stations.forEach((station) => {
+            if(newAuditor.polling_station === station.address)
+              newAuditor.polling_station = station._id;
+        });
         this.$axios
           .post('http://localhost:8081/api/v1/auditors', {
             username: newAuditor.username,
