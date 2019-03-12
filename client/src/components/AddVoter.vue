@@ -62,6 +62,18 @@
         </md-field>
       </div>
 
+      <div class="md-layout-item md-small-size-100">
+            <md-field :class="getValidationClass('polling_station')">
+              <label for="polling_station">Polling Station</label>
+                <md-select name="polling_station" id="polling_station" v-model="polling_station" md-dense required>
+                  <md-option v-for="ad in addresses" :key="ad._id" :value="ad._id">
+                    {{ ad.postcode }}
+                  </md-option>
+                </md-select>
+              <span class="md-error" v-if="!$v.polling_station.required">Polling station is required</span>
+            </md-field>
+          </div>
+
         </md-card-content>
         <md-card-actions>
           <md-button class="md-primary" id="adminButton" @click="goToAdmin()">Back to Admin</md-button>
@@ -90,6 +102,9 @@ export default {
             address: "",
       },
       address: [],
+      addresses: [],
+      stations: [],
+      polling_station: "",
     };
   },
 
@@ -99,6 +114,19 @@ export default {
         .then((response) => {
           this.address = response.data;
         });
+
+      this.$axios
+        .get('http://localhost:8081/api/v1/pollingStations')
+          .then((pollingRes) => {
+            this.stations = pollingRes.data;
+            pollingRes.data.forEach((addressArr) => {
+                this.$axios
+                .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
+                .then((res) => {
+                  this.addresses.push(res.data)
+              });
+            }); 
+          });
     },
     
     methods: {
@@ -120,6 +148,13 @@ export default {
     onSubmit(newVoter) {
       this.$v.$touch();    
       if (!this.$v.$invalid) {
+
+      //retrieve station Id from selected address
+        this.stations.forEach((station) => {
+            if(this.polling_station == station.address)
+              this.polling_station = station._id;
+          });
+
         this.$axios
           .post('http://localhost:8081/api/v1/voters', {
             username: newVoter.username,
@@ -159,6 +194,9 @@ export default {
         required,
       },
     },
+    polling_station: {
+        required,
+      },
   },
 
 };

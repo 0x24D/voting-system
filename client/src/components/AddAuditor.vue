@@ -78,8 +78,8 @@ export default {
             password: "",
             polling_station: "",
       },
-      stations: [],
       addresses: [],
+      stations: [],
     };
   },
 
