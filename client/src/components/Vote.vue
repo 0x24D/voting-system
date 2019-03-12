@@ -57,9 +57,16 @@ export default {
       });
   },
   methods: {
+    /**
+     * This method selects the candidate in the list for use later when updating their votes
+     */
     onSelect(candidate) {
       this.selected = candidate;
       },
+      /**
+       * The onSubmit method sets voted to true for the current user so that they are unable to vote again
+       * Then sends an email to the voters email address to confirm their vote
+       */
       onSubmit() {
         this.$axios
         .put(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`, {
@@ -72,6 +79,8 @@ export default {
           })
           .then(() => {
             this.$axios
+            // users the voterId with the subject and text 
+            // to the email endpoint to then send the email
             .post('http://localhost:8081/api/v1/email', {
               id: localStorage.user,
               subject: 'Vote successful',

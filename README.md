@@ -56,3 +56,6 @@
 * List of voters for auditor - L
 
 * Graphical results interface (for each campaign) - JW (in progress)
+
+* When sending email change _config.js to correct details 
+

@@ -1,7 +1,6 @@
 import chai, { expect, assert } from 'chai';
 import nodemailer from 'nodemailer';
 import app from '../../app';
-
 import Address from '../../src/models/addressModel';
 import Voter from '../../src/models/voterModel';
 
@@ -62,6 +61,5 @@ describe('Email tests', () => {
               done();
             });
       });
-
 });
    

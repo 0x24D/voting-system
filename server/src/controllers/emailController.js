@@ -5,7 +5,17 @@ import {
 import nodemailer from 'nodemailer';
 var fs = require('fs');
 const config = require('../../_config');
-
+/**
+ * Gets the Voter using their id which is sent in the request
+ * parameters from the database and returns it to the client.
+ * 
+ * Uses Email and Password from _config to create a transporter
+ * Uses Email from the Voter and the subject and text sent from
+ * the body in Vote.vue
+ * 
+ * @param req the request from the client
+ * @param res the repsonse from the server
+ */
 export const sendEmail = (req, res) => {
   findByProperty('_id', req.body.id, (err, user) => {
     if (err) {
