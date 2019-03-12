@@ -1,24 +1,12 @@
 <template>
   <div id="campaigns">
-    <div class="campaign" v-for="campaign in campaigns" :key="campaign._id" @click="goToCampaign(campaign._id)">
-      <md-card md-with-hover class="md-size-75">
-          <md-card-header>
-            <div class="md-title">{{ campaign.name }}</div>
-          </md-card-header>
-          <md-card-content>
-            <md-list>
-              <md-list-item>
-                <span class="md-list-item-text">Campaign Type</span>
-                <span class="md-list-item-text">{{ campaign.type }}</span>
-              </md-list-item>
-              <md-list-item>
-                <span class="md-list-item-text">Date</span>
-                <span class="md-list-item-text">{{ new Date(campaign.start_date).toDateString() }}
-                - {{ new Date(campaign.end_date).toDateString() }}</span>
-              </md-list-item>
-            </md-list>
-          </md-card-content>
-        </md-card>
+    <div class="campaign" v-for="campaign in campaigns" :key="campaign._id" @click="goToCampaign(campaign._id)"
+    style="{cursor: pointer}">
+      <md-list>
+        <md-list-item>
+          <span class="md-list-item-text">{{ campaign.name }}</span>
+        </md-list-item>
+      </md-list>
     </div>
   </div>
 </template>
@@ -31,26 +19,38 @@ export default {
       campaigns: [],
     };
   },
+  methods: {
+    hasVoted() {
+      this.$axios
+        .get(`http://localhost:8081/api/v1/voters/${localStorage.user}`)
+        .then((response) => {
+          return response.data.voted;
+        });
+    },
+    goToCampaign(campaignId) {
+      if (!this.hasVoted()) {
+        this.$store.commit('setCampaignIdToDisplay', campaignId);
+        this.$store.commit('setVoteDisplayMode', true);
+        this.$store.commit('setCampaignsDisplayMode', false);
+      }
+    },
+  },
   created() {
     this.$axios
       .get('http://localhost:8081/api/v1/campaigns/')
       .then((response) => {
         this.campaigns = response.data;
     });
-  },
-  methods: {
-    goToCampaign(campaignId) {
-      this.$axios
-        .get(`http://localhost:8081/api/v1/voters/${localStorage.user}`)
-        .then((response) => {
-          if (!response.data.voted) {
-            this.$store.commit('setCampaignIdToDisplay', campaignId);
-            this.$store.commit('setVoteDisplayMode', true);
-            this.$store.commit('setCampaignsDisplayMode', false);
-          }
-        });
+    // Cannot set cursor to pointer using :style, :class or in plain JS. Why?
+    if (!this.hasVoted()) {
+      const campaigns = document.getElementsByClassName('campaign');
+      console.log(campaigns);
+      Array.prototype.forEach.call(campaigns, ((c) => {
+        console.log(c);
+        c.style.cursor='pointer';
+      }));
     }
-  }
+  },
 };
 </script>
 
