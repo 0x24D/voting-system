@@ -18,7 +18,8 @@
         <md-table-cell>{{ candidate.party }}</md-table-cell>
       </md-table-row>
     </md-table>
-    <md-button class="md-raised" @click="onSubmit()" :disabled="!this.selected">Submit vote</md-button>
+    <md-button class="md-raised" @click="onSubmit()"
+      :disabled="!this.selected">Submit vote</md-button>
   </div>
 </template>
 
@@ -32,7 +33,7 @@ export default {
     return {
       selected: null,
       candidates: [],
-    }
+    };
   },
   created() {
     this.$axios
@@ -49,10 +50,10 @@ export default {
                   this.candidates.push({
                     id: candidateRes.data._id,
                     name: candidateRes.data.name,
-                    party: partyRes.data.name
+                    party: partyRes.data.name,
                   });
+                });
             });
-          });
         });
       });
   },
@@ -76,7 +77,7 @@ export default {
               this.$store.commit('setVoteDisplayMode', false);
             });
         });
-    }
+    },
   },
 };
 </script>

@@ -15,7 +15,8 @@
         <md-table-cell>{{ campaign.name }}</md-table-cell>
         <md-table-cell>{{ campaign.campaign_type  }}</md-table-cell>
         <md-table-cell>{{ new Date(campaign.start_date).toDateString() }}
-        {{ new Date(campaign.start_date).toLocaleTimeString() }} - {{ new Date(campaign.end_date).toDateString() }}
+        {{ new Date(campaign.start_date).toLocaleTimeString() }}
+          - {{ new Date(campaign.end_date).toDateString() }}
         {{ new Date(campaign.end_date).toLocaleTimeString() }}</md-table-cell>
       </md-table-row>
     </md-table>

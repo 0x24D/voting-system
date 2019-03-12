@@ -23,11 +23,11 @@
 
 <script>
 export default {
-  name: "Results",
+  name: 'Results',
   data() {
     return {
       candidates: [],
-    }
+    };
   },
   created() {
     this.$axios
@@ -58,7 +58,6 @@ export default {
               });
           });
         });
-
       });
   },
 };

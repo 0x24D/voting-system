@@ -34,8 +34,10 @@
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('candidates')">
                 <label for="candidates">Candidates</label>
-                <md-select name="candidates" id="candidates" v-model="campaign.candidates" md-dense required multiple>
-                  <md-option v-for="candidate in candidates" :key="candidate._id" :value="candidate._id">
+                <md-select name="candidates" id="candidates"
+                  v-model="campaign.candidates" md-dense required multiple>
+                  <md-option v-for="candidate in candidates"
+                    :key="candidate._id" :value="candidate._id">
                     {{ candidate.name }}
                   </md-option>
                 </md-select>
@@ -44,8 +46,10 @@
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('constituencies')">
                 <label for="constituencies">Constituencies</label>
-                <md-select name="constituencies" id="constituencies" v-model="campaign.constituencies" md-dense required multiple>
-                  <md-option v-for="constituency in constituencies" :key="constituency._id" :value="constituency._id">
+                <md-select name="constituencies" id="constituencies"
+                  v-model="campaign.constituencies" md-dense required multiple>
+                  <md-option v-for="constituency in constituencies"
+                    :key="constituency._id" :value="constituency._id">
                     {{ constituency.name }}
                   </md-option>
                 </md-select>
@@ -55,7 +59,7 @@
         </md-card-content>
         <md-card-actions>
           <md-button class="md-primary" id="submitButton"
-          @click="newCampaignSubmit(campaign._id, campaign)">Submit</md-button>
+          @click="newCampaignSubmit(campaign)">Submit</md-button>
         </md-card-actions>
       </md-card>
     </form>
@@ -90,28 +94,28 @@ export default {
       .then((response) => {
         this.candidates = response.data;
       });
-      this.$axios
-        .get('http://localhost:8081/api/v1/constituencies/')
-        .then((response) => {
-          this.constituencies = response.data;
-        });
+    this.$axios
+      .get('http://localhost:8081/api/v1/constituencies/')
+      .then((response) => {
+        this.constituencies = response.data;
+      });
   },
   computed: {
     startDate: {
-      get () {
+      get() {
         return this.campaign.start_date ? new Date(this.campaign.start_date) : null;
       },
-      set (date) {
+      set(date) {
         this.campaign.start_date = date ? new Date(date).toISOString() : null;
-      }
+      },
     },
     endDate: {
-      get () {
+      get() {
         return this.campaign.end_date ? new Date(this.campaign.end_date) : null;
       },
-      set (date) {
+      set(date) {
         this.campaign.end_date = date ? new Date(date).toISOString() : null;
-      }
+      },
     },
   },
   methods: {
@@ -124,7 +128,7 @@ export default {
         };
       }
     },
-    newCampaignSubmit(campaignId, formData) {
+    newCampaignSubmit(formData) {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         this.$axios
@@ -134,7 +138,7 @@ export default {
             start_date: formData.start_date,
             end_date: formData.end_date,
             candidates: formData.candidates,
-            constituencies: formData.constituencies
+            constituencies: formData.constituencies,
           });
       }
     },

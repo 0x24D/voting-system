@@ -6,13 +6,13 @@
           <NewCampaign/>
         </md-tab>
         <md-tab id="tab-address" md-label="New Address">
-          TODO: implement new address UI
+          <NewAddress/>
         </md-tab>
         <md-tab id="tab-candidate" md-label="New Candidate">
-          UI to be implemented in feat/candidate-profiles
+          UI to be implemented in feat/candidate-profilesm
         </md-tab>
         <md-tab id="tab-constituency" md-label="New Constituency">
-          TODO: implement new constituency UI
+          <NewConstituency/>
         </md-tab>
         <md-tab id="tab-party" md-label="New Party">
           UI to be implemented in feat/candidate-profiles
@@ -25,15 +25,20 @@
   </div>
 </template>
 <script>
+import NewAddress from './NewAddress.vue';
 import NewCampaign from './NewCampaign.vue';
+import NewConstituency from './NewConstituency.vue';
+
 export default {
   name: 'Setup',
   components: {
+    NewAddress,
     NewCampaign,
+    NewConstituency,
   },
   methods: {
     setupClose() {
-        this.$store.commit('setSetupDisplayMode', false);
+      this.$store.commit('setSetupDisplayMode', false);
     },
   },
 };
