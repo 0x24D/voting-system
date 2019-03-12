@@ -39,17 +39,17 @@
             </md-field>
           </div>
 
-          <!-- <div class="md-layout-item md-small-size-100">
+          <div class="md-layout-item md-small-size-100">
             <md-field :class="getValidationClass('polling_station')">
               <label for="polling_station">Polling Station</label>
                 <md-select name="polling_station" id="polling_station" v-model="auditor.polling_station" md-dense required>
-                  <md-option v-for="address in address" :key="address._id" :value="address._id">
+                  <md-option v-for="address in addresses" :key="address._id" :value="address._id">
                     {{ address.postcode }}
                   </md-option>
                 </md-select>
               <span class="md-error" v-if="!$v.auditor.polling_station.required">Polling station is required</span>
             </md-field>
-          </div> -->
+          </div>
 
         </md-card-content>
         <md-card-actions>
@@ -78,6 +78,7 @@ export default {
             polling_station: "",
       },
       polling_station: [],
+      addresses: [],
     };
   },
 
@@ -86,16 +87,14 @@ export default {
       .get('http://localhost:8081/api/v1/pollingStations')
         .then((pollingRes) => {
           console.log(pollingRes);
-          //pollingRes.data[0].address.forEach((addressArr) => {
-            //Object.keys(pollingRes).forEach((address) => {
+          pollingRes.data.forEach((addressArr) => {
               this.$axios
-              .get(`http://localhost:8081/api/v1/addresses/${address}`)
+              .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
               .then((res) => {
-                console.log(res);
+                this.addresses.push(res.data)
             });
           }); 
-        //});
-      //})  
+        });
     },
     methods: {
     // eslint-disable-next-line
