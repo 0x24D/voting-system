@@ -12,13 +12,14 @@
 * Update - PUT
 * Delete - DELETE
 ```
+/api/v1/addresses GET - return list of all addresses (implemented)
 /api/v1/addresses POST - add new address (to implement for setting up a campaign)
 /api/v1/addresses/{id} GET - return specific address (implemented)
 
 /api/v1/admins POST - add new admin (implemented)
 /api/v1/admins/{username} GET - return specific admin (implemented)
 
-/api/v1/auditors POST - add new auditor (to implement for user registration)
+/api/v1/auditors POST - add new auditor (implemented)
 /api/v1/auditors/{id} GET - return specific auditor (implemeted)
 
 /api/v1/campaigns GET - return list of all campaigns (use ?constituency={constituency} query param to filter) (implemented)
@@ -35,6 +36,7 @@
 /api/v1/parties POST - add new party (to implement for party profiles, setting up a campaign)
 /api/v1/parties/{id} GET - return specific party (implemented)
 
+/api/v1/pollingStations GET - return list of all polling stations (implemented)
 /api/v1/pollingStations/{id} GET - return specific polling station (implemented)
 
 /api/v1/systems GET - return list of all systems (implemented)
