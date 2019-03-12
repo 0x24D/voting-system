@@ -1,41 +1,51 @@
 <template>
   <div id="admins">
-    <form @submit.prevent>
-    <md-card>
-      <md-toolbar>
-        <h1 class="md-title">Add New Admin</h1>
-      </md-toolbar>
+    <form novalidate class="md-layout" @submit.prevent>
+   <md-card class="md-layout-item md-size-100 md-small-size-100">
+      <md-card-header>
+        <div class="md-title">Add New Admin</div>
+      </md-card-header>
 
-      <md-field :class="getValidationClass('username')">
-        <label for="username">Username</label>
-        <md-input name="username" id="username" v-model="admin.username" required></md-input>
-        <span class="md-error" v-if="!$v.admin.username.required">Username is required</span>
-      </md-field>
+      <md-card-content>
+        <div class="md-layout-item md-small-size-100">
+          <md-field :class="getValidationClass('username')">
+            <label for="username">Username</label>
+              <md-input name="username" id="username" v-model="admin.username" required></md-input>
+            <span class="md-error" v-if="!$v.admin.username.required">Username is required</span>
+          </md-field>
+        </div>
 
-      <md-field :class="getValidationClass('name')">
-        <label for="name">Name</label>
-        <md-input name="name" id="name" v-model="admin.name" required></md-input>
-        <span class="md-error" v-if="!$v.admin.name.required">Name is required</span>
-      </md-field>
+        <div class="md-layout-item md-small-size-100">
+          <md-field :class="getValidationClass('name')">
+            <label for="name">Name</label>
+              <md-input name="name" id="name" v-model="admin.name" required></md-input>
+            <span class="md-error" v-if="!$v.admin.name.required">Name is required</span>
+          </md-field>
+        </div>
 
-      <md-field :class="getValidationClass('email')">
-        <label for="email">Email</label>
-        <md-input name="email" id="email" v-model="admin.email" required></md-input>
-        <span class="md-error" v-if="!$v.admin.email.required">Email is required</span>
-      </md-field>
+        <div class="md-layout-item md-small-size-100">
+          <md-field :class="getValidationClass('email')">
+            <label for="email">Email</label>
+              <md-input name="email" id="email" v-model="admin.email" required></md-input>
+            <span class="md-error" v-if="!$v.admin.email.required">Email is required</span>
+          </md-field>
+        </div>
 
-      <md-field :class="getValidationClass('password')">
-        <label for="password">Password</label>
-        <md-input name="password" id="password" v-model="admin.password" required></md-input>
-        <span class="md-error" v-if="!$v.admin.password.required">Password is required</span>
-      </md-field>
+        <div class="md-layout-item md-small-size-100">
+          <md-field :class="getValidationClass('password')">
+            <label for="password">Password</label>
+              <md-input name="password" id="password" v-model="admin.password" required></md-input>
+            <span class="md-error" v-if="!$v.admin.password.required">Password is required</span>
+          </md-field>
+        </div>
 
 
-    </md-card>
-    <div>
-      <md-button class="md-raised" id="adminButton" @click="goToAdmin()">Back to Admin</md-button>
-      <md-button class="md-raised" id="submitButton" @click="onSubmit(admin)">Submit Details</md-button>
-    </div>
+        </md-card-content>
+        <md-card-actions>
+          <md-button class="md-primary" id="adminButton" @click="goToAdmin()">Back to Admin</md-button>
+          <md-button class="md-primary" id="submitButton" @click="onSubmit(admin)">Submit Details</md-button>
+        </md-card-actions>
+      </md-card>
     </form>
   </div>
 </template>

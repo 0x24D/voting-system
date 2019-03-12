@@ -1,4 +1,5 @@
 import {
+  findAll,
   findById,
 } from '../db/pollingStationAccess';
 
@@ -8,6 +9,16 @@ export const getPollingStationById = (req, res) => {
       res.status(500).send(err);
     } else {
       res.json([pollingStation]);
+    }
+  });
+};
+
+export const getPollingStations = (req, res) => {
+  findAll((err, pollingStation) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json(pollingStation);
     }
   });
 };

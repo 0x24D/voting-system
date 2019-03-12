@@ -67,12 +67,12 @@ const campaign1Id = ObjectId(campaignRet.insertedId.str);
 // add address
 
 const address1 = {
-  line_one: '',
-  line_two: '',
-  town: '',
-  county: '',
-  country: '',
-  postcode: '',
+  line_one: '10 Low Road',
+  line_two: 'Balby',
+  town: 'Doncaster',
+  county: 'South Yorkshire',
+  country: 'England',
+  postcode: 'DN4 9BD',
   address: constituency1Id
 };
 

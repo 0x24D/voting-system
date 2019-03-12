@@ -12,7 +12,9 @@ chai.use(chaiHttp);
 
 describe('Address tests', () => {
   let address1Id;
+  let address2Id;
   let constituency1Id;
+  let constituency2Id;
   beforeEach((done) => {
     const constituency1 = new Constituency({
       name: 'constituency 1',
@@ -37,17 +39,18 @@ describe('Address tests', () => {
       minimum_age: 18,
       voting_system: 'fptp',
     });
+    constituency2Id = String(constituency2._id);
 
     const address2 = new Address({
-      line_one: 'address line 2',
-      line_two: 'address line 2',
+      line_one: 'address line 3',
+      line_two: 'address line 4',
       town: 'town 2',
       county: 'county 2',
       country: 'country 2',
       postcode: 'postcode 2',
       constituency: constituency2,
     });
-
+    address2Id = String(address2._id);
 
     Address.insertMany([address1, address2], () => {
       done();
@@ -83,6 +86,51 @@ describe('Address tests', () => {
         res.body.country.should.equal('country');
         res.body.postcode.should.equal('postcode');
         res.body.constituency.should.equal(constituency1Id);
+        done();
+      });
+  });
+
+  it('should list all addresses on /api/v1/addresses GET', (done) => {
+    chai.request(app)
+      .get('/api/v1/addresses')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('array');
+        expect(res.body).to.have.lengthOf(2);
+        res.body[0].should.have.property('_id');
+        res.body[0].should.have.property('line_one');
+        res.body[0].should.have.property('line_two');
+        res.body[0].should.have.property('town');
+        res.body[0].should.have.property('county');
+        res.body[0].should.have.property('country');
+        res.body[0].should.have.property('postcode');
+        res.body[0].should.have.property('constituency');
+        res.body[0]._id.should.equal(address1Id);
+        res.body[0].line_one.should.equal('address line 1');
+        res.body[0].line_two.should.equal('address line 2');
+        res.body[0].town.should.equal('town');
+        res.body[0].county.should.equal('county');
+        res.body[0].country.should.equal('country');
+        res.body[0].postcode.should.equal('postcode');
+        res.body[0].constituency.should.equal(constituency1Id);
+
+        res.body[1].should.have.property('_id');
+        res.body[1].should.have.property('line_one');
+        res.body[1].should.have.property('line_two');
+        res.body[1].should.have.property('town');
+        res.body[1].should.have.property('county');
+        res.body[1].should.have.property('country');
+        res.body[1].should.have.property('postcode');
+        res.body[1].should.have.property('constituency');
+        res.body[1]._id.should.equal(address2Id);
+        res.body[1].line_one.should.equal('address line 3');
+        res.body[1].line_two.should.equal('address line 4');
+        res.body[1].town.should.equal('town 2');
+        res.body[1].county.should.equal('county 2');
+        res.body[1].country.should.equal('country 2');
+        res.body[1].postcode.should.equal('postcode 2');
+        res.body[1].constituency.should.equal(constituency2Id);
         done();
       });
   });

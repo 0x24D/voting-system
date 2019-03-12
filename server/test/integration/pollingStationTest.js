@@ -13,7 +13,9 @@ chai.use(chaiHttp);
 
 describe('PollingStation tests', () => {
   let address1Id;
+  let address2Id;
   let pollingStation1Id;
+  let pollingStation2Id;
 
   beforeEach((done) => {
     const address1 = new Address({
@@ -40,12 +42,13 @@ describe('PollingStation tests', () => {
       country: 'country',
       postcode: 'postcode',
     });
+    address2Id = String(address2._id);
 
     const pollingStation2 = new PollingStation({
       address: address2,
       close_time: Date.now() + 1,
     });
-
+    pollingStation2Id = String(pollingStation2._id);
 
     PollingStation.insertMany([pollingStation1, pollingStation2], () => {
       done();
@@ -71,6 +74,31 @@ describe('PollingStation tests', () => {
         res.body[0].should.have.property('close_time');
         res.body[0]._id.should.equal(pollingStation1Id);
         res.body[0].address.should.equal(address1Id);
+        done();
+      });
+  });
+
+  it('should list all polling stations on /api/v1/pollingStations GET', (done) => {
+    chai.request(app)
+      .get('/api/v1/pollingStations')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('array');
+        expect(res.body).to.have.lengthOf(2);
+        res.body[0].should.have.property('_id');
+        res.body[0].should.have.property('address');
+        res.body[0].should.have.property('open_time');
+        res.body[0].should.have.property('close_time');
+        res.body[0]._id.should.equal(pollingStation1Id);
+        res.body[0].address.should.equal(address1Id);
+
+        res.body[1].should.have.property('_id');
+        res.body[1].should.have.property('address');
+        res.body[1].should.have.property('open_time');
+        res.body[1].should.have.property('close_time');
+        res.body[1]._id.should.equal(pollingStation2Id);
+        res.body[1].address.should.equal(address2Id);
         done();
       });
   });
