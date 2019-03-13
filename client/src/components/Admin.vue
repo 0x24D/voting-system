@@ -17,11 +17,11 @@ export default {
   },
   methods: {
     goToCampaigns() {
-      this.$store.commit('setAdminDisplayMode', false);
+      // this.$store.commit('setAdminDisplayMode', false);
       // this.$store.commit('setCampaignsDisplayMode', true);
     },
     goToCandidates() {
-      this.$store.commit('setAdminDisplayMode', false);
+      // this.$store.commit('setAdminDisplayMode', false);
       // this.$store.commit('setCandidatessDisplayMode', true);
     },
     goToResults() {
@@ -29,7 +29,7 @@ export default {
       this.$store.commit('setResultsCampaignsDisplayMode', true);
     },
     goToUsers() {
-      this.$store.commit('setAdminDisplayMode', false);
+      // this.$store.commit('setAdminDisplayMode', false);
       // this.$store.commit('setUsersDisplayMode', true);
     },
   },

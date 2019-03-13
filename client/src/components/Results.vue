@@ -18,6 +18,7 @@
         <md-table-cell>{{ candidate.votes  }}</md-table-cell>
       </md-table-row>
     </md-table>
+    <md-button class="md-raised md-primary" @click="onBack()">Go Back</md-button>
   </div>
 </template>
 
@@ -61,6 +62,12 @@ export default {
           });
         });
       });
+  },
+  methods: {
+    onBack() {
+      this.$store.commit('setResultsCampaignsDisplayMode', true);
+        this.$store.commit('setResultsDisplayMode', false);
+    },
   },
 };
 </script>

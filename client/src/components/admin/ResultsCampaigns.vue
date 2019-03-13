@@ -10,6 +10,7 @@
         <md-table-cell md-label="End date" md-sort-by="end_date">{{ new Date(item.end_date).toDateString() }}</md-table-cell>
       </md-table-row>
     </md-table>
+    <md-button class="md-raised md-primary" @click="onBack()">Go Back</md-button>
   </div>
 </template>
 <script>
@@ -29,6 +30,10 @@ export default {
     });
   },
   methods: {
+    onBack() {
+      this.$store.commit('setAdminDisplayMode', true);
+      this.$store.commit('setResultsCampaignsDisplayMode', false);
+    },
     goToResults(campaign) {
       this.$store.commit('setCampaignIdToDisplay', campaign._id);
       this.$store.commit('setResultsDisplayMode', true);

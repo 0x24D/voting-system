@@ -65,7 +65,7 @@ export default {
       this.$axios
         .put(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`, {
           total_votes: '++',
-          votes: this.selected,
+          votes: this.selected.id,
         })
         .then(() => {
           this.$axios
