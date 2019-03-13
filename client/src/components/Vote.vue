@@ -9,7 +9,8 @@
          <md-table-cell md-label="Party" md-sort-by="party">{{ item.party }}</md-table-cell>
       </md-table-row>
     </md-table>
-    <md-button class="md-raised" @click="onSubmit()" :disabled="!this.selected">Submit vote</md-button>
+    <md-button class="md-raised md-primary" @click="onBack()">Go Back</md-button>
+    <md-button class="md-raised md-primary" @click="onSubmit()" :disabled="!this.selected">Submit</md-button>
   </div>
 </template>
 
@@ -52,6 +53,10 @@ export default {
   methods: {
     getClass(item){
       return item && this.selected && item.id === this.selected.id ? 'md-primary' : '';
+    },
+    onBack() {
+      this.$store.commit('setCampaignsDisplayMode', true);
+      this.$store.commit('setVoteDisplayMode', false);
     },
     onSelect(candidate) {
       this.selected = candidate;

@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <div v-if="userAuthenticated()">
-      <Logout/>
       <div v-if="userType('voter')">
         <div v-if="this.$store.state.showCampaigns">
           <ListOfCampaigns/>
@@ -36,7 +35,6 @@ import { getUserType, isUserAuthenticated } from './utils/auth';
 import Admin from './components/Admin.vue';
 import ListOfCampaigns from './components/ListOfCampaigns.vue';
 import Login from './components/Login.vue';
-import Logout from './components/Logout.vue';
 import Results from './components/Results.vue';
 import ResultsCampaigns from './components/admin/ResultsCampaigns.vue';
 import Success from './components/Success.vue';
@@ -48,7 +46,6 @@ export default {
     Admin,
     ListOfCampaigns,
     Login,
-    Logout,
     Results,
     ResultsCampaigns,
     Success,

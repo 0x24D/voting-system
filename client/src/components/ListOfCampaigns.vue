@@ -1,7 +1,7 @@
 <template>
   <div id="campaigns">
-    <div class="campaign" v-for="campaign in campaigns" :key="campaign._id" @click="goToCampaign(campaign._id)"
-    style="{cursor: pointer}">
+    <div class="campaign" v-for="campaign in campaigns" :key="campaign._id"
+    @click="goToCampaign(campaign._id)" :style="getCursorStyle">
       <md-list>
         <md-list-item>
           <span class="md-list-item-text">{{ campaign.name }}</span>
@@ -17,18 +17,17 @@ export default {
   data() {
     return {
       campaigns: [],
+      hasVoted: null,
     };
   },
+  computed: {
+    getCursorStyle() {
+      return `cursor: ${this.hasVoted ? 'default' : 'pointer'}`;
+    }
+  },
   methods: {
-    hasVoted() {
-      this.$axios
-        .get(`http://localhost:8081/api/v1/voters/${localStorage.user}`)
-        .then((response) => {
-          return response.data.voted;
-        });
-    },
     goToCampaign(campaignId) {
-      if (!this.hasVoted()) {
+      if (!this.hasVoted) {
         this.$store.commit('setCampaignIdToDisplay', campaignId);
         this.$store.commit('setVoteDisplayMode', true);
         this.$store.commit('setCampaignsDisplayMode', false);
@@ -41,15 +40,11 @@ export default {
       .then((response) => {
         this.campaigns = response.data;
     });
-    // Cannot set cursor to pointer using :style, :class or in plain JS. Why?
-    if (!this.hasVoted()) {
-      const campaigns = document.getElementsByClassName('campaign');
-      console.log(campaigns);
-      Array.prototype.forEach.call(campaigns, ((c) => {
-        console.log(c);
-        c.style.cursor='pointer';
-      }));
-    }
+    this.$axios
+      .get(`http://localhost:8081/api/v1/voters/${localStorage.user}`)
+      .then((response) => {
+        this.hasVoted = response.data.voted;
+    });
   },
 };
 </script>
