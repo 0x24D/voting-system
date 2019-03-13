@@ -67,12 +67,12 @@ const campaign1Id = ObjectId(campaignRet.insertedId.str);
 // add address
 
 const address1 = {
-  line_one: '',
+  line_one: '10 Barn Road',
   line_two: '',
-  town: '',
-  county: '',
-  country: '',
-  postcode: '',
+  town: 'Sheffield',
+  county: 'South Yorkshire',
+  country: 'United Kingdom',
+  postcode: 'S6 7AD',
   address: constituency1Id
 };
 

@@ -13,7 +13,7 @@ const AuditorSchema = new Schema({
 
 });
 
-// Inherits from the user model. 
+// Inherits from the user model
 const Auditor = User.discriminator('auditor', AuditorSchema);
 
 export default Auditor;
