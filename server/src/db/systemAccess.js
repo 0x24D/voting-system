@@ -1,7 +1,11 @@
 import System from '../models/systemModel';
 
-export const findAll = (callback) => {
-  System.find({}).lean().exec((err, systems) => {
+export const findAll = (station, callback) => {
+  let findTerm = {};
+  if (station) {
+    findTerm = { station };
+  }
+  System.find(findTerm).lean().exec((err, systems) => {
     callback(err, systems);
   });
 };

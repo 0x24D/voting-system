@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import addressRoutes from './src/routes/addressRoutes';
+import adminRoutes from './src/routes/adminRoutes';
+import auditorRoutes from './src/routes/auditorRoutes';
 import authenticationRoutes from './src/routes/authenticationRoutes';
 import campaignRoutes from './src/routes/campaignRoutes';
 import candidateRoutes from './src/routes/candidateRoutes';
@@ -13,7 +15,6 @@ import systemRoutes from './src/routes/systemRoutes';
 import userRoutes from './src/routes/userRoutes';
 import voterRoutes from './src/routes/voterRoutes';
 import emailRoutes from './src/routes/emailRoutes';
-
 
 const app = express();
 
@@ -38,6 +39,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 addressRoutes(app);
+adminRoutes(app);
+auditorRoutes(app);
 authenticationRoutes(app);
 campaignRoutes(app);
 candidateRoutes(app);

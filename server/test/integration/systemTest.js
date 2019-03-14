@@ -30,7 +30,7 @@ describe('System tests', () => {
     campaign1Id = String(campaign1._id);
     const system1 = new System({
       station: station1,
-      voters: 'all',
+      voters: null,
       campaigns: campaign1,
     });
     system1Id = String(system1._id);
@@ -47,7 +47,7 @@ describe('System tests', () => {
     campaign2Id = String(campaign2._id);
     const system2 = new System({
       station: station2,
-      voters: 'all',
+      voters: null,
       campaigns: campaign2,
     });
     PollingStation.insertMany([station1, station2], () => {
@@ -82,7 +82,7 @@ describe('System tests', () => {
         res.body[0].should.have.property('campaigns');
         res.body[0].should.have.property('language');
         res.body[0].station.should.equal(station1Id);
-        res.body[0].voters.should.equal('all');
+        expect(res.body[0].voters).to.be.null;
         expect(res.body[0].campaigns).to.have.lengthOf(1);
         res.body[0].campaigns[0].should.equal(campaign1Id);
         res.body[0].language.should.equal('en-gb');
@@ -93,10 +93,32 @@ describe('System tests', () => {
         res.body[1].should.have.property('campaigns');
         res.body[1].should.have.property('language');
         res.body[1].station.should.equal(station2Id);
-        res.body[1].voters.should.equal('all');
+        expect(res.body[1].voters).to.be.null;
         expect(res.body[1].campaigns).to.have.lengthOf(1);
         res.body[1].campaigns[0].should.equal(campaign2Id);
         res.body[1].language.should.equal('en-gb');
+        done();
+      });
+  });
+
+  it('should list all systems on /api/v1/systems?station=<station> GET', (done) => {
+    chai.request(app)
+      .get(`/api/v1/systems?station=${station1Id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('array');
+        expect(res.body).to.have.lengthOf(1);
+        res.body[0].should.have.property('_id');
+        res.body[0].should.have.property('station');
+        res.body[0].should.have.property('voters');
+        res.body[0].should.have.property('campaigns');
+        res.body[0].should.have.property('language');
+        expect(res.body[0].voters).to.be.null;
+        expect(res.body[0].campaigns).to.have.lengthOf(1);
+        res.body[0].campaigns[0].should.equal(campaign1Id);
+        res.body[0].language.should.equal('en-gb');
+        res.body[0].station.should.equal(station1Id);
         done();
       });
   });
@@ -114,7 +136,7 @@ describe('System tests', () => {
         res.body.should.have.property('campaigns');
         res.body.should.have.property('language');
         res.body.station.should.equal(station1Id);
-        res.body.voters.should.equal('all');
+        expect(res.body.voters).to.be.null;
         expect(res.body.campaigns).to.have.lengthOf(1);
         res.body.campaigns[0].should.equal(campaign1Id);
         res.body.language.should.equal('en-gb');
@@ -124,13 +146,13 @@ describe('System tests', () => {
 
   it('should update system on /api/v1/systems/<id>  PUT', (done) => {
     chai.request(app)
-    .put(`/api/v1/systems/${system1Id}`)
-    .set('content-type', 'application/x-www-form-urlencoded')
-    .send({
-      campaigns: campaign2Id,
-    })
-    .end((err, res) => {
-      res.should.have.status(200);
+      .put(`/api/v1/systems/${system1Id}`)
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        campaigns: campaign2Id,
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.have.property('_id');
@@ -139,11 +161,11 @@ describe('System tests', () => {
         res.body.should.have.property('campaigns');
         res.body.should.have.property('language');
         res.body.station.should.equal(station1Id);
-        res.body.voters.should.equal('all');
+        expect(res.body.voters).to.be.null;
         expect(res.body.campaigns).to.have.lengthOf(1);
         res.body.campaigns[0].should.equal(campaign2Id);
         res.body.language.should.equal('en-gb');
         done();
-    })
-  })
+      });
+  });
 });

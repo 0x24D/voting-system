@@ -18,8 +18,8 @@
         <md-table-cell>{{ candidate.votes }}</md-table-cell>
       </md-table-row>
     </md-table>
-     <!-- Create a new chart instance with the data from the array --> 
-    <md-card id="chart"> 
+     <!-- Create a new chart instance with the data from the array -->
+    <md-card id="chart">
     <bars
       :data="this.chartData"
       :gradient="['#ffbe88', '#ff93df']"
@@ -30,6 +30,7 @@
       :height="350">
     </bars>
     </md-card>
+    <md-button class="md-raised" @click="goToAdmin()">Back to Admin</md-button>
   </div>
 </template>
 <script>
@@ -67,7 +68,7 @@ created() {
                     });
                     // Pushes the candidate name and votes to the chartData array as objects
                     this.chartData.push({
-                      title: `${candidateRes.data.name}: ${campaignRes.data[0].votes[candidateIndex][candidateId]}`, 
+                      title: `${candidateRes.data.name}: ${campaignRes.data[0].votes[candidateIndex][candidateId]}`,
                       value: campaignRes.data[0].votes[candidateIndex][candidateId],
                     });
                   });
@@ -75,6 +76,13 @@ created() {
           });
         })
       })
+  },
+
+  methods: {
+    goToAdmin()  {
+              this.$store.commit('setAdminDisplayMode', true);
+              this.$store.commit('setResultsDisplayMode', false);
+    },
   },
 };
 </script>

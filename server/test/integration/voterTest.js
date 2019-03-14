@@ -109,4 +109,41 @@ describe('Voter tests', () => {
         done();
       });
   });
+
+  it('should add new voter on /api/v1/voters POST', (done) => {
+    chai.request(app)
+      .post('/api/v1/voters')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        username: 'testuser',
+        name: 'testname',
+        email: 'test@mail',
+        password: 'testPass',
+        date_of_birth: new Date('01/01/01'),
+        address: addressId1,
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('username');
+        res.body.should.have.property('name');
+        res.body.should.have.property('email');
+        res.body.should.have.property('password');
+        res.body.should.have.property('authentication_attempts');
+        res.body.should.have.property('voted');
+        res.body.should.have.property('date_of_birth');
+        res.body.should.have.property('address');
+        res.body.username.should.equal('testuser');
+        res.body.name.should.equal('testname');
+        res.body.email.should.equal('test@mail');
+        res.body.password.should.not.equal('testPass');
+        res.body.authentication_attempts.should.equal(0);
+        res.body.voted.should.equal(false);
+        res.body.date_of_birth.should.equal(new Date('01/01/01').toISOString());
+        res.body.address.should.equal(addressId1);
+        done();
+      });
+  });
 });
