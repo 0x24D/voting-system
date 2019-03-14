@@ -52,8 +52,8 @@
 ```
 
 ## Extensions:
-* User registration (voter, admin, and auditor) - A
+* User registration (voter, admin, and auditor) - A (merged into develop)
 * Adding/displaying candidate/party profiles - JS
 * Setting up a campaign (with candidates) - D
-* List of voters for auditor - L
+* List of voters for auditor - L (merged into develop)
 * Graphical results interface (for each campaign) - JW
