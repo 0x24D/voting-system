@@ -83,7 +83,7 @@ export default {
             // to the email endpoint to then send the email
             .post('http://localhost:8081/api/v1/email', {
               id: localStorage.user,
-              subject: 'Vote successful',
+              subject: 'Vote Successful',
               text: 'Thank you for your vote!'
               });
           })
