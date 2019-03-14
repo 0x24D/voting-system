@@ -57,4 +57,6 @@
 * Setting up a campaign (with candidates) - D
 * List of voters for auditor - L (merged into develop)
 * Graphical results interface (for each campaign) - JW (in progress)
-** When actually sending email, change _config.js to correct details.
+
+## Notes:
+* When actually sending email, change _config.js to correct details.
