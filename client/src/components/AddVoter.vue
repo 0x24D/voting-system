@@ -43,7 +43,7 @@
       <div class="md-layout-item md-small-size-100">
         <md-field :class="getValidationClass('date_of_birth')">
           <label for="date_of_birth">Date of Birth</label>
-            <md-datepicker name="date_of_birth" id="date_of_birth" v-model="voter.date_of_birth" required/>
+            <md-datepicker name="date_of_birth" id="date_of_birth" v-model="dateOfBirth" required/>
             <span class="md-error" v-if="!$v.voter.date_of_birth.required">Date of birth is required</span>
         </md-field>
       </div>
@@ -65,12 +65,12 @@
       <div class="md-layout-item md-small-size-100">
             <md-field :class="getValidationClass('polling_station')">
               <label for="polling_station">Polling Station</label>
-                <md-select name="polling_station" id="polling_station" v-model="polling_station" md-dense required>
+                <md-select name="polling_station" id="polling_station" v-model="polling_station_address" md-dense required>
                   <md-option v-for="ad in addresses" :key="ad._id" :value="ad._id">
                     {{ ad.postcode }}
                   </md-option>
                 </md-select>
-              <span class="md-error" v-if="!$v.polling_station.required">Polling station is required</span>
+              <span class="md-error" v-if="!$v.polling_station_address.required">Polling station is required</span>
             </md-field>
           </div>
 
@@ -100,22 +100,23 @@ export default {
             password: "",
             date_of_birth: "",
             address: "",
+            polling_station: '',
       },
       address: [],
       addresses: [],
       stations: [],
-      polling_station: "",
+      polling_station_address: "",
     };
   },
 
 /**
    *
-   * The first address array is for the voters physical address, this is 
+   * The first address array is for the voters physical address, this is
    * stored in the voter object
-   * 
-   * The created method also populates the addresses and stations array in order 
+   *
+   * The created method also populates the addresses and stations array in order
    * to supply options for the polling station drop down in the form above.
-   * 
+   *
    */
 
     created() {
@@ -135,10 +136,20 @@ export default {
                 .then((res) => {
                   this.addresses.push(res.data)
               });
-            }); 
+            });
           });
     },
-    
+    computed: {
+      dateOfBirth: {
+        get () {
+          return this.voter.date_of_birth ? new Date(this.voter.date_of_birth) : null;
+        },
+        set (date) {
+          this.voter.date_of_birth = date ? new Date(date).toISOString() : null;
+        }
+      },
+    },
+
     methods: {
     // eslint-disable-next-line
     getValidationClass(fieldName) {
@@ -154,30 +165,31 @@ export default {
    *
    * goToAdmin is a function used when the adminButton is clicked,
    * it switches the screen from AddVoter.vue to Admin.vue
-   * 
+   *
    */
 
-    goToAdmin() {      
+    goToAdmin() {
               this.$store.commit('setAdminDisplayMode', true);
-              this.$store.commit('setAddVoterDisplayMode', false);      
+              this.$store.commit('setAddVoterDisplayMode', false);
     },
 
     /**
    *
    * onSubmit is a function used when the submitButton is clicked,
-   * 
+   *
    * @param newVoter the voter that the user wants to add.
-   * 
+   *
    */
 
     onSubmit(newVoter) {
-      this.$v.$touch();    
+      this.$v.$touch();
       if (!this.$v.$invalid) {
       //retrieve station Id from selected address
-        this.stations.forEach((station) => {
-            if(this.polling_station == station.address)
-              this.polling_station = station._id;
-          });
+        for (let station of this.stations) {
+            if(this.polling_station_address === station.address)
+              this.voter.polling_station = station._id;
+              break;
+        };
         this.$axios
         //posts voter if all fields are valid
           .post('http://localhost:8081/api/v1/voters', {
@@ -188,10 +200,27 @@ export default {
             date_of_birth: newVoter.date_of_birth,
             address: newVoter.address,
           })
-          .then(() => {
-            //switches the screen from AddVoter.vue to Admin.vue
-            this.$store.commit('setAdminDisplayMode', true);
-            this.$store.commit('setAddVoterDisplayMode', false);   
+          .then((voterRes) => {
+            let systemId;
+            this.$axios
+            .get('http://localhost:8081/api/v1/systems')
+            .then((systemsRes) => {
+              for (let system of systemsRes.data){
+                if (system.station === this.voter.polling_station) {
+                  systemId = system._id;
+                  break;
+                }
+              };
+                this.$axios
+                .put(`http://localhost:8081/api/v1/systems/${systemId}`, {
+                  voter: voterRes.data._id
+                })
+                .then(() => {
+                 //switches the screen from AddAuditor.vue to Admin.vue
+                  this.$store.commit('setAdminDisplayMode', true);
+                  this.$store.commit('setAddVoterDisplayMode', false);
+                });
+            });
           });
       }
     },
@@ -200,9 +229,9 @@ export default {
 
 /**
    *
-   * validations enforces the fields that are required and also the 
+   * validations enforces the fields that are required and also the
    * email validation
-   * 
+   *
    */
   validations: {
     voter: {
@@ -226,7 +255,7 @@ export default {
         required,
       },
     },
-    polling_station: {
+    polling_station_address: {
         required,
       },
   },

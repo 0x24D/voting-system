@@ -18,6 +18,8 @@ Vue.prototype.$axios = Axios;
 Vue.use(Bars);
 Vue.use(VueMaterial);
 
+Vue.material.locale.dateFormat = 'dd/MM/yyyy';
+
 new Vue({
   store,
   render: h => h(App),

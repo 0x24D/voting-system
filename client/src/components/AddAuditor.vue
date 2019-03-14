@@ -85,9 +85,9 @@ export default {
 
   /**
    *
-   * The created method populates the addresses and stations array in order 
+   * The created method populates the addresses and stations array in order
    * to supply options for the polling station drop down in the form above.
-   * 
+   *
    */
 
   created() {
@@ -101,7 +101,7 @@ export default {
               .then((res) => {
                 this.addresses.push(res.data)
             });
-          }); 
+          });
         });
     },
     methods: {
@@ -119,24 +119,24 @@ export default {
    *
    * goToAdmin is a function used when the adminButton is clicked,
    * it switches the screen from AddAuditor.vue to Admin.vue
-   * 
+   *
    */
 
-    goToAdmin() {      
+    goToAdmin() {
               this.$store.commit('setAdminDisplayMode', true);
-              this.$store.commit('setAddAuditorDisplayMode', false);      
+              this.$store.commit('setAddAuditorDisplayMode', false);
     },
 
     /**
    *
    * onSubmit is a function used when the submitButton is clicked,
-   * 
+   *
    * @param newAuditor the auditor that the user wants to add.
-   * 
+   *
    */
 
     onSubmit(newAuditor) {
-      this.$v.$touch();    
+      this.$v.$touch();
       if (!this.$v.$invalid) {
         //retrieve station Id from selected address
         this.stations.forEach((station) => {
@@ -155,7 +155,7 @@ export default {
           .then(() => {
            //switches the screen from AddAuditor.vue to Admin.vue
             this.$store.commit('setAdminDisplayMode', true);
-            this.$store.commit('setAddAuditorDisplayMode', false);   
+            this.$store.commit('setAddAuditorDisplayMode', false);
           });
       }
     },
@@ -164,9 +164,9 @@ export default {
 
 /**
    *
-   * validations enforces the fields that are required and also the 
+   * validations enforces the fields that are required and also the
    * email validation
-   * 
+   *
    */
   validations: {
     auditor: {

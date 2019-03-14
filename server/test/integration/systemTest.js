@@ -1,9 +1,10 @@
 import chai, { expect, assert } from 'chai';
 import app from '../../app';
 
-import System from '../../src/models/systemModel';
-import PollingStation from '../../src/models/pollingStationModel';
 import Campaign from '../../src/models/campaignModel';
+import PollingStation from '../../src/models/pollingStationModel';
+import System from '../../src/models/systemModel';
+import Voter from '../../src/models/voterModel';
 
 const chaiHttp = require('chai-http');
 
@@ -145,11 +146,22 @@ describe('System tests', () => {
   });
 
   it('should update system on /api/v1/systems/<id>  PUT', (done) => {
+    const newVoter = new Voter({
+      username: 'voter1',
+      name: 'Voter 1',
+      email: 'voter1@hotmail.com',
+      password: 'voter1',
+      roles: 'voter',
+      date_of_birth: new Date('01/01/01'),
+      address: null,
+    });
+    const newVoterId = String(newVoter._id);
     chai.request(app)
       .put(`/api/v1/systems/${system1Id}`)
       .set('content-type', 'application/x-www-form-urlencoded')
       .send({
         campaigns: campaign2Id,
+        voter: newVoterId,
       })
       .end((err, res) => {
         res.should.have.status(200);
@@ -161,7 +173,8 @@ describe('System tests', () => {
         res.body.should.have.property('campaigns');
         res.body.should.have.property('language');
         res.body.station.should.equal(station1Id);
-        expect(res.body.voters).to.be.null;
+        expect(res.body.voters).to.have.lengthOf(1);
+        res.body.voters[0].should.equal(newVoterId);
         expect(res.body.campaigns).to.have.lengthOf(1);
         res.body.campaigns[0].should.equal(campaign2Id);
         res.body.language.should.equal('en-gb');
