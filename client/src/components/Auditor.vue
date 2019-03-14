@@ -6,11 +6,17 @@
       </md-table-toolbar>
       <md-table-row>
         <md-table-head>Name</md-table-head>
+        <md-table-head>Email</md-table-head>
+        <md-table-head>Date Of Birth</md-table-head>
+        <md-table-head>Postcode</md-table-head>
         <md-table-head>Voted</md-table-head>
       </md-table-row>
 
       <md-table-row md-selectable="single" v-for="voter in voters" :key="voter.id">
         <md-table-cell>{{ voter.name }}</md-table-cell>
+        <md-table-cell>{{ voter.email }}</md-table-cell>
+        <md-table-cell>{{ new Date (voter.date_of_birth).toDateString() }}</md-table-cell>
+        <md-table-cell>{{ voter.postcode }}</md-table-cell>
         <md-table-cell><md-checkbox class="md-primary" @change="onChange(voter)" v-model="voter.voted"/></md-table-cell>
       </md-table-row>
     </md-table>
@@ -46,11 +52,20 @@ export default {
                 this.$axios
                   .get(`http://localhost:8081/api/v1/voters/${voterId}`)
                   .then((voterRes) => {
-                    this.voters.push({
+              this.$axios
+              .get(`http://localhost:8081/api/v1/addresses/${voterRes.data.address}`)
+              .then((addressRes) => {
+                this.voters.push({
                       id: voterId,
                       name: voterRes.data.name,
+                      email: voterRes.data.email,
+                      date_of_birth: voterRes.data.date_of_birth,
+                      postcode: addressRes.data.postcode,
                       voted: voterRes.data.voted
                     });
+
+            });
+                    
                   });
               });
             });
