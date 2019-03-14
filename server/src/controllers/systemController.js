@@ -41,6 +41,11 @@ export const editSystemWithId = (req, res) => {
           updateData[prop] = system[prop];
         }
       });
+      if (req.body.voter) {
+        const votersArray = system.voters ? system.voters : [];
+        votersArray.push(req.body.voter);
+        updateData.voters = votersArray;
+      }
       updateExistingById(systemId, updateData, (err2, updatedSystem) => {
         if (err2) {
           res.status(500).send(err2);
