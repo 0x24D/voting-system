@@ -15,6 +15,12 @@ export const addNew = (dataToSave, callback) => {
   });
 };
 
+export const findAll = (callback) => {
+  Voter.find({}).lean().exec((err, voters) => {
+    callback(err, voters);
+  });
+};
+
 export const findById = (voterId, callback) => {
   Voter.findById(voterId).lean().exec((err, voter) => {
     callback(err, voter);

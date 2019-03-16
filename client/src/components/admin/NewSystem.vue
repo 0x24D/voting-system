@@ -93,11 +93,11 @@ export default {
         });
         this.stations = pollingStations;
       });
-    // this.$axios
-    //   .get('http://localhost:8081/api/v1/voters')
-    //   .then((response) => {
-    //     this.voters = response.data;
-    //   });
+    this.$axios
+      .get('http://localhost:8081/api/v1/voters')
+      .then((response) => {
+        this.voters = response.data;
+      });
   },
   methods: {
     // eslint-disable-next-line
