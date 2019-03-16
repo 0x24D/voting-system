@@ -89,27 +89,27 @@ import { validationMixin } from 'vuelidate';
 import { required, email } from 'vuelidate/lib/validators';
 
 export default {
-  name: "AddVoter",
+  name: 'AddVoter',
   mixins: [validationMixin],
   data() {
     return {
       voter: {
-            username: "",
-            name: "",
-            email: "",
-            password: "",
-            date_of_birth: "",
-            address: "",
-            polling_station: '',
+        username: '',
+        name: '',
+        email: '',
+        password: '',
+        date_of_birth: '',
+        address: '',
+        polling_station: '',
       },
       address: [],
       addresses: [],
       stations: [],
-      polling_station_address: "",
+      polling_station_address: '',
     };
   },
 
-/**
+  /**
    *
    * The first address array is for the voters physical address, this is
    * stored in the voter object
@@ -119,38 +119,38 @@ export default {
    *
    */
 
-    created() {
-      this.$axios
-        .get('http://localhost:8081/api/v1/addresses')
-        .then((response) => {
-          this.address = response.data;
-        });
+  created() {
+    this.$axios
+      .get('http://localhost:8081/api/v1/addresses')
+      .then((response) => {
+        this.address = response.data;
+      });
 
-      this.$axios
-        .get('http://localhost:8081/api/v1/pollingStations')
-          .then((pollingRes) => {
-            this.stations = pollingRes.data;
-            pollingRes.data.forEach((addressArr) => {
-                this.$axios
-                .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
-                .then((res) => {
-                  this.addresses.push(res.data)
-              });
+    this.$axios
+      .get('http://localhost:8081/api/v1/pollingStations')
+      .then((pollingRes) => {
+        this.stations = pollingRes.data;
+        pollingRes.data.forEach((addressArr) => {
+          this.$axios
+            .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
+            .then((res) => {
+              this.addresses.push(res.data);
             });
-          });
-    },
-    computed: {
-      dateOfBirth: {
-        get () {
-          return this.voter.date_of_birth ? new Date(this.voter.date_of_birth) : null;
-        },
-        set (date) {
-          this.voter.date_of_birth = date ? new Date(date).toISOString() : null;
-        }
+        });
+      });
+  },
+  computed: {
+    dateOfBirth: {
+      get() {
+        return this.voter.date_of_birth ? new Date(this.voter.date_of_birth) : null;
+      },
+      set(date) {
+        this.voter.date_of_birth = date ? new Date(date).toISOString() : null;
       },
     },
+  },
 
-    methods: {
+  methods: {
     // eslint-disable-next-line
     getValidationClass(fieldName) {
       const field = this.$v.voter[fieldName];
@@ -161,7 +161,7 @@ export default {
       }
     },
 
-/**
+    /**
    *
    * goToAdmin is a function used when the adminButton is clicked,
    * it switches the screen from AddVoter.vue to Admin.vue
@@ -169,8 +169,8 @@ export default {
    */
 
     goToAdmin() {
-              this.$store.commit('setAdminDisplayMode', true);
-              this.$store.commit('setAddVoterDisplayMode', false);
+      this.$store.commit('setAdminDisplayMode', true);
+      this.$store.commit('setAddVoterDisplayMode', false);
     },
 
     /**
@@ -184,14 +184,13 @@ export default {
     onSubmit(newVoter) {
       this.$v.$touch();
       if (!this.$v.$invalid) {
-      //retrieve station Id from selected address
-        for (let station of this.stations) {
-            if(this.polling_station_address === station.address)
-              this.voter.polling_station = station._id;
-              break;
-        };
+      // retrieve station Id from selected address
+        for (const station of this.stations) {
+          if (this.polling_station_address === station.address) this.voter.polling_station = station._id;
+          break;
+        }
         this.$axios
-        //posts voter if all fields are valid
+        // posts voter if all fields are valid
           .post('http://localhost:8081/api/v1/voters', {
             username: newVoter.username,
             name: newVoter.name,
@@ -203,31 +202,31 @@ export default {
           .then((voterRes) => {
             let systemId;
             this.$axios
-            .get('http://localhost:8081/api/v1/systems')
-            .then((systemsRes) => {
-              for (let system of systemsRes.data){
-                if (system.station === this.voter.polling_station) {
-                  systemId = system._id;
-                  break;
+              .get('http://localhost:8081/api/v1/systems')
+              .then((systemsRes) => {
+                for (const system of systemsRes.data) {
+                  if (system.station === this.voter.polling_station) {
+                    systemId = system._id;
+                    break;
+                  }
                 }
-              };
                 this.$axios
-                .put(`http://localhost:8081/api/v1/systems/${systemId}`, {
-                  voter: voterRes.data._id
-                })
-                .then(() => {
-                 //switches the screen from AddAuditor.vue to Admin.vue
-                  this.$store.commit('setAdminDisplayMode', true);
-                  this.$store.commit('setAddVoterDisplayMode', false);
-                });
-            });
+                  .put(`http://localhost:8081/api/v1/systems/${systemId}`, {
+                    voter: voterRes.data._id,
+                  })
+                  .then(() => {
+                    // switches the screen from AddAuditor.vue to Admin.vue
+                    this.$store.commit('setAdminDisplayMode', true);
+                    this.$store.commit('setAddVoterDisplayMode', false);
+                  });
+              });
           });
       }
     },
   },
 
 
-/**
+  /**
    *
    * validations enforces the fields that are required and also the
    * email validation
@@ -256,8 +255,8 @@ export default {
       },
     },
     polling_station_address: {
-        required,
-      },
+      required,
+    },
   },
 
 };

@@ -17,7 +17,8 @@
         <md-table-cell>{{ voter.email }}</md-table-cell>
         <md-table-cell>{{ new Date (voter.date_of_birth).toDateString() }}</md-table-cell>
         <md-table-cell>{{ voter.postcode }}</md-table-cell>
-        <md-table-cell><md-checkbox class="md-primary" @change="onChange(voter)" v-model="voter.voted"/></md-table-cell>
+        <md-table-cell><md-checkbox class="md-primary"
+          @change="onChange(voter)" v-model="voter.voted"/></md-table-cell>
       </md-table-row>
     </md-table>
   </div>
@@ -25,10 +26,10 @@
 
 <script>
 export default {
-  name: "Auditor",
+  name: 'Auditor',
   data() {
     return {
-      voters: []
+      voters: [],
     };
   },
   /**
@@ -42,7 +43,7 @@ export default {
         const pollingStation = auditorsRes.data.polling_station;
         this.$axios
           .get(`http://localhost:8081/api/v1/systems?station=${pollingStation}`)
-          .then(systemRes => {
+          .then((systemRes) => {
             systemRes.data.forEach((system) => {
               // for each system object -> get the voters array
               const voterArray = system.voters;
@@ -52,20 +53,18 @@ export default {
                 this.$axios
                   .get(`http://localhost:8081/api/v1/voters/${voterId}`)
                   .then((voterRes) => {
-              this.$axios
-              .get(`http://localhost:8081/api/v1/addresses/${voterRes.data.address}`)
-              .then((addressRes) => {
-                this.voters.push({
-                      id: voterId,
-                      name: voterRes.data.name,
-                      email: voterRes.data.email,
-                      date_of_birth: voterRes.data.date_of_birth,
-                      postcode: addressRes.data.postcode,
-                      voted: voterRes.data.voted
-                    });
-
-            });
-                    
+                    this.$axios
+                      .get(`http://localhost:8081/api/v1/addresses/${voterRes.data.address}`)
+                      .then((addressRes) => {
+                        this.voters.push({
+                          id: voterId,
+                          name: voterRes.data.name,
+                          email: voterRes.data.email,
+                          date_of_birth: voterRes.data.date_of_birth,
+                          postcode: addressRes.data.postcode,
+                          voted: voterRes.data.voted,
+                        });
+                      });
                   });
               });
             });
@@ -74,17 +73,18 @@ export default {
   },
   methods: {
     /**
-     * Updates the voters record in the database by updating the voter's voted flag when the checkbox value is changed.
-     * 
+     * Updates the voters record in the database by updating the voter's
+     * voted flag when the checkbox value is changed.
+     *
      * @param voter the voter that the user wants to update.
      */
-    onChange(voter){
-                  this.$axios
-            .put(`http://localhost:8081/api/v1/voters/${voter.id}`, {
-              voted: voter.voted,
-            });
-    }
-  }
+    onChange(voter) {
+      this.$axios
+        .put(`http://localhost:8081/api/v1/voters/${voter.id}`, {
+          voted: voter.voted,
+        });
+    },
+  },
 };
 </script>
 

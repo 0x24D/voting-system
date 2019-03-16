@@ -76,7 +76,7 @@ export default {
     Setup,
     Success,
     Vote,
-    Auditor
+    Auditor,
   },
   methods: {
     userType(userType) {

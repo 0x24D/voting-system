@@ -64,19 +64,19 @@
 
 <script>
 import { validationMixin } from 'vuelidate';
-import { required, email} from 'vuelidate/lib/validators';
+import { required, email } from 'vuelidate/lib/validators';
 
 export default {
-  name: "AddAuditor",
+  name: 'AddAuditor',
   mixins: [validationMixin],
   data() {
     return {
       auditor: {
-            username: "",
-            name: "",
-            email: "",
-            password: "",
-            polling_station: "",
+        username: '',
+        name: '',
+        email: '',
+        password: '',
+        polling_station: '',
       },
       addresses: [],
       stations: [],
@@ -93,18 +93,18 @@ export default {
   created() {
     this.$axios
       .get('http://localhost:8081/api/v1/pollingStations')
-        .then((pollingRes) => {
-          this.stations = pollingRes.data;
-          pollingRes.data.forEach((addressArr) => {
-              this.$axios
-              .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
-              .then((res) => {
-                this.addresses.push(res.data)
+      .then((pollingRes) => {
+        this.stations = pollingRes.data;
+        pollingRes.data.forEach((addressArr) => {
+          this.$axios
+            .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
+            .then((res) => {
+              this.addresses.push(res.data);
             });
-          });
         });
-    },
-    methods: {
+      });
+  },
+  methods: {
     // eslint-disable-next-line
     getValidationClass(fieldName) {
       const field = this.$v.auditor[fieldName];
@@ -115,7 +115,7 @@ export default {
       }
     },
 
-/**
+    /**
    *
    * goToAdmin is a function used when the adminButton is clicked,
    * it switches the screen from AddAuditor.vue to Admin.vue
@@ -123,8 +123,8 @@ export default {
    */
 
     goToAdmin() {
-              this.$store.commit('setAdminDisplayMode', true);
-              this.$store.commit('setAddAuditorDisplayMode', false);
+      this.$store.commit('setAdminDisplayMode', true);
+      this.$store.commit('setAddAuditorDisplayMode', false);
     },
 
     /**
@@ -138,13 +138,12 @@ export default {
     onSubmit(newAuditor) {
       this.$v.$touch();
       if (!this.$v.$invalid) {
-        //retrieve station Id from selected address
+        // retrieve station Id from selected address
         this.stations.forEach((station) => {
-            if(newAuditor.polling_station === station.address)
-              newAuditor.polling_station = station._id;
+          if (newAuditor.polling_station === station.address) newAuditor.polling_station = station._id;
         });
         this.$axios
-        //posts auditor if all fields are valid
+        // posts auditor if all fields are valid
           .post('http://localhost:8081/api/v1/auditors', {
             username: newAuditor.username,
             name: newAuditor.name,
@@ -153,7 +152,7 @@ export default {
             polling_station: newAuditor.polling_station,
           })
           .then(() => {
-           //switches the screen from AddAuditor.vue to Admin.vue
+            // switches the screen from AddAuditor.vue to Admin.vue
             this.$store.commit('setAdminDisplayMode', true);
             this.$store.commit('setAddAuditorDisplayMode', false);
           });
@@ -162,7 +161,7 @@ export default {
   },
 
 
-/**
+  /**
    *
    * validations enforces the fields that are required and also the
    * email validation

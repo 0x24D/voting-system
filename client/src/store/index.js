@@ -10,6 +10,7 @@ export default new Vuex.Store({
     showAdminCampaigns: false,
     showAddAdmin: false,
     showAddAuditor: false,
+    showAddSystem: false,
     showAddVoter: false,
     showCampaigns: true,
     showResults: false,
@@ -49,6 +50,9 @@ export default new Vuex.Store({
     },
     setAddAuditorDisplayMode(s, boolean) {
       Vue.set(s, 'showAddAuditor', boolean);
+    },
+    setAddSystemDisplayMode(s, boolean) {
+      Vue.set(s, 'showAddSystem', boolean);
     },
     setAddVoterDisplayMode(s, boolean) {
       Vue.set(s, 'showAddVoter', boolean);

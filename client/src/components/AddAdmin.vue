@@ -63,20 +63,20 @@ import { validationMixin } from 'vuelidate';
 import { required, email } from 'vuelidate/lib/validators';
 
 export default {
-  name: "AddAdmin",
+  name: 'AddAdmin',
   mixins: [validationMixin],
   data() {
     return {
       admin: {
-            username: "",
-            name: "",
-            email: "",
-            password: "",
+        username: '',
+        name: '',
+        email: '',
+        password: '',
       },
     };
   },
 
-    methods: {
+  methods: {
     // eslint-disable-next-line
     getValidationClass(fieldName) {
       const field = this.$v.admin[fieldName];
@@ -87,29 +87,29 @@ export default {
       }
     },
 
-/**
+    /**
    *
    * goToAdmin is a function used when the adminButton is clicked,
    * it switches the screen from AddAdmin.vue to Admin.vue
-   * 
+   *
    */
-    goToAdmin() {      
-              this.$store.commit('setAdminDisplayMode', true);
-              this.$store.commit('setAddAdminDisplayMode', false);      
+    goToAdmin() {
+      this.$store.commit('setAdminDisplayMode', true);
+      this.$store.commit('setAddAdminDisplayMode', false);
     },
 
-/**
+    /**
    *
    * onSubmit is a function used when the submitButton is clicked,
-   * 
+   *
    * @param newAdmin the admin that the user wants to add.
-   * 
+   *
    */
     onSubmit(newAdmin) {
-      this.$v.$touch();    
+      this.$v.$touch();
       if (!this.$v.$invalid) {
         this.$axios
-        //posts admin if all fields are valid
+        // posts admin if all fields are valid
           .post('http://localhost:8081/api/v1/admins', {
             username: newAdmin.username,
             name: newAdmin.name,
@@ -117,9 +117,9 @@ export default {
             password: newAdmin.password,
           })
           .then(() => {
-            //switches the screen from AddAdmin.vue to Admin.vue
+            // switches the screen from AddAdmin.vue to Admin.vue
             this.$store.commit('setAdminDisplayMode', true);
-            this.$store.commit('setAddAdminDisplayMode', false);   
+            this.$store.commit('setAddAdminDisplayMode', false);
           });
       }
     },
@@ -127,9 +127,9 @@ export default {
 
   /**
    *
-   * validations enforces the fields that are required and also the 
+   * validations enforces the fields that are required and also the
    * email validation
-   * 
+   *
    */
   validations: {
     admin: {

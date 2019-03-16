@@ -63,9 +63,9 @@ export default {
   },
 
   methods: {
-    goToAdmin()  {    
-              this.$store.commit('setAdminDisplayMode', true);
-              this.$store.commit('setResultsDisplayMode', false);      
+    goToAdmin() {
+      this.$store.commit('setAdminDisplayMode', true);
+      this.$store.commit('setResultsDisplayMode', false);
     },
   },
 };

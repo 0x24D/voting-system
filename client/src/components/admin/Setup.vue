@@ -12,7 +12,7 @@
           <NewConstituency/>
         </md-tab>
         <md-tab id="tab-system" md-label="New System">
-          TODO: implement adding a system UI
+          <NewSystem/>
         </md-tab>
       </md-tabs>
       <md-dialog-actions>
@@ -25,6 +25,7 @@
 import NewAddress from './NewAddress.vue';
 import NewCampaign from './NewCampaign.vue';
 import NewConstituency from './NewConstituency.vue';
+import NewSystem from './NewSystem.vue';
 
 export default {
   name: 'Setup',
@@ -32,6 +33,7 @@ export default {
     NewAddress,
     NewCampaign,
     NewConstituency,
+    NewSystem,
   },
   methods: {
     setupClose() {
