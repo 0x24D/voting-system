@@ -8,14 +8,11 @@
         <md-tab id="tab-address" md-label="New Address">
           <NewAddress/>
         </md-tab>
-        <md-tab id="tab-candidate" md-label="New Candidate">
-          UI to be implemented in feat/candidate-profilesm
-        </md-tab>
         <md-tab id="tab-constituency" md-label="New Constituency">
           <NewConstituency/>
         </md-tab>
-        <md-tab id="tab-party" md-label="New Party">
-          UI to be implemented in feat/candidate-profiles
+        <md-tab id="tab-system" md-label="New System">
+          TODO: implement adding a system UI
         </md-tab>
       </md-tabs>
       <md-dialog-actions>
