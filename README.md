@@ -58,6 +58,6 @@
 ## Extensions:
 * User registration (voter, admin, and auditor) - A (merged into develop)
 * Adding/displaying candidate/party profiles - JS
-* Setting up a campaign (with candidates) - D
+* Setting up a campaign (with candidates) - D (TODO: required fields messages and JavaDoc)
 * List of voters for auditor - L (merged into develop)
 * Graphical results interface (for each campaign) - JW
