@@ -1,7 +1,25 @@
 import {
+  addNew,
   findByProperty,
   updateExistingByProperty,
 } from '../db/userAccess';
+
+export const addNewUser = (req, res) => {
+  const dataToSave = {
+    username: req.body.username,
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    roles: req.body.roles,
+  };
+  addNew(dataToSave, (err, user) => {
+    if (err) {
+      res.status(500).end();
+    } else {
+      res.status(201).json(user);
+    }
+  });
+};
 
 export const getUserWithUsername = (req, res) => {
   findByProperty('username', req.params.username, (err, user) => {

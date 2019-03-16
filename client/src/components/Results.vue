@@ -18,6 +18,7 @@
         <md-table-cell>{{ candidate.votes  }}</md-table-cell>
       </md-table-row>
     </md-table>
+    <md-button class="md-raised" @click="goToAdmin()">Back to Admin</md-button>
   </div>
 </template>
 
@@ -59,6 +60,13 @@ export default {
           });
         });
       });
+  },
+
+  methods: {
+    goToAdmin()  {    
+              this.$store.commit('setAdminDisplayMode', true);
+              this.$store.commit('setResultsDisplayMode', false);      
+    },
   },
 };
 </script>

@@ -1,11 +1,13 @@
 import {
   findAll,
   findById,
-  updateExistingById
+  updateExistingById,
 } from '../db/systemAccess';
 
 export const getSystems = (req, res) => {
-  findAll((err, systems) => {
+  // eslint-disable-next-line
+  const station = req.query.station;
+  findAll(station, (err, systems) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -39,6 +41,11 @@ export const editSystemWithId = (req, res) => {
           updateData[prop] = system[prop];
         }
       });
+      if (req.body.voter) {
+        const votersArray = system.voters ? system.voters : [];
+        votersArray.push(req.body.voter);
+        updateData.voters = votersArray;
+      }
       updateExistingById(systemId, updateData, (err2, updatedSystem) => {
         if (err2) {
           res.status(500).send(err2);
