@@ -1,8 +1,25 @@
 import {
+  addNew,
   findAll,
   findById,
   updateExistingById,
 } from '../db/systemAccess';
+
+export const addNewSystem = (req, res) => {
+  const newSystem = {
+    campaigns: req.body.campaigns,
+    language: req.body.language,
+    station: req.body.station,
+    voters: req.body.voters,
+  };
+  addNew(newSystem, (err, system) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json(system);
+    }
+  });
+};
 
 export const getSystems = (req, res) => {
   // eslint-disable-next-line
