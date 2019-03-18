@@ -11,6 +11,8 @@
               <md-field :class="getValidationClass('name')">
                 <label for="name">Constituency name</label>
                 <md-input name="name" id="name" v-model="constituency.name" required/>
+                <span class="md-error" v-if="!$v.constituency.name.required">
+                    Constituency name is required</span>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
@@ -18,6 +20,8 @@
                 <label for="minimum_age">Minimum age</label>
                 <md-input name="minimum_age" id="minimum_age"
                   v-model="constituency.minimum_age" required/>
+                  <span class="md-error" v-if="!$v.constituency.minimum_age.required">
+                      Minimum age is required</span>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
@@ -25,6 +29,8 @@
                 <label for="voting_system">Voting system</label>
                 <md-input name="voting_system" id="voting_system"
                   v-model="constituency.voting_system" required/>
+                  <span class="md-error" v-if="!$v.constituency.voting_system.required">
+                      Voting system is required</span>
               </md-field>
             </div>
           </div>

@@ -11,36 +11,46 @@
               <md-field :class="getValidationClass('line_one')">
                 <label for="line_one">Line one</label>
                 <md-input name="line_one" id="line_one" v-model="address.line_one" required/>
+                <span class="md-error" v-if="!$v.address.line_one.required">
+                    Line one is required</span>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('line_two')">
                 <label for="line_two">Line two</label>
-                <md-input name="line_two" id="line_two" v-model="address.line_two" required/>
+                <md-input name="line_two" id="line_two" v-model="address.line_two"/>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('town')">
                 <label for="town">Town</label>
                 <md-input name="town" id="town" v-model="address.town" required/>
+                <span class="md-error" v-if="!$v.address.town.required">
+                    Town is required</span>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('county')">
                 <label for="county">County</label>
                 <md-input name="county" id="county" v-model="address.county" required/>
+                <span class="md-error" v-if="!$v.address.county.required">
+                    County is required</span>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('candidates')">
                 <label for="country">Country</label>
                 <md-input name="country" id="country" v-model="address.country" required/>
+                <span class="md-error" v-if="!$v.address.country.required">
+                    Country is required</span>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('postcode')">
                 <label for="postcode">Postcode</label>
                 <md-input name="postcode" id="postcode" v-model="address.postcode" required/>
+                <span class="md-error" v-if="!$v.address.postcode.required">
+                    Postcode is required</span>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
@@ -52,6 +62,8 @@
                     :key="constituency._id" :value="constituency._id">
                     {{ constituency.name }}
                   </md-option>
+                  <span class="md-error" v-if="!$v.address.constituency.required">
+                      Constituency is required</span>
                 </md-select>
               </md-field>
             </div>

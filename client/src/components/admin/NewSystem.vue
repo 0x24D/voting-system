@@ -17,6 +17,8 @@
                     {{ campaign.name }}
                   </md-option>
                 </md-select>
+                <span class="md-error" v-if="!$v.system.campaigns.required">
+                    System campaigns is required</span>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
@@ -29,6 +31,8 @@
                     {{ station.address.postcode }}
                   </md-option>
                 </md-select>
+                <span class="md-error" v-if="!$v.system.station.required">
+                    System polling station is required</span>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
@@ -41,6 +45,8 @@
                     {{ voter.name }}
                   </md-option>
                 </md-select>
+                <span class="md-error" v-if="!$v.system.voters.required">
+                    System voters is required</span>
               </md-field>
             </div>
           </div>

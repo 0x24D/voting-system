@@ -14,11 +14,11 @@ describe('address', () => {
 });
 
 describe('address', () => {
-  it('should be invalid if line_two is empty', (done) => {
+  it('should be valid if line_two is empty', (done) => {
     const a = new Address();
 
     a.validate((err) => {
-      expect(err.errors.line_two).to.exist;
+      expect(err.errors.line_two).to.not.exist;
       done();
     });
   });
