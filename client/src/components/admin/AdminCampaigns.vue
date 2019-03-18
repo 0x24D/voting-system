@@ -34,6 +34,10 @@ export default {
       campaigns: [],
     };
   },
+  /**
+  * Call campaigns API endpoint to get all campaigns and
+  * store response in campaigns data property.
+  */
   created() {
     this.$axios
       .get('http://localhost:8081/api/v1/campaigns/')
@@ -42,6 +46,9 @@ export default {
       });
   },
   methods: {
+    /**
+    * Set variable for displaying setup UI to true.
+    */
     setup() {
       this.$store.commit('setSetupDisplayMode', true);
     },

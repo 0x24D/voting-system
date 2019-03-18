@@ -99,6 +99,10 @@ export default {
       constituencies: [],
     };
   },
+  /**
+  * Call constituencies API endpoint to get all constituencies and
+  * store response in constituencies data property.
+  */
   created() {
     this.$axios
       .get('http://localhost:8081/api/v1/constituencies/')
@@ -107,6 +111,12 @@ export default {
       });
   },
   methods: {
+    /**
+    * Get class name to display validation state.
+    *
+    * @param fieldName the field name to get the class for
+    * @return the class name for the field
+    */
     // eslint-disable-next-line
     getValidationClass(fieldName) {
       const field = this.$v.address[fieldName];
@@ -116,6 +126,11 @@ export default {
         };
       }
     },
+    /**
+    * Check to see if the form is valid, if it is send the data to the server.
+    *
+    * @param formData the form data to be sent to the server
+    */
     newAddressSubmit(formData) {
       this.$v.$touch();
       if (!this.$v.$invalid) {

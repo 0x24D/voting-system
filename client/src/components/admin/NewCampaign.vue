@@ -100,6 +100,10 @@ export default {
       constituencies: [],
     };
   },
+    /**
+    * Call candidates and constituencies API endpoints to get all
+    * candidates and constituencies, store these in the relevant data properties.
+    */
   created() {
     this.$axios
       .get('http://localhost:8081/api/v1/candidates/')
@@ -113,6 +117,12 @@ export default {
       });
   },
   computed: {
+    /**
+    * Covert the campaign's start date to the required formats.
+    *
+    * @param date the date to set
+    * @return the campaign start date in date format
+    */
     startDate: {
       get() {
         return this.campaign.start_date ? new Date(this.campaign.start_date) : null;
@@ -121,6 +131,12 @@ export default {
         this.campaign.start_date = date ? new Date(date).toISOString() : null;
       },
     },
+    /**
+    * Covert the campaign's end date to the required formats.
+    *
+    * @param date the date to set
+    * @return the campaign end date in date format
+    */
     endDate: {
       get() {
         return this.campaign.end_date ? new Date(this.campaign.end_date) : null;
@@ -131,6 +147,12 @@ export default {
     },
   },
   methods: {
+    /**
+    * Get class name to display validation state.
+    *
+    * @param fieldName the field name to get the class for
+    * @return the class name for the field
+    */
     // eslint-disable-next-line
     getValidationClass(fieldName) {
       const field = this.$v.campaign[fieldName];
@@ -140,6 +162,11 @@ export default {
         };
       }
     },
+    /**
+    * Check to see if the form is valid, if it is send the data to the server.
+    *
+    * @param formData the form data to be sent to the server
+    */
     newCampaignSubmit(formData) {
       this.$v.$touch();
       if (!this.$v.$invalid) {

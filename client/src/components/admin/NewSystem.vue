@@ -79,6 +79,12 @@ export default {
       voters: [],
     };
   },
+  /**
+  * Call campaigns, pollingstations and voters API endpoints to get all
+  * campaigns, polling stations and voters, then call the addresses API
+  * endpoint to get the address of the polling station, store this data in
+  * the relevant data properties.
+  */
   created() {
     this.$axios
       .get('http://localhost:8081/api/v1/campaigns')
@@ -106,6 +112,12 @@ export default {
       });
   },
   methods: {
+    /**
+    * Get class name to display validation state.
+    *
+    * @param fieldName the field name to get the class for
+    * @return the class name for the field
+    */
     // eslint-disable-next-line
     getValidationClass(fieldName) {
       const field = this.$v.system[fieldName];
@@ -115,6 +127,11 @@ export default {
         };
       }
     },
+    /**
+    * Check to see if the form is valid, if it is send the data to the server.
+    *
+    * @param formData the form data to be sent to the server
+    */
     newSystemSubmit(formData) {
       this.$v.$touch();
       if (!this.$v.$invalid) {

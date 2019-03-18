@@ -5,6 +5,12 @@ import {
   updateExistingById,
 } from '../db/campaignAccess';
 
+/**
+ * Add a new campaign to the database.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
 export const addNewCampaign = (req, res) => {
   const props = ['name', 'total_votes', 'candidates',
     'votes', 'campaign_type',
@@ -37,6 +43,12 @@ export const addNewCampaign = (req, res) => {
   });
 };
 
+/**
+ * Get all campaigns from the database.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
 export const getCampaigns = (req, res) => {
   // eslint-disable-next-line
   const constituency = req.query.constituency;
@@ -49,6 +61,12 @@ export const getCampaigns = (req, res) => {
   });
 };
 
+/**
+ * Get the campaign with the passed in ID from the database.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
 export const getCampaignById = (req, res) => {
   findById(req.params.id, (err, campaign) => {
     if (err) {
@@ -59,6 +77,12 @@ export const getCampaignById = (req, res) => {
   });
 };
 
+/**
+ * Update the campaign with the passed in ID using the submitted data.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
 export const editCampaignById = (req, res) => {
   const campaignId = req.params.id;
   findById(campaignId, (err, campaign) => {

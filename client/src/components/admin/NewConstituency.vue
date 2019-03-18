@@ -61,6 +61,12 @@ export default {
     };
   },
   methods: {
+    /**
+    * Get class name to display validation state.
+    *
+    * @param fieldName the field name to get the class for
+    * @return the class name for the field
+    */
     // eslint-disable-next-line
     getValidationClass(fieldName) {
       const field = this.$v.constituency[fieldName];
@@ -70,6 +76,11 @@ export default {
         };
       }
     },
+    /**
+    * Check to see if the form is valid, if it is send the data to the server.
+    *
+    * @param formData the form data to be sent to the server
+    */
     newConstituencySubmit(formData) {
       this.$v.$touch();
       if (!this.$v.$invalid) {

@@ -36,6 +36,9 @@ export default {
     NewSystem,
   },
   methods: {
+    /**
+    * Set variable for displaying setup UI to false.
+    */
     setupClose() {
       this.$store.commit('setSetupDisplayMode', false);
     },
