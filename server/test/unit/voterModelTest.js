@@ -59,7 +59,7 @@ describe('voter', () => {
 
 describe('voter', () => {
   it('should be invalid if voted is empty', (done) => {
-    const v = new Voter ();
+    const v = new Voter();
 
     v.validate((err) => {
       expect(err.errors.voted).to.not.exist;
@@ -89,4 +89,3 @@ describe('voter', () => {
     });
   });
 });
-

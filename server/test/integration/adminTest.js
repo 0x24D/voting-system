@@ -12,7 +12,6 @@ chai.use(chaiHttp);
 describe('Admin tests', () => {
   let adminId1;
   beforeEach((done) => {
-    
     const admin1 = new Admin({
       username: 'username1',
       name: 'User 1',

@@ -10,7 +10,7 @@ import {
   */
 const auditorRoutes = (app) => {
   app.route('/api/v1/auditors')
-      .post(addNewAuditor);
+    .post(addNewAuditor);
   app.route('/api/v1/auditors/:id')
     .get(getAuditorWithId);
 };
