@@ -1,6 +1,6 @@
 <template>
   <div id="logoutButton">
-    <md-button class="md-accent" @click="logoutClicked()">Logout</md-button>
+    <md-button class="md-raised md-primary" @click="logoutClicked()">Logout</md-button>
   </div>
 </template>
 

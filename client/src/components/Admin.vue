@@ -6,12 +6,17 @@
     <md-button class="md-raised" @click="goToResults()">View Results</md-button>
     <md-button class="md-raised" @click="goToCandidates()">View Candidates</md-button>
     <md-button class="md-raised" @click="goToCampaigns()">View Campaigns</md-button>
+    <Logout/>
   </div>
 </template>
 
 <script>
+import Logout from './Logout.vue';
 export default {
   name: 'Admin',
+  components: {
+    Logout,
+  },
   methods: {
     goToCampaigns() {
       this.$store.commit('setAdminDisplayMode', false);
@@ -23,7 +28,7 @@ export default {
     },
     goToResults() {
       this.$store.commit('setAdminDisplayMode', false);
-      this.$store.commit('setResultsDisplayMode', true);
+      this.$store.commit('setResultsCampaignsDisplayMode', true);
     },
     goToAddAdmin() {
       this.$store.commit('setAdminDisplayMode', false);

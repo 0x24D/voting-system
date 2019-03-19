@@ -1,25 +1,18 @@
 <template>
   <div id="vote">
-    <md-table md-card>
+    <md-table v-model="candidates" md-card @md-selected="onSelect">
       <md-table-toolbar>
-        <h1 class="md-title">Cast a Vote</h1>
+        <h1 class="md-title"></h1>
       </md-table-toolbar>
-      <md-table-row>
-        <md-table-head>Candidate</md-table-head>
-        <md-table-head>Party</md-table-head>
-      </md-table-row>
-
-      <md-table-row
-        md-selectable="single"
-        v-for="candidate in candidates"
-        :key="candidate.id"
-        @click="onSelect(candidate.id)">
-        <md-table-cell>{{ candidate.name }}</md-table-cell>
-        <md-table-cell>{{ candidate.party }}</md-table-cell>
+       <md-table-row slot="md-table-row" slot-scope="{ item }" :class="getClass(item)" md-selectable="single">
+         <md-table-cell md-label="Candidate" md-sort-by="name">{{ item.name }}</md-table-cell>
+         <md-table-cell md-label="Party" md-sort-by="party">{{ item.party }}</md-table-cell>
       </md-table-row>
     </md-table>
-    <md-button class="md-raised" @click="onSubmit()" :disabled="!this.selected">Submit vote</md-button>
-    <md-button class="md-raised" @click="onCandidateView(selected)" :disabled="!this.selected">View Candidate Profile</md-button>
+
+    <md-button class="md-raised md-primary" @click="onBack()">Go Back</md-button>
+    <md-button class="md-raised md-primary" @click="onSubmit()" :disabled="!this.selected">Submit vote</md-button>
+    <md-button class="md-raised md-primary" @click="onCandidateView(selected)" :disabled="!this.selected">View Candidate Profile</md-button>
   </div>
 </template>
 
@@ -39,7 +32,9 @@ export default {
     this.$axios
       .get(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`)
       .then((campaignRes) => {
-        this.campaignId = campaignRes.data._id;
+        // Apparently you cannot use access a data property using moustaches in md-table-toolbar.
+        // So we have to set the innerText using JavaScript instead.
+        document.getElementsByClassName('md-title')[0].innerText = (campaignRes.data.name);
         campaignRes.data.candidates.forEach((candidateId) => {
           this.$axios
             .get(`http://localhost:8081/api/v1/candidates/${candidateId}`)
@@ -58,12 +53,26 @@ export default {
       });
   },
   methods: {
+    getClass(item){
+      return item && this.selected && item.id === this.selected.id ? 'md-primary' : '';
+    },
     /**
-     * This method selects the candidate in the list for use later when updating their votes
+    * Set the campaigns display mode to true and set the vote display mode to false.
+    */
+    onBack() {
+      this.$store.commit('setCampaignsDisplayMode', true);
+      this.$store.commit('setVoteDisplayMode', false);
+    },
+    /**
+     * Select the candidate in the list for use later when updating their votes
      */
     onSelect(candidate) {
       this.selected = candidate;
     },
+    /**
+    * Set the candidate ID to display, set the candidate profile display mode
+    * to true and set the vote display mode to false.
+    */
     onCandidateView(candidateId) {
       this.$store.commit('setCandidateIdToDisplay', candidateId);
       this.$store.commit('setCandidateProfileDisplayMode', true);
@@ -75,11 +84,11 @@ export default {
      */
     onSubmit() {
       this.$axios
->>>>>>> develop
         .put(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`, {
           total_votes: '++',
-          votes: this.selected,
-          })
+          votes: this.selected.id,
+        })
+        .then(() => {
           this.$axios
           .put(`http://localhost:8081/api/v1/voters/${localStorage.user}`, {
             voted: true,
@@ -98,7 +107,8 @@ export default {
             this.$store.commit('setSuccessDisplayMode', true);
             this.$store.commit('setVoteDisplayMode', false);
           });
-        }
+        });
+      },
     },
 };
 </script>

@@ -15,6 +15,9 @@ export default new Vuex.Store({
     showCampaigns: true,
     showResults: false,
     showSetup: false,
+    showCampaigns: true,
+    showResults: false,
+    showResultsCampaigns: false,
     showSuccess: false,
     showVote: false,
     showCandidateProfile: false,
@@ -34,17 +37,25 @@ export default new Vuex.Store({
     setAdminDisplayMode(s, boolean) {
       Vue.set(s, 'showAdmin', boolean);
     },
+<<<<<<< HEAD
     setAdminCampaignsDisplayMode(s, boolean) {
       Vue.set(s, 'showAdminCampaigns', boolean);
     },
+=======
+>>>>>>> master
     setCampaignsDisplayMode(s, boolean) {
       Vue.set(s, 'showCampaigns', boolean);
     },
     setResultsDisplayMode(s, boolean) {
       Vue.set(s, 'showResults', boolean);
     },
+<<<<<<< HEAD
     setSetupDisplayMode(s, boolean) {
       Vue.set(s, 'showSetup', boolean);
+=======
+    setResultsCampaignsDisplayMode(s, boolean) {
+      Vue.set(s, 'showResultsCampaigns', boolean);
+>>>>>>> master
     },
     setSuccessDisplayMode(s, boolean) {
       Vue.set(s, 'showSuccess', boolean);

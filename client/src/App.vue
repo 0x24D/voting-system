@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <div v-if="userAuthenticated()">
-      <Logout/>
       <div v-if="userType('voter')">
         <div v-if="this.$store.state.showCampaigns">
           <ListOfCampaigns/>
@@ -45,8 +44,21 @@
           <AddVoter/>
         </div>
       </div>
+<<<<<<< HEAD
       <div v-else-if="userType('auditor')">
         <Auditor/>
+=======
+      <div v-else-if="userType('admin')">
+        <div v-if="this.$store.state.showAdmin">
+          <Admin/>
+        </div>
+        <div v-if="this.$store.state.showResultsCampaigns">
+          <ResultsCampaigns/>
+        </div>
+        <div v-if="this.$store.state.showResults">
+          <Results :campaign-id="this.$store.state.campaignId"/>
+        </div>
+>>>>>>> master
       </div>
     </div>
     <div v-else>
@@ -56,16 +68,23 @@
 </template>
 <script>
 import { getUserType, isUserAuthenticated } from './utils/auth';
+<<<<<<< HEAD
 import AddAdmin from './components/AddAdmin.vue';
 import AddAuditor from './components/AddAuditor.vue';
 import AddVoter from './components/AddVoter.vue';
 import Admin from './components/Admin.vue';
 import AdminCampaigns from './components/admin/AdminCampaigns.vue';
+=======
+import Admin from './components/Admin.vue';
+>>>>>>> master
 import ListOfCampaigns from './components/ListOfCampaigns.vue';
 import Login from './components/Login.vue';
-import Logout from './components/Logout.vue';
 import Results from './components/Results.vue';
+<<<<<<< HEAD
 import Setup from './components/admin/Setup.vue';
+=======
+import ResultsCampaigns from './components/admin/ResultsCampaigns.vue';
+>>>>>>> master
 import Success from './components/Success.vue';
 import Vote from './components/Vote.vue';
 <<<<<<< HEAD
@@ -79,16 +98,23 @@ import Auditor from './components/Auditor.vue';
 export default {
   name: 'app',
   components: {
+<<<<<<< HEAD
     AddAdmin,
     AddAuditor,
     AddVoter,
     Admin,
     AdminCampaigns,
+=======
+    Admin,
+>>>>>>> master
     ListOfCampaigns,
     Login,
-    Logout,
     Results,
+<<<<<<< HEAD
     Setup,
+=======
+    ResultsCampaigns,
+>>>>>>> master
     Success,
     Vote,
 <<<<<<< HEAD
