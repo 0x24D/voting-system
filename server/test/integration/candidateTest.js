@@ -111,10 +111,8 @@ describe('Candidate tests', () => {
         res.body.name.should.equal('first last');
         res.body.party.should.equal(party2Id);
         res.body.description.should.equal('test user');
-        
+
         done();
       });
   });
 });
-
-

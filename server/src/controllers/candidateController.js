@@ -10,7 +10,7 @@ import {
  * @param req the request from the client
  * @param res the response to the client
  */
- export const getCandidates = (req, res) => {
+export const getCandidates = (req, res) => {
   findAll((err, candidates) => {
     if (err) {
       res.status(500).send(err);

@@ -75,6 +75,6 @@ export default new Vuex.Store({
     },
     setCandidatePartyDisplayMode(s, boolean) {
       Vue.set(s, 'showAddCandidateParty', boolean);
-    }
+    },
   },
 });
