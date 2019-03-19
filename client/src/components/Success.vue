@@ -14,6 +14,7 @@
 </template>
 <script>
 import Logout from './Logout.vue';
+
 export default {
   name: 'Success',
   data() {
@@ -29,7 +30,7 @@ export default {
       .get(`http://localhost:8081/api/v1/voters/${localStorage.user}`)
       .then((response) => {
         this.name = response.data.name;
-    });
+      });
   },
 };
 </script>

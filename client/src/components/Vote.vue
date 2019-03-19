@@ -53,7 +53,7 @@ export default {
       });
   },
   methods: {
-    getClass(item){
+    getClass(item) {
       return item && this.selected && item.id === this.selected.id ? 'md-primary' : '';
     },
     /**
@@ -90,26 +90,26 @@ export default {
         })
         .then(() => {
           this.$axios
-          .put(`http://localhost:8081/api/v1/voters/${localStorage.user}`, {
-            voted: true,
-          })
-          .then(() => {
-            this.$axios
-            // users the voterId with the subject and text
-            // to the email endpoint to then send the email
-            .post('http://localhost:8081/api/v1/email', {
-              id: localStorage.user,
-              subject: 'Vote Successful',
-              text: 'Thank you for your vote!'
-              });
-          })
-          .then(() => {
-            this.$store.commit('setSuccessDisplayMode', true);
-            this.$store.commit('setVoteDisplayMode', false);
-          });
+            .put(`http://localhost:8081/api/v1/voters/${localStorage.user}`, {
+              voted: true,
+            })
+            .then(() => {
+              this.$axios
+              // users the voterId with the subject and text
+              // to the email endpoint to then send the email
+                .post('http://localhost:8081/api/v1/email', {
+                  id: localStorage.user,
+                  subject: 'Vote Successful',
+                  text: 'Thank you for your vote!',
+                });
+            })
+            .then(() => {
+              this.$store.commit('setSuccessDisplayMode', true);
+              this.$store.commit('setVoteDisplayMode', false);
+            });
         });
-      },
     },
+  },
 };
 </script>
 

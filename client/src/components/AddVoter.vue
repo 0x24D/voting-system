@@ -222,25 +222,25 @@ export default {
                   systemId = foundSystem._id;
                 }
                 this.$axios
-                .put(`http://localhost:8081/api/v1/systems/${systemId}`, {
-                  voter: voterRes.data._id
-                })
-                .then(() => {
-                  this.$axios
-                  // users the voterId with the subject and text
-                  // to the email endpoint to then send the email
-                  .post('http://localhost:8081/api/v1/email', {
-                    id: voterRes.data._id,
-                    subject: 'Registration Successful',
-                    text: 'Your Registration was successful!'
-                    });
+                  .put(`http://localhost:8081/api/v1/systems/${systemId}`, {
+                    voter: voterRes.data._id,
                   })
-                .then(() => {
-                 //switches the screen from AddAuditor.vue to Admin.vue
-                  this.$store.commit('setAdminDisplayMode', true);
-                  this.$store.commit('setAddVoterDisplayMode', false);
-                });
-            });
+                  .then(() => {
+                    this.$axios
+                    // users the voterId with the subject and text
+                    // to the email endpoint to then send the email
+                      .post('http://localhost:8081/api/v1/email', {
+                        id: voterRes.data._id,
+                        subject: 'Registration Successful',
+                        text: 'Your Registration was successful!',
+                      });
+                  })
+                  .then(() => {
+                    // switches the screen from AddAuditor.vue to Admin.vue
+                    this.$store.commit('setAdminDisplayMode', true);
+                    this.$store.commit('setAddVoterDisplayMode', false);
+                  });
+              });
           });
       }
     },

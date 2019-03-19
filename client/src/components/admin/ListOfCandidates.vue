@@ -30,13 +30,13 @@ export default {
   data() {
     return {
       candidates: [],
-    }
+    };
   },
   created() {
-      this.$axios
-        .get(`http://localhost:8081/api/v1/candidates/`)
-        .then((candidateRes) => {
-          candidateRes.data.forEach((candidate) => {
+    this.$axios
+      .get('http://localhost:8081/api/v1/candidates/')
+      .then((candidateRes) => {
+        candidateRes.data.forEach((candidate) => {
           this.$axios
             .get(`http://localhost:8081/api/v1/parties/${candidate.party}`)
             .then((partyRes) => {
@@ -45,9 +45,8 @@ export default {
                 name: candidate.name,
                 party: partyRes.data.name,
               });
-            
             });
-          });
+        });
       });
   },
   methods: {

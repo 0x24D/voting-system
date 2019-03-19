@@ -23,7 +23,7 @@ export default {
   computed: {
     getCursorStyle() {
       return `cursor: ${this.hasVoted ? 'default' : 'pointer'}`;
-    }
+    },
   },
   methods: {
     goToCampaign(campaignId) {
@@ -40,12 +40,12 @@ export default {
       .then((response) => {
         this.campaigns = response.data;
       });
-      this.$axios
-        .get(`http://localhost:8081/api/v1/voters/${localStorage.user}`)
-        .then((response) => {
-          this.hasVoted = response.data.voted;
+    this.$axios
+      .get(`http://localhost:8081/api/v1/voters/${localStorage.user}`)
+      .then((response) => {
+        this.hasVoted = response.data.voted;
       });
-    },
+  },
 
   methods: {
     goToCampaign(campaignId) {

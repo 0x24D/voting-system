@@ -6,8 +6,10 @@
       </md-table-toolbar>
       <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="single">
         <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Start date" md-sort-by="start_date">{{ new Date(item.start_date).toDateString() }}</md-table-cell>
-        <md-table-cell md-label="End date" md-sort-by="end_date">{{ new Date(item.end_date).toDateString() }}</md-table-cell>
+        <md-table-cell md-label="Start date" md-sort-by="start_date">
+            {{ new Date(item.start_date).toDateString() }}</md-table-cell>
+        <md-table-cell md-label="End date" md-sort-by="end_date">
+            {{ new Date(item.end_date).toDateString() }}</md-table-cell>
       </md-table-row>
     </md-table>
     <md-button class="md-raised md-primary" @click="onBack()">Go Back</md-button>
@@ -27,7 +29,7 @@ export default {
       .get('http://localhost:8081/api/v1/campaigns/')
       .then((response) => {
         this.campaigns = response.data;
-    });
+      });
   },
   methods: {
     onBack() {
@@ -38,8 +40,8 @@ export default {
       this.$store.commit('setCampaignIdToDisplay', campaign._id);
       this.$store.commit('setResultsDisplayMode', true);
       this.$store.commit('setResultsCampaignsDisplayMode', false);
-    }
-  }
+    },
+  },
 };
 </script>
 

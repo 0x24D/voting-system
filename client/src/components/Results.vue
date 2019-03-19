@@ -31,7 +31,9 @@
       :height="350">
     </bars>
     </md-card>
-    <md-button class="md-raised md-primary" @click="onBack()">Go Back/md-button>
+    <md-card-actions>
+      <md-button class="md-raised md-primary" @click="onBack()">Go Back</md-button>
+    </md-card-actions>
   </div>
 </template>
 <script>
@@ -43,10 +45,10 @@ export default {
   data() {
     return {
       candidates: [],
-      chartData: [{value: 0, title: 'empty'}],
-  };
-},
-created() {
+      chartData: [{ value: 0, title: 'empty' }],
+    };
+  },
+  created() {
     this.$axios
       .get(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`)
       .then((campaignRes) => {
@@ -84,7 +86,7 @@ created() {
   methods: {
     onBack() {
       this.$store.commit('setResultsCampaignsDisplayMode', true);
-        this.$store.commit('setResultsDisplayMode', false);
+      this.$store.commit('setResultsDisplayMode', false);
     },
   },
 };
