@@ -25,10 +25,10 @@ export const getAuditorWithId = (req, res) => {
 };
 
 /**
- * Adds a new auditor using the information in req, 
+ * Adds a new auditor using the information in req,
  * this also uses salt in order hash the password before
  * saving
- * 
+ *
  * @param req the request from the client
  * @param res the repsonse from the server
  */
@@ -47,7 +47,7 @@ export const addNewAuditor = (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: hash,
-            salt: salt,
+            salt,
             polling_station: req.body.polling_station,
           };
           addNew(newAuditor, (err3, auditor) => {

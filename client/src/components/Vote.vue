@@ -19,6 +19,7 @@
       </md-table-row>
     </md-table>
     <md-button class="md-raised" @click="onSubmit()" :disabled="!this.selected">Submit vote</md-button>
+    <md-button class="md-raised" @click="onCandidateView(selected)" :disabled="!this.selected">View Candidate Profile</md-button>
   </div>
 </template>
 
@@ -32,7 +33,7 @@ export default {
     return {
       selected: null,
       candidates: [],
-    }
+    };
   },
   created() {
     this.$axios
@@ -49,10 +50,10 @@ export default {
                   this.candidates.push({
                     id: candidateRes.data._id,
                     name: candidateRes.data.name,
-                    party: partyRes.data.name
+                    party: partyRes.data.name,
                   });
+                });
             });
-          });
         });
       });
   },
@@ -62,13 +63,19 @@ export default {
      */
     onSelect(candidate) {
       this.selected = candidate;
-      },
-      /**
-       * The onSubmit method sets voted to true for the current user so that they are unable to vote again
-       * Then sends an email to the voters email address to confirm their vote
-       */
-      onSubmit() {
-        this.$axios
+    },
+    onCandidateView(candidateId) {
+      this.$store.commit('setCandidateIdToDisplay', candidateId);
+      this.$store.commit('setCandidateProfileDisplayMode', true);
+      this.$store.commit('setVoteDisplayMode', false);
+    },
+    /**
+     * The onSubmit method sets voted to true for the current user so that they are unable to vote again
+     * Then sends an email to the voters email address to confirm their vote
+     */
+    onSubmit() {
+      this.$axios
+>>>>>>> develop
         .put(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`, {
           total_votes: '++',
           votes: this.selected,
@@ -79,7 +86,7 @@ export default {
           })
           .then(() => {
             this.$axios
-            // users the voterId with the subject and text 
+            // users the voterId with the subject and text
             // to the email endpoint to then send the email
             .post('http://localhost:8081/api/v1/email', {
               id: localStorage.user,

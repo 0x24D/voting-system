@@ -15,11 +15,11 @@ export default {
   methods: {
     goToCampaigns() {
       this.$store.commit('setAdminDisplayMode', false);
-      // this.$store.commit('setCampaignsDisplayMode', true);
+      this.$store.commit('setAdminCampaignsDisplayMode', true);
     },
     goToCandidates() {
       this.$store.commit('setAdminDisplayMode', false);
-      // this.$store.commit('setCandidatessDisplayMode', true);
+      this.$store.commit('setListOfCandidatesDisplayMode', true);
     },
     goToResults() {
       this.$store.commit('setAdminDisplayMode', false);

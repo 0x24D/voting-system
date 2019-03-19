@@ -10,7 +10,6 @@ const Address = mongoose.model('address', new Schema({
   },
   line_two: {
     type: String,
-    required: true,
   },
   town: {
     type: String,

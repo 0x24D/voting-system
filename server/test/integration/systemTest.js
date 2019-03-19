@@ -19,14 +19,14 @@ describe('System tests', () => {
   let campaign2Id;
   beforeEach((done) => {
     const station1 = new PollingStation({
-      close_time: Date.now() + 1,
+      close_time: Date.now() + 86400000,
     });
     station1Id = String(station1._id);
     const campaign1 = new Campaign({
       name: 'Campaign 1',
       type: 'Campaign Type',
       active: 'live',
-      end_date: Date.now() + 1,
+      end_date: Date.now() + 86400000,
     });
     campaign1Id = String(campaign1._id);
     const system1 = new System({
@@ -36,14 +36,14 @@ describe('System tests', () => {
     });
     system1Id = String(system1._id);
     const station2 = new PollingStation({
-      close_time: Date.now() + 1,
+      close_time: Date.now() + 86400000,
     });
     station2Id = String(station2._id);
     const campaign2 = new Campaign({
       name: 'Campaign 2',
       type: 'Campaign Type',
       active: 'live',
-      end_date: Date.now() + 1,
+      end_date: Date.now() + 86400000,
     });
     campaign2Id = String(campaign2._id);
     const system2 = new System({
@@ -141,6 +141,56 @@ describe('System tests', () => {
         expect(res.body.campaigns).to.have.lengthOf(1);
         res.body.campaigns[0].should.equal(campaign1Id);
         res.body.language.should.equal('en-gb');
+        done();
+      });
+  });
+
+  it('should add new system on /api/v1/systems  POST', (done) => {
+    const campaign = new Campaign({
+      name: 'Campaign ',
+      type: 'Type',
+      active: 'active',
+      end_date: Date.now() + 86400000,
+    });
+    const campaignId = String(campaign._id);
+    const station = new PollingStation({
+      close_time: Date.now() + 86400000,
+    });
+    const stationId = String(station._id);
+    const voter = new Voter({
+      username: 'voter1',
+      name: 'Voter 1',
+      email: 'voter1@hotmail.com',
+      password: 'voter1',
+      roles: 'voter',
+      date_of_birth: new Date('01/01/01'),
+      address: null,
+    });
+    const voterId = String(voter._id);
+    chai.request(app)
+      .post('/api/v1/systems')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        campaigns: [campaignId],
+        language: 'fr',
+        station: stationId,
+        voters: [voterId],
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('station');
+        res.body.should.have.property('voters');
+        res.body.should.have.property('campaigns');
+        res.body.should.have.property('language');
+        res.body.station.should.equal(stationId);
+        expect(res.body.voters).to.have.lengthOf(1);
+        res.body.voters[0].should.equal(voterId);
+        expect(res.body.campaigns).to.have.lengthOf(1);
+        res.body.campaigns[0].should.equal(campaignId);
+        res.body.language.should.equal('fr');
         done();
       });
   });

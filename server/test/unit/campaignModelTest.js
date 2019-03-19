@@ -11,9 +11,7 @@ describe('campaign', () => {
       done();
     });
   });
-});
 
-describe('campaign', () => {
   it('should be invalid if total_votes is empty', (done) => {
     const c = new Campaign();
 
@@ -22,9 +20,7 @@ describe('campaign', () => {
       done();
     });
   });
-});
 
-describe('campaign', () => {
   it('should be invalid if candidates is empty', (done) => {
     const c = new Campaign();
 
@@ -33,9 +29,7 @@ describe('campaign', () => {
       done();
     });
   });
-});
 
-describe('campaign', () => {
   it('should be invalid if votes is empty', (done) => {
     const c = new Campaign();
 
@@ -44,31 +38,16 @@ describe('campaign', () => {
       done();
     });
   });
-});
 
-describe('campaign', () => {
-  it('should be invalid if type is empty', (done) => {
+  it('should be invalid if campaign_type is empty', (done) => {
     const c = new Campaign();
 
     c.validate((err) => {
-      expect(err.errors.type).to.exist;
+      expect(err.errors.campaign_type).to.exist;
       done();
     });
   });
-});
 
-describe('campaign', () => {
-  it('should be invalid if active is empty', (done) => {
-    const c = new Campaign();
-
-    c.validate((err) => {
-      expect(err.errors.active).to.exist;
-      done();
-    });
-  });
-});
-
-describe('campaign', () => {
   it('should be invalid if constituences is empty', (done) => {
     const c = new Campaign();
 
@@ -77,9 +56,7 @@ describe('campaign', () => {
       done();
     });
   });
-});
 
-describe('campaign', () => {
   it('should be invalid if start_date is empty', (done) => {
     const c = new Campaign();
 
@@ -88,9 +65,7 @@ describe('campaign', () => {
       done();
     });
   });
-});
 
-describe('campaign', () => {
   it('should be invalid if end_date is empty', (done) => {
     const c = new Campaign();
 

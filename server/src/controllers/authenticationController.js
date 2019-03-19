@@ -6,6 +6,13 @@ import {
   updateExistingByProperty,
 } from '../db/userAccess';
 
+/**
+ * Generate a token for a user and send it to them if a token does not
+ * already exist and the user has provided a valid password.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
 export const loginUser = (req, res) => {
   const unHashedPassword = req.body.password;
   let hashedPassword;
@@ -51,6 +58,13 @@ export const loginUser = (req, res) => {
   });
 };
 
+/**
+ * Remove the token from the user's record if the user has
+ * provided a valid token.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
 export const logoutUser = (req, res) => {
   const tokenToCheck = req.headers.authorization;
   if (tokenToCheck) {

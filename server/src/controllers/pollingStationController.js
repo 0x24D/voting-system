@@ -5,7 +5,7 @@ import {
 
 /**
  * Returns a polling station by based on its ID to res
- * 
+ *
  * @param req the request from the client
  * @param res the repsonse from the server
  */
@@ -22,7 +22,7 @@ export const getPollingStationById = (req, res) => {
 
 /**
  * Returns all polling stations in the database to res
- * 
+ *
  * @param req the request from the client
  * @param res the repsonse from the server
  */

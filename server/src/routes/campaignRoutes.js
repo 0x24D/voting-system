@@ -1,4 +1,5 @@
 import {
+  addNewCampaign,
   getCampaigns,
   getCampaignById,
   editCampaignById,
@@ -6,7 +7,8 @@ import {
 
 const campaignRoutes = (app) => {
   app.route('/api/v1/campaigns')
-    .get(getCampaigns);
+    .get(getCampaigns)
+    .post(addNewCampaign);
   app.route('/api/v1/campaigns/:id')
     .get(getCampaignById)
     .put(editCampaignById);

@@ -30,7 +30,7 @@ describe('PollingStation tests', () => {
 
     const pollingStation1 = new PollingStation({
       address: address1,
-      close_time: Date.now() + 1,
+      close_time: Date.now() + 86400000,
     });
     pollingStation1Id = String(pollingStation1._id);
 
@@ -46,7 +46,7 @@ describe('PollingStation tests', () => {
 
     const pollingStation2 = new PollingStation({
       address: address2,
-      close_time: Date.now() + 1,
+      close_time: Date.now() + 86400000,
     });
     pollingStation2Id = String(pollingStation2._id);
 

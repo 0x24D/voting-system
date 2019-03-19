@@ -10,7 +10,7 @@ const SALT_WORK_FACTOR = 10;
  * Gets the admin using their id which is sent in the request
  * parameters from the database and returns
  * it to the client.
- * 
+ *
  * @param req the request from the client
  * @param res the repsonse from the server
  */
@@ -26,10 +26,10 @@ export const getAdminById = (req, res) => {
 };
 
 /**
- * Adds a new admin using the information in req, 
+ * Adds a new admin using the information in req,
  * this also uses salt in order hash the password before
  * saving
- * 
+ *
  * @param req the request from the client
  * @param res the repsonse from the server
  */
@@ -48,7 +48,7 @@ export const addNewAdmin = (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: hash,
-            salt: salt,
+            salt,
           };
           addNew(newAdmin, (err3, admin) => {
             if (err3) {

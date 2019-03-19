@@ -30,15 +30,18 @@ const yorkshirePartyId = ObjectId(partyRet.insertedIds[2].str);
 // add candidates
 const labourCandidate = {
   name: 'Edward Milliband',
-  party: labourPartyId
+  party: labourPartyId,
+  description: 'Ed Milliband description',
 };
 const conservativeCandidate = {
   name: 'Shade Adoh',
-  party: conservativePartyId
+  party: conservativePartyId,
+  description: 'Shade Adoh description',
 };
 const yorkshireCandidate = {
   name: 'Charlie Bridges',
-  party: yorkshirePartyId
+  party: yorkshirePartyId,
+  description: 'Charlie Bridges description',
 };
 const candidateRet = db.candidates.insertMany([labourCandidate, conservativeCandidate, yorkshireCandidate]);
 const labourCandidateStr = candidateRet.insertedIds[0].str;
@@ -55,7 +58,7 @@ const campaignRet = db.campaigns.insertOne({
   total_votes: 0,
   candidates: [labourCandidateId, conservativeCandidateId, yorkshireCandidateId],
   votes: [{[labourCandidateStr]: 0}, {[conservativeCandidateStr]: 0}, {[yorkshireCandidateStr]: 0}],
-  type: 'Local Election',
+  campaign_type: 'Local Election',
   active: 'Active',
   constituencies: [constituency1Id],
   start_date: Date.now(),

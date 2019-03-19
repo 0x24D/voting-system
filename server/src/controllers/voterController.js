@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import {
   addNew,
+  findAll,
   findById,
   updateExistingById,
 } from '../db/voterAccess';
@@ -8,10 +9,10 @@ import {
 const SALT_WORK_FACTOR = 10;
 
 /**
- * Adds a new voter using the information in req, 
+ * Adds a new voter using the information in req,
  * this also uses salt in order hash the password before
- * saving
- * 
+ * saving.
+ *
  * @param req the request from the client
  * @param res the repsonse from the server
  */
@@ -30,7 +31,7 @@ export const addNewVoter = (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: hash,
-            salt: salt,
+            salt,
             date_of_birth: req.body.date_of_birth,
             address: req.body.address,
           };
@@ -48,10 +49,27 @@ export const addNewVoter = (req, res) => {
 };
 
 /**
+ * Gets all voters from the database.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
+
+export const getAllVoters = (req, res) => {
+  findAll((err, voters) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json(voters);
+    }
+  });
+};
+
+/**
  * Gets the voter using their id which sent in the request
  * parameters from the database and returns
  * it to the client.
- * 
+ *
  * @param req the request from the client
  * @param res the repsonse from the server
  */
@@ -68,7 +86,7 @@ export const getVoterWithId = (req, res) => {
 
 /**
  * Updates the voter using ID with the new information sent in req
- * 
+ *
  * @param req the request from the client
  * @param res the repsonse from the server
  */
