@@ -1,6 +1,7 @@
 import {
   getPartyById,
   addNewParty,
+  getParties,
 } from '../controllers/partyController';
 
 const partyRoutes = (app) => {
@@ -8,7 +9,8 @@ const partyRoutes = (app) => {
     .get(getPartyById);
 
   app.route('/api/v1/parties')
-    .post(addNewParty);
+    .post(addNewParty)
+    .get(getParties);
 };
 
 export default partyRoutes;

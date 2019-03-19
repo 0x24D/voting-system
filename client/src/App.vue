@@ -47,8 +47,8 @@ import Results from './components/Results.vue';
 import Success from './components/Success.vue';
 import Vote from './components/Vote.vue';
 import CandidateProfile from './components/CandidateProfile';
-import ListOfCandidates from './components/Admin/ListOfCandidates';
-import AddCandidateParty from './components/Admin/AddCandidateParty';
+import ListOfCandidates from './components/admin/ListOfCandidates';
+import AddCandidateParty from './components/admin/AddCandidateParty';
 
 export default {
   name: 'app',

@@ -4,6 +4,14 @@ import {
   addNew,
 } from '../db/candidateAccess';
 
+/**
+ * Get a candidate from the database.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
+
+
 export const getCandidates = (req, res) => {
   findAll((err, candidates) => {
     if (err) {
@@ -14,6 +22,13 @@ export const getCandidates = (req, res) => {
   });
 };
 
+/**
+ * Get a candidate from the database using an ID.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
+
 export const getCandidateById = (req, res) => {
   findById(req.params.id, (err, candidate) => {
     if (err) {
@@ -23,6 +38,13 @@ export const getCandidateById = (req, res) => {
     }
   });
 };
+
+/**
+ * Add a new candidate to the database.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
 
 export const addNewCandidate = (req, res) => {
   const dataToSave = {
