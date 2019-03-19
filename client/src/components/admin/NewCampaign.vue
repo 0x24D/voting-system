@@ -100,7 +100,7 @@ export default {
       constituencies: [],
     };
   },
-    /**
+  /**
     * Call candidates and constituencies API endpoints to get all
     * candidates and constituencies, store these in the relevant data properties.
     */
