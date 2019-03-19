@@ -57,10 +57,10 @@
 
 ## Extensions:
 * User registration (voter, admin, and auditor) - A (merged into develop)
-* Adding/displaying candidate/party profiles - JS
-* Setting up a campaign (with candidates) - D (TODO: required fields messages and JavaDoc)
+* Adding/displaying candidate/party profiles - JS (merged into develop)
+* Setting up a campaign (with candidates) - D (merged into develop)
 * List of voters for auditor - L (merged into develop)
-* Graphical results interface (for each campaign) - JW (in progress)
+* Graphical results interface (for each campaign) - JW (merged into develop)
 
 ## Notes:
 * When actually sending email, change _config.js to correct details.
