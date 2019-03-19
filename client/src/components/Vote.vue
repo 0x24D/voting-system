@@ -33,7 +33,7 @@ export default {
     return {
       selected: null,
       candidates: [],
-    }
+    };
   },
   created() {
     this.$axios
@@ -50,10 +50,10 @@ export default {
                   this.candidates.push({
                     id: candidateRes.data._id,
                     name: candidateRes.data.name,
-                    party: partyRes.data.name
+                    party: partyRes.data.name,
                   });
+                });
             });
-          });
         });
       });
   },
@@ -82,7 +82,7 @@ export default {
               this.$store.commit('setVoteDisplayMode', false);
             });
         });
-    }
+    },
   },
 };
 </script>

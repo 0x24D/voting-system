@@ -5,14 +5,12 @@ import {
 } from '../db/candidateAccess';
 
 /**
- * Get a candidate from the database.
+ * Get all candidates from the database.
  *
  * @param req the request from the client
  * @param res the response to the client
  */
-
-
-export const getCandidates = (req, res) => {
+ export const getCandidates = (req, res) => {
   findAll((err, candidates) => {
     if (err) {
       res.status(500).send(err);
@@ -23,12 +21,11 @@ export const getCandidates = (req, res) => {
 };
 
 /**
- * Get a candidate from the database using an ID.
+ * Get candidate with passed in ID from the database.
  *
  * @param req the request from the client
  * @param res the response to the client
  */
-
 export const getCandidateById = (req, res) => {
   findById(req.params.id, (err, candidate) => {
     if (err) {

@@ -93,4 +93,36 @@ describe('User tests', () => {
         done();
       });
   });
+
+  it('should add new user on /api/v1/users POST', (done) => {
+    chai.request(app)
+      .post('/api/v1/users')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        username: 'testuser',
+        name: 'testname',
+        email: 'test@mail',
+        password: 'testPass',
+        roles: 'voter',
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('username');
+        res.body.should.have.property('name');
+        res.body.should.have.property('email');
+        res.body.should.have.property('password');
+        res.body.should.have.property('roles');
+        res.body.should.have.property('authentication_attempts');
+        res.body.username.should.equal('testuser');
+        res.body.name.should.equal('testname');
+        res.body.email.should.equal('test@mail');
+        res.body.password.should.equal('testPass');
+        res.body.roles.should.equal('voter');
+        res.body.authentication_attempts.should.equal(0);
+        done();
+      });
+  });
 });

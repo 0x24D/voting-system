@@ -18,16 +18,17 @@
         <md-table-cell>{{ candidate.votes  }}</md-table-cell>
       </md-table-row>
     </md-table>
+    <md-button class="md-raised" @click="goToAdmin()">Back to Admin</md-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Results",
+  name: 'Results',
   data() {
     return {
       candidates: [],
-    }
+    };
   },
   created() {
     this.$axios
@@ -58,8 +59,14 @@ export default {
               });
           });
         });
-
       });
+  },
+
+  methods: {
+    goToAdmin() {
+      this.$store.commit('setAdminDisplayMode', true);
+      this.$store.commit('setResultsDisplayMode', false);
+    },
   },
 };
 </script>

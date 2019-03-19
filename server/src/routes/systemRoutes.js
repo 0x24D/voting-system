@@ -1,4 +1,5 @@
 import {
+  addNewSystem,
   getSystems,
   getSystemWithId,
   editSystemWithId,
@@ -6,7 +7,8 @@ import {
 
 const systemRoutes = (app) => {
   app.route('/api/v1/systems')
-    .get(getSystems);
+    .get(getSystems)
+    .post(addNewSystem);
   // route for actions on a specific user
   app.route('/api/v1/systems/:id')
   // http get using the getUserWithId method

@@ -5,12 +5,11 @@ import {
 } from '../db/partyAccess';
 
 /**
- * Get a party object from the databse using an ID.
+ * Get party with the passed in ID from the database.
  *
  * @param req the request from the client
  * @param res the response to the client
  */
-
 export const getPartyById = (req, res) => {
   findById(req.params.id, (err, party) => {
     if (err) {
@@ -50,9 +49,7 @@ export const addNewParty = (req, res) => {
     name: req.body.name,
     description: req.body.description,
   };
-  console.log(dataToSave);
   addNew(dataToSave, (err, party) => {
-    console.log(err, party);
     if (err) {
       res.status(500).send(err);
     } else {

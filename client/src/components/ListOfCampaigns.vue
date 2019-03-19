@@ -1,6 +1,7 @@
 <template>
   <div class="campaigns">
-    <div class="campaign" v-for="campaign in campaigns" :key="campaign._id" @click="goToCampaign(campaign._id)">
+    <div class="campaign" v-for="campaign in campaigns"
+      :key="campaign._id" @click="goToCampaign(campaign._id)">
       <md-card md-with-hover class="md-size-75">
           <md-card-header>
             <div class="md-title">{{ campaign.name }}</div>
@@ -14,7 +15,8 @@
               <md-list-item>
                 <span class="md-list-item-text">Date</span>
                 <span class="md-list-item-text">{{ new Date(campaign.start_date).toDateString() }}
-                {{ new Date(campaign.start_date).toLocaleTimeString() }} - {{ new Date(campaign.end_date).toDateString() }}
+                {{ new Date(campaign.start_date).toLocaleTimeString() }}
+                  - {{ new Date(campaign.end_date).toDateString() }}
                 {{ new Date(campaign.end_date).toLocaleTimeString() }}</span>
               </md-list-item>
             </md-list>
@@ -34,10 +36,10 @@ export default {
   },
   created() {
     this.$axios
-      .get('http://localhost:8081/api/v1/campaigns/')
+      .get('http://localhost:8081/api/v1/campaigns/') // TODO: update to only show campaigns listed on the system where logged in user is in system.voters array
       .then((response) => {
         this.campaigns = response.data;
-    });
+      });
   },
   methods: {
     goToCampaign(campaignId) {
@@ -50,7 +52,7 @@ export default {
             this.$store.commit('setCampaignsDisplayMode', false);
           }
         });
-    }
-  }
+    },
+  },
 };
 </script>

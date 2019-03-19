@@ -51,7 +51,7 @@ describe('Party tests', () => {
         done();
       });
   });
-  
+
   it('should add new party on /api/v1/parties POST', (done) => {
     chai.request(app)
       .post('/api/v1/parties')
@@ -69,7 +69,6 @@ describe('Party tests', () => {
         res.body.should.have.property('description');
         res.body.name.should.equal('first last');
         res.body.description.should.equal('test description');
-        
         done();
       });
   });

@@ -1,8 +1,38 @@
 import {
+  addNew,
   findByProperty,
   updateExistingByProperty,
 } from '../db/userAccess';
 
+/**
+ * Add new user to the database.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
+export const addNewUser = (req, res) => {
+  const dataToSave = {
+    username: req.body.username,
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    roles: req.body.roles,
+  };
+  addNew(dataToSave, (err, user) => {
+    if (err) {
+      res.status(500).end();
+    } else {
+      res.status(201).json(user);
+    }
+  });
+};
+
+/**
+ * Get the user with the passed in username from the database.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
 export const getUserWithUsername = (req, res) => {
   findByProperty('username', req.params.username, (err, user) => {
     if (err) {
@@ -13,6 +43,12 @@ export const getUserWithUsername = (req, res) => {
   });
 };
 
+/**
+ * Update the user with the passed in ID with the submitted data.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
 export const editUserWithId = (req, res) => {
   const userId = req.params.id;
   findByProperty('_id', userId, (err, user) => {
