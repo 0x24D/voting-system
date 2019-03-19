@@ -1,16 +1,20 @@
 <template>
   <div id="admin">
-    <md-card>
-      <md-card-content>
-        <md-button class="md-raised" @click="goToAddAdmin()">Add Admin</md-button>
-        <md-button class="md-raised" @click="goToAddAuditor()">Add Auditor</md-button>
-        <md-button class="md-raised" @click="goToAddVoter()">Add Voter</md-button>
-        <md-button class="md-raised" @click="goToResults()">View Results</md-button>
-        <md-button class="md-raised" @click="goToCandidates()">View Candidates</md-button>
-        <md-button class="md-raised" @click="goToCampaigns()">View Campaigns</md-button>
-        <Logout/>
-      </md-card-content>
-    </md-card>
+    <div>
+      <md-button class="md-raised" @click="goToAddAdmin()">Add Admin</md-button>
+      <md-button class="md-raised" @click="goToAddAuditor()">Add Auditor</md-button>
+      <md-button class="md-raised" @click="goToAddVoter()">Add Voter</md-button>
+    </div>
+    <div>
+      <md-button class="md-raised" @click="goToResults()">View Results</md-button>
+    </div>
+    <div>
+      <md-button class="md-raised" @click="goToCandidates()">View Candidates</md-button>
+    </div>
+    <div>
+      <md-button class="md-raised" @click="goToCampaigns()">View Campaigns</md-button>
+    </div>
+    <Logout/>
   </div>
 </template>
 
@@ -52,7 +56,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#admin {
-  margin: 0 auto;
-}
+html, body { height: 100%; padding: 0; margin: 0; }
+div { width: 50%; height: 50%; float: left; }
 </style>
