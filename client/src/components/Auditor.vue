@@ -1,5 +1,6 @@
 <template>
   <div id="auditor">
+    <Logout/>
     <md-table md-card>
       <md-table-toolbar>
         <h1 class="md-title">Voters</h1>
@@ -25,8 +26,13 @@
 </template>
 
 <script>
+import Logout from './Logout.vue';
+
 export default {
   name: 'Auditor',
+  components: {
+    Logout,
+  },
   data() {
     return {
       voters: [],
