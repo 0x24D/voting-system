@@ -74,8 +74,8 @@ export default {
                     });
                     // Pushes the candidate name and votes to the chartData array as objects
                     this.chartData.push({
-                      title: `${candidateRes.data.name}: ${campaignRes.data[0].votes[candidateIndex][candidateId]}`,
-                      value: campaignRes.data[0].votes[candidateIndex][candidateId],
+                      title: `${candidateRes.data.name}: ${campaignRes.data.votes[candidateIndex][candidateId]}`,
+                      value: campaignRes.data.votes[candidateIndex][candidateId],
                     });
                   });
               });

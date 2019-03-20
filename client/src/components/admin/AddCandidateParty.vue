@@ -44,9 +44,9 @@
             </md-field>
 
             <md-field :class="getValidationClass('party','description')">
-              <label for="description">description</label>
+              <label for="description">Description</label>
                 <md-input name="description" id="description" type="description" v-model="party.description" required></md-input>
-              <span class="md-error" v-if="!$v.party.description.required">description is required</span>
+              <span class="md-error" v-if="!$v.party.description.required">Description is required</span>
             </md-field>
 
             <md-button class="md-primary" id="submitButton" @click="onSubmitParty(party)">Submit</md-button>

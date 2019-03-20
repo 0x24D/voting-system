@@ -58,7 +58,8 @@
 
             <md-select v-model="voter.address" name="address" id="address"  md-dense required>
               <md-option v-for="ad in address" :key="ad._id" :value="ad._id">
-                  {{ ad.postcode }}
+                 {{ ad.line_one }}, {{ ad.postcode }}
+                  
               </md-option>
             </md-select>
 
@@ -73,7 +74,7 @@
                 <md-select name="polling_station" id="polling_station"
                   v-model="polling_station_address" md-dense required>
                   <md-option v-for="ad in addresses" :key="ad._id" :value="ad._id">
-                    {{ ad.postcode }}
+                   {{ ad.line_one }}, {{ ad.postcode }}
                   </md-option>
                 </md-select>
               <span class="md-error" v-if="!$v.polling_station_address.required">
@@ -211,21 +212,6 @@ export default {
             address: newVoter.address,
           })
           .then((voterRes) => {
-            let systemId;
-            this.$axios
-              .get('http://localhost:8081/api/v1/systems')
-              .then((systemsRes) => {
-                const foundSystem = systemsRes.data.find(
-                  system => system.station === this.voter.polling_station,
-                );
-                if (foundSystem) {
-                  systemId = foundSystem._id;
-                }
-                this.$axios
-                  .put(`http://localhost:8081/api/v1/systems/${systemId}`, {
-                    voter: voterRes.data._id,
-                  })
-                  .then(() => {
                     this.$axios
                     // users the voterId with the subject and text
                     // to the email endpoint to then send the email
@@ -233,15 +219,13 @@ export default {
                         id: voterRes.data._id,
                         subject: 'Registration Successful',
                         text: 'Your Registration was successful!',
-                      });
-                  })
+                      })
                   .then(() => {
                     // switches the screen from AddAuditor.vue to Admin.vue
                     this.$store.commit('setAdminDisplayMode', true);
                     this.$store.commit('setAddVoterDisplayMode', false);
                   });
               });
-          });
       }
     },
   },

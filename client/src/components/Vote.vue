@@ -12,7 +12,7 @@
 
     <md-button class="md-raised md-primary" @click="onBack()">Go Back</md-button>
     <md-button class="md-raised md-primary" @click="onSubmit()" :disabled="!this.selected">Submit vote</md-button>
-    <md-button class="md-raised md-primary" @click="onCandidateView(selected)" :disabled="!this.selected">View Candidate Profile</md-button>
+    <md-button class="md-raised md-primary" @click="onCandidateView(selected.id)" :disabled="!this.selected">View Candidate Profile</md-button>
   </div>
 </template>
 
