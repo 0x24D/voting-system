@@ -23,6 +23,7 @@
     <md-button class="md-fab md-fab-bottom-right" @click="setup()">
       <md-icon>+</md-icon>
     </md-button>
+    <md-button class="md-raised md-primary" @click="onBack()">Go Back</md-button>
   </div>
 </template>
 <script>
@@ -51,6 +52,10 @@ export default {
     */
     setup() {
       this.$store.commit('setSetupDisplayMode', true);
+    },
+    onBack() {
+      this.$store.commit('setAdminDisplayMode', true);
+      this.$store.commit('setAdminCampaignsDisplayMode', false);
     },
   },
 };
