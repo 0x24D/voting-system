@@ -50,10 +50,9 @@ export default {
   },
 
   /**
-   *
    * The Created method populates the page with a specific candidates details
-   * From the database it obtains details on candidate party, candidate description and candidate name
-   *
+   * From the database it obtains details on candidate party,
+   * candidate description and candidate name.
    */
 
   created() {

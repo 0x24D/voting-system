@@ -51,20 +51,6 @@ export default {
         this.hasVoted = response.data.voted;
       });
   },
-
-  methods: {
-    goToCampaign(campaignId) {
-      this.$axios
-        .get(`http://localhost:8081/api/v1/voters/${localStorage.user}`)
-        .then((response) => {
-          if (!response.data.voted) {
-            this.$store.commit('setCampaignIdToDisplay', campaignId);
-            this.$store.commit('setVoteDisplayMode', true);
-            this.$store.commit('setCampaignsDisplayMode', false);
-          }
-        });
-    },
-  },
 };
 </script>
 

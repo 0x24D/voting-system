@@ -4,15 +4,18 @@
       <md-table-toolbar>
         <h1 class="md-title"></h1>
       </md-table-toolbar>
-       <md-table-row slot="md-table-row" slot-scope="{ item }" :class="getClass(item)" md-selectable="single">
+       <md-table-row slot="md-table-row" slot-scope="{ item }"
+        :class="getClass(item)" md-selectable="single">
          <md-table-cell md-label="Candidate" md-sort-by="name">{{ item.name }}</md-table-cell>
          <md-table-cell md-label="Party" md-sort-by="party">{{ item.party }}</md-table-cell>
       </md-table-row>
     </md-table>
 
     <md-button class="md-raised md-primary" @click="onBack()">Go Back</md-button>
-    <md-button class="md-raised md-primary" @click="onSubmit()" :disabled="!this.selected">Submit vote</md-button>
-    <md-button class="md-raised md-primary" @click="onCandidateView(selected.id)" :disabled="!this.selected">View Candidate Profile</md-button>
+    <md-button class="md-raised md-primary" @click="onSubmit()"
+      :disabled="!this.selected">Submit vote</md-button>
+    <md-button class="md-raised md-primary" @click="onCandidateView(selected.id)"
+      :disabled="!this.selected">View Candidate Profile</md-button>
   </div>
 </template>
 
@@ -79,7 +82,8 @@ export default {
       this.$store.commit('setVoteDisplayMode', false);
     },
     /**
-     * The onSubmit method sets voted to true for the current user so that they are unable to vote again
+     * The onSubmit method sets voted to true for the current user
+     * so that they are unable to vote again.
      * Then sends an email to the voters email address to confirm their vote
      */
     onSubmit() {

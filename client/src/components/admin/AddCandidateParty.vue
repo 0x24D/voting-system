@@ -8,7 +8,8 @@
            <div class="md-layout-item md-small-size-50">
             <md-field :class="getValidationClass('candidate','name')">
               <label for="name">Name</label>
-                <md-input name="name" id="name" type="name" v-model="candidate.name" required></md-input>
+                <md-input name="name" id="name" type="name"
+                  v-model="candidate.name" required></md-input>
               <span class="md-error" v-if="!$v.candidate.name.required">Name is required</span>
             </md-field>
 
@@ -24,10 +25,13 @@
 
             <md-field :class="getValidationClass('candidate','description')">
               <label for="description">Description</label>
-                <md-input name="description" id="description" type="description" v-model="candidate.description" required></md-input>
-              <span class="md-error" v-if="!$v.candidate.description.required">Description is required</span>
+                <md-input name="description" id="description" type="description"
+                  v-model="candidate.description" required></md-input>
+              <span class="md-error" v-if="!$v.candidate.description.required">
+                  Description is required</span>
             </md-field>
-            <md-button class="md-primary" id="submitButton" @click="onSubmitCandidate(candidate)">Submit</md-button>
+            <md-button class="md-primary" id="submitButton"
+              @click="onSubmitCandidate(candidate)">Submit</md-button>
             <md-button class="md-primary" id="closeButton" @click="windowClose()">Close</md-button>
           </div>
           </form>
@@ -39,18 +43,23 @@
           <div class="md-layout-item md-small-size-100">
             <md-field :class="getValidationClass('party','name')">
               <label for="name">Name</label>
-                <md-input name="name" id="name" type="name" v-model="party.name" required></md-input>
+                <md-input name="name" id="name" type="name"
+                  v-model="party.name" required></md-input>
               <span class="md-error" v-if="!$v.party.name.required">Name is required</span>
             </md-field>
 
             <md-field :class="getValidationClass('party','description')">
               <label for="description">Description</label>
-                <md-input name="description" id="description" type="description" v-model="party.description" required></md-input>
-              <span class="md-error" v-if="!$v.party.description.required">Description is required</span>
+                <md-input name="description" id="description"
+                  type="description" v-model="party.description" required></md-input>
+              <span class="md-error" v-if="!$v.party.description.required">
+                  Description is required</span>
             </md-field>
 
-            <md-button class="md-primary" id="submitButton" @click="onSubmitParty(party)">Submit</md-button>
-            <md-button class="md-primary" id="closeButton" @click="windowClose()">Close</md-button>
+            <md-button class="md-primary" id="submitButton"
+              @click="onSubmitParty(party)">Submit</md-button>
+            <md-button class="md-primary" id="closeButton"
+              @click="windowClose()">Close</md-button>
           </div>
 
           </form>
@@ -107,11 +116,13 @@ export default {
     /**
    *
    * getValidationClass validates the input from the user
-   * @param model is a variable that tells the validation class whether it is validating the information for a candidate or a party
-   * @param fieldName is the field which needs to be validated within either the candidate or the party
+   * @param model is a variable that tells the validation class
+   * whether it is validating the information for a candidate or a party
+   * @param fieldName is the field which needs to be validated within
+   * either the candidate or the party
    *
    */
-
+    // eslint-disable-next-line
     getValidationClass(model, fieldName) {
       const field = this.$v[model][fieldName];
       if (field) {
@@ -134,7 +145,8 @@ export default {
     /**
     *
     * onSubmitParty is a function that is called when submit is clicked on the add new party tab
-    * @param newParty an object containing the information about the new party to be added to the database
+    * @param newParty an object containing the information
+    * about the new party to be added to the database
     *
     */
 
@@ -154,8 +166,10 @@ export default {
 
     /**
     *
-    * onSubmitCandidate is a function that is called when submit is clicked on the add new candidate tab
-    * @param newCandidate an object containing the information about the new candidate to be added to the database
+    * onSubmitCandidate is a function that is called when submit is
+    * clicked on the add new candidate tab
+    * @param newCandidate an object containing the information
+    * about the new candidate to be added to the database
     *
     */
 
