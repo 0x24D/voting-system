@@ -1,5 +1,6 @@
 <template>
   <div id="campaigns">
+    <Logout/>
     <div class="campaign" v-for="campaign in campaigns" :key="campaign._id"
     @click="goToCampaign(campaign._id)" :style="getCursorStyle">
       <md-list>
@@ -11,9 +12,13 @@
   </div>
 </template>
 <script>
+import Logout from './Logout.vue';
 
 export default {
   name: 'ListOfCampaigns',
+  components: {
+    Logout,
+  },
   data() {
     return {
       campaigns: [],
