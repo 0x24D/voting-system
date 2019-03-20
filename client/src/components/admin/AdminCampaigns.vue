@@ -60,3 +60,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+#adminCampaigns {
+  padding: 50px 100px;
+}
+</style>

@@ -214,12 +214,3 @@ export default {
 
 };
 </script>
-
-<style lang="scss" scoped>
-.md-table + .md-table {
-  margin-top: 16px;
-}
-#auditors {
-  padding: 50px 100px;
-}
-</style>
