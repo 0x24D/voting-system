@@ -29,7 +29,7 @@
 /api/v1/campaigns/{id} PUT - update campaign (increment total votes, etc.) (implemented)
 
 /api/v1/candidates GET - return list of all candidates (implemented)
-/api/v1/candidates POST - add new candidate (implemented in feat/candidate-profiles)
+/api/v1/candidates POST - add new candidate (implemented)
 /api/v1/candidates/{id} GET - return specific candidate (implemented)
 
 /api/v1/constituencies GET - return list of all constituencies (implemented)
@@ -57,7 +57,10 @@
 
 ## Extensions:
 * User registration (voter, admin, and auditor) - A (merged into develop)
-* Adding/displaying candidate/party profiles - JS
-* Setting up a campaign (with candidates) - D (TODO: required fields messages and JavaDoc)
+* Adding/displaying candidate/party profiles - JS (merged into develop)
+* Setting up a campaign (with candidates) - D (merged into develop)
 * List of voters for auditor - L (merged into develop)
-* Graphical results interface (for each campaign) - JW
+* Graphical results interface (for each campaign) - JW (merged into develop)
+
+## Notes:
+* When actually sending email, change _config.js to correct details.

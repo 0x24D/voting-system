@@ -15,8 +15,13 @@ export default new Vuex.Store({
     showCampaigns: true,
     showResults: false,
     showSetup: false,
+    showResultsCampaigns: false,
     showSuccess: false,
     showVote: false,
+    showCandidateProfile: false,
+    candidateId: '',
+    showCandidates: false,
+    showAddCandidateParty: false,
   },
   getters: {
   },
@@ -42,6 +47,9 @@ export default new Vuex.Store({
     setSetupDisplayMode(s, boolean) {
       Vue.set(s, 'showSetup', boolean);
     },
+    setResultsCampaignsDisplayMode(s, boolean) {
+      Vue.set(s, 'showResultsCampaigns', boolean);
+    },
     setSuccessDisplayMode(s, boolean) {
       Vue.set(s, 'showSuccess', boolean);
     },
@@ -59,6 +67,18 @@ export default new Vuex.Store({
     },
     setVoteDisplayMode(s, boolean) {
       Vue.set(s, 'showVote', boolean);
+    },
+    setCandidateProfileDisplayMode(s, boolean) {
+      Vue.set(s, 'showCandidateProfile', boolean);
+    },
+    setCandidateIdToDisplay(s, candidateId) {
+      Vue.set(s, 'candidateId', candidateId);
+    },
+    setListOfCandidatesDisplayMode(s, boolean) {
+      Vue.set(s, 'showCandidates', boolean);
+    },
+    setCandidatePartyDisplayMode(s, boolean) {
+      Vue.set(s, 'showAddCandidateParty', boolean);
     },
   },
 });

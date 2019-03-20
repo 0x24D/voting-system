@@ -51,4 +51,25 @@ describe('Party tests', () => {
         done();
       });
   });
+
+  it('should add new party on /api/v1/parties POST', (done) => {
+    chai.request(app)
+      .post('/api/v1/parties')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        name: 'first last',
+        description: 'test description',
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('name');
+        res.body.should.have.property('description');
+        res.body.name.should.equal('first last');
+        res.body.description.should.equal('test description');
+        done();
+      });
+  });
 });

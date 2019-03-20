@@ -90,4 +90,29 @@ describe('Candidate tests', () => {
         done();
       });
   });
+
+  it('should add new candidate on /api/v1/candidates POST', (done) => {
+    chai.request(app)
+      .post('/api/v1/candidates')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        name: 'first last',
+        party: party2Id,
+        description: 'test user',
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('name');
+        res.body.should.have.property('party');
+        res.body.should.have.property('description');
+        res.body.name.should.equal('first last');
+        res.body.party.should.equal(party2Id);
+        res.body.description.should.equal('test user');
+
+        done();
+      });
+  });
 });

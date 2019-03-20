@@ -27,8 +27,8 @@
             </div>
           </div>
         </md-card-content>
-        <md-card-actions>
-          <md-button type="submit" class="md-primary"
+        <md-card-actions class="md-alignment-center">
+          <md-button type="submit" class="md-raised md-primary"
             @click="loginSubmit(username, password)">Login</md-button>
         </md-card-actions>
       </md-card>
@@ -101,5 +101,8 @@ form {
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+.md-alignment-right {
+  justify-content: initial !important;
 }
 </style>

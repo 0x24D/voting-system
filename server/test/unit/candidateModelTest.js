@@ -11,14 +11,21 @@ describe('candidate', () => {
       done();
     });
   });
-});
 
-describe('candidate', () => {
-  it('should be invalid if party is empty', (done) => {
+  it('should not be invalid if party is empty', (done) => {
     const c = new Candidate();
 
     c.validate((err) => {
       expect(err.errors.party).to.not.exist;
+      done();
+    });
+  });
+
+  it('should not be invalid if description is empty', (done) => {
+    const c = new Candidate();
+
+    c.validate((err) => {
+      expect(err.errors.description).to.not.exist;
       done();
     });
   });

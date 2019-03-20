@@ -22,3 +22,21 @@ export const findById = (candidateId, callback) => {
     callback(err, candidate);
   });
 };
+
+/**
+ * Find a specific record in the database.
+ *
+ * @param callback the function to call after finding the data
+ * @param dataToSave An object containing the information that needs to be added to the database
+ */
+
+export const addNew = (dataToSave, callback) => {
+  const newCandidate = new Candidate({
+    name: dataToSave.name,
+    party: dataToSave.party,
+    description: dataToSave.description,
+  });
+  newCandidate.save((err, candidate) => {
+    callback(err, candidate);
+  });
+};

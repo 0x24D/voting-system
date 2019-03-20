@@ -10,7 +10,8 @@
         <div class="md-layout-item md-small-size-100">
           <md-field :class="getValidationClass('username')">
             <label for="username">Username</label>
-              <md-input name="username" id="username" v-model="auditor.username" required></md-input>
+              <md-input name="username" id="username"
+                v-model="auditor.username" required></md-input>
             <span class="md-error" v-if="!$v.auditor.username.required">Username is required</span>
           </md-field>
         </div>
@@ -26,7 +27,8 @@
         <div class="md-layout-item md-small-size-100">
           <md-field :class="getValidationClass('email')">
             <label for="email">Email</label>
-              <md-input name="email" id="email" type="email" v-model="auditor.email" required></md-input>
+              <md-input name="email" id="email" type="email"
+                v-model="auditor.email" required></md-input>
             <span class="md-error" v-if="!$v.auditor.email.required">Email is required</span>
             <span class="md-error" v-if="!$v.auditor.email.email">Email is invalid</span>
           </md-field>
@@ -35,27 +37,33 @@
           <div class="md-layout-item md-small-size-100">
             <md-field :class="getValidationClass('password')">
               <label for="password">Password</label>
-                <md-input name="password" id="password" type="password" v-model="auditor.password" required></md-input>
-              <span class="md-error" v-if="!$v.auditor.password.required">Password is required</span>
+                <md-input name="password" id="password" type="password"
+                  v-model="auditor.password" required></md-input>
+              <span class="md-error" v-if="!$v.auditor.password.required">
+                  Password is required</span>
             </md-field>
           </div>
 
           <div class="md-layout-item md-small-size-100">
             <md-field :class="getValidationClass('polling_station')">
               <label for="polling_station">Polling Station</label>
-                <md-select name="polling_station" id="polling_station" v-model="auditor.polling_station" md-dense required>
+                <md-select name="polling_station" id="polling_station"
+                  v-model="auditor.polling_station" md-dense required>
                   <md-option v-for="address in addresses" :key="address._id" :value="address._id">
                     {{ address.postcode }}
                   </md-option>
                 </md-select>
-              <span class="md-error" v-if="!$v.auditor.polling_station.required">Polling station is required</span>
+              <span class="md-error" v-if="!$v.auditor.polling_station.required">
+                  Polling station is required</span>
             </md-field>
           </div>
 
         </md-card-content>
         <md-card-actions>
-          <md-button class="md-primary" id="adminButton" @click="goToAdmin()">Back to Admin</md-button>
-          <md-button class="md-primary" id="submitButton" @click="onSubmit(auditor)">Submit Details</md-button>
+          <md-button class="md-primary" id="adminButton"
+            @click="goToAdmin()">Back to Admin</md-button>
+          <md-button class="md-primary" id="submitButton"
+            @click="onSubmit(auditor)">Submit Details</md-button>
         </md-card-actions>
       </md-card>
     </form>
@@ -140,7 +148,10 @@ export default {
       if (!this.$v.$invalid) {
         // retrieve station Id from selected address
         this.stations.forEach((station) => {
-          if (newAuditor.polling_station === station.address) newAuditor.polling_station = station._id;
+          if (newAuditor.polling_station === station.address) {
+            // eslint-disable-next-line
+            newAuditor.polling_station = station._id;
+          }
         });
         this.$axios
         // posts auditor if all fields are valid

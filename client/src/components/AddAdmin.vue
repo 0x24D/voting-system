@@ -26,7 +26,8 @@
         <div class="md-layout-item md-small-size-100">
           <md-field :class="getValidationClass('email')">
             <label for="email">Email</label>
-              <md-input name="email" id="email" type="email" v-model="admin.email" required></md-input>
+              <md-input name="email" id="email" type="email"
+                v-model="admin.email" required></md-input>
             <span class="md-error" v-if="!$v.admin.email.required">Email is required</span>
             <span class="md-error" v-if="!$v.admin.email.email">Email is invalid</span>
           </md-field>
@@ -35,7 +36,8 @@
         <div class="md-layout-item md-small-size-100">
           <md-field :class="getValidationClass('password')">
             <label for="password">Password</label>
-              <md-input name="password" id="password" type="password" v-model="admin.password" required></md-input>
+              <md-input name="password" id="password" type="password"
+                v-model="admin.password" required></md-input>
             <span class="md-error" v-if="!$v.admin.password.required">Password is required</span>
           </md-field>
         </div>
@@ -43,8 +45,10 @@
 
         </md-card-content>
         <md-card-actions>
-          <md-button class="md-primary" id="adminButton" @click="goToAdmin()">Back to Admin</md-button>
-          <md-button class="md-primary" id="submitButton" @click="onSubmit(admin)">Submit Details</md-button>
+          <md-button class="md-primary" id="adminButton"
+            @click="goToAdmin()">Back to Admin</md-button>
+          <md-button class="md-primary" id="submitButton"
+            @click="onSubmit(admin)">Submit Details</md-button>
         </md-card-actions>
       </md-card>
     </form>

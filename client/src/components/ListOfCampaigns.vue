@@ -1,27 +1,12 @@
 <template>
-  <div class="campaigns">
-    <div class="campaign" v-for="campaign in campaigns"
-      :key="campaign._id" @click="goToCampaign(campaign._id)">
-      <md-card md-with-hover class="md-size-75">
-          <md-card-header>
-            <div class="md-title">{{ campaign.name }}</div>
-          </md-card-header>
-          <md-card-content>
-            <md-list>
-              <md-list-item>
-                <span class="md-list-item-text">Campaign Type</span>
-                <span class="md-list-item-text">{{ campaign.type }}</span>
-              </md-list-item>
-              <md-list-item>
-                <span class="md-list-item-text">Date</span>
-                <span class="md-list-item-text">{{ new Date(campaign.start_date).toDateString() }}
-                {{ new Date(campaign.start_date).toLocaleTimeString() }}
-                  - {{ new Date(campaign.end_date).toDateString() }}
-                {{ new Date(campaign.end_date).toLocaleTimeString() }}</span>
-              </md-list-item>
-            </md-list>
-          </md-card-content>
-        </md-card>
+  <div id="campaigns">
+    <div class="campaign" v-for="campaign in campaigns" :key="campaign._id"
+    @click="goToCampaign(campaign._id)" :style="getCursorStyle">
+      <md-list>
+        <md-list-item>
+          <span class="md-list-item-text">{{ campaign.name }}</span>
+        </md-list-item>
+      </md-list>
     </div>
   </div>
 </template>
@@ -32,7 +17,22 @@ export default {
   data() {
     return {
       campaigns: [],
+      hasVoted: null,
     };
+  },
+  computed: {
+    getCursorStyle() {
+      return `cursor: ${this.hasVoted ? 'default' : 'pointer'}`;
+    },
+  },
+  methods: {
+    goToCampaign(campaignId) {
+      if (!this.hasVoted) {
+        this.$store.commit('setCampaignIdToDisplay', campaignId);
+        this.$store.commit('setVoteDisplayMode', true);
+        this.$store.commit('setCampaignsDisplayMode', false);
+      }
+    },
   },
   created() {
     this.$axios
@@ -40,7 +40,13 @@ export default {
       .then((response) => {
         this.campaigns = response.data;
       });
+    this.$axios
+      .get(`http://localhost:8081/api/v1/voters/${localStorage.user}`)
+      .then((response) => {
+        this.hasVoted = response.data.voted;
+      });
   },
+
   methods: {
     goToCampaign(campaignId) {
       this.$axios
@@ -56,3 +62,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+#campaigns {
+  padding: 50px 100px;
+}
+</style>
