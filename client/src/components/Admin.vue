@@ -1,5 +1,7 @@
 <template>
+
   <div id="admin">
+    <md-card>
     <div>
       <md-button class="md-raised" @click="goToAddAdmin()">Add Admin</md-button>
       <md-button class="md-raised" @click="goToAddAuditor()">Add Auditor</md-button>
@@ -15,6 +17,7 @@
       <md-button class="md-raised" @click="goToCampaigns()">View Campaigns</md-button>
     </div>
     <Logout/>
+    </md-card>
   </div>
 </template>
 
@@ -58,4 +61,5 @@ export default {
 <style lang="scss" scoped>
 html, body { height: 100%; padding: 0; margin: 0; }
 div { width: 50%; height: 50%; float: left; }
+
 </style>

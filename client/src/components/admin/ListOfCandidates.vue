@@ -8,17 +8,16 @@
         <md-table-head>Candidate</md-table-head>
         <md-table-head>Party</md-table-head>
       </md-table-row>
-
       <md-table-row
         md-selectable="single"
         v-for="candidate in candidates"
         :key="candidate.id">
         <md-table-cell>{{ candidate.name }}</md-table-cell>
-        <md-table-cell>{{ candidate.party }}</md-table-cell>
+      <md-table-cell>{{ candidate.party }}</md-table-cell>
       </md-table-row>
-    </md-table>
-    <md-button @click="onAdminView()">Back To Main Menu</md-button>
-    <md-button class="md-fab md-fab-bottom-right" @click="addCandidateParty()">
+      </md-table>
+      <md-button class="md-raised md-primary" @click="onAdminView()">Go Back</md-button>
+      <md-button class="md-fab md-fab-bottom-right" @click="addCandidateParty()">
       <md-icon>+</md-icon>
     </md-button>
   </div>
