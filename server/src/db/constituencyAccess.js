@@ -1,6 +1,22 @@
 import Constituency from '../models/constituencyModel';
 
 /**
+ * Add new data to the database.
+ *
+ * @param dataToSave the data to save to the database
+ * @param callback the function to call after saving the data
+ */
+export const addNew = (dataToSave, callback) => {
+  const newConstituency = new Constituency({});
+  Object.keys(dataToSave).forEach((prop) => {
+    newConstituency[prop] = dataToSave[prop];
+  });
+  newConstituency.save((err, constituency) => {
+    callback(err, constituency);
+  });
+};
+
+/**
  * Find all records in the database.
  *
  * @param callback the function to call after finding the data

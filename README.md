@@ -34,7 +34,7 @@
 
 /api/v1/constituencies GET - return list of all constituencies (implemented)
 /api/v1/constituencies/{id} GET - return specific constituency (implemented)
-/api/v1/constituencies POST - add new constituency (to implement)
+/api/v1/constituencies POST - add new constituency (implemented)
 
 /api/v1/parties POST - add new party (to implement for party profiles, setting up a campaign)
 /api/v1/parties/{id} GET - return specific party (implemented)

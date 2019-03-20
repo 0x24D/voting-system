@@ -83,7 +83,30 @@ describe('Constituency tests', () => {
         res.body.name.should.equal('Constituency 1');
         res.body.minimum_age.should.equal(18);
         res.body.voting_system.should.equal('FPTP');
+        done();
+      });
+  });
 
+  it('should add new constituency on /api/v1/constituencies POST', (done) => {
+    chai.request(app)
+      .post('/api/v1/constituencies')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        name: 'New Constituency',
+        minimum_age: 18,
+        voting_system: 'FPTP',
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('name');
+        res.body.should.have.property('minimum_age');
+        res.body.should.have.property('voting_system');
+        res.body.name.should.equal('New Constituency');
+        res.body.minimum_age.should.equal(18);
+        res.body.voting_system.should.equal('FPTP');
         done();
       });
   });
