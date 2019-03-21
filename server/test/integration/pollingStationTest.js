@@ -94,4 +94,25 @@ describe('PollingStation tests', () => {
         done();
       });
   });
+
+  it('should add new polling station on /api/v1/pollingStation  POST', (done) => {
+    chai.request(app)
+      .post('/api/v1/pollingStations')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        address: [address1Id],
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('address');
+        res.body.address.should.equal(address1Id);
+        done();
+      });
+
+  });
+
+
 });
