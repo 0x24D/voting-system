@@ -11,6 +11,9 @@
         <md-tab id="tab-constituency" md-label="New Constituency">
           <NewConstituency/>
         </md-tab>
+        <md-tab id="tab-pollingStation" md-label="New Polling Station">
+          <NewPollingStation/>
+        </md-tab>
         <md-tab id="tab-system" md-label="New System">
           <NewSystem/>
         </md-tab>
@@ -25,6 +28,7 @@
 import NewAddress from './NewAddress.vue';
 import NewCampaign from './NewCampaign.vue';
 import NewConstituency from './NewConstituency.vue';
+import NewPollingStation from './NewPollingStation.vue';
 import NewSystem from './NewSystem.vue';
 
 export default {
@@ -33,7 +37,13 @@ export default {
     NewAddress,
     NewCampaign,
     NewConstituency,
+    NewPollingStation,
     NewSystem,
+  },
+  mounted() {
+    const container = document.getElementsByClassName('md-dialog-container')[0];
+    container.style.height = '100%';
+    container.style.width = '100%';
   },
   methods: {
     /**
@@ -45,3 +55,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#dialog {
+  width: -webkit-fill-available;
+  width: -moz-available;
+}
+</style>
