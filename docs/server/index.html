@@ -1,0 +1,6051 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>  | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet' />
+  <link href='assets/style.css' rel='stylesheet' />
+  <link href='assets/github.css' rel='stylesheet' />
+  <link href='assets/split.css' rel='stylesheet' />
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'></h3>
+          <div class='mb1'><code></code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#addnewaddress'
+                  class="">
+                  addNewAddress
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getaddressbyid'
+                  class="">
+                  getAddressById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getaddresses'
+                  class="">
+                  getAddresses
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getadminbyid'
+                  class="">
+                  getAdminById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnewadmin'
+                  class="">
+                  addNewAdmin
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getauditorwithid'
+                  class="">
+                  getAuditorWithId
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnewauditor'
+                  class="">
+                  addNewAuditor
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#loginuser'
+                  class="">
+                  loginUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#logoutuser'
+                  class="">
+                  logoutUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnewcampaign'
+                  class="">
+                  addNewCampaign
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getcampaigns'
+                  class="">
+                  getCampaigns
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getcampaignbyid'
+                  class="">
+                  getCampaignById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#editcampaignbyid'
+                  class="">
+                  editCampaignById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getcandidates'
+                  class="">
+                  getCandidates
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getcandidatebyid'
+                  class="">
+                  getCandidateById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnewcandidate'
+                  class="">
+                  addNewCandidate
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnewconstituency'
+                  class="">
+                  addNewConstituency
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getallconstituencies'
+                  class="">
+                  getAllConstituencies
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getconstituencybyid'
+                  class="">
+                  getConstituencyById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#sendemail'
+                  class="">
+                  sendEmail
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getpartybyid'
+                  class="">
+                  getPartyById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getparties'
+                  class="">
+                  getParties
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnewparty'
+                  class="">
+                  addNewParty
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnewpollingstation'
+                  class="">
+                  addNewPollingStation
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getpollingstationbyid'
+                  class="">
+                  getPollingStationById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getpollingstations'
+                  class="">
+                  getPollingStations
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnewsystem'
+                  class="">
+                  addNewSystem
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getsystems'
+                  class="">
+                  getSystems
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getsystemwithid'
+                  class="">
+                  getSystemWithId
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#editsystemwithid'
+                  class="">
+                  editSystemWithId
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnewuser'
+                  class="">
+                  addNewUser
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getuserwithusername'
+                  class="">
+                  getUserWithUsername
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#edituserwithid'
+                  class="">
+                  editUserWithId
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getallusers'
+                  class="">
+                  getAllUsers
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnewvoter'
+                  class="">
+                  addNewVoter
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getallvoters'
+                  class="">
+                  getAllVoters
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#getvoterwithid'
+                  class="">
+                  getVoterWithId
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#editvoterwithid'
+                  class="">
+                  editVoterWithId
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addnew'
+                  class="">
+                  addNew
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findall'
+                  class="">
+                  findAll
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findall'
+                  class="">
+                  findAll
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findall'
+                  class="">
+                  findAll
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findall'
+                  class="">
+                  findAll
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findall'
+                  class="">
+                  findAll
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findall'
+                  class="">
+                  findAll
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findall'
+                  class="">
+                  findAll
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findall'
+                  class="">
+                  findAll
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findall'
+                  class="">
+                  findAll
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyid'
+                  class="">
+                  findById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyid'
+                  class="">
+                  findById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyid'
+                  class="">
+                  findById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyid'
+                  class="">
+                  findById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyid'
+                  class="">
+                  findById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyid'
+                  class="">
+                  findById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyid'
+                  class="">
+                  findById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyid'
+                  class="">
+                  findById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyid'
+                  class="">
+                  findById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyid'
+                  class="">
+                  findById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#updateexistingbyid'
+                  class="">
+                  updateExistingById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#updateexistingbyid'
+                  class="">
+                  updateExistingById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#updateexistingbyid'
+                  class="">
+                  updateExistingById
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#findbyproperty'
+                  class="">
+                  findByProperty
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#unsetpropertybyusername'
+                  class="">
+                  unsetPropertyByUsername
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#updateexistingbyproperty'
+                  class="">
+                  updateExistingByProperty
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewaddress'>
+      addNewAddress
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new address to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNewAddress</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getaddressbyid'>
+      getAddressById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get address with passed in ID from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getAddressById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getaddresses'>
+      getAddresses
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get all addresses from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getAddresses</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getadminbyid'>
+      getAdminById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Gets the admin using their id which is sent in the request
+parameters from the database and returns
+it to the client.</p>
+
+    <div class='pre p1 fill-light mt0'>getAdminById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the repsonse from the server
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewadmin'>
+      addNewAdmin
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adds a new admin using the information in req,
+this also uses salt in order hash the password before
+saving</p>
+
+    <div class='pre p1 fill-light mt0'>addNewAdmin</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the repsonse from the server
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getauditorwithid'>
+      getAuditorWithId
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Gets the auditor using their id which is sent in the request
+parameters from the database and returns
+it to the client.</p>
+
+    <div class='pre p1 fill-light mt0'>getAuditorWithId</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the repsonse from the server
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewauditor'>
+      addNewAuditor
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adds a new auditor using the information in req,
+this also uses salt in order hash the password before
+saving</p>
+
+    <div class='pre p1 fill-light mt0'>addNewAuditor</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the repsonse from the server
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='loginuser'>
+      loginUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Generate a token for a user and send it to them if a token does not
+already exist and the user has provided a valid password.</p>
+
+    <div class='pre p1 fill-light mt0'>loginUser</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='logoutuser'>
+      logoutUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Remove the token from the user's record if the user has
+provided a valid token.</p>
+
+    <div class='pre p1 fill-light mt0'>logoutUser</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewcampaign'>
+      addNewCampaign
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add a new campaign to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNewCampaign</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getcampaigns'>
+      getCampaigns
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get all campaigns from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getCampaigns</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getcampaignbyid'>
+      getCampaignById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get the campaign with the passed in ID from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getCampaignById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='editcampaignbyid'>
+      editCampaignById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Update the campaign with the passed in ID using the submitted data.</p>
+
+    <div class='pre p1 fill-light mt0'>editCampaignById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getcandidates'>
+      getCandidates
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get all candidates from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getCandidates</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getcandidatebyid'>
+      getCandidateById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get candidate with passed in ID from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getCandidateById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewcandidate'>
+      addNewCandidate
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add a new candidate to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNewCandidate</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewconstituency'>
+      addNewConstituency
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add a new constituency to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNewConstituency</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getallconstituencies'>
+      getAllConstituencies
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get all constituencies from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getAllConstituencies</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getconstituencybyid'>
+      getConstituencyById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get constituency with the passed in ID from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getConstituencyById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='sendemail'>
+      sendEmail
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Gets the Voter using their id which is sent in the request
+parameters from the database and returns it to the client.</p>
+<p>Uses Email and Password from _config to create a transporter
+Uses Email from the Voter and the subject and text sent from
+the body in Vote.vue</p>
+
+    <div class='pre p1 fill-light mt0'>sendEmail</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the repsonse from the server
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getpartybyid'>
+      getPartyById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get party with the passed in ID from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getPartyById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getparties'>
+      getParties
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Gets all Parties stored in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getParties</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewparty'>
+      addNewParty
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adds a new Party to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNewParty</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewpollingstation'>
+      addNewPollingStation
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new polling station to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNewPollingStation</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getpollingstationbyid'>
+      getPollingStationById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns a polling station by based on its ID to res</p>
+
+    <div class='pre p1 fill-light mt0'>getPollingStationById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the repsonse from the server
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getpollingstations'>
+      getPollingStations
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Returns all polling stations in the database to res</p>
+
+    <div class='pre p1 fill-light mt0'>getPollingStations</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the repsonse from the server
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewsystem'>
+      addNewSystem
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add a new system to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNewSystem</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getsystems'>
+      getSystems
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get all systems from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getSystems</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getsystemwithid'>
+      getSystemWithId
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get system with passed in ID from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getSystemWithId</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='editsystemwithid'>
+      editSystemWithId
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Update the system with the passed in ID with the submitted data.</p>
+
+    <div class='pre p1 fill-light mt0'>editSystemWithId</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewuser'>
+      addNewUser
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new user to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNewUser</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getuserwithusername'>
+      getUserWithUsername
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get the user with the passed in username from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getUserWithUsername</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='edituserwithid'>
+      editUserWithId
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Update the user with the passed in ID with the submitted data.</p>
+
+    <div class='pre p1 fill-light mt0'>editUserWithId</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getallusers'>
+      getAllUsers
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Gets all users from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getAllUsers</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnewvoter'>
+      addNewVoter
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Adds a new voter using the information in req,
+this also uses salt in order hash the password before
+saving.</p>
+
+    <div class='pre p1 fill-light mt0'>addNewVoter</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the repsonse from the server
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getallvoters'>
+      getAllVoters
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Gets all voters from the database.</p>
+
+    <div class='pre p1 fill-light mt0'>getAllVoters</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the response to the client
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getvoterwithid'>
+      getVoterWithId
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Gets the voter using their id which sent in the request
+parameters from the database and returns
+it to the client.</p>
+
+    <div class='pre p1 fill-light mt0'>getVoterWithId</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the repsonse from the server
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='editvoterwithid'>
+      editVoterWithId
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Updates the voter using ID with the new information sent in req</p>
+
+    <div class='pre p1 fill-light mt0'>editVoterWithId</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>req</span> <code class='quiet'>(any)</code>
+	    the request from the client
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>res</span> <code class='quiet'>(any)</code>
+	    the repsonse from the server
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new data to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to save to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after saving the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new data to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to save to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after saving the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new data to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to save to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after saving the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new data to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to save to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after saving the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    An object containing the information that needs to be added to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new data to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to save to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after saving the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add a new party record to the database</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    An object containing the information that needs to be added to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new data to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to save to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after saving the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new data to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to save to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after saving the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new data to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to save to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after saving the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addnew'>
+      addNew
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Add new data to the database.</p>
+
+    <div class='pre p1 fill-light mt0'>addNew</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to save to the database
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after saving the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findall'>
+      findAll
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find all records in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findAll</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findall'>
+      findAll
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find all records in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findAll</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>constituency</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findall'>
+      findAll
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find all records in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findAll</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findall'>
+      findAll
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find all records in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findAll</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findall'>
+      findAll
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find all party records in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findAll</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findall'>
+      findAll
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find all records in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findAll</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findall'>
+      findAll
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find all records in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findAll</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>station</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findall'>
+      findAll
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find all records in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findAll</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findall'>
+      findAll
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find all records in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findAll</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyid'>
+      findById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>addressId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyid'>
+      findById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>adminId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyid'>
+      findById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>auditorId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyid'>
+      findById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>campaignId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyid'>
+      findById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>candidateId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyid'>
+      findById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>constituencyId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyid'>
+      findById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>partyId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyid'>
+      findById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>pollingStationId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyid'>
+      findById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>systemId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyid'>
+      findById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>voterId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='updateexistingbyid'>
+      updateExistingById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Update a record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>updateExistingById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>campaignId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to update
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to store in the record
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after updating the record
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='updateexistingbyid'>
+      updateExistingById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Update a record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>updateExistingById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>systemId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to update
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to store in the record
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after updating the record
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='updateexistingbyid'>
+      updateExistingById
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Update a record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>updateExistingById</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>voterId</span> <code class='quiet'>(any)</code>
+	    the ID of the record to update
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to store in the record
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after updating the record
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='findbyproperty'>
+      findByProperty
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Find a specific record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>findByProperty</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>property</span> <code class='quiet'>(any)</code>
+	    the property of the record to find by
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>value</span> <code class='quiet'>(any)</code>
+	    the value of the property to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after finding the data
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='unsetpropertybyusername'>
+      unsetPropertyByUsername
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Unset a property in a record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>unsetPropertyByUsername</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>username</span> <code class='quiet'>(any)</code>
+	    the username of the record to modify
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>propertyToUnset</span> <code class='quiet'>(any)</code>
+	    the property to unset
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after modifying the record
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='updateexistingbyproperty'>
+      updateExistingByProperty
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Update a record in the database.</p>
+
+    <div class='pre p1 fill-light mt0'>updateExistingByProperty</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>property</span> <code class='quiet'>(any)</code>
+	    the property of the record to find by
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>value</span> <code class='quiet'>(any)</code>
+	    the value of the property to find
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>dataToSave</span> <code class='quiet'>(any)</code>
+	    the data to store in the record
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>callback</span> <code class='quiet'>(any)</code>
+	    the function to call after updating the record
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
