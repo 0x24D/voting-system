@@ -11,9 +11,7 @@ describe('admin', () => {
       done();
     });
   });
-});
 
-describe('admin', () => {
   it('should be invalid if name is empty', (done) => {
     const v = new Admin();
 
@@ -22,9 +20,7 @@ describe('admin', () => {
       done();
     });
   });
-});
 
-describe('admin', () => {
   it('should be invalid if email is empty', (done) => {
     const v = new Admin();
 
@@ -33,9 +29,7 @@ describe('admin', () => {
       done();
     });
   });
-});
 
-describe('admin', () => {
   it('should be invalid if password is empty', (done) => {
     const v = new Admin();
 
@@ -44,9 +38,7 @@ describe('admin', () => {
       done();
     });
   });
-});
 
-describe('admin', () => {
   it('should be invalid if authentication_attempts is empty', (done) => {
     const v = new Admin();
 

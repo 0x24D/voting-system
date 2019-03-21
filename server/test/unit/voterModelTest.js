@@ -11,9 +11,7 @@ describe('voter', () => {
       done();
     });
   });
-});
 
-describe('voter', () => {
   it('should be invalid if name is empty', (done) => {
     const v = new Voter();
 
@@ -22,9 +20,7 @@ describe('voter', () => {
       done();
     });
   });
-});
 
-describe('voter', () => {
   it('should be invalid if email is empty', (done) => {
     const v = new Voter();
 
@@ -33,9 +29,7 @@ describe('voter', () => {
       done();
     });
   });
-});
 
-describe('voter', () => {
   it('should be invalid if password is empty', (done) => {
     const v = new Voter();
 
@@ -44,9 +38,7 @@ describe('voter', () => {
       done();
     });
   });
-});
 
-describe('voter', () => {
   it('should be invalid if authentication_attempts is empty', (done) => {
     const v = new Voter();
 
@@ -55,9 +47,7 @@ describe('voter', () => {
       done();
     });
   });
-});
 
-describe('voter', () => {
   it('should be invalid if voted is empty', (done) => {
     const v = new Voter();
 
@@ -66,9 +56,7 @@ describe('voter', () => {
       done();
     });
   });
-});
 
-describe('voter', () => {
   it('should be invalid if date_of_birth is empty', (done) => {
     const v = new Voter();
 
@@ -77,9 +65,7 @@ describe('voter', () => {
       done();
     });
   });
-});
 
-describe('voter', () => {
   it('should be invalid if address is empty', (done) => {
     const v = new Voter();
 

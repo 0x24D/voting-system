@@ -11,9 +11,7 @@ describe('address', () => {
       done();
     });
   });
-});
 
-describe('address', () => {
   it('should be valid if line_two is empty', (done) => {
     const a = new Address();
 
@@ -22,9 +20,7 @@ describe('address', () => {
       done();
     });
   });
-});
 
-describe('address', () => {
   it('should be invalid if town is empty', (done) => {
     const a = new Address();
 
@@ -33,9 +29,7 @@ describe('address', () => {
       done();
     });
   });
-});
 
-describe('address', () => {
   it('should be invalid if county is empty', (done) => {
     const a = new Address();
 
@@ -44,9 +38,7 @@ describe('address', () => {
       done();
     });
   });
-});
 
-describe('address', () => {
   it('should be invalid if country is empty', (done) => {
     const a = new Address();
 
@@ -55,9 +47,7 @@ describe('address', () => {
       done();
     });
   });
-});
 
-describe('address', () => {
   it('should be invalid if postcode is empty', (done) => {
     const a = new Address();
 
@@ -66,9 +56,7 @@ describe('address', () => {
       done();
     });
   });
-});
 
-describe('address', () => {
   it('should be invalid if constituency is empty', (done) => {
     const a = new Address();
 

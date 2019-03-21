@@ -11,9 +11,7 @@ describe('party', () => {
       done();
     });
   });
-});
 
-describe('party', () => {
   it('should not be invalid if description is empty', (done) => {
     const p = new Party();
 
