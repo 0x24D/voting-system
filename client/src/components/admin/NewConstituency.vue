@@ -89,6 +89,9 @@ export default {
             name: formData.name,
             minimum_age: formData.minimum_age,
             voting_system: formData.voting_system,
+          })
+          .then(() => {
+            this.$store.commit('setSetupDisplayMode', false);
           });
       }
     },

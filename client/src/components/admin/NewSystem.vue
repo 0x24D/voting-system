@@ -140,6 +140,9 @@ export default {
             campaigns: formData.campaigns,
             station: formData.station,
             voters: formData.voters,
+          })
+          .then(() => {
+            this.$store.commit('setSetupDisplayMode', false);
           });
       }
     },

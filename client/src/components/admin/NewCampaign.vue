@@ -178,6 +178,9 @@ export default {
             end_date: formData.end_date,
             candidates: formData.candidates,
             constituencies: formData.constituencies,
+          })
+          .then(() => {
+            this.$store.commit('setSetupDisplayMode', false);
           });
       }
     },
