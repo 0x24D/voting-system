@@ -62,9 +62,9 @@
                     :key="constituency._id" :value="constituency._id">
                     {{ constituency.name }}
                   </md-option>
-                  <span class="md-error" v-if="!$v.address.constituency.required">
-                      Constituency is required</span>
                 </md-select>
+                <span class="md-error" v-if="!$v.address.constituency.required">
+                    Constituency is required</span>
               </md-field>
             </div>
           </div>
@@ -153,9 +153,6 @@ export default {
   validations: {
     address: {
       line_one: {
-        required,
-      },
-      line_two: {
         required,
       },
       town: {
