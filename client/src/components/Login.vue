@@ -63,7 +63,7 @@ export default {
      * loginSubmit sends the submited information to the authentication endpoint on the server side
      * when the username and password is authenticated it gives the user a token
      * it then gets the type of user from the database to display the correct screen
-     * 
+     *
      * @param username
      * @param password
      */

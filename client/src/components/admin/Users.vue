@@ -34,7 +34,7 @@ export default {
       users: [],
     };
   },
- /**
+  /**
    * Created method calls the get users endpoint on the server to display all user and their types
    */
   created() {
