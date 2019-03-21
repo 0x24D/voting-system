@@ -34,6 +34,9 @@ export default {
       users: [],
     };
   },
+ /**
+   * Created method calls the get users endpoint on the server to display all user and their types
+   */
   created() {
     this.$axios
       .get('http://localhost:8081/api/v1/users/')

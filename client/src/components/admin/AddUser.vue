@@ -164,7 +164,7 @@
 
 <script>
 
-/**
+ /**
    *
    * Imports for validating fields above.
    * required --> the fields cannot be empty
@@ -205,7 +205,11 @@ export default {
       polling_station_address: '',
     };
   },
-
+ /**
+   * 
+   * The created method  populates the addresses and stations array in order
+   * to supply options for the polling station drop down in the form above.
+   */
 created() {
     this.$axios
       .get('http://localhost:8081/api/v1/pollingStations')
@@ -246,8 +250,7 @@ created() {
     windowClose() {
       this.$store.commit('setAddUserDisplayMode', false);
     },
-
-    /**
+ /**
    *
    * goToAdmin is a function used when the adminButton is clicked,
    * it switches the screen from AddAdmin.vue to Admin.vue
@@ -257,8 +260,7 @@ created() {
       this.$store.commit('setAdminDisplayMode', true);
       this.$store.commit('setAddAdminDisplayMode', false);
     },
-
-    /**
+ /**
    *
    * onSubmitAdmin is a function used when the submitButton is clicked,
    *
@@ -283,7 +285,7 @@ created() {
       }
     },
 
-    /**
+ /**
    *
    * onSubmitAuditor is a function used when the submitButton is clicked,
    *
@@ -316,7 +318,7 @@ created() {
       }
     },
 
-  /**
+ /**
    *
    * onSubmitVoter is a function used when the submitButton is clicked,
    *
@@ -362,7 +364,7 @@ created() {
     },
   },
 
-  /**
+ /**
    *
    * validations enforces the fields that are required and also the
    * email validation

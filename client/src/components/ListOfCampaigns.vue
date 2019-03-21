@@ -41,7 +41,7 @@ export default {
   },
   created() {
     this.$axios
-      .get('http://localhost:8081/api/v1/campaigns/') // TODO: update to only show campaigns listed on the system where logged in user is in system.voters array
+      .get('http://localhost:8081/api/v1/campaigns/')
       .then((response) => {
         this.campaigns = response.data;
       });

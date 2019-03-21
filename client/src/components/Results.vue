@@ -48,6 +48,11 @@ export default {
       chartData: [{ value: 0, title: 'empty' }],
     };
   },
+  /**
+   * Created method gets each candidate, party and votes for the campaign
+   * stores these into objects and pushes them to an array called candidates
+   *
+   */
   created() {
     this.$axios
       .get(`http://localhost:8081/api/v1/campaigns/${this.campaignId}`)
