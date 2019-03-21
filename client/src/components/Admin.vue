@@ -3,9 +3,8 @@
   <div id="admin">
     <md-card>
     <div>
-      <md-button class="md-raised" @click="goToAddAdmin()">Add Admin</md-button>
-      <md-button class="md-raised" @click="goToAddAuditor()">Add Auditor</md-button>
-      <md-button class="md-raised" @click="goToAddVoter()">Add Voter</md-button>
+      <md-button class="md-raised" @click="goToUsers()">View Users</md-button>
+
     </div>
     <div>
       <md-button class="md-raised" @click="goToResults()">View Results</md-button>
@@ -42,17 +41,9 @@ export default {
       this.$store.commit('setAdminDisplayMode', false);
       this.$store.commit('setResultsCampaignsDisplayMode', true);
     },
-    goToAddAdmin() {
+    goToUsers() {
       this.$store.commit('setAdminDisplayMode', false);
-      this.$store.commit('setAddAdminDisplayMode', true);
-    },
-    goToAddAuditor() {
-      this.$store.commit('setAdminDisplayMode', false);
-      this.$store.commit('setAddAuditorDisplayMode', true);
-    },
-    goToAddVoter() {
-      this.$store.commit('setAdminDisplayMode', false);
-      this.$store.commit('setAddVoterDisplayMode', true);
+      this.$store.commit('setUsersDisplayMode', true);
     },
   },
 };

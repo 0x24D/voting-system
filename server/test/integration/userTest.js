@@ -11,6 +11,7 @@ chai.use(chaiHttp);
 
 describe('User tests', () => {
   let userId1;
+  let userId2;
   beforeEach((done) => {
     const user1 = new User({
       username: 'username1',
@@ -29,6 +30,8 @@ describe('User tests', () => {
       roles: 'admin',
 
     });
+    userId2 = String(user2._id);
+
     User.insertMany([user1, user2], () => {
       done();
     });
@@ -122,6 +125,45 @@ describe('User tests', () => {
         res.body.password.should.equal('testPass');
         res.body.roles.should.equal('voter');
         res.body.authentication_attempts.should.equal(0);
+        done();
+      });
+  });
+
+  it('should list all users on /api/v1/users GET', (done) => {
+    chai.request(app)
+      .get('/api/v1/users')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('array');
+        res.body.should.have.lengthOf(2);
+        res.body[0].should.have.property('_id');
+        res.body[0].should.have.property('username');
+        res.body[0].should.have.property('name');
+        res.body[0].should.have.property('email');
+        res.body[0].should.have.property('password');
+        res.body[0].should.have.property('roles');
+        res.body[0].should.have.property('authentication_attempts');
+        res.body[0]._id.should.equal(userId1);
+        res.body[0].username.should.equal('username1');
+        res.body[0].name.should.equal('User 1');
+        res.body[0].email.should.equal('user1@hotmail.com');
+        res.body[0].password.should.equal('user1');
+        res.body[0].authentication_attempts.should.equal(0);
+
+        res.body[1].should.have.property('_id');
+        res.body[1].should.have.property('username');
+        res.body[1].should.have.property('name');
+        res.body[1].should.have.property('email');
+        res.body[1].should.have.property('password');
+        res.body[1].should.have.property('roles');
+        res.body[1].should.have.property('authentication_attempts');
+        res.body[1]._id.should.equal(userId2);
+        res.body[1].username.should.equal('username2');
+        res.body[1].name.should.equal('User 2');
+        res.body[1].email.should.equal('user2@hotmail.com');
+        res.body[1].password.should.equal('user2');
+        res.body[1].authentication_attempts.should.equal(0);
         done();
       });
   });

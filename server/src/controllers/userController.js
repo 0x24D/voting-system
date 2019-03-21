@@ -1,5 +1,6 @@
 import {
   addNew,
+  findAll,
   findByProperty,
   updateExistingByProperty,
 } from '../db/userAccess';
@@ -70,6 +71,23 @@ export const editUserWithId = (req, res) => {
           res.json(updatedUser);
         }
       });
+    }
+  });
+};
+
+/**
+ * Gets all users from the database.
+ *
+ * @param req the request from the client
+ * @param res the response to the client
+ */
+
+export const getAllUsers = (req, res) => {
+  findAll((err, users) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json(users);
     }
   });
 };

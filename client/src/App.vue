@@ -37,14 +37,11 @@
         <div v-if="this.$store.state.showAddCandidateParty">
           <AddCandidateParty/>
         </div>
-        <div v-if="this.$store.state.showAddAdmin">
-          <AddAdmin/>
+        <div v-if="this.$store.state.showUsers">
+          <User/>
         </div>
-        <div v-if="this.$store.state.showAddAuditor">
-          <AddAuditor/>
-        </div>
-        <div v-if="this.$store.state.showAddVoter">
-          <AddVoter/>
+        <div v-if="this.$store.state.showAddUser">
+          <AddUser/>
         </div>
       </div>
       <div v-else-if="userType('auditor')">
@@ -58,9 +55,8 @@
 </template>
 <script>
 import { getUserType, isUserAuthenticated } from './utils/auth';
-import AddAdmin from './components/AddAdmin.vue';
-import AddAuditor from './components/AddAuditor.vue';
-import AddVoter from './components/AddVoter.vue';
+import User from './components/admin/Users.vue';
+import AddUser from './components/admin/AddUser.vue';
 import Admin from './components/Admin.vue';
 import AdminCampaigns from './components/admin/AdminCampaigns.vue';
 import ListOfCampaigns from './components/ListOfCampaigns.vue';
@@ -78,9 +74,8 @@ import ResultsCampaigns from './components/admin/ResultsCampaigns.vue';
 export default {
   name: 'app',
   components: {
-    AddAdmin,
-    AddAuditor,
-    AddVoter,
+    User,
+    AddUser,
     Admin,
     AdminCampaigns,
     ListOfCampaigns,

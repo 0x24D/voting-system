@@ -8,15 +8,14 @@ export default new Vuex.Store({
     campaignId: '',
     showAdmin: true,
     showAdminCampaigns: false,
-    showAddAdmin: false,
-    showAddAuditor: false,
     showAddSystem: false,
-    showAddVoter: false,
+    showAddUser: false,
     showCampaigns: true,
     showResults: false,
     showSetup: false,
     showResultsCampaigns: false,
     showSuccess: false,
+    showUsers: false,
     showVote: false,
     showCandidateProfile: false,
     candidateId: '',
@@ -53,17 +52,11 @@ export default new Vuex.Store({
     setSuccessDisplayMode(s, boolean) {
       Vue.set(s, 'showSuccess', boolean);
     },
-    setAddAdminDisplayMode(s, boolean) {
-      Vue.set(s, 'showAddAdmin', boolean);
-    },
-    setAddAuditorDisplayMode(s, boolean) {
-      Vue.set(s, 'showAddAuditor', boolean);
+    setUsersDisplayMode(s, boolean) {
+      Vue.set(s, 'showUsers', boolean);
     },
     setAddSystemDisplayMode(s, boolean) {
       Vue.set(s, 'showAddSystem', boolean);
-    },
-    setAddVoterDisplayMode(s, boolean) {
-      Vue.set(s, 'showAddVoter', boolean);
     },
     setVoteDisplayMode(s, boolean) {
       Vue.set(s, 'showVote', boolean);
@@ -79,6 +72,9 @@ export default new Vuex.Store({
     },
     setCandidatePartyDisplayMode(s, boolean) {
       Vue.set(s, 'showAddCandidateParty', boolean);
+    },
+    setAddUserDisplayMode(s, boolean) {
+      Vue.set(s, 'showAddUser', boolean);
     },
   },
 });

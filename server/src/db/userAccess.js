@@ -59,3 +59,14 @@ export const updateExistingByProperty = (property, value, dataToSave, callback) 
       callback(err, user);
     });
 };
+
+/**
+ * Find all records in the database.
+ *
+ * @param callback the function to call after finding the data
+ */
+export const findAll = (callback) => {
+  User.find({}).lean().exec((err, users) => {
+    callback(err, users);
+  });
+};
