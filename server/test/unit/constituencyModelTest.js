@@ -11,9 +11,7 @@ describe('constituency', () => {
       done();
     });
   });
-});
 
-describe('constituency', () => {
   it('should be invalid if minimum_age is empty', (done) => {
     const c = new Constituency();
 
@@ -22,9 +20,7 @@ describe('constituency', () => {
       done();
     });
   });
-});
 
-describe('constituency', () => {
   it('should be invalid if voting_system is empty', (done) => {
     const c = new Constituency();
 

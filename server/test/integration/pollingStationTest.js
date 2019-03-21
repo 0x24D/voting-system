@@ -30,7 +30,6 @@ describe('PollingStation tests', () => {
 
     const pollingStation1 = new PollingStation({
       address: address1,
-      close_time: Date.now() + 86400000,
     });
     pollingStation1Id = String(pollingStation1._id);
 
@@ -46,7 +45,6 @@ describe('PollingStation tests', () => {
 
     const pollingStation2 = new PollingStation({
       address: address2,
-      close_time: Date.now() + 86400000,
     });
     pollingStation2Id = String(pollingStation2._id);
 
@@ -70,8 +68,6 @@ describe('PollingStation tests', () => {
         res.body.should.be.a('object');
         res.body.should.have.property('_id');
         res.body.should.have.property('address');
-        res.body.should.have.property('open_time');
-        res.body.should.have.property('close_time');
         res.body._id.should.equal(pollingStation1Id);
         res.body.address.should.equal(address1Id);
         done();
@@ -88,18 +84,35 @@ describe('PollingStation tests', () => {
         expect(res.body).to.have.lengthOf(2);
         res.body[0].should.have.property('_id');
         res.body[0].should.have.property('address');
-        res.body[0].should.have.property('open_time');
-        res.body[0].should.have.property('close_time');
         res.body[0]._id.should.equal(pollingStation1Id);
         res.body[0].address.should.equal(address1Id);
 
         res.body[1].should.have.property('_id');
         res.body[1].should.have.property('address');
-        res.body[1].should.have.property('open_time');
-        res.body[1].should.have.property('close_time');
         res.body[1]._id.should.equal(pollingStation2Id);
         res.body[1].address.should.equal(address2Id);
         done();
       });
   });
+
+  it('should add new polling station on /api/v1/pollingStation  POST', (done) => {
+    chai.request(app)
+      .post('/api/v1/pollingStations')
+      .set('content-type', 'application/x-www-form-urlencoded')
+      .send({
+        address: [address1Id],
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.should.be.json;
+        res.body.should.be.a('object');
+        res.body.should.have.property('_id');
+        res.body.should.have.property('address');
+        res.body.address.should.equal(address1Id);
+        done();
+      });
+
+  });
+
+
 });

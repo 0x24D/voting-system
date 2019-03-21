@@ -41,14 +41,14 @@ export default {
     this.$axios
       .get('http://localhost:8081/api/v1/users/')
       .then((userRes) => {
-        userRes.data.forEach((user) => {   
-              this.users.push({
-                id: user._id,
-                username: user.username,
-                name: user.name,
-                email: user.email,
-                roles: user.__t,
-            });
+        userRes.data.forEach((user) => {
+          this.users.push({
+            id: user._id,
+            username: user.username,
+            name: user.name,
+            email: user.email,
+            roles: user.__t,
+          });
         });
       });
   },

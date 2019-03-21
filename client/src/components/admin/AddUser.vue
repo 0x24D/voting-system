@@ -8,14 +8,18 @@
               <div class="md-layout-item md-small-size-100">
                 <md-field :class="getValidationClass('username')">
                   <label for="username">Username</label>
-                    <md-input name="adminusername" id="adminusername" v-model="admin.username" required></md-input>
-                  <span class="md-error" v-if="!$v.admin.username.required">Username is required</span>
+                    <md-input name="adminusername" id="adminusername"
+                      v-model="admin.username" required></md-input>
+                  <span class="md-error" v-if="!$v.admin.username.required">
+                      Username is required</span>
                 </md-field>
 
                 <md-field :class="getValidationClass('name')">
                   <label for="name">Name</label>
-                    <md-input name="adminname" id="adminname" v-model="admin.name" required></md-input>
-                  <span class="md-error" v-if="!$v.admin.name.required">Name is required</span>
+                    <md-input name="adminname" id="adminname"
+                      v-model="admin.name" required></md-input>
+                  <span class="md-error" v-if="!$v.admin.name.required">
+                      Name is required</span>
                 </md-field>
 
                 <md-field :class="getValidationClass('email')">
@@ -30,11 +34,14 @@
                   <label for="password">Password</label>
                     <md-input name="adminpassword" id="adminpassword" type="password"
                       v-model="admin.password" required></md-input>
-                  <span class="md-error" v-if="!$v.admin.password.required">Password is required</span>
+                  <span class="md-error" v-if="!$v.admin.password.required">
+                      Password is required</span>
                 </md-field>
 
-                <md-button class="md-primary" id="submitAdminButton" @click="onSubmitAdmin(admin)">Submit</md-button>
-            <md-button class="md-primary" id="closeAdminButton" @click="windowClose()">Close</md-button>
+                <md-button class="md-primary" id="submitAdminButton"
+                  @click="onSubmitAdmin(admin)">Submit</md-button>
+                <md-button class="md-primary" id="closeAdminButton"
+                  @click="windowClose()">Close</md-button>
               </div>
           </form>
         </md-tab>
@@ -46,12 +53,14 @@
                   <label for="username">Username</label>
                     <md-input name="auditorusername" id="auditorusername"
                       v-model="auditor.username" required></md-input>
-                  <span class="md-error" v-if="!$v.auditor.username.required">Username is required</span>
+                  <span class="md-error" v-if="!$v.auditor.username.required">
+                      Username is required</span>
                 </md-field>
 
                 <md-field :class="getValidationClass('name')">
                   <label for="name">Name</label>
-                    <md-input name="auditorname" id="auditorname" v-model="auditor.name" required></md-input>
+                    <md-input name="auditorname" id="auditorname"
+                      v-model="auditor.name" required></md-input>
                   <span class="md-error" v-if="!$v.auditor.name.required">Name is required</span>
                 </md-field>
 
@@ -75,7 +84,8 @@
                     <label for="polling_station">Polling Station</label>
                       <md-select name="auditorpolling_station" id="auditorpolling_station"
                         v-model="auditor.polling_station" md-dense required>
-                        <md-option v-for="address in addresses" :key="address._id" :value="address._id">
+                        <md-option v-for="address in addresses"
+                          :key="address._id" :value="address._id">
                           {{ address.line_one }}, {{ address.postcode }}
                         </md-option>
                       </md-select>
@@ -83,8 +93,10 @@
                         Polling station is required</span>
                   </md-field>
 
-                <md-button class="md-primary" id="submitAuditorButton" @click="onSubmitAuditor(auditor)">Submit</md-button>
-                <md-button class="md-primary" id="closeAuditorButton" @click="windowClose()">Close</md-button>
+                <md-button class="md-primary" id="submitAuditorButton"
+                  @click="onSubmitAuditor(auditor)">Submit</md-button>
+                <md-button class="md-primary" id="closeAuditorButton"
+                  @click="windowClose()">Close</md-button>
             </div>
           </form>
         </md-tab>
@@ -94,13 +106,16 @@
                 <div class="md-layout-item md-medium-size-200 md-scrollbar">
                     <md-field :class="getValidationClass('username')">
                     <label for="username">Username</label>
-                    <md-input name="voterusername" id="voterusername" v-model="voter.username" required></md-input>
-                    <span class="md-error" v-if="!$v.voter.username.required">Username is required</span>
+                    <md-input name="voterusername" id="voterusername"
+                      v-model="voter.username" required></md-input>
+                    <span class="md-error" v-if="!$v.voter.username.required">
+                        Username is required</span>
                     </md-field>
 
                     <md-field :class="getValidationClass('name')">
                     <label for="name">Name</label>
-                        <md-input name="votername" id="votername" v-model="voter.name" required></md-input>
+                        <md-input name="votername" id="votername"
+                          v-model="voter.name" required></md-input>
                     <span class="md-error" v-if="!$v.voter.name.required">Name is required</span>
                     </md-field>
 
@@ -116,7 +131,8 @@
                     <label for="password">Password</label>
                         <md-input name="voterpassword" id="voterpassword" type="password"
                         v-model="voter.password" required></md-input>
-                    <span class="md-error" v-if="!$v.voter.password.required">Password is required</span>
+                    <span class="md-error" v-if="!$v.voter.password.required">
+                        Password is required</span>
                     </md-field>
 
                     <md-field :class="getValidationClass('date_of_birth')">
@@ -130,7 +146,8 @@
                     <md-field :class="getValidationClass('address')">
                     <label for="address">Address</label>
 
-                        <md-select v-model="voter.address" name="vaddress" id="voteraddress" md-dense required>
+                        <md-select v-model="voter.address" name="vaddress"
+                          id="voteraddress" md-dense required>
                             <md-option v-for="ad in addresses" :key="ad._id" :value="ad._id">
                                 {{ ad.line_one }}, {{ ad.postcode }}
                             </md-option>
@@ -152,8 +169,10 @@
                         Polling station is required</span>
                     </md-field>
 
-                    <md-button class="md-primary" id="submitVoterButton" @click="onSubmitVoter(voter)">Submit</md-button>
-                    <md-button class="md-primary" id="closeVoterButton" @click="windowClose()">Close</md-button>
+                    <md-button class="md-primary" id="submitVoterButton"
+                      @click="onSubmitVoter(voter)">Submit</md-button>
+                    <md-button class="md-primary" id="closeVoterButton"
+                      @click="windowClose()">Close</md-button>
                 </div>
             </form>
         </md-tab>
@@ -215,13 +234,11 @@ created() {
       .get('http://localhost:8081/api/v1/pollingStations')
       .then((pollingRes) => {
         this.stations = pollingRes.data;
-        pollingRes.data.forEach((addressArr) => {
-          this.$axios
-            .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
-            .then((res) => {
-              this.addresses.push(res.data);
-            });
-        });
+        this.$axios
+          .get('http://localhost:8081/api/v1/addresses')
+          .then((addressRes) => {
+            this.addresses = addressRes.data;
+          });
       });
   },
 
@@ -296,12 +313,13 @@ created() {
       this.$v.auditor.$touch();
       if (!this.$v.auditor.$invalid) {
         // retrieve station Id from selected address
-        this.stations.forEach((station) => {
-          if (newAuditor.polling_station === station.address) {
-            // eslint-disable-next-line
-            newAuditor.polling_station = station._id;
-          }
-        });
+        const foundStation = this.stations.find(
+          station => this.polling_station_address === station.address,
+        );
+        if (foundStation) {
+          // eslint-disable-next-line
+          newAuditor.polling_station = foundStation._id;
+        }
         this.$axios
         // posts auditor if all fields are valid
           .post('http://localhost:8081/api/v1/auditors', {
@@ -318,7 +336,7 @@ created() {
       }
     },
 
- /**
+    /**
    *
    * onSubmitVoter is a function used when the submitButton is clicked,
    *
