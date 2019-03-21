@@ -80,7 +80,7 @@ export default {
     *
     * @param formData the form data to be sent to the server
     */
-    newSystemSubmit(formData) {
+    newPollingStationSubmit(formData) {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         this.$axios

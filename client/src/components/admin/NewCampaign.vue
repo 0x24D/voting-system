@@ -48,9 +48,9 @@
                     :key="candidate._id" :value="candidate._id">
                     {{ candidate.name }}
                   </md-option>
-                  <span class="md-error" v-if="!$v.campaign.candidates.required">
-                      Campaign candidates is required</span>
                 </md-select>
+                <span class="md-error" v-if="!$v.campaign.candidates.required">
+                    Campaign candidates is required</span>
               </md-field>
             </div>
             <div class="md-layout-item md-small-size-100">
@@ -62,9 +62,9 @@
                     :key="constituency._id" :value="constituency._id">
                     {{ constituency.name }}
                   </md-option>
-                  <span class="md-error" v-if="!$v.campaign.constituencies.required">
-                      Campaign constituencies is required</span>
                 </md-select>
+                <span class="md-error" v-if="!$v.campaign.constituencies.required">
+                    Campaign constituencies is required</span>
               </md-field>
             </div>
           </div>

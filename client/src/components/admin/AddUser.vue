@@ -230,13 +230,11 @@ export default {
       .get('http://localhost:8081/api/v1/pollingStations')
       .then((pollingRes) => {
         this.stations = pollingRes.data;
-        pollingRes.data.forEach((addressArr) => {
-          this.$axios
-            .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
-            .then((res) => {
-              this.addresses.push(res.data);
-            });
-        });
+        this.$axios
+          .get('http://localhost:8081/api/v1/addresses')
+          .then((addressRes) => {
+            this.addresses = addressRes.data;
+          });
       });
   },
 
@@ -313,12 +311,13 @@ export default {
       this.$v.auditor.$touch();
       if (!this.$v.auditor.$invalid) {
         // retrieve station Id from selected address
-        this.stations.forEach((station) => {
-          if (newAuditor.polling_station === station.address) {
-            // eslint-disable-next-line
-            newAuditor.polling_station = station._id;
-          }
-        });
+        const foundStation = this.stations.find(
+          station => this.polling_station_address === station.address,
+        );
+        if (foundStation) {
+          // eslint-disable-next-line
+          newAuditor.polling_station = foundStation._id;
+        }
         this.$axios
         // posts auditor if all fields are valid
           .post('http://localhost:8081/api/v1/auditors', {
