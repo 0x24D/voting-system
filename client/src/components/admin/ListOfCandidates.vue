@@ -31,6 +31,10 @@ export default {
       candidates: [],
     };
   },
+  /**
+   * Created method obtains all of the candidates in the database
+   * These candidates are then pushed into an array which is displayed on the page
+   */
   created() {
     this.$axios
       .get('http://localhost:8081/api/v1/candidates/')
@@ -48,6 +52,20 @@ export default {
         });
       });
   },
+  /**
+   *
+   * OnAdminView is a function that is called when the Go Back button is pressed
+   * Closes current window and navigates the user back to the admin window
+   *
+   */
+
+  /**
+   *
+   * addCandidateParty is a function that is called when the plus button is clicked
+   * Displays the dialog box which enables the user to add new candidates and parties
+   *
+   */
+  
   methods: {
     onAdminView() {
       this.$store.commit('setListOfCandidatesDisplayMode', false);
