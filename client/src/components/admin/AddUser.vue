@@ -84,7 +84,7 @@
                     <label for="polling_station">Polling Station</label>
                       <md-select name="auditorpolling_station" id="auditorpolling_station"
                         v-model="auditor.polling_station" md-dense required>
-                        <md-option v-for="address in addresses"
+                        <md-option v-for="address in pollingAddress"
                           :key="address._id" :value="address._id">
                           {{ address.line_one }}, {{ address.postcode }}
                         </md-option>
@@ -161,7 +161,7 @@
                     <label for="polling_station">Polling Station</label>
                         <md-select name="voterpolling_station" id="voterpolling_station"
                         v-model="polling_station_address" md-dense required>
-                        <md-option v-for="ad in addresses" :key="ad._id" :value="ad._id">
+                        <md-option v-for="ad in pollingAddress" :key="ad._id" :value="ad._id">
                         {{ ad.line_one }}, {{ ad.postcode }}
                         </md-option>
                         </md-select>
@@ -221,6 +221,7 @@ export default {
       },
       addresses: [],
       stations: [],
+      pollingAddress: [],
       polling_station_address: '',
     };
   },
@@ -234,6 +235,13 @@ created() {
       .get('http://localhost:8081/api/v1/pollingStations')
       .then((pollingRes) => {
         this.stations = pollingRes.data;
+         pollingRes.data.forEach((addressArr) => {
+          this.$axios
+            .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
+            .then((res) => {
+              this.pollingAddress.push(res.data);
+            });
+        });
         this.$axios
           .get('http://localhost:8081/api/v1/addresses')
           .then((addressRes) => {
