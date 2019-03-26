@@ -55,9 +55,9 @@ const yorkshireCandidateId = ObjectId(yorkshireCandidateStr);
 // add campaign
 const campaignRet = db.campaigns.insertOne({
   name: 'Local Election for Doncaster North',
-  total_votes: 0,
+  total_votes: 14,
   candidates: [labourCandidateId, conservativeCandidateId, yorkshireCandidateId],
-  votes: [{[labourCandidateStr]: 0}, {[conservativeCandidateStr]: 0}, {[yorkshireCandidateStr]: 0}],
+  votes: [{[labourCandidateStr]: 5}, {[conservativeCandidateStr]: 2}, {[yorkshireCandidateStr]: 7}],
   campaign_type: 'Local Election',
   active: 'Active',
   constituencies: [constituency1Id],
@@ -76,7 +76,7 @@ const address1 = {
   county: 'South Yorkshire',
   country: 'United Kingdom',
   postcode: 'S6 7AD',
-  address: constituency1Id
+  constituency: constituency1Id
 };
 
 const addressRet = db.addresses.insertOne(address1);

@@ -83,8 +83,8 @@
                   <md-field :class="getValidationClass('polling_station')">
                     <label for="polling_station">Polling Station</label>
                       <md-select name="auditorpolling_station" id="auditorpolling_station"
-                        v-model="auditor.polling_station" md-dense required>
-                        <md-option v-for="address in pollingAddress"
+                        v-model="polling_station_address" md-dense required>
+                        <md-option v-for="address in pollingAddresses"
                           :key="address._id" :value="address._id">
                           {{ address.line_one }}, {{ address.postcode }}
                         </md-option>
@@ -156,19 +156,6 @@
                     <span class="md-error" v-if="!$v.voter.address.required">
                         Address is required</span>
                     </md-field>
-
-                    <md-field :class="getValidationClass('polling_station')">
-                    <label for="polling_station">Polling Station</label>
-                        <md-select name="voterpolling_station" id="voterpolling_station"
-                        v-model="polling_station_address" md-dense required>
-                        <md-option v-for="ad in pollingAddress" :key="ad._id" :value="ad._id">
-                        {{ ad.line_one }}, {{ ad.postcode }}
-                        </md-option>
-                        </md-select>
-                    <span class="md-error" v-if="!$v.polling_station_address.required">
-                        Polling station is required</span>
-                    </md-field>
-
                     <md-button class="md-primary" id="submitVoterButton"
                       @click="onSubmitVoter(voter)">Submit</md-button>
                     <md-button class="md-primary" id="closeVoterButton"
@@ -217,11 +204,10 @@ export default {
         password: '',
         date_of_birth: '',
         address: '',
-        polling_station: '',
       },
       addresses: [],
       stations: [],
-      pollingAddress: [],
+      pollingAddresses: [],
       polling_station_address: '',
     };
   },
@@ -239,7 +225,7 @@ export default {
           this.$axios
             .get(`http://localhost:8081/api/v1/addresses/${addressArr.address}`)
             .then((res) => {
-              this.pollingAddress.push(res.data);
+              this.pollingAddresses.push(res.data);
             });
         });
         this.$axios
@@ -318,16 +304,19 @@ export default {
    *
    */
     onSubmitAuditor(newAuditor) {
-      this.$v.auditor.$touch();
-      if (!this.$v.auditor.$invalid) {
+      console.log('auditor submit');
         // retrieve station Id from selected address
+        console.log(this.polling_station_address);
         const foundStation = this.stations.find(
           station => this.polling_station_address === station.address,
         );
         if (foundStation) {
           // eslint-disable-next-line
-          newAuditor.polling_station = foundStation._id;
+          this.auditor.polling_station = foundStation._id;
         }
+        console.log(foundStation);
+      this.$v.auditor.$touch();
+      if (!this.$v.auditor.$invalid) {
         this.$axios
         // posts auditor if all fields are valid
           .post('http://localhost:8081/api/v1/auditors', {
@@ -355,13 +344,6 @@ export default {
     onSubmitVoter(newVoter) {
       this.$v.voter.$touch();
       if (!this.$v.voter.$invalid) {
-      // retrieve station Id from selected address
-        const foundStation = this.stations.find(
-          station => this.polling_station_address === station.address,
-        );
-        if (foundStation) {
-          this.voter.polling_station = foundStation._id;
-        }
         this.$axios
         // posts voter if all fields are valid
           .post('http://localhost:8081/api/v1/voters', {
