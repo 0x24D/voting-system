@@ -63,4 +63,4 @@
 * Graphical results interface (for each campaign) - JW (merged into develop)
 
 ## Notes:
-* When actually sending email, change _config.js to correct details.
+* When actually sending email, change server/_config.js config.email to correct details.
