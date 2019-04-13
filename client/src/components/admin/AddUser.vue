@@ -304,9 +304,7 @@ export default {
    *
    */
     onSubmitAuditor(newAuditor) {
-      console.log('auditor submit');
         // retrieve station Id from selected address
-        console.log(this.polling_station_address);
         const foundStation = this.stations.find(
           station => this.polling_station_address === station.address,
         );
@@ -314,7 +312,6 @@ export default {
           // eslint-disable-next-line
           this.auditor.polling_station = foundStation._id;
         }
-        console.log(foundStation);
       this.$v.auditor.$touch();
       if (!this.$v.auditor.$invalid) {
         this.$axios
